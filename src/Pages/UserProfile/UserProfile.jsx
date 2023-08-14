@@ -7,6 +7,7 @@ import { FaPen } from 'react-icons/fa';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import UserInfo from '../UserDetails/UserInfo/UserInfo';
+import SelfInfromPost from '../../Components/SelfInfromPost/SelfInfromPost';
 
 const UserProfile = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -16,8 +17,8 @@ const UserProfile = () => {
         const res = await axiosSequre.get(`/users/${user?.email}`)
         return res.data;
     });
-    console.log(userprofile);
 
+    console.log(userprofile);
     //set active tab design function
     const [active, setActive] = useState("");
     const clickactive = (active) => {
@@ -64,28 +65,28 @@ const UserProfile = () => {
                             <Tab onClick={() => clickactive("more")} className={` cursor-pointer text ${active == 'more' ? 'active cursor-pointer' : ''}`}>More</Tab>
 
                         </TabList>
+                         {/* userSelfPost */}
                         <TabPanel>
-                            nissansd
-
+                            <SelfInfromPost></SelfInfromPost>
                         </TabPanel>
                         <TabPanel>
 
-                            nissandsf
+                          
                         </TabPanel>
                         <TabPanel>
                             <UserInfo></UserInfo>
                         </TabPanel>
                         <TabPanel>
 
-                            boksdfasdf
+                            
                         </TabPanel>
                         <TabPanel>
 
-                            bokad
+                          
                         </TabPanel>
                         <TabPanel>
 
-                            bokadsdfs
+                           
                         </TabPanel>
                     </Tabs>
                 </div>

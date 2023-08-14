@@ -2,22 +2,21 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
-.active {
-    color: white !important;
-    font-size: 16px !important;
+.userinfo {
+    font-size: 18px !important;
     cursor: pointer !important;
-    background-color: rgb(29, 175, 29) !important;
-    width: 100px !important;
-    height: 40px !important;
     text-align: center !important;
     padding-top: 8px !important;
-    padding-left: 4px !important;
-    padding-right: 4px !important;
-    cursor: pointer !important;
-    border-radius: 20px !important;
+    padding-bottom: 8px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    border-radius: 8px !important;
+    width: 100%;
+    background-color: rgb(47, 186, 47) !important;
+    color: white !important;
+    text-align: left !important;
 }
 
-.text {
-    text-transform: uppercase !important;
+.userinfotext {
     font-weight: 800px !important;
 }
