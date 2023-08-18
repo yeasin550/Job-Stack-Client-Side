@@ -2,8 +2,8 @@ import React from 'react';
 
 const SelfInfromPost = () => {
     return (
-         <div>
-          
+        <div>
+            user Profile post
         </div>
     );
 };

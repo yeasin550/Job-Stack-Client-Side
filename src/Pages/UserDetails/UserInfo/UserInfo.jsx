@@ -7,6 +7,7 @@ import UserEducation from '../UserEducation/UserEducation';
 import UserWork from '../UserWork/UserWork';
 import UserSkills from '../UserSkills/UserSkills';
 import ContactBasicInfo from '../ContactBasicInfo/ContactBasicInfo';
+import UserProjectSkills from '../UserProjectSkills/UserProjectSkills';
 
 const UserInfo = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -23,10 +24,10 @@ const UserInfo = () => {
             <TabList className="flex flex-col justify-center items-start px-5 py-10 gap-6">
               <Tab onClick={() => clickactive("post")} className={` cursor-pointer userinfotext ${active == 'post' ? 'userinfo cursor-pointer' : ''}`}>Overview</Tab>
               <Tab onClick={() => clickactive("jobpost")} className={` cursor-pointer userinfotext ${active == 'jobpost' ? 'userinfo cursor-pointer' : ''}`}>Education</Tab>
+              <Tab onClick={() => clickactive("group")} className={` cursor-pointer userinfotext ${active == 'group' ? 'userinfo cursor-pointer' : ''}`}>Contact & Basic Info</Tab>
               <Tab onClick={() => clickactive("about")} className={` cursor-pointer userinfotext ${active == 'about' ? 'userinfo cursor-pointer' : ''}`}>Work Experians</Tab>
               <Tab onClick={() => clickactive("connect")} className={` cursor-pointer userinfotext ${active == 'connect' ? 'userinfo cursor-pointer' : ''}`}>Skills</Tab>
-              <Tab onClick={() => clickactive("group")} className={` cursor-pointer userinfotext ${active == 'group' ? 'userinfo cursor-pointer' : ''}`}>Contact & Basic Info</Tab>
-              <Tab onClick={() => clickactive("more")} className={` cursor-pointer userinfotext ${active == 'more' ? 'userinfo cursor-pointer' : ''}`}>More</Tab>
+              <Tab onClick={() => clickactive("more")} className={` cursor-pointer userinfotext ${active == 'more' ? 'userinfo cursor-pointer' : ''}`}>Project</Tab>
 
             </TabList>
           </div>
@@ -39,6 +40,10 @@ const UserInfo = () => {
             <TabPanel>
               <UserEducation></UserEducation>
             </TabPanel>
+            {/* user contact and basic info  */}
+            <TabPanel>
+              <ContactBasicInfo></ContactBasicInfo>
+            </TabPanel>
             {/* user work Experians  */}
             <TabPanel>
                <UserWork></UserWork>
@@ -47,13 +52,10 @@ const UserInfo = () => {
             <TabPanel>
               <UserSkills></UserSkills>
             </TabPanel>
-            {/* user contact and basic info  */}
-            <TabPanel>
-              <ContactBasicInfo></ContactBasicInfo>
-            </TabPanel>
-            <TabPanel>
-              bokadsdfs
-            </TabPanel>
+              {/* user Project Skills  */}
+              <TabPanel>
+              <UserProjectSkills></UserProjectSkills>
+              </TabPanel>
           </div>
         </div>
       </Tabs>

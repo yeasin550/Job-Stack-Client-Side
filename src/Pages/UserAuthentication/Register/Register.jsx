@@ -49,8 +49,7 @@ const Register = () => {
       })
         .then((res) => res.json())
         .then((imageResponse) => {
-          console.log(imageResponse);
-          if (imageResponse.success) {
+          if (imageResponse?.success) {
             const imgURL = imageResponse.data.display_url;
             createUser(data.email, data.password)
               .then((result) => {
@@ -66,7 +65,7 @@ const Register = () => {
                 };
                 axiosSequre.post("/users", saveUser).then((data) => {
                   console.log(data);
-                  if (data.data.insertedId) {
+                  if (data.data.insertedId){
                     reset();
                     Swal.fire({
                       icon: "success",

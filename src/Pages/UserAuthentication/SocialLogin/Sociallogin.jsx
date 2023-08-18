@@ -12,22 +12,21 @@ const Sociallogin = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
-
   // handle google login or sign in  and data save server
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then(result => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
-        Swal.fire({
-          icon: 'success',
-          title: 'Login successfully.',
-          timer: 1500
-        });
         const saveUser = { name: loggedInUser?.displayName, email: loggedInUser?.email, image: loggedInUser?.photoURL }
-        axiosSequre("/users", saveUser)
+        axiosSequre.post("/users", saveUser)
           .then(() => {
-            navigate(from, { replace: true });
+            Swal.fire({
+              icon: 'success',
+              title: 'Login successfully.',
+              timer: 1500
+            });
+           navigate(from, { replace: true });
           })
       }).catch(err => {
         setError(err.message);

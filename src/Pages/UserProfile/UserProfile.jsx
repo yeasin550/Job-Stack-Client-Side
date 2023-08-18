@@ -17,14 +17,12 @@ const UserProfile = () => {
         const res = await axiosSequre.get(`/users/${user?.email}`)
         return res.data;
     });
-
     console.log(userprofile);
     //set active tab design function
     const [active, setActive] = useState("");
     const clickactive = (active) => {
         setActive(active);
     };
-
     return (
         //div main container
         <div className='mt-6 mb-24 lg:px-44'>
@@ -33,13 +31,15 @@ const UserProfile = () => {
 
                 <div className='border profile-shadow rounded-md'>
                     {/* background image*/}
-                    <div className='w-full h-[300px]'>
+                    <div className='w-full h-[300px] relative'>
                         <img className='rounded-t-md w-full h-full' src="https://i.ibb.co/4g9QMky/description.jpg" alt="background image" />
+                        <button htmlFor="my_modal_9" className='btn btn-circle border-none btn-md hover:bg-green-600 text-white text-[18px] bg-blue-500 absolute bottom-2 right-2'><FaPen></FaPen></button>
                     </div>
                     {/* user picture and details  */}
-                    <div className='flex justify-start ml-4  gap-5'>
-                        <div className='w-48 h-48 '>
+                    <div className='flex justify-start ml-4 gap-5'>
+                        <div className='w-48 h-48  relative '>
                             <img className='w-48 h-48 border rounded-full relative -top-12' src="https://i.ibb.co/0fZvJMk/364805402-265317659588730-4531070019685307614-n.jpg" alt="" />
+                            <button htmlFor="my_modal_11" className='btn btn-circle btn-sm border-none  text-white text-[14px] bg-blue-500 absolute top-24 right-4'><FaPen></FaPen></button>
                         </div>
                         <div className='mt-5'>
                             <div>
@@ -90,19 +90,7 @@ const UserProfile = () => {
                         </TabPanel>
                     </Tabs>
                 </div>
-
-
-
-
-
             </div>
-
-
-
-
-
-
-
         </div>
     );
 };
