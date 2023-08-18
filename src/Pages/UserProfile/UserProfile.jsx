@@ -21,13 +21,14 @@ const UserProfile = () => {
   });
   // console.log(userprofile);
 
-  // single user email fetch and job post 
-    const { data: userJobPosts = [] } = useQuery(["userJobPosts"], async () => {
-      const res = await axiosSequre.get(`/jobs?=${user?.email}`);
-      return res.data;
-    });
+  // // single user email fetch and job post 
+  //   const { data: userJobPosts = [] } = useQuery(["userJobPosts"], async () => {
+  //     const res = await axiosSequre.get(`/jobs?=${user?.email}`);
+  //     return res.data;
+  //   });
   
-  console.log(userJobPosts)
+  // console.log(userJobPosts)
+  
   
   //set active tab design function
   const [active, setActive] = useState("");
@@ -138,8 +139,9 @@ const UserProfile = () => {
             <TabPanel>
               <UserJobDataPost />
               <div>
-                {userJobPosts.map((posts) => (
-                  <JobPost key={posts?._id} posts={posts} />))}
+                {/* {userJobPosts.map((posts) => (
+                  <JobPost key={posts?._id} posts={posts} />))} */}
+                
                 {/* {userJobPosts?.map(posts =>
                   <JobPost key={posts?._id} posts={posts} />
                   
