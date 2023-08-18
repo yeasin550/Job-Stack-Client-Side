@@ -1,0 +1,33 @@
+
+.tabs {
+    display: flex;
+    justify-content: center;
+}
+
+.tabs li {
+    display: block;
+    padding: 10px 23px;
+    background: #fff;
+    margin-right: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.tabs li.active {
+    background: #00B04D;
+    color: #fff;
+}
+
+.tab_content {
+    padding: 10px;
+    background: #fff;
+    margin-top: 10px;
+    border-radius: 5px;
+    min-height: 190px;
+}
+
+/* job-card section */
+.job-card{
+    border: 1px solid rgb(203 213 225);
+    
+}
