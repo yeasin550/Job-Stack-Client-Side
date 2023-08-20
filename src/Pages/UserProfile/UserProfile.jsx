@@ -1,35 +1,24 @@
-import React, { useContext, useState } from "react";
-import { AuthContext } from "../../Providers/AuthProvider";
-import { useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
+
 import "./UserProfile.css";
 import { FaPen } from "react-icons/fa";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import UserInfo from "../UserDetails/UserInfo/UserInfo";
-import useAxioSequre from "../../Hooks/useAxiosSequre";
-import UserJobDataPost from "../UserJobDataPost/UserJobDataPost";
-import JobPost from "../../Components/JobPost/JobPost";
-
+import JobPostForm from "../JobPostAllPage/JobPostForm/JobPostForm";
+import SelfPostForm from "../SelfPostAllPage/SelfPostForm/SelfPostForm";
+import useSelfPostfindEmail from "../../Hooks/useSelfPostfindEmail";
+import SelfPostDesign from "../Components/SelfPostDesign/SelfPostDesign";
+import useJobPosFindEmail from "../../Hooks/useJobPosFindEmail";
+import JobPostDesign from "../Components/JobPostDesign/JobPostDesign";
+// import JobPost from "../../Components/JobPost/JobPost";
 
 const UserProfile = () => {
+  const [selfposts,refetch] = useSelfPostfindEmail();
+  const [jobposts] = useJobPosFindEmail();
+  console.log(selfposts)
+  //  activie tabindex set this state 
   const [tabIndex, setTabIndex] = useState(0);
-  const [axiosSequre] = useAxioSequre();
-  const { user } = useContext(AuthContext);
-  const { data: userprofile = [] } = useQuery(["userprofile"], async () => {
-    const res = await axiosSequre.get(`/users/${user?.email}`);
-    return res.data;
-  });
-  // console.log(userprofile);
-
-  // // single user email fetch and job post 
-  //   const { data: userJobPosts = [] } = useQuery(["userJobPosts"], async () => {
-  //     const res = await axiosSequre.get(`/jobs?=${user?.email}`);
-  //     return res.data;
-  //   });
-  
-  // console.log(userJobPosts)
-  
-  
   //set active tab design function
   const [active, setActive] = useState("");
   const clickactive = (active) => {
@@ -84,76 +73,76 @@ const UserProfile = () => {
             <TabList className="flex justify-center items-center border py-2 profile-shadow  gap-6 mb-8">
               <Tab
                 onClick={() => clickactive("post")}
-                className={` cursor-pointer text ${
-                  active == "post" ? "active cursor-pointer" : ""
-                }`}
+                className={` cursor-pointer text ${active == "post" ? "active cursor-pointer" : ""
+                  }`}
               >
                 Post
               </Tab>
 
               <Tab
                 onClick={() => clickactive("jobpost")}
-                className={` cursor-pointer text ${
-                  active == "jobpost" ? "active cursor-pointer" : ""
-                }`}
+                className={` cursor-pointer text ${active == "jobpost" ? "active cursor-pointer" : ""
+                  }`}
               >
                 Job Post
               </Tab>
               <Tab
                 onClick={() => clickactive("about")}
-                className={` cursor-pointer text ${
-                  active == "about" ? "active cursor-pointer" : ""
-                }`}
+                className={` cursor-pointer text ${active == "about" ? "active cursor-pointer" : ""
+                  }`}
               >
                 About
               </Tab>
               <Tab
                 onClick={() => clickactive("connect")}
-                className={` cursor-pointer text ${
-                  active == "connect" ? "active cursor-pointer" : ""
-                }`}
+                className={` cursor-pointer text ${active == "connect" ? "active cursor-pointer" : ""
+                  }`}
               >
                 Connect
               </Tab>
               <Tab
                 onClick={() => clickactive("group")}
-                className={` cursor-pointer text ${
-                  active == "group" ? "active cursor-pointer" : ""
-                }`}
+                className={` cursor-pointer text ${active == "group" ? "active cursor-pointer" : ""
+                  }`}
               >
                 Group
               </Tab>
               <Tab
                 onClick={() => clickactive("more")}
-                className={` cursor-pointer text ${
-                  active == "more" ? "active cursor-pointer" : ""
-                }`}
+                className={` cursor-pointer text ${active == "more" ? "active cursor-pointer" : ""
+                  }`}
               >
                 More
               </Tab>
             </TabList>
-            {/* post */}
-            <TabPanel>nissansd</TabPanel>
-
-            {/* job post */}
+            {/* users self  post */}
             <TabPanel>
-              <UserJobDataPost />
+             <SelfPostForm refetch={refetch}></SelfPostForm>
+             <div className="grid lg:grid-cols-2 px-10 justify-center items-center gap-10 mt-10 ">
+               {
+               selfposts?.map(selfpost => <SelfPostDesign key={selfpost?._id} selfpost={selfpost}></SelfPostDesign>)
+               }
+             </div>
+            </TabPanel>
+            {/* user job post job post */}
+            <TabPanel>
+              <JobPostForm refetch={refetch}></JobPostForm>
               <div>
-                {/* {userJobPosts.map((posts) => (
-                  <JobPost key={posts?._id} posts={posts} />))} */}
-                
-                {/* {userJobPosts?.map(posts =>
-                  <JobPost key={posts?._id} posts={posts} />
-                  
-               )} */}
+                {
+                  jobposts?.map(posts => <JobPostDesign key={posts?._id} posts={posts}></JobPostDesign>)
+                }
               </div>
             </TabPanel>
+            {/* user about  */}
             <TabPanel>
               <UserInfo></UserInfo>
             </TabPanel>
-            <TabPanel>boksdfasdf</TabPanel>
-            <TabPanel>bokad</TabPanel>
-            <TabPanel>bokadsdfs</TabPanel>
+            {/* user connect   */}
+            <TabPanel></TabPanel>
+            {/* user Company Pages  */}
+            <TabPanel></TabPanel>
+            {/* user more featuesr add  */}
+            <TabPanel></TabPanel>
           </Tabs>
         </div>
       </div>

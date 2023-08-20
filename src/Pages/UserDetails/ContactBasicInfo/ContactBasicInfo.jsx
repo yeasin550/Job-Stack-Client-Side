@@ -33,15 +33,15 @@ const ContactBasicInfo = () => {
                     singleUser?.map(basicinfo => <div key={basicinfo?._id} className='flex justify-between items-center'>
                         <div className='flex flex-col gap-5'>
                             <FaGraduationCap className='text-2xl'></FaGraduationCap>
-                            <p>Gender: {basicinfo?.gender}</p>
+                            <p><span className=' font-sans font-bold'>Gender: </span>{basicinfo?.gender}</p>
                             <div className='flex'>
-                                <p>Date Of Birth: </p>
-                                <p>{basicinfo?.date}</p>-
-                                <p>{basicinfo?.month}</p>-
+                                <p><span className=' font-sans font-bold'>Date Of Birth: </span></p>
+                                <p>{basicinfo?.date}</p>/
+                                <p>{basicinfo?.month}</p>/
                                 <p>{basicinfo?.year}</p>
                             </div>
-                            <p>Language: {basicinfo?.language}</p>
-                            <p>Hobbys: {basicinfo?.hobbys}</p>
+                            <p><span className=' font-sans font-bold'>Language: </span>{basicinfo?.language}</p>
+                            <p><span className=' font-sans font-bold'>Hobbys: </span>{basicinfo?.hobbys}</p>
                         </div>
                     </div>)
                 }

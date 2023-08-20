@@ -1,11 +1,10 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useState } from "react";
-import useAxioSequre from "../../Hooks/useAxiosSequre";
+import useAxioSequre from "../../../Hooks/useAxiosSequre";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
-const JobApplyForm = () => {
-  const [text, setText] = useState("");
+const JobPostForm = () => {
   const [axiosSequre] = useAxioSequre();
   const [userEroor, setUserError] = useState("");
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
@@ -18,10 +17,9 @@ const JobApplyForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     const formData = new FormData();
     formData.append("image", data.image[0]);
-
+   //image host on imgbb.com
     fetch(img_hosting_url, {
       method: "POST",
       body: formData,
@@ -49,16 +47,12 @@ const JobApplyForm = () => {
             location,
             salary,
           };
-          console.log(saveUser);
           axiosSequre
             .post("/job", saveUser)
             .then((response) => {
-              console.log(response);
-
               if (response.data.insertedId) {
                 // Reset the form
                 reset();
-
                 // Display success toast
                 Swal.fire({
                   icon: "success",
@@ -66,11 +60,6 @@ const JobApplyForm = () => {
                   showConfirmButton: false,
                   timer: 3000,
                 });
-
-                // Optionally navigate after some time
-                // setTimeout(() => {
-                //   navigate("/");
-                // }, 2000);
               }
             })
             .catch((error) => {
@@ -87,31 +76,36 @@ const JobApplyForm = () => {
 
   return (
     <div className="">
-      <div className="flex justify-start items-center gap-3 w-full">
+      <div className="flex justify-start items-center gap-3 border border-gray-100 bg-gray-50 rounded-md py-5 px-3  w-full">
+        <img
+          className="w-14 h-14 rounded-full"
+          src="https://i.ibb.co/0fZvJMk/364805402-265317659588730-4531070019685307614-n.jpg"
+          alt=""
+        />
         <label
           htmlFor="my_modal_6"
-          className="text-left flex items-center gap-5 w-full cursor-pointer text-green-500 font-semibold"
+          className="text-left flex items-center gap-5 w-full md:w-8/12 cursor-pointer text-green-500 font-semibold"
         >
-          <h1
-            // onClick={handleJobPost}
-            className="bg-green-500 text-center mt-5 text-white py-2 px-6 rounded-md hover:bg-green-600 transition duration-300 w-full"
-          >
-            Apply Now
+          <h1 className="px-3 w-full h-12 rounded-full bg-gray-200 hover:bg-gray-300 text-black flex justify-center items-center text-lg">
+            Job post
           </h1>
+          <div>
+            <img
+              className="w-20 h-20 rounded-full"
+              src="https://img.freepik.com/free-vector/tiny-people-searching-business-opportunities_74855-19928.jpg?w=826&t=st=1692091974~exp=1692092574~hmac=15e47b9e6f5cf8f13dc4d8f910d754134ab6a6880e7f3069da352d35299d3039"
+              alt=""
+            />
+          </div>
         </label>
       </div>
-      <div className="mx-5 my-10 md:w-1/2 md:mx-auto px-5">
+      <div className="mx-5 md:w-1/2 md:mx-auto px-5 py-10">
         <input type="checkbox" id="my_modal_6" className="modal-toggle" />
         <div className="modal py-0">
           <div className="absolute modal-box">
-            <div className="modal-action">
-              <h1 className="mr-20 font-semibold text-3xl">
-                Applications
-              </h1>
-
+            <div className="relative -top-12 left-6 modal-action">
               <label
                 htmlFor="my_modal_6"
-                className="relative -top-12 left-6 btn text-white btn-outline btn-circle bg-green-600 rounded-full hover:bg-green-700"
+                className="btn text-white absolute top-3 right-3 btn-outline btn-circle bg-green-600 rounded-full hover:bg-green-700"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +150,7 @@ const JobApplyForm = () => {
                 )}
               </div>
               {/* image hoisting usrl */}
-              {/* <div className="form-control w-full">
+              <div className="form-control w-full">
                 <label className="label">
                   <span className="label-text">Upload Image</span>
                 </label>
@@ -170,10 +164,10 @@ const JobApplyForm = () => {
                     Image is required
                   </span>
                 )}
-              </div> */}
+              </div>
 
               {/* Position */}
-              {/* <div className="form-control w-full">
+              <div className="form-control w-full">
                 <label className="label">
                   <span className="label-text font-semibold">Position </span>
                 </label>
@@ -192,11 +186,95 @@ const JobApplyForm = () => {
                 {errors.position && (
                   <span className="text-red-600">SobCategory is required</span>
                 )}
-              </div> */}
+              </div>
 
+              {/* Workplace */}
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text font-semibold">Workplace </span>
+                </label>
+                <select
+                  {...register("workplace", { required: true })}
+                  required
+                  className="select input input-bordered w-full border border-green-500"
+                >
+                  <option disabled selected>
+                    Select Workplace
+                  </option>
+                  <option>Remote</option>
+                  <option>Onsite</option>
+                </select>
+                {errors.workplace && (
+                  <span className="text-red-600">Workplace is required</span>
+                )}
+              </div>
+              {/* jobCategory */}
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text font-semibold">JobCategory</span>
+                </label>
+                <select
+                  {...register("jobCategory", { required: true })}
+                  required
+                  className="select input input-bordered w-full border border-green-500"
+                >
+                  <option disabled selected>
+                    Select JobCategory
+                  </option>
+                  <option>Web Development</option>
+                  <option>Front-end Development</option>
+                  <option>Back-end Development</option>
+                  <option>Full Stack Development</option>
+                </select>
+                {errors.jobCategory && (
+                  <span className="text-red-600">SobCategory is required</span>
+                )}
+              </div>
+
+              {/* location */}
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text font-semibold">Location</span>
+                </label>
+                <select
+                  {...register("location", { required: true })}
+                  required
+                  className="select input input-bordered w-full border border-green-500"
+                >
+                  <option disabled selected>
+                    Select Location
+                  </option>
+                  <option>Bangladesh</option>
+                  <option>India</option>
+                  <option>Canada</option>
+                  <option>United State</option>
+                  <option>Pakistan</option>
+                </select>
+                {errors.location && (
+                  <span className="text-red-600">SobCategory is required</span>
+                )}
+              </div>
+              {/* Salary Range */}
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text font-semibold">Salary Range</span>
+                </label>
+                <input
+                  type="number"
+                  {...register("salary", { required: true })}
+                  placeholder="Enter your salary"
+                  className="input input-bordered border border-green-500"
+                />
+                {errors.salary && (
+                  <span className="text-rose-500 animate-pulse">
+                    Salary is required
+                  </span>
+                )}
+              </div>
               <button className="my-btn w-full mt-5 p-2 text-lg rounded-md text-white bg-green-600 hover:bg-green-700">
-                Post
+                POST
               </button>
+              {userEroor && <p className="mt-2">{userEroor}</p>}
             </form>
           </div>
         </div>
@@ -205,4 +283,4 @@ const JobApplyForm = () => {
   );
 };
 
-export default JobApplyForm;
+export default JobPostForm;

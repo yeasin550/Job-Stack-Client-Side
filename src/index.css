@@ -15,3 +15,19 @@
 .image-upload{
     border: 1px solid rgb(51, 45, 45);
 }
+
+.activetab {
+    font-size: 18px !important;
+    cursor: pointer !important;
+    text-align: center !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    border-radius: 8px !important;
+    width: 100%;
+    background-color: rgb(70, 73, 70) !important;
+    color: white !important;
+    text-align: left !important;
+    font-weight: 800px !important;
+}

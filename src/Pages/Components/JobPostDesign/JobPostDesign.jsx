@@ -1,48 +1,19 @@
-import { useContext } from "react";
-import {
-  FaCommentAlt,
-  FaHandPointDown,
-  FaHandPointUp,
-  FaShare,
-} from "react-icons/fa";
-import { AuthContext } from "../../Providers/AuthProvider";
-const JobPost = ({posts}) => {
-  const { user } = useContext(AuthContext);
 
-  console.log(posts);
+import { FaCommentAlt, FaHandPointDown, FaHandPointUp, FaShare,} from "react-icons/fa";
+import JobApplyForm from "../../JobPostAllPage/JobApplyForm/JobApplyForm";
 
-  // const handleJobPost = () => {
-  //   console.log('job apply successfull')
-
-  //    const Toast = Swal.mixin({
-  //                toast: true,
-  //                position: "top-end",
-  //                showConfirmButton: false,
-  //                timer: 3000,
-  //                timerProgressBar: true,
-  //                didOpen: (toast) => {
-  //                  toast.addEventListener("mouseenter", Swal.stopTimer);
-  //                  toast.addEventListener("mouseleave", Swal.resumeTimer);
-  //                },
-  //              });
-  //              Toast.fire({
-  //                icon: "success",
-  //                title: "Job post successfully!",
-  //              });
-  // }
+const JobPostDesign = ({posts}) => {
   return (
-    <div className="my-12 md:mx-8 ">
-      <h1 className="text-center font-semibold text-4xl text-green-500">
-        Different Type of Jobs!
-      </h1>
+    <div className=" ">
       <div className="grid grid-cols-1">
-        <div className=" bg-white shadow-md rounded-md mt-10 p-6 border border-gray-300">
+        <div className=" bg-white shadow-md rounded-md mt-5 p-6 border border-gray-300">
           <div className="flex justify-between items-center mb-5">
             <div className="flex items-center gap-3">
               <img
                 className="h-16 w-16 rounded-full"
-                src={user?.photoURL}
-                alt=""
+                // src={user?.photoURL}
+                src=''
+                alt="svglogo"
               />
               <div>
                 <h1 className="font-semibold ">{posts?.position}</h1>
@@ -98,7 +69,7 @@ const JobPost = ({posts}) => {
             <p className="text-gray-600">{posts?.jobDescription}</p>
           </div>
 
-          {/* <JobApplyForm /> */}
+          <JobApplyForm></JobApplyForm>
 
           <div className="flex bottom-0 justify-around text-lg bg-gray-50 py-3 rounded-md">
             <div className="flex items-center gap-2 cursor-pointer">
@@ -117,4 +88,4 @@ const JobPost = ({posts}) => {
   );
 };
 
-export default JobPost;
+export default JobPostDesign;

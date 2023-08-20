@@ -33,28 +33,28 @@ const UserInfo = () => {
           </div>
           <div className='w-full profile-shadow border'>
             {/* user OverView  */}
-            <TabPanel>
+             <TabPanel>
              <UserOverView></UserOverView>
             </TabPanel>
             {/* user Educatio  */}
-            <TabPanel>
+             <TabPanel>
               <UserEducation></UserEducation>
             </TabPanel>
             {/* user contact and basic info  */}
-            <TabPanel>
+             <TabPanel>
               <ContactBasicInfo></ContactBasicInfo>
-            </TabPanel>
+             </TabPanel>
             {/* user work Experians  */}
-            <TabPanel>
+             <TabPanel>
                <UserWork></UserWork>
-            </TabPanel>
+             </TabPanel>
              {/* User Skills  */}
-            <TabPanel>
+             <TabPanel>
               <UserSkills></UserSkills>
-            </TabPanel>
+             </TabPanel>
               {/* user Project Skills  */}
               <TabPanel>
-              <UserProjectSkills></UserProjectSkills>
+               <UserProjectSkills></UserProjectSkills>
               </TabPanel>
           </div>
         </div>

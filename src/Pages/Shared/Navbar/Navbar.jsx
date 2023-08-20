@@ -111,18 +111,18 @@ const Navbar = () => {
             </li>
 
             {user ? <li>
-              <Link to="/myNetworks">
+              <Link to="/mynetwork">
                 <FaUserFriends className="mx-auto"></FaUserFriends> My Networks
               </Link>
             </li> : ""}
 
             {user ? <li>
-              <Link to="/jobs">
+              <Link to="/jobsroute">
                 <FaShoppingBag s className="mx-auto"></FaShoppingBag> Jobs
               </Link>
             </li> : ""}
            {user ?  <li>
-              <Link to="/messaging">
+              <Link to="/massageroute">
                 <FaRegCommentDots s className="mx-auto"></FaRegCommentDots>
                 Messaging
               </Link>

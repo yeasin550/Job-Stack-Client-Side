@@ -1,24 +1,27 @@
 import React, { useContext } from 'react';
 import { FaGraduationCap, FaSchool } from 'react-icons/fa';
-import UniversityForm from '../../UserEducationDataPostForm/UniversityForm';
-import CollageForm from '../../UserEducationDataPostForm/CollageForm';
-import SchollForm from '../../UserEducationDataPostForm/SchollForm';
 import { AuthContext } from '../../../Providers/AuthProvider';
-import { useQuery } from '@tanstack/react-query';
 import useAxioSequre from '../../../Hooks/useAxiosSequre';
+import { useQuery } from '@tanstack/react-query';
+import UniversityForm from '../../UserEducationDataPostForm/UniversityForm'
+import CollageForm  from '../../UserEducationDataPostForm/CollageForm'
+import SchollForm  from '../../UserEducationDataPostForm/SchollForm'
+
+
 
 const UserEducation = () => {
 
     const { user } = useContext(AuthContext);
     const [axiosSequre] = useAxioSequre();
-    const { data: UserEducation = [], refetch } = useQuery(['UserEducation'], async () => {
+    const { data: userEducations = [], refetch } = useQuery(['userEducations'], async () => {
         const res = await axiosSequre.get(`/education/${user?.email}`)
         return res.data;
     })
+    console.log(userEducations)
 
-    const universitys = UserEducation.filter(usereducation => usereducation.category === 'university');
-    const collages = UserEducation.filter(usereducation => usereducation.category === 'collage');
-    const schools = UserEducation.filter(usereducation => usereducation.category === 'school');
+    const universitys = userEducations?.filter(usereducation => usereducation?.category === 'university');
+    const collages = userEducations?.filter(usereducation => usereducation?.category === 'collage');
+    const schools = userEducations?.filter(usereducation => usereducation?.category === 'school');
 
 
     return (
@@ -27,9 +30,9 @@ const UserEducation = () => {
                 {/* User UniverSitty  */}
                 <div className='flex flex-col shadowdiv border p-4 rounded-md'>
                     <h1 className='text-[20px] font-sans font-semibold'>University</h1>
-                    <UniversityForm refetch={refetch}></UniversityForm>
+                     <UniversityForm refetch={refetch}></UniversityForm>
                     {
-                        universitys.map(university => <div key={university?._id} className='flex justify-between items-center'>
+                        universitys?.map(university => <div key={university?._id} className='flex justify-between items-center'>
                             <div className='flex gap-4'>
                                 
                                     <FaGraduationCap className='text-2xl'></FaGraduationCap>
