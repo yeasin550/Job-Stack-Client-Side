@@ -105,7 +105,7 @@ const UserProfile = () => {
                 className={` cursor-pointer text ${active == "group" ? "active cursor-pointer" : ""
                   }`}
               >
-                Group
+                Connection request
               </Tab>
               <Tab
                 onClick={() => clickactive("more")}
