@@ -3,6 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import SelfPostDesign from '../../Components/SelfPostDesign/SelfPostDesign';
 import useSelfPost from '../../../Hooks/useSelfPost';
+import AllUsers from '../AllUsers/AllUsers';
 
 const MyNetwork = () => {
     const [selfposts] = useSelfPost();
@@ -19,7 +20,7 @@ const MyNetwork = () => {
                         <TabList className="flex flex-col justify-center items-start px-5 py-10 gap-6">
                             <Tab onClick={() => clickactive("post")} className={` cursor-pointer userinfotext ${active == 'post' ? 'activetab cursor-pointer' : ''}`}>Activities</Tab>
                             <Tab onClick={() => clickactive("activities")} className={` cursor-pointer userinfotext ${active == 'activities' ? 'activetab cursor-pointer' : ''}`}>Connections</Tab>
-                            <Tab onClick={() => clickactive("jobpost")} className={` cursor-pointer userinfotext ${active == 'jobpost' ? 'activetab cursor-pointer' : ''}`}>Flowing & Flowars</Tab>
+                            <Tab onClick={() => clickactive("jobpost")} className={` cursor-pointer userinfotext ${active == 'jobpost' ? 'activetab cursor-pointer' : ''}`}>Find Connect</Tab>
                             <Tab onClick={() => clickactive("group")} className={` cursor-pointer userinfotext ${active == 'group' ? 'activetab cursor-pointer' : ''}`}>Group</Tab>
                             <Tab onClick={() => clickactive("about")} className={` cursor-pointer userinfotext ${active == 'about' ? 'activetab cursor-pointer' : ''}`}>Event</Tab>
                             <Tab onClick={() => clickactive("connect")} className={` cursor-pointer userinfotext ${active == 'connect' ? 'activetab cursor-pointer' : ''}`}>Pages</Tab>
@@ -41,11 +42,11 @@ const MyNetwork = () => {
                         </TabPanel>
                         {/* user fllowing and flowers */}
                         <TabPanel>
-                            Fllowing and Fllowers
+                            <AllUsers/>
                         </TabPanel>
                         {/* user Group */}
                         <TabPanel>
-                            Group
+                            this is a group Pages
                         </TabPanel>
                         {/* User Event*/}
                         <TabPanel>

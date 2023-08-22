@@ -7,6 +7,7 @@ import { SlCalender } from "react-icons/sl";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import useSelfPostfindEmail from "../../../Hooks/useSelfPostfindEmail";
+import { getCurrentTimeStamp } from "../../../Hooks/useMonent";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
 const SelfPostForm = ({refetch}) => {
@@ -39,11 +40,12 @@ const SelfPostForm = ({refetch}) => {
                     const imgUrl = uploadImage.data.display_url;
                     const { text} = data;
                     const selfPost = {
-                        text,
-                        userName: user?.displayName,
-                        userPhoto: user?.photoURL,
-                        email: user?.email,
-                        image: imgUrl,
+                      text,
+                      userName: user?.displayName,
+                      userPhoto: user?.photoURL,
+                      email: user?.email,
+                      image: imgUrl,
+                      timeStamp: getCurrentTimeStamp("LLL"),
                     };
                     axiosSequre.post("/selfpost", selfPost).then((data) => {
                         if (data.data.insertedId) {
