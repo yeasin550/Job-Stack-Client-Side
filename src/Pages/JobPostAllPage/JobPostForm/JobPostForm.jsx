@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
+import { AuthContext } from "../../../Providers/AuthProvider";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
 const JobPostForm = () => {
+  const {user} = useContext(AuthContext)
   const [axiosSequre] = useAxioSequre();
   const [userEroor, setUserError] = useState("");
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
@@ -17,6 +19,7 @@ const JobPostForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    console.log(data)
     const formData = new FormData();
     formData.append("image", data.image[0]);
    //image host on imgbb.com
@@ -32,16 +35,19 @@ const JobPostForm = () => {
           const imgURL = imageResponse.data.display_url;
           const {
             jobDescription,
-            position,
+            jobTitle,
             workplace,
             jobCategory,
             location,
             salary,
+            companyName,
           } = data;
           const saveUser = {
             image: imgURL,
+            userPhoto: user.photoURL,
             jobDescription,
-            position,
+            jobTitle,
+            companyName,
             workplace,
             jobCategory,
             location,
@@ -76,7 +82,7 @@ const JobPostForm = () => {
 
   return (
     <div className="">
-      <div className="flex justify-start items-center gap-3 border border-gray-100 bg-gray-50 rounded-md py-5 px-3  w-full">
+      <div className="flex justify-center items-center gap-3 border border-gray-300 shadow-sm bg-gray-50 rounded-md py-5 px-3  w-full">
         <img
           className="w-14 h-14 rounded-full"
           src="https://i.ibb.co/0fZvJMk/364805402-265317659588730-4531070019685307614-n.jpg"
@@ -89,13 +95,13 @@ const JobPostForm = () => {
           <h1 className="px-3 w-full h-12 rounded-full bg-gray-200 hover:bg-gray-300 text-black flex justify-center items-center text-lg">
             Job post
           </h1>
-          <div>
+          {/* <div>
             <img
               className="w-20 h-20 rounded-full"
               src="https://img.freepik.com/free-vector/tiny-people-searching-business-opportunities_74855-19928.jpg?w=826&t=st=1692091974~exp=1692092574~hmac=15e47b9e6f5cf8f13dc4d8f910d754134ab6a6880e7f3069da352d35299d3039"
               alt=""
             />
-          </div>
+          </div> */}
         </label>
       </div>
       <div className="mx-5 md:w-1/2 md:mx-auto px-5 py-10">
@@ -166,25 +172,34 @@ const JobPostForm = () => {
                 )}
               </div>
 
-              {/* Position */}
+              {/* job Title */}
               <div className="form-control w-full">
                 <label className="label">
-                  <span className="label-text font-semibold">Position </span>
+                  <span className="label-text">Job Title</span>
                 </label>
-                <select
-                  {...register("position", { required: true })}
-                  required
-                  className="select input input-bordered border border-green-500 w-full "
-                >
-                  <option disabled selected>
-                    Select Position
-                  </option>
-                  <option>Full Time</option>
-                  <option>Part Time</option>
-                  <option>InternShip</option>
-                </select>
-                {errors.position && (
-                  <span className="text-red-600">SobCategory is required</span>
+                <input
+                  type="text"
+                  {...register("jobTitle", { required: true })}
+                  placeholder="type here"
+                  className="input input-bordered"
+                />
+                {errors.jobTitle && (
+                  <span className="text-red-600">Job Title is required</span>
+                )}
+              </div>
+              {/* company name */}
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text">Company Name</span>
+                </label>
+                <input
+                  type="text"
+                  {...register("companyName", { required: true })}
+                  placeholder="type here"
+                  className="input input-bordered"
+                />
+                {errors.companyName && (
+                  <span className="text-red-600">Company Name is required</span>
                 )}
               </div>
 
@@ -225,6 +240,15 @@ const JobPostForm = () => {
                   <option>Front-end Development</option>
                   <option>Back-end Development</option>
                   <option>Full Stack Development</option>
+                  <option>IT Software</option>
+                  <option>Sales Marketing</option>
+                  <option>Software Making</option>
+                  <option>UI Designer</option>
+                  <option>IOS Developer</option>
+                  <option>Finance Manager</option>
+                  <option>Account Manager</option>
+                  <option>Marketing Director</option>
+                  <option>Digital Marketing</option>
                 </select>
                 {errors.jobCategory && (
                   <span className="text-red-600">SobCategory is required</span>
