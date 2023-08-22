@@ -2,9 +2,9 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <div className="max-w-7xl mx-auto mt-8 mb-5 px-5">
+    <div className="max-w-7xl mx-auto mt-8 mb-5 px-3">
       <h1 className="text-green-500 text-xl">Contact with Us</h1>
-      <p className="text-black font-bold text-3xl mb-4">
+      <p className="text-black font-bold lg:text-3xl text-2xl mb-4">
         We Are Best About This Job <br /> Solution.
       </p>
       <div className="grid lg:grid-cols-2 gap-4">
@@ -45,7 +45,7 @@ const Contact = () => {
         </div>
         <div>
           <img
-            className="h-[490px] w-[500px]"
+            className="w-full h-full"
             src="https://i.ibb.co/ry90KTN/carte-du-monde-rendu-3d-carte-topographique-couleur-bordure-noms-des-villes.jpg"
             alt=""
           />

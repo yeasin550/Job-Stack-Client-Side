@@ -8,9 +8,9 @@ const PromotingCareer = () => {
     setActiveTab(index);
   };
   return (
-    <div className="md:flex justify-center px-5 md:px-28 gap-12 py-20 bg-green-50">
-      <div className="w-full justify-center items-center mt-20 md:w-1/2 space-y-9 py-4">
-        <h1 className="text-5xl font-bold">Promoting Career</h1>
+    <div className="md:flex justify-center px-5 lg:px-28 gap-12 lg:py-10  py-4 bg-green-50">
+      <div className="w-full justify-center items-center lg:mt-20 md:w-1/2 space-y-9 py-4">
+        <h1 className="lg:text-5xl text-3xl font-bold">Promoting Career</h1>
         <p>
           There are many variations of passages of Lorem <br /> Ipsum Fasts
           There are many variations of passages <br /> of Lorem Ipsum Fastsby
@@ -22,11 +22,11 @@ const PromotingCareer = () => {
       </div>
       <div className="w-full md:w-1/2">
         <Tabs>
-          <div className="flex justify-center ">
+          <div className="flex gap-2 justify-center mt-6">
             <hr className=" border-[1px] border-green-500 w-full mt-8"></hr>
-            <TabList className="flex">
+            <TabList className="flex gap-2">
               <Tab
-                className={`py-2 px-4 border-2 border-transparent bg-green-500 text-black cursor-pointer ${
+                className={`py-2 px-4 border-2 rounded-lg border-transparent bg-green-500 text-black cursor-pointer ${
                   activeTab === 0
                     ? "bg-green-500 border-green-500 text-white"
                     : "hover:border-green-600"
@@ -36,7 +36,7 @@ const PromotingCareer = () => {
                 Step One
               </Tab>
               <Tab
-                className={`py-2 px-4 border-2 border-transparent bg-green-500 text-black cursor-pointer ${
+                className={`py-2 px-4 border-2 rounded-lg  border-transparent bg-green-500 text-black cursor-pointer ${
                   activeTab === 1
                     ? "bg-green-500 border-green-500 text-white"
                     : "hover:border-green-600"
@@ -46,7 +46,7 @@ const PromotingCareer = () => {
                 Step Two
               </Tab>
               <Tab
-                className={`py-2 px-4 border-2 border-green-600 border-transparent bg-green-500 text-blackcursor-pointer ${
+                className={`py-2 px-4 border-2 rounded-lg  border-green-600 border-transparent bg-green-500 text-blackcursor-pointer ${
                   activeTab === 2
                     ? "bg-green-500 border-green-500 text-white"
                     : "hover:border-green-600"
@@ -61,7 +61,7 @@ const PromotingCareer = () => {
 
           <div className="mt-9">
             <TabPanel>
-              <div className="relative rounded-xl bg-white px-10 py-20 h-full shadow-sm text-center">
+              <div className="relative rounded-xl bg-white lg:px-10 px-3 py-6 lg:py-20 h-full shadow-sm text-center">
                 <button className="bg-white  -mt-12 top-8 py3 px-4  border text-lg border-gray-700 absolute btn-circle">
                   1
                 </button>
@@ -69,7 +69,7 @@ const PromotingCareer = () => {
                   <img
                     src="https://i.ibb.co/PMsYbX6/step-1.png"
                     alt=""
-                    className="mx-auto h-24 w-24"
+                    className="mx-auto lg:h-24 lg:w-20"
                   />
                   <h3 className="my-3 text-2xl font-bold group-hover:text-primary-500">
                     Set Up Your Profile All
@@ -82,7 +82,7 @@ const PromotingCareer = () => {
               </div>
             </TabPanel>
             <TabPanel>
-              <div className="relative rounded-xl bg-white px-10 py-20 shadow-sm text-center">
+              <div className="relative rounded-xl bg-white lg:px-10 px-3 py-6 lg:py-20 shadow-sm text-center">
                 <button className="bg-white  -mt-12 top-8 py3 px-4  border text-lg border-gray-700 absolute btn-circle">
                   2
                 </button>
@@ -90,7 +90,7 @@ const PromotingCareer = () => {
                   <img
                     src="https://i.ibb.co/TWZn8Vd/step-2.png"
                     alt=""
-                    className="mx-auto h-24 w-24"
+                    className="mx-auto lg:h-24 lg:w-20"
                   />
                   <h3 className="my-3 text-2xl font-bold group-hover:text-primary-500">
                     Create A Pro CV
@@ -103,7 +103,7 @@ const PromotingCareer = () => {
               </div>
             </TabPanel>
             <TabPanel>
-              <div className="relative rounded-xl bg-white px-10 py-20 shadow-sm text-center">
+              <div className="relative rounded-xl bg-white lg:px-10 px-3 py-6 lg:py-20 shadow-sm text-center">
                 <button className="bg-white  -mt-12 top-8 py3 px-4  border text-lg border-gray-700 absolute btn-circle">
                   3
                 </button>
@@ -111,7 +111,7 @@ const PromotingCareer = () => {
                   <img
                     src="https://i.ibb.co/5R7bq8h/step-3.png"
                     alt=""
-                    className="mx-auto h-24 w-24"
+                    className="mx-auto lg:h-24 lg:w-20"
                   />
                   <h3 className="my-3 text-2xl font-bold group-hover:text-primary-500">
                     Get Applied
