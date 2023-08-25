@@ -7,12 +7,14 @@ import UserProfile from "../Pages/UserProfile/UserProfile";
 import MyNetwork from "../Pages/SelfPostAllPage/MyNetWork/MyNetwork";
 import JobsRoute from "../Pages/JobPostAllPage/JobsRoutePages/JobsRoute";
 import MessagingRoute from "../Pages/MessagingAllPage/MessagingRoute/MessagingRoute";
+import ErrorPage from "../Pages/Error/ErrorPage";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement: <ErrorPage/>,
         children: [
             {
                 path: "/",

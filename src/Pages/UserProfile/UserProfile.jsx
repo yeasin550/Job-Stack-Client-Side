@@ -11,12 +11,12 @@ import useSelfPostfindEmail from "../../Hooks/useSelfPostfindEmail";
 import SelfPostDesign from "../Components/SelfPostDesign/SelfPostDesign";
 import useJobPosFindEmail from "../../Hooks/useJobPosFindEmail";
 import JobPostDesign from "../Components/JobPostDesign/JobPostDesign";
+import ConfirmRequset from "../ConfirmRequest/ConfirmRequset";
 // import JobPost from "../../Components/JobPost/JobPost";
 
 const UserProfile = () => {
-  const [selfposts,refetch] = useSelfPostfindEmail();
+  const [singleSelfPost,refetch] = useSelfPostfindEmail();
   const [jobposts] = useJobPosFindEmail();
-  console.log(selfposts)
   //  activie tabindex set this state 
   const [tabIndex, setTabIndex] = useState(0);
   //set active tab design function
@@ -101,8 +101,8 @@ const UserProfile = () => {
                 Connect
               </Tab>
               <Tab
-                onClick={() => clickactive("group")}
-                className={` cursor-pointer text ${active == "group" ? "active cursor-pointer" : ""
+                onClick={() => clickactive("Connection request")}
+                className={` cursor-pointer text ${active == "Connection request" ? "active cursor-pointer" : ""
                   }`}
               >
                 Connection request
@@ -120,7 +120,7 @@ const UserProfile = () => {
              <SelfPostForm refetch={refetch}></SelfPostForm>
              <div className="grid lg:grid-cols-2 px-10 justify-center items-center gap-10 mt-10 ">
                {
-               selfposts?.map(selfpost => <SelfPostDesign key={selfpost?._id} selfpost={selfpost}></SelfPostDesign>)
+               singleSelfPost?.map(selfpost => <SelfPostDesign key={selfpost?._id} selfpost={selfpost}></SelfPostDesign>)
                }
              </div>
             </TabPanel>
@@ -139,8 +139,10 @@ const UserProfile = () => {
             </TabPanel>
             {/* user connect   */}
             <TabPanel></TabPanel>
-            {/* user Company Pages  */}
-            <TabPanel></TabPanel>
+            {/* user Connect request */}
+            <TabPanel>
+              <ConfirmRequset/>
+            </TabPanel>
             {/* user more featuesr add  */}
             <TabPanel></TabPanel>
           </Tabs>
