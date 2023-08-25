@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import "./UserProfile.css";
 import { FaPen } from "react-icons/fa";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
@@ -7,16 +6,18 @@ import "react-tabs/style/react-tabs.css";
 import UserInfo from "../UserDetails/UserInfo/UserInfo";
 import JobPostForm from "../JobPostAllPage/JobPostForm/JobPostForm";
 import SelfPostForm from "../SelfPostAllPage/SelfPostForm/SelfPostForm";
-import useSelfPostfindEmail from "../../Hooks/useSelfPostfindEmail";
 import SelfPostDesign from "../Components/SelfPostDesign/SelfPostDesign";
 import useJobPosFindEmail from "../../Hooks/useJobPosFindEmail";
 import JobPostDesign from "../Components/JobPostDesign/JobPostDesign";
-// import JobPost from "../../Components/JobPost/JobPost";
+import useSelfPostfindEmail from "../../Hooks/useSelfPostfindEmail";
 
 const UserProfile = () => {
-  const [selfposts,refetch] = useSelfPostfindEmail();
   const [jobposts] = useJobPosFindEmail();
-  console.log(selfposts)
+
+  const [singleSelfPost, refetch] = useSelfPostfindEmail();
+  
+
+
   //  activie tabindex set this state 
   const [tabIndex, setTabIndex] = useState(0);
   //set active tab design function
@@ -73,64 +74,74 @@ const UserProfile = () => {
             <TabList className="flex justify-center items-center border py-2 profile-shadow  gap-6 mb-8">
               <Tab
                 onClick={() => clickactive("post")}
-                className={` cursor-pointer text ${active == "post" ? "active cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer text ${
+                  active == "post" ? "active cursor-pointer" : ""
+                }`}
               >
                 Post
               </Tab>
 
               <Tab
                 onClick={() => clickactive("jobpost")}
-                className={` cursor-pointer text ${active == "jobpost" ? "active cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer text ${
+                  active == "jobpost" ? "active cursor-pointer" : ""
+                }`}
               >
                 Job Post
               </Tab>
               <Tab
                 onClick={() => clickactive("about")}
-                className={` cursor-pointer text ${active == "about" ? "active cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer text ${
+                  active == "about" ? "active cursor-pointer" : ""
+                }`}
               >
                 About
               </Tab>
               <Tab
                 onClick={() => clickactive("connect")}
-                className={` cursor-pointer text ${active == "connect" ? "active cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer text ${
+                  active == "connect" ? "active cursor-pointer" : ""
+                }`}
               >
                 Connect
               </Tab>
               <Tab
                 onClick={() => clickactive("group")}
-                className={` cursor-pointer text ${active == "group" ? "active cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer text ${
+                  active == "group" ? "active cursor-pointer" : ""
+                }`}
               >
                 Connection request
               </Tab>
               <Tab
                 onClick={() => clickactive("more")}
-                className={` cursor-pointer text ${active == "more" ? "active cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer text ${
+                  active == "more" ? "active cursor-pointer" : ""
+                }`}
               >
                 More
               </Tab>
             </TabList>
             {/* users self  post */}
             <TabPanel>
-             <SelfPostForm refetch={refetch}></SelfPostForm>
-             <div className="grid lg:grid-cols-2 px-10 justify-center items-center gap-10 mt-10 ">
-               {
-               selfposts?.map(selfpost => <SelfPostDesign key={selfpost?._id} selfpost={selfpost}></SelfPostDesign>)
-               }
-             </div>
+              <SelfPostForm refetch={refetch}></SelfPostForm>
+              <div className="grid md:grid-cols-2 px-10 gap-10 mt-10 ">
+                {singleSelfPost?.map((selfpost) => (
+                  <SelfPostDesign
+                    key={selfpost?._id}
+                    selfpost={selfpost}
+                    singleSelfPost={singleSelfPost}
+                  ></SelfPostDesign>
+                ))}
+              </div>
             </TabPanel>
             {/* user job post job post */}
             <TabPanel>
               <JobPostForm refetch={refetch}></JobPostForm>
               <div>
-                {
-                  jobposts?.map(posts => <JobPostDesign key={posts?._id} posts={posts}></JobPostDesign>)
-                }
+                {jobposts?.map((posts) => (
+                  <JobPostDesign key={posts?._id} posts={posts}></JobPostDesign>
+                ))}
               </div>
             </TabPanel>
             {/* user about  */}
