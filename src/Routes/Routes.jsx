@@ -9,7 +9,6 @@ import JobsRoute from "../Pages/JobPostAllPage/JobsRoutePages/JobsRoute";
 import MessagingRoute from "../Pages/MessagingAllPage/MessagingRoute/MessagingRoute";
 import ErrorPage from "../Pages/Error/ErrorPage";
 
-
 const router = createBrowserRouter([
     {
         path: "/",
