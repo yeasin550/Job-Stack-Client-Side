@@ -1,5 +1,9 @@
-
-import { FaCommentAlt, FaHandPointDown, FaHandPointUp, FaShare,} from "react-icons/fa";
+import {
+  FaCommentAlt,
+  FaHandPointDown,
+  FaHandPointUp,
+  FaShare,
+} from "react-icons/fa";
 import JobApplyForm from "../../JobPostAllPage/JobApplyForm/JobApplyForm";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
@@ -7,10 +11,10 @@ import moment from "moment/moment";
 // import { useContext } from "react";
 // import { AuthContext } from "../../Providers/AuthProvider";
 
-const JobPostDesign = ({posts}) => {
+const JobPostDesign = ({ posts }) => {
   // const { user } = useContext(AuthContext);
-  const {user} = useContext(AuthContext)
-  
+  const { user } = useContext(AuthContext);
+
   return (
     <div className="grid grid-cols-1">
       <div className=" bg-white shadow-md rounded-md mt-5 p-6 border border-gray-300">
@@ -19,12 +23,10 @@ const JobPostDesign = ({posts}) => {
             <img
               className="h-16 w-16 rounded-full"
               src={user?.photoURL}
-              // src=""
               alt="img"
             />
             <div>
-              <h1 className="font-semibold ">{posts?.position}</h1>
-              {/* <h1>5 Days Left</h1> */}
+              <h1 className="font-semibold">{posts?.position}</h1>
               <h1 className="font-bold text-gray-600">
                 {moment().format("MMMM Do YYYY")}
               </h1>
@@ -46,9 +48,9 @@ const JobPostDesign = ({posts}) => {
         </div>
         <hr />
 
-        {/* workplace, Location, Job Category */}
+        {/* workplace, Location, Job Category div*/}
 
-        <div>
+        <div>  
           <h3 className=" flex items-center gap-3 mt-5 font-semibold text-gray-800">
             Job Descriptions <FaHandPointDown />
           </h3>
@@ -75,7 +77,7 @@ const JobPostDesign = ({posts}) => {
             </div>
           </div>
         </div>
-        <JobApplyForm></JobApplyForm>
+        <JobApplyForm posts={posts}></JobApplyForm>
 
         <div className="flex bottom-0 justify-around  bg-gray-50 py-3 rounded-md">
           <div className="flex items-center gap-2 cursor-pointer">
