@@ -3,11 +3,14 @@ import useAxioSequre from "./useAxiosSequre";
 
 const useSelfPost = () => {
     const [axiosSequre] = useAxioSequre();
-    const { data: selfposts = [], refetch } = useQuery(['selfposts'], async () => {
-        const res = await axiosSequre.get('/selfpost')
+    const { data: allselfdata = [], refetch } = useQuery(
+      ["allselfdata"],
+      async () => {
+        const res = await axiosSequre.get("/selfpost");
         return res.data;
-    })
-    return [selfposts, refetch]
+      }
+    );
+    return [allselfdata, refetch]
 };
 
 export default useSelfPost;

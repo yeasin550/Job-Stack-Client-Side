@@ -7,15 +7,15 @@ const useSelfPostfindEmail = () => {
 
     const { user} = useContext(AuthContext);
     const [axiosSequre] = useAxioSequre();
-    const { refetch, data: singleSelfPost = [] } = useQuery({
-        queryKey: ['singleSelfPost', user?.email],
-        queryFn: async () => {
-            const res = await axiosSequre(`/selfpost?email=${user?.email}`)
-            return res.data;
-        },
-    })
-
-    return [singleSelfPost, refetch]
+   const { refetch, data: singleSelfPost = [] } = useQuery({
+     queryKey: ["singleSelfPost", user?.email],
+     queryFn: async () => {
+       const res = await axiosSequre(`/selfpost?email=${user?.email}`);
+       return res.data;
+     },
+   });
+   
+    return [singleSelfPost, refetch];
 };
 
 
