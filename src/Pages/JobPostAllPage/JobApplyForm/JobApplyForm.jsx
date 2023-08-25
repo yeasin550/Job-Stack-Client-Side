@@ -1,10 +1,13 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
+import { AuthContext } from "../../../Providers/AuthProvider";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
-const JobApplyForm = () => {
+const JobApplyForm = ({posts}) => {
+  console.log(posts)
+  const {user} = useContext(AuthContext)
   const [text, setText] = useState("");
   const [axiosSequre] = useAxioSequre();
   const [userEroor, setUserError] = useState("");
@@ -32,37 +35,19 @@ const JobApplyForm = () => {
 
         if (imageResponse.success) {
           const imgURL = imageResponse.data.display_url;
-          const {
-            jobDescription,
-            position,
-            workplace,
-            jobCategory,
-            location,
-            salary,
-          } = data;
-          const saveUser = {
-            image: imgURL,
-            jobDescription,
-            position,
-            workplace,
-            jobCategory,
-            location,
-            salary,
-          };
-          console.log(saveUser);
-          axiosSequre
-            .post("/job", saveUser)
-            .then((response) => {
-              console.log(response);
+          const { name, email,number,questions} = data;
 
+          const saveUser = { image: imgURL, name,email,number,questions,};
+         
+          axiosSequre.post("/applyJobs", saveUser)
+            .then((response) => {
               if (response.data.insertedId) {
                 // Reset the form
                 reset();
-
                 // Display success toast
                 Swal.fire({
                   icon: "success",
-                  title: "Job post successfully",
+                  title: "Job apply successfully",
                   showConfirmButton: false,
                   timer: 3000,
                 });
@@ -105,9 +90,7 @@ const JobApplyForm = () => {
         <div className="modal py-0">
           <div className="absolute modal-box">
             <div className="modal-action">
-              <h1 className="mr-20 font-semibold text-3xl">
-                Applications
-              </h1>
+              <h1 className="mr-20 font-semibold text-3xl">Applications</h1>
 
               <label
                 htmlFor="my_modal_6"
@@ -133,30 +116,90 @@ const JobApplyForm = () => {
               onSubmit={handleSubmit(onSubmit)}
               className="w-full lg:px-2 px-4 border-bg-white rounded-lg text-black"
             >
-              {/* job descriptions */}
+              {/* name */}
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  type="text"
+                  readOnly
+                  defaultValue={user?.displayName}
+                  {...register("name", { required: true })}
+                  placeholder="type here"
+                  className="input input-bordered"
+                />
+                {errors.name && (
+                  <span className="text-red-600"> Name is required</span>
+                )}
+              </div>
+              {/* emails */}
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text"> Email</span>
+                </label>
+                <input
+                  {...register("email", {
+                    required: true,
+                    pattern: /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/,
+                  })}
+                  id="email"
+                  type="email"
+                  readOnly
+                  defaultValue={user?.email}
+                  placeholder="Enter Your Email"
+                  autoComplete="email"
+                  className="appearance-none input input-bordered"
+                />
+                {errors.email && (
+                  <span className="text-red-600">
+                    {" "}
+                    Please enter a valid email address
+                  </span>
+                )}
+              </div>
+              {/* number */}
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text">Phone</span>
+                </label>
+                <input
+                  {...register("number", {
+                    required: true,
+                    pattern: /^[0-9]+$/,
+                  })}
+                  id="number"
+                  type="number"
+                  placeholder="Enter Your Number"
+                  autoComplete="number"
+                  className="appearance-none input input-bordered"
+                />
+                {errors.number && (
+                  <span className="text-red-600">
+                    Please enter a active phone number?
+                  </span>
+                )}
+              </div>
+
+              {/* why should you hire? */}
               <div className="relative w-full">
-                <h1 className="font-semibold">Job-Descriptions</h1>
+                <h1 className="font-semibold my-2">Why should you hire?</h1>
                 <textarea
-                  {...register("jobDescription", {
+                  {...register("questions", {
                     required: "Job description is required",
                   })}
                   className={`pl-3 pt-3 border ${
-                    errors.jobDescription
-                      ? "border-red-500"
-                      : "border-green-500"
+                    errors.questions ? "border-red-500" : "border-green-500"
                   } resize-none w-full sm:w-1/2 md:w-2/3 lg:w-full`}
                   cols="54"
                   rows="3"
                   placeholder="Type job description"
                 ></textarea>
-                {errors.jobDescription && (
-                  <p className="text-red-500">
-                    {errors.jobDescription.message}
-                  </p>
+                {errors.questions && (
+                  <p className="text-red-500">{errors.questions.message}</p>
                 )}
               </div>
-              {/* image hoisting usrl */}
-              {/* <div className="form-control w-full">
+              <div className="form-control w-full">
                 <label className="label">
                   <span className="label-text">Upload Image</span>
                 </label>
@@ -170,32 +213,10 @@ const JobApplyForm = () => {
                     Image is required
                   </span>
                 )}
-              </div> */}
-
-              {/* Position */}
-              {/* <div className="form-control w-full">
-                <label className="label">
-                  <span className="label-text font-semibold">Position </span>
-                </label>
-                <select
-                  {...register("position", { required: true })}
-                  required
-                  className="select input input-bordered border border-green-500 w-full "
-                >
-                  <option disabled selected>
-                    Select Position
-                  </option>
-                  <option>Full Time</option>
-                  <option>Part Time</option>
-                  <option>InternShip</option>
-                </select>
-                {errors.position && (
-                  <span className="text-red-600">SobCategory is required</span>
-                )}
-              </div> */}
+              </div>
 
               <button className="my-btn w-full mt-5 p-2 text-lg rounded-md text-white bg-green-600 hover:bg-green-700">
-                Post
+                Apply Jobs
               </button>
             </form>
           </div>

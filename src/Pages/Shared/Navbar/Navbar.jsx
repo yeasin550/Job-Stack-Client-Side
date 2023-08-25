@@ -150,14 +150,14 @@ const Navbar = () => {
             <Link to="/login">
               <button
                 onClick={handleLogOut}
-                className="mt-3 relative flex items-center justify-center text-lg mr-4 gap-2 px-5 py-2.5  bg-green-500 0 text-white rounded-lg shadow-md transition-all hover:shadow-lg  border-2 hover:border-green-500"
+                className="relative flex items-center justify-center text-lg mr-4 gap-2 px-5 py-2.5  bg-green-500 0 text-white rounded-lg shadow-md transition-all hover:shadow-lg  border-2 hover:border-green-500"
               >
                 LogOut
               </button>
             </Link>
           ) : (
             <Link to="/login">
-              <button className=" mt-3 relative flex items-center justify-center text-lg mr-4 gap-2 px-5 py-2.5  bg-green-500 rounded-lg shadow-md transition-all hover:shadow-lg border-2 text-white hover:border-green-500">
+              <button className="relative flex items-center justify-center text-lg mr-4 gap-2 px-5 py-2.5  bg-green-500 rounded-lg shadow-md transition-all hover:shadow-lg border-2 text-white hover:border-green-500">
                 Login
               </button>
             </Link>

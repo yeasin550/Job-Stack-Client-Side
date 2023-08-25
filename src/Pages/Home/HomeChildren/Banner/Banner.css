@@ -1,5 +1,4 @@
 
-
 .bg{
     background-image: url(http://reactjob.codebasket.xyz/assets/img/banner/banner-2.jpg);
 }
@@ -45,3 +44,28 @@
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
   .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+  /* banner animation  */
+
+  .animate-spin-slow {
+    animation: sum-spin 14s linear infinite; /* Adjust the animation duration for desired speed */
+  }
+  
+  @keyframes sum-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(90deg);
+    }
+    50% {
+      transform: rotate(180deg);
+    }
+    75% {
+      transform: rotate(270deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
