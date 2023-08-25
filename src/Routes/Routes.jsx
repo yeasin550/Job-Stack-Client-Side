@@ -7,6 +7,7 @@ import UserProfile from "../Pages/UserProfile/UserProfile";
 import MyNetwork from "../Pages/SelfPostAllPage/MyNetWork/MyNetwork";
 import JobsRoute from "../Pages/JobPostAllPage/JobsRoutePages/JobsRoute";
 import MessagingRoute from "../Pages/MessagingAllPage/MessagingRoute/MessagingRoute";
+import UserProjectUpdateForm from "../Pages/UserDetails/userProjectUpdateData/UserProjectUpdateForm";
 
 
 const router = createBrowserRouter([
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
             {
                 path: 'massageroute',
                 element: <MessagingRoute></MessagingRoute>
+            },
+            {
+                path: 'projectupdate/:id',
+                element: <UserProjectUpdateForm></UserProjectUpdateForm>
             }
             
         ]

@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import useAxioSequre from "./useAxiosSequre";
 import useSelfPostfindEmail from "./useSelfPostfindEmail";
 
@@ -18,8 +19,8 @@ const useDeletSelfPost = () => {
                 axiosSequre.delete(`/selfpost/${_id}`)
                     .then((data) => {
                         if (data?.data.deletedCount > 0) {
-                            refetch();
                             Swal.fire("Deleted!", "Your Post has been deleted.", "success");
+                            refetch();
                         }
                     });
             }
