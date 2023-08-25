@@ -10,6 +10,7 @@ import SelfPostDesign from "../Components/SelfPostDesign/SelfPostDesign";
 import useJobPosFindEmail from "../../Hooks/useJobPosFindEmail";
 import JobPostDesign from "../Components/JobPostDesign/JobPostDesign";
 import useSelfPostfindEmail from "../../Hooks/useSelfPostfindEmail";
+import ConfirmRequset from "../ConfirmRequest/ConfirmRequset";
 
 const UserProfile = () => {
   const [jobposts] = useJobPosFindEmail();
@@ -106,10 +107,9 @@ const UserProfile = () => {
                 Connect
               </Tab>
               <Tab
-                onClick={() => clickactive("group")}
-                className={` cursor-pointer text ${
-                  active == "group" ? "active cursor-pointer" : ""
-                }`}
+                onClick={() => clickactive("Connection request")}
+                className={` cursor-pointer text ${active == "Connection request" ? "active cursor-pointer" : ""
+                  }`}
               >
                 Connection request
               </Tab>
@@ -150,8 +150,10 @@ const UserProfile = () => {
             </TabPanel>
             {/* user connect   */}
             <TabPanel></TabPanel>
-            {/* user Company Pages  */}
-            <TabPanel></TabPanel>
+            {/* user Connect request */}
+            <TabPanel>
+              <ConfirmRequset/>
+            </TabPanel>
             {/* user more featuesr add  */}
             <TabPanel></TabPanel>
           </Tabs>
