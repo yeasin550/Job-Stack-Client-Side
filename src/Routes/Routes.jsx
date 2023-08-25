@@ -8,7 +8,6 @@ import MyNetwork from "../Pages/SelfPostAllPage/MyNetWork/MyNetwork";
 import JobsRoute from "../Pages/JobPostAllPage/JobsRoutePages/JobsRoute";
 import MessagingRoute from "../Pages/MessagingAllPage/MessagingRoute/MessagingRoute";
 
-
 const router = createBrowserRouter([
     {
         path: "/",

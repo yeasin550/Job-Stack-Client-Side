@@ -1,10 +1,13 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
+import { AuthContext } from "../../../Providers/AuthProvider";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
-const JobApplyForm = () => {
+const JobApplyForm = ({posts}) => {
+  console.log(posts)
+  const {user} = useContext(AuthContext)
   const [text, setText] = useState("");
   const [axiosSequre] = useAxioSequre();
   const [userEroor, setUserError] = useState("");
@@ -37,8 +40,6 @@ const JobApplyForm = () => {
             email,
             number,
             questions,
-            experience,
-            
           } = data;
           const saveUser = {
             image: imgURL,
@@ -46,8 +47,6 @@ const JobApplyForm = () => {
             email,
             number,
             questions,
-            experience,
-            
           };
           console.log(saveUser);
           axiosSequre
@@ -138,6 +137,8 @@ const JobApplyForm = () => {
                 </label>
                 <input
                   type="text"
+                  readOnly
+                  defaultValue={user?.displayName}
                   {...register("name", { required: true })}
                   placeholder="type here"
                   className="input input-bordered"
@@ -158,6 +159,8 @@ const JobApplyForm = () => {
                   })}
                   id="email"
                   type="email"
+                  readOnly
+                  defaultValue={user?.email}
                   placeholder="Enter Your Email"
                   autoComplete="email"
                   className="appearance-none input input-bordered"
@@ -194,7 +197,7 @@ const JobApplyForm = () => {
 
               {/* why should you hire? */}
               <div className="relative w-full">
-                <h1 className="font-semibold">Why should you hire?</h1>
+                <h1 className="font-semibold my-2">Why should you hire?</h1>
                 <textarea
                   {...register("questions", {
                     required: "Job description is required",
@@ -210,29 +213,7 @@ const JobApplyForm = () => {
                   <p className="text-red-500">{errors.questions.message}</p>
                 )}
               </div>
-              {/* experience */}
-              <div className="form-control w-full">
-                <label className="label">
-                  <span className="label-text font-semibold">
-                    How much experience do you have?{" "}
-                  </span>
-                </label>
-                <select
-                  {...register("experience", { required: true })}
-                  required
-                  className="select input input-bordered border border-green-500 w-full "
-                >
-                  <option disabled selected>
-                    Select Experience
-                  </option>
-                  <option>0-1 year</option>
-                  <option>1-2 year</option>
-                  <option>2-3 year</option>
-                </select>
-                {errors.experience && (
-                  <span className="text-red-600">Experience is required</span>
-                )}
-              </div>
+
               <div className="form-control w-full">
                 <label className="label">
                   <span className="label-text">Upload Image</span>
