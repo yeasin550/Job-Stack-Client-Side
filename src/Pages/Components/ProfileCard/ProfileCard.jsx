@@ -3,29 +3,34 @@ import SendConnectRequest from "../../../Hooks/SendConnectRequest";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import handleButtonDesiable from "../../../Hooks/handleButtonDesiable";
+import { getCurrentTimeStamp } from "../../../Hooks/useMonent";
 
 const ProfileCard = ({ person, buttonText }) => {
   const { _id, name, image, email } = person;
-  const {user}=useContext(AuthContext)
+  const { user } = useContext(AuthContext);
+
 
   const [connectRequest] = SendConnectRequest();
   const [reaquestsend] = handleButtonDesiable();
 
 
   
-const requestBTN = reaquestsend?.map((request) => request?.userID);
+  const requestBTN = reaquestsend?.map((request) => request?.userID);
+  
+  // console.log(requestBTN);
 
 
   const userconnect = {
     userID: _id,
-    name,
-    image,
+    name: user?.displayName,
+    image: user?.photoURL,
     userEmail: email,
     status: "pending",
     requestemail: user?.email,
+    timeStamp: getCurrentTimeStamp("LLL"),
   };
 
-  
+  console.log(_id);
 
 
   return (
@@ -54,7 +59,7 @@ const requestBTN = reaquestsend?.map((request) => request?.userID);
         <p>React.js Developer</p>
         <div
           onClick={() => connectRequest(userconnect)}
-          disabled={requestBTN.includes(_id)}
+          disabled={requestBTN.includes(person._id)}
           className="flex justify-center"
         >
           <button className="px-16 rounded-full outline outline-offset-2 outline-2 outline-blue-500 text-blue-500 font-semibold flex items-center gap-2 absolute bottom-4">
