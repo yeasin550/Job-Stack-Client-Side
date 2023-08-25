@@ -35,39 +35,15 @@ const JobApplyForm = ({posts}) => {
 
         if (imageResponse.success) {
           const imgURL = imageResponse.data.display_url;
-          const {
-            name,
-            email,
-            number,
-            questions,
-<<<<<<< HEAD
-            experience,
-            
-=======
->>>>>>> 3da1e6074032581bf874a0ee4ae6a56d79d94504
-          } = data;
-          const saveUser = {
-            image: imgURL,
-            name,
-            email,
-            number,
-            questions,
-<<<<<<< HEAD
-            experience,
-            
-=======
->>>>>>> 3da1e6074032581bf874a0ee4ae6a56d79d94504
-          };
-          console.log(saveUser);
-          axiosSequre
-            .post("/applyJobs", saveUser)
-            .then((response) => {
-              console.log(response);
+          const { name, email,number,questions} = data;
 
+          const saveUser = { image: imgURL, name,email,number,questions,};
+         
+          axiosSequre.post("/applyJobs", saveUser)
+            .then((response) => {
               if (response.data.insertedId) {
                 // Reset the form
                 reset();
-
                 // Display success toast
                 Swal.fire({
                   icon: "success",
@@ -147,11 +123,8 @@ const JobApplyForm = ({posts}) => {
                 </label>
                 <input
                   type="text"
-<<<<<<< HEAD
-=======
                   readOnly
                   defaultValue={user?.displayName}
->>>>>>> 3da1e6074032581bf874a0ee4ae6a56d79d94504
                   {...register("name", { required: true })}
                   placeholder="type here"
                   className="input input-bordered"
@@ -172,11 +145,8 @@ const JobApplyForm = ({posts}) => {
                   })}
                   id="email"
                   type="email"
-<<<<<<< HEAD
-=======
                   readOnly
                   defaultValue={user?.email}
->>>>>>> 3da1e6074032581bf874a0ee4ae6a56d79d94504
                   placeholder="Enter Your Email"
                   autoComplete="email"
                   className="appearance-none input input-bordered"
@@ -213,11 +183,7 @@ const JobApplyForm = ({posts}) => {
 
               {/* why should you hire? */}
               <div className="relative w-full">
-<<<<<<< HEAD
-                <h1 className="font-semibold">Why should you hire?</h1>
-=======
                 <h1 className="font-semibold my-2">Why should you hire?</h1>
->>>>>>> 3da1e6074032581bf874a0ee4ae6a56d79d94504
                 <textarea
                   {...register("questions", {
                     required: "Job description is required",
@@ -233,33 +199,6 @@ const JobApplyForm = ({posts}) => {
                   <p className="text-red-500">{errors.questions.message}</p>
                 )}
               </div>
-<<<<<<< HEAD
-              {/* experience */}
-              <div className="form-control w-full">
-                <label className="label">
-                  <span className="label-text font-semibold">
-                    How much experience do you have?{" "}
-                  </span>
-                </label>
-                <select
-                  {...register("experience", { required: true })}
-                  required
-                  className="select input input-bordered border border-green-500 w-full "
-                >
-                  <option disabled selected>
-                    Select Experience
-                  </option>
-                  <option>0-1 year</option>
-                  <option>1-2 year</option>
-                  <option>2-3 year</option>
-                </select>
-                {errors.experience && (
-                  <span className="text-red-600">Experience is required</span>
-                )}
-              </div>
-=======
-
->>>>>>> 3da1e6074032581bf874a0ee4ae6a56d79d94504
               <div className="form-control w-full">
                 <label className="label">
                   <span className="label-text">Upload Image</span>
