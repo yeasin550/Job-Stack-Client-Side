@@ -46,7 +46,6 @@ const JobsRoute = () => {
               >
                 <FaRegBookmark /> All Jobs
               </Tab>
-
               <Tab
                 onClick={() => clickactive("group")}
                 className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "group" ? "activetab cursor-pointer" : ""
@@ -131,7 +130,6 @@ const JobsRoute = () => {
                 </div>
               </div>
             </TabPanel>
-
 
             {/* user Group */}
             <TabPanel>Group</TabPanel>

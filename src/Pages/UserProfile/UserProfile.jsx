@@ -13,6 +13,7 @@ import JobPostDesign from "../Components/JobPostDesign/JobPostDesign";
 import { useForm } from "react-hook-form";
 import useProfileUpdate from "../../Hooks/useProfileUpdate";
 import ConfirmRequset from "../ConfirmRequest/ConfirmRequset";
+import ConnectedAllUser from "../Components/ConnectedAllUsers/ConnectedAllUser";
 
 const UserProfile = () => {
 
@@ -152,7 +153,9 @@ const UserProfile = () => {
               <UserInfo></UserInfo>
             </TabPanel>
             {/* user connect   */}
-            <TabPanel></TabPanel>
+            <TabPanel>
+              <ConnectedAllUser/>
+            </TabPanel>
             {/* user Connect request */}
             <TabPanel>
             <ConfirmRequset></ConfirmRequset>
