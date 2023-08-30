@@ -34,15 +34,9 @@ const MessagingRoute = () => {
     console.log(userI)
 
 
-    const [singleUser] = useSingleUser()
-    console.log(singleUser)
+    // const [singleUser] = useSingleUser()
+    // console.log(singleUser)
 
-
-    // const userI = singleUser?.map(e => console.log(e))
-
-    // if (!userI) {
-    //     return <span className="loading loading-bars loading-lg"></span>;
-    //   }
 
        // Send Message to socket server
 
