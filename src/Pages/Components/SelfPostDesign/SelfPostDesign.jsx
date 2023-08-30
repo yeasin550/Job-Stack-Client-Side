@@ -1,9 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { MdDelete, MdSend } from "react-icons/md";
 import { GrEdit } from "react-icons/gr";
-import { FaShare, FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import {
+  FaShare,
+  FaFacebook,
+  FaLinkedin,
+  FaTwitter,
+  FaCommentAlt,
+} from "react-icons/fa";
+import { AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
 import useDeletSelfPost from "../../../Hooks/useDeletSelfPost";
 import ReadMorText from "./ReadMorText";
 import usePostShare from "../../../Hooks/usePostShare";
@@ -11,42 +17,129 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
+import Comment from "./Comment";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
 
 const SelfPostDesign = ({ selfpost }) => {
   const { _id, text, image, userPhoto, userName, timeStamp } = selfpost;
   const [handleDelete] = useDeletSelfPost();
   const { user } = useContext(AuthContext);
   const [axiosSequre] = useAxioSequre();
-
+  const [clickedid, setClickedid] = useState(null);
   const [handleFacebookShare, handleLinkedinShare, handleTwitterShare] =
     usePostShare();
-
   const { register, handleSubmit, reset } = useForm();
+ 
 
+  // comment data fucation
+  const makeComment = (id) => {
+    setClickedid(id);
+  };
+  const { data: commenttext = [], refetch } = useQuery(
+    ["commenttext", clickedid],
+    async () => {
+      const res = await axiosSequre.get(`/comment/${clickedid}`);
+      return res.data;
+    }
+  );
+
+  // comment Post funcation
   const onSubmit = (data) => {
-    console.log(data.comment);
     const addcomment = {
-      comment: data?.comment,
+      comment: data?.commenttext,
       userName: user?.displayName,
       userPhoto: user?.photoURL,
-      postId: _id,
+      postId: clickedid,
       time: timeStamp,
     };
+    console.log(addcomment);
     axiosSequre.post("/comments", addcomment).then((data) => {
       if (data?.data?.insertedId) {
-        Swal.fire({
-          icon: "success",
-          title: "comment now",
-          timer: 1500,
-        });
         reset();
         refetch();
       }
     });
   };
 
+  // comment box hide and show funcaton
+  const [isOpens, setIsOpens] = useState(false);
+  const openDiv = () => {
+    setIsOpens(true);
+  };
+  const closeDiv = () => {
+    setIsOpens(false);
+  };
+
+  // Post Edit and update Modal Funcation
+  const [editModal, seteditModal] = useState(false);
+  const openModals = () => {
+    seteditModal(true);
+  };
+  const closeModals = () => {
+    seteditModal(false);
+  };
+
+  const makeEdit = (id) => {
+    setClickedid(id);
+    openModals();
+  };
+
+  const updatePost = (data) => {
+    console.log(data);
+    const selfPost = {
+      text: data.text,
+      // image: data.imgUrl,
+    };
+
+    axiosSequre
+      .patch(`/updatepost/${_id}`, selfPost)
+      .then((response) => {
+        if (response.data.modifiedCount > 0) {
+          Swal.fire({
+            icon: "success",
+            title: "Update successfully.",
+            timer: 1500,
+          });
+          refetch();
+          reset();
+        }
+      })
+      .catch((error) => {
+        console.error("Error posting:", error);
+      });
+  };
+
+
+  // like funcation
+  const [likesCount, setLikesCount] = useState(0);
+  const [liked, setLiked] = useState(false);
+
+   const { data: postlike = [] } = useQuery(
+     ["postlike", clickedid],
+     async () => {
+       const res = await axiosSequre.get(`/likes/${clickedid}`);
+       return res.data;
+     }
+   );
+
+  const handleLike = (data) => {
+      const likePost = {
+        postId: _id,
+    };
+    axiosSequre.post("/likes", likePost).then((data) => {
+      if (data?.data?.insertedId) {
+        reset();
+        refetch();
+      }
+    });
+    console.log(likePost);
+  };
+
+ 
   return (
-    <div className="w-full p-4  shadow-xl rounded-lg">
+    <div className="w-[500px] mt-5 p-4  shadow-xl rounded-lg">
       {/* user information */}
       <div className="mt-3 flex justify-between items-center">
         <div className="flex items-center gap-3">
@@ -66,7 +159,10 @@ const SelfPostDesign = ({ selfpost }) => {
             tabIndex={0}
             className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box "
           >
-            <button className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold">
+            <button
+              onClick={() => makeEdit(_id)}
+              className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
+            >
               <GrEdit />
               Edit
             </button>
@@ -88,24 +184,37 @@ const SelfPostDesign = ({ selfpost }) => {
 
       {/* like comment and shear section */}
       <div className="flex justify-around items-center mt-5">
-        <div className="flex items-center gap-1">
-         
-          <button onClick={() => likePost(_id)}>
-            <AiOutlineHeart size={30} className="cursor-pointer" />
+        <div
+          onClick={() => handleLike(_id)}
+          className="flex items-center gap-1"
+        >
+          {/* <button>
+              <AiTwotoneHeart
+                size={30}
+                className="cursor-pointer text-red-600"
+              />
+            </button> */}
+
+          <button>
+            <AiOutlineHeart size={20} className="cursor-pointer" />
           </button>
         </div>
-
-        <div className="">
-          <label htmlFor="my_modal_6" className="">
-            Comment
-          </label>
+        {/* comment button */}
+        <div onClick={() => makeComment(_id)} className="">
+          <button
+            onClick={isOpens ? closeDiv : openDiv}
+            className="flex items-center gap-1"
+          >
+            <FaCommentAlt size={20} className="cursor-pointer" />
+            Comment {commenttext.length}
+          </button>
         </div>
 
         {/* shear the post */}
         <div className="dropdown dropdown-bottom flex items-center">
           <label tabIndex={0}>
-            <div className="flex items-center z-50">
-              <FaShare size={30} className="cursor-pointer text" />
+            <div className="flex items-center gap-1 z-50">
+              <FaShare size={20} className="cursor-pointer text" />
               <h4 className="text-lg">Share</h4>
             </div>
           </label>
@@ -138,38 +247,106 @@ const SelfPostDesign = ({ selfpost }) => {
           </ul>
         </div>
       </div>
-      {/* modal box */}
-      <div>
-        <input type="checkbox" id="my_modal_6" className="modal-toggle " />
-        <div className="modal">
-          <div className="modal-box h-[400px]">
-            {/* start modal close button */}
-            <div className="modal-action">
-              <label
-                htmlFor="my_modal_6"
-                className="btn btn-circle bg-green-400 absolute top-3 right-3 text-white"
-              >
-                X
-              </label>
+      {/* post show all comment */}
+      {isOpens && (
+        <div className=" mt-5">
+          <div className="flex items-center gap-2 mt-8">
+            <div className="">
+              <img
+                className="h-10 w-10 rounded-full"
+                src={user?.photoURL}
+                alt="user photo"
+              />
             </div>
-            {/* end modal close button */}
-            {/* add comment input filed */}
-            <div className="mt-5">
-              <form onSubmit={handleSubmit(onSubmit)} className="relative ">
-                <input
-                  type="text"
-                  className="input input-bordered w-full "
-                  placeholder="enter your comment"
-                  {...register("comment", { required: true })}
-                />
-                <button className="absolute right-3 top-4 text-xl text-blue-700">
-                  <MdSend />
-                </button>
+            <div className="">
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="relative w-full">
+                  <input
+                    {...register("commenttext", { required: true })}
+                    type="text"
+                    className="py-2 w-[400px] rounded-full ps-3 bg-slate-100"
+                    placeholder="Enter your comment"
+                  />
+                  <button className="absolute right-3 top-3 text-xl text-blue-700">
+                    <MdSend />
+                  </button>
+                </div>
               </form>
             </div>
           </div>
+
+          <div className="">
+            {commenttext.map((commentInfo) => (
+              <Comment
+                key={commentInfo._id}
+                commentInfo={commentInfo}
+              ></Comment>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* edit modal box start */}
+      {editModal && (
+        <dialog
+          id="my_modal_5"
+          className="modal modal-bottom sm:modal-middle"
+          open
+        >
+          <div method="dialog" className="modal-box">
+            <h1 className="text-center text-2xl font-bold -mt-3 mb-3">
+              Edit Post
+            </h1>
+            <hr />
+            <form onSubmit={handleSubmit(updatePost)}>
+              <div className="mt-5">
+                <textarea
+                  {...register("text")}
+                  rows="5"
+                  placeholder="What's on you mind?"
+                  className="rounded-md px-3 py-2  w-full bg-slate-100 text-xl"
+                  defaultValue={text}
+                ></textarea>
+              </div>
+              {/* images */}
+              {/* <div className="image-upload flex items-center gap-12 rounded-2xl justify-center">
+                <div className="">
+                  <h1 className="text-lg ">Add Photo</h1>
+                </div>
+                <div className="">
+                  <label htmlFor="file-input">
+                    <img
+                      className="w-11 h-12"
+                      src="https://i.ibb.co/x5snGtV/image.png"
+                      alt="Upload"
+                      defaultValue={image}
+                    />
+                    
+                  </label>
+                  <input
+                    className="hidden"
+                    id="file-input"
+                    type="file"
+                    {...register("image")}
+                  />
+                </div>
+              </div> */}
+              <button className="w-full py-2 mt-3 bg-green-500 rounded-md text-white cursor-pointer">
+                <input type="submit" value="Update Post" />
+              </button>
+              {/* edit modal close button */}
+            </form>
+            <div className="modal-action">
+              <button
+                onClick={closeModals}
+                className="text-white btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-green-500"
+              >
+                X
+              </button>
+            </div>
+          </div>
+        </dialog>
+      )}
     </div>
   );
 };

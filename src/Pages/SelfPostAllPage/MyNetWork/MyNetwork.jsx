@@ -79,7 +79,7 @@ const MyNetwork = () => {
             <div className="w-full rounded-md shadowdiv border">
               {/* user Activities */}
               <TabPanel>
-                <div className="grid lg:grid-cols-2 gap-10 px-5 py-10 ">
+                <div className="grid place-items-center h-screen overflow-auto">
                   {allselfdata?.map((selfpost) => (
                     <SelfPostDesign
                       key={selfpost?._id}
