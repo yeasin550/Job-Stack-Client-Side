@@ -1,18 +1,20 @@
 import {
   FaCommentAlt,
   FaHandPointDown,
-  FaHandPointUp,
   FaShare,
 } from "react-icons/fa";
+import { FcLike } from "react-icons/fc";
 import JobApplyForm from "../../JobPostAllPage/JobApplyForm/JobApplyForm";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import moment from "moment/moment";
+import { Link, useNavigate } from "react-router-dom";
 // import { useContext } from "react";
 // import { AuthContext } from "../../Providers/AuthProvider";
 
 const JobPostDesign = ({ posts }) => {
-  // const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const { user } = useContext(AuthContext);
 
   return (
@@ -50,7 +52,7 @@ const JobPostDesign = ({ posts }) => {
 
         {/* workplace, Location, Job Category div*/}
 
-        <div>  
+        <div>
           <h3 className=" flex items-center gap-3 mt-5 font-semibold text-gray-800">
             Job Descriptions <FaHandPointDown />
           </h3>
@@ -77,11 +79,19 @@ const JobPostDesign = ({ posts }) => {
             </div>
           </div>
         </div>
-        <JobApplyForm posts={posts}></JobApplyForm>
+
+        {/* <JobApplyForm posts={posts}></JobApplyForm> */}
+
+        <button
+          onClick={() => navigate(`/jobApplyForm/${posts?._id}`)}
+          className="bg-green-500 text-center mt-5 text-white py-2 px-6 rounded-md hover:bg-green-600 transition duration-300 w-full"
+        >
+          Apply Now
+        </button>
 
         <div className="flex bottom-0 justify-around  bg-gray-50 py-3 rounded-md">
           <div className="flex items-center gap-2 cursor-pointer">
-            <FaHandPointUp /> Like
+            <FcLike /> Like
           </div>
           <div className="flex items-center gap-2 cursor-pointer">
             <FaCommentAlt /> Comment

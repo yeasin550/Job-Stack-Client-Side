@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import useJobPost from "../../../Hooks/useJobPost";
 import JobPostDesign from "../../Components/JobPostDesign/JobPostDesign";
-import { FaBell, FaFile, FaRegBookmark, FaSearch, FaYoutube } from "react-icons/fa";
-
+import { FaBell, FaFile, FaRegBookmark, FaSearch, FaShoppingBag, FaYoutube } from "react-icons/fa";
+import AppliedJobs from "../JobApplyForm/AppliedJobs";
+import { AuthContext } from "../../../Providers/AuthProvider";
+ import { BsPersonCheckFill } from 'react-icons/bs';
+import AppliedMember from "../AppliedMember/AppliedMember";
 const JobsRoute = () => {
+  const { user } = useContext(AuthContext);
+  // const [appliedJobs, setAppliedJobs] = useState();
   const [searchText, setSearchText] = useState("");
   const [jobposts] = useJobPost();
   const [tabIndex, setTabIndex] = useState(0);
@@ -13,7 +18,7 @@ const JobsRoute = () => {
   const clickactive = (active) => {
     setActive(active);
   };
-  console.log(jobposts);
+  // console.log(jobposts);
   const getUniqueData = (data, property) => {
     let newVal = data.map((curElem) => {
       return curElem[property];
@@ -21,9 +26,9 @@ const JobsRoute = () => {
     return (newVal = ["All", ...new Set(newVal)]);
     // console.log(newVal);
   };
-
   const categoryOnlyData = getUniqueData(jobposts, "jobCategory");
-const handleFilter = (posts) => {
+
+  const handleFilter = (posts) => {
     if (searchText) {
       if (posts?.jobTitle?.toLowerCase()?.includes(searchText?.toLowerCase())) {
         return true;
@@ -47,7 +52,7 @@ const handleFilter = (posts) => {
               >
                 <FaRegBookmark /> All Jobs
               </Tab>
-              
+
               <Tab
                 onClick={() => clickactive("group")}
                 className={` flex items-center gap-3 cursor-pointer userinfotext ${
@@ -55,6 +60,24 @@ const handleFilter = (posts) => {
                 }`}
               >
                 <FaBell /> Job Alerts
+              </Tab>
+              <Tab
+                onClick={() => clickactive("appliedJobs")}
+                className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                  active == "appliedJobs" ? "activetab cursor-pointer" : ""
+                }`}
+              >
+                <FaShoppingBag />
+                Applied Jobs
+              </Tab>
+              <Tab
+                onClick={() => clickactive("appliedMember")}
+                className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                  active == "appliedMember" ? "activetab cursor-pointer" : ""
+                }`}
+              >
+               
+                <BsPersonCheckFill/> Applied Member
               </Tab>
               <Tab
                 onClick={() => clickactive("about")}
@@ -96,25 +119,24 @@ const handleFilter = (posts) => {
                       placeholder="Search your jobs title"
                       className="w-full md:w-80 px-3 h-10 rounded-l border-2 border-green-500 focus:outline-none focus:border-green-700"
                     />
-                   <FaSearch className="absolute top-3 text-gray-400 right-2"/>
+                    <FaSearch className="absolute top-3 text-gray-400 right-2" />
                   </div>
-                 
-                    <div>
-                      <select
-                        id="jobCategory"
-                        name="jobCategory"
-                        className="h-10 border-2 cursor-pointer border-green-500 focus:outline-none focus:border-green-500 rounded px-2 md:px-2 py-0 md:py-1 tracking-wider"
-                        onChange={(e) => setActive(e.target.value)}
-                        value={active}
-                      >
-                        {categoryOnlyData.map((category, index) => (
-                          <option value={category} key={index}>
-                            {category}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                 
+
+                  <div>
+                    <select
+                      id="jobCategory"
+                      name="jobCategory"
+                      className="h-10 border-2 cursor-pointer border-green-500 focus:outline-none focus:border-green-500 rounded px-2 md:px-2 py-0 md:py-1 tracking-wider"
+                      onChange={(e) => setActive(e.target.value)}
+                      value={active}
+                    >
+                      {categoryOnlyData.map((category, index) => (
+                        <option value={category} key={index}>
+                          {category}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </form>
 
                 {/* job data display */}
@@ -136,10 +158,23 @@ const handleFilter = (posts) => {
                 </div>
               </div>
             </TabPanel>
-           
 
             {/* user Group */}
             <TabPanel>Group</TabPanel>
+            {/* user appliedJobs */}
+            <TabPanel>
+              <h1 className="text-center font-bold text-3xl my-5 text-green-600">
+                My Jobs
+              </h1>
+              <AppliedJobs />
+            </TabPanel>
+            {/* user appliedJobs */}
+            <TabPanel>
+              <h1 className="text-center font-bold text-3xl my-5 text-green-600">
+                Applied Member
+              </h1>
+              <AppliedMember/>
+            </TabPanel>
             {/* User Event*/}
             <TabPanel>Event</TabPanel>
             {/* user Pages  */}

@@ -14,8 +14,8 @@ import JobPostDesign from "../Components/JobPostDesign/JobPostDesign";
 // import JobPost from "../../Components/JobPost/JobPost";
 
 const UserProfile = () => {
-  const [selfposts,refetch] = useSelfPostfindEmail();
-  const [jobposts] = useJobPosFindEmail();
+  const [selfposts, refetch] = useSelfPostfindEmail();
+  const [singlejobposts, ] = useJobPosFindEmail();
   console.log(selfposts)
   //  activie tabindex set this state 
   const [tabIndex, setTabIndex] = useState(0);
@@ -73,64 +73,73 @@ const UserProfile = () => {
             <TabList className="flex justify-center items-center border py-2 profile-shadow  gap-6 mb-8">
               <Tab
                 onClick={() => clickactive("post")}
-                className={` cursor-pointer text ${active == "post" ? "active cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer text ${
+                  active == "post" ? "active cursor-pointer" : ""
+                }`}
               >
                 Post
               </Tab>
 
               <Tab
                 onClick={() => clickactive("jobpost")}
-                className={` cursor-pointer text ${active == "jobpost" ? "active cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer text ${
+                  active == "jobpost" ? "active cursor-pointer" : ""
+                }`}
               >
                 Job Post
               </Tab>
               <Tab
                 onClick={() => clickactive("about")}
-                className={` cursor-pointer text ${active == "about" ? "active cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer text ${
+                  active == "about" ? "active cursor-pointer" : ""
+                }`}
               >
                 About
               </Tab>
               <Tab
                 onClick={() => clickactive("connect")}
-                className={` cursor-pointer text ${active == "connect" ? "active cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer text ${
+                  active == "connect" ? "active cursor-pointer" : ""
+                }`}
               >
                 Connect
               </Tab>
               <Tab
                 onClick={() => clickactive("group")}
-                className={` cursor-pointer text ${active == "group" ? "active cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer text ${
+                  active == "group" ? "active cursor-pointer" : ""
+                }`}
               >
                 Group
               </Tab>
               <Tab
                 onClick={() => clickactive("more")}
-                className={` cursor-pointer text ${active == "more" ? "active cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer text ${
+                  active == "more" ? "active cursor-pointer" : ""
+                }`}
               >
                 More
               </Tab>
             </TabList>
             {/* users self  post */}
             <TabPanel>
-             <SelfPostForm refetch={refetch}></SelfPostForm>
-             <div className="grid lg:grid-cols-2 px-10 justify-center items-center gap-10 mt-10 ">
-               {
-               selfposts?.map(selfpost => <SelfPostDesign key={selfpost?._id} selfpost={selfpost}></SelfPostDesign>)
-               }
-             </div>
+              <SelfPostForm refetch={refetch}></SelfPostForm>
+              <div className="grid lg:grid-cols-2 px-10 justify-center items-center gap-10 mt-10 ">
+                {selfposts?.map((selfpost) => (
+                  <SelfPostDesign
+                    key={selfpost?._id}
+                    selfpost={selfpost}
+                  ></SelfPostDesign>
+                ))}
+              </div>
             </TabPanel>
             {/* user job post job post */}
             <TabPanel>
               <JobPostForm refetch={refetch}></JobPostForm>
               <div>
-                {
-                  jobposts?.map(posts => <JobPostDesign key={posts?._id} posts={posts}></JobPostDesign>)
-                }
+                {singlejobposts?.map((posts) => (
+                  <JobPostDesign key={posts?._id} posts={posts}></JobPostDesign>
+                ))}
               </div>
             </TabPanel>
             {/* user about  */}
