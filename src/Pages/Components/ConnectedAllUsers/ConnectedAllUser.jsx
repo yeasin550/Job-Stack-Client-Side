@@ -3,6 +3,10 @@ import React, { useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { FaSearch } from "react-icons/fa";
 import ConnectSingleUser from "./SingleUserCard/ConnectSingleUser";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
+import useAxioSequre from "../../../Hooks/useAxiosSequre";
+import { useQuery } from "@tanstack/react-query";
 
 const ConnectedAllUser = () => {
   // short by name data below
@@ -25,11 +29,29 @@ const ConnectedAllUser = () => {
     setSearchTerm(event.target.value);
   };
 
+  // get data all connected user
+  const { user } = useContext(AuthContext);
+  const [axiosSequre] = useAxioSequre();
+  const { refetch, data: allConnected = [] } = useQuery({
+    queryKey: ["allConnected", user?.email],
+    queryFn: async () => {
+      const res = await axiosSequre(`/connectrequest?email=${user?.email}`);
+      return res.data;
+    },
+  });
+
+  // filtering data approved
+  const allConnect = allConnected.filter(
+    (accept) => accept.status === "aproved"
+  );
+
+  console.log(allConnect);
+
   return (
     <div className="px-6 py-4">
       {/*page top section  */}
       <div>
-        <h1 className="font-medium">15 Connections</h1>
+        <h1 className="font-medium">{allConnect.length} Connections</h1>
         <div className="flex justify-between mt-2">
           {/* shorting name div */}
           <div className="text-gray-500 justify-center items-center">
@@ -84,9 +106,9 @@ const ConnectedAllUser = () => {
       <div className="divider my-0 py-0 px-0"></div>
       {/* all user div  */}
       <div className="max-h-[600px] overflow-y-auto scroll-pr-2  touch-none">
-        <ConnectSingleUser />
-        <ConnectSingleUser />
-        <ConnectSingleUser />
+        {
+          allConnect.map(data => <ConnectSingleUser key={data._id} refetch={refetch} data={data}/>)
+        }
       </div>
       {/* all user div  */}
     </div>

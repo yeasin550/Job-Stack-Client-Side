@@ -11,6 +11,7 @@ import useJobPosFindEmail from "../../Hooks/useJobPosFindEmail";
 import JobPostDesign from "../Components/JobPostDesign/JobPostDesign";
 import useSelfPostfindEmail from "../../Hooks/useSelfPostfindEmail";
 import ConfirmRequset from "../ConfirmRequest/ConfirmRequset";
+import ConnectedAllUser from "../Components/ConnectedAllUsers/ConnectedAllUser";
 
 const UserProfile = () => {
   const [jobposts] = useJobPosFindEmail();
@@ -149,7 +150,9 @@ const UserProfile = () => {
               <UserInfo></UserInfo>
             </TabPanel>
             {/* user connect   */}
-            <TabPanel></TabPanel>
+            <TabPanel>
+              <ConnectedAllUser/>
+            </TabPanel>
             {/* user Connect request */}
             <TabPanel>
               <ConfirmRequset/>

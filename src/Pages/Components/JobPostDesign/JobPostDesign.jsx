@@ -10,19 +10,11 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import moment from "moment/moment";
 // import { useContext } from "react";
 // import { AuthContext } from "../../Providers/AuthProvider";
-<<<<<<< HEAD
 
 const JobPostDesign = ({posts}) => {
   // const { user } = useContext(AuthContext);
   const {user} = useContext(AuthContext)
   
-=======
-
-const JobPostDesign = ({ posts }) => {
-  // const { user } = useContext(AuthContext);
-  const { user } = useContext(AuthContext);
-
->>>>>>> 3da1e6074032581bf874a0ee4ae6a56d79d94504
   return (
     <div className="grid grid-cols-1">
       <div className=" bg-white shadow-md rounded-md mt-5 p-6 border border-gray-300">
@@ -31,19 +23,10 @@ const JobPostDesign = ({ posts }) => {
             <img
               className="h-16 w-16 rounded-full"
               src={user?.photoURL}
-<<<<<<< HEAD
-              // src=""
-              alt="img"
-            />
-            <div>
-              <h1 className="font-semibold ">{posts?.position}</h1>
-              {/* <h1>5 Days Left</h1> */}
-=======
               alt="img"
             />
             <div>
               <h1 className="font-semibold">{posts?.position}</h1>
->>>>>>> 3da1e6074032581bf874a0ee4ae6a56d79d94504
               <h1 className="font-bold text-gray-600">
                 {moment().format("MMMM Do YYYY")}
               </h1>
@@ -65,15 +48,9 @@ const JobPostDesign = ({ posts }) => {
         </div>
         <hr />
 
-<<<<<<< HEAD
-        {/* workplace, Location, Job Category */}
-
-        <div>
-=======
         {/* workplace, Location, Job Category div*/}
 
         <div>  
->>>>>>> 3da1e6074032581bf874a0ee4ae6a56d79d94504
           <h3 className=" flex items-center gap-3 mt-5 font-semibold text-gray-800">
             Job Descriptions <FaHandPointDown />
           </h3>
@@ -84,21 +61,12 @@ const JobPostDesign = ({ posts }) => {
             <div className="mb-4 px-2 py-1 rounded-md">
               <h1 className="font-semibold">Workplace</h1>
               <p>{posts?.workplace}</p>
-<<<<<<< HEAD
             </div>
 
             <div className="mb-4 px-2 py-1 rounded-md">
               <h1 className="font-semibold">Locations</h1>
               <p>{posts?.location}</p>
             </div>
-=======
-            </div>
-
-            <div className="mb-4 px-2 py-1 rounded-md">
-              <h1 className="font-semibold">Locations</h1>
-              <p>{posts?.location}</p>
-            </div>
->>>>>>> 3da1e6074032581bf874a0ee4ae6a56d79d94504
             <div className="mb-4 px-2 py-1 rounded-md">
               <h1 className="font-semibold">Job-Category</h1>
               <p>{posts?.jobCategory}</p>
@@ -109,11 +77,7 @@ const JobPostDesign = ({ posts }) => {
             </div>
           </div>
         </div>
-<<<<<<< HEAD
-        <JobApplyForm></JobApplyForm>
-=======
         <JobApplyForm posts={posts}></JobApplyForm>
->>>>>>> 3da1e6074032581bf874a0ee4ae6a56d79d94504
 
         <div className="flex bottom-0 justify-around  bg-gray-50 py-3 rounded-md">
           <div className="flex items-center gap-2 cursor-pointer">
