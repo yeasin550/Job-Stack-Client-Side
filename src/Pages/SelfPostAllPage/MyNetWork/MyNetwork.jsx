@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-import SelfPostDesign from '../../Components/SelfPostDesign/SelfPostDesign';
-import useSelfPost from '../../../Hooks/useSelfPost';
-import AllUsers from '../AllUsers/AllUsers';
+import React, { useState } from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+import SelfPostDesign from "../../Components/SelfPostDesign/SelfPostDesign";
+import useSelfPost from "../../../Hooks/useSelfPost";
+import ConnectedAllUser from "../../Components/ConnectedAllUsers/ConnectedAllUser";
+import AllUsers from "../AllUsers/AllUsers";
 
 const MyNetwork = () => {
     const [allselfdata] = useSelfPost();
@@ -104,9 +105,37 @@ const MyNetwork = () => {
               <TabPanel>NewsLater</TabPanel>
             </div>
           </div>
-        </Tabs>
-      </div>
-    );
+          <div className="w-full rounded-md shadowdiv border">
+            {/* user Activities */}
+            <TabPanel>
+              <div className="grid lg:grid-cols-2 gap-10 px-5 py-10 ">
+                {allselfdata?.map((selfpost) => (
+                  <SelfPostDesign
+                    key={selfpost?._id}
+                    selfpost={selfpost}
+                  ></SelfPostDesign>
+                ))}
+              </div>
+            </TabPanel>
+            {/* user Connections  */}
+            <TabPanel>
+              <ConnectedAllUser />
+            </TabPanel>
+            {/* user fllowing and flowers */}
+            <TabPanel>Fllowing and Fllowers</TabPanel>
+            {/* user Group */}
+            <TabPanel>Group</TabPanel>
+            {/* User Event*/}
+            <TabPanel>Event</TabPanel>
+            {/* user Pages  */}
+            <TabPanel>Pages</TabPanel>
+            {/* user Newslater */}
+            <TabPanel>NewsLater</TabPanel>
+          </div>
+      
+      </Tabs>
+    </div>
+  );
 };
 
 export default MyNetwork;

@@ -32,3 +32,17 @@
     font-weight: 800px !important;
 }
 
+
+::-webkit-scrollbar{
+    display: none;
+  }
+
+ .online-dot {
+    background-color: rgb(47, 255, 151);
+    border-radius: 60%;
+    position: absolute;
+    left: 6rem;
+    width: 1rem;
+    height: 1rem;
+  }
+  

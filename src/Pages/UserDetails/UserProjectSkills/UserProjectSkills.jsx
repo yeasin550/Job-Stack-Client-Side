@@ -5,9 +5,11 @@ import { useForm } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query";
 import { FaPlus } from "react-icons/fa";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
+import { useNavigate } from "react-router-dom";
 
 const UserProjectSkills = () => {
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
     const [axiosSequre] = useAxioSequre();
     const [isOpen, setIsOpen] = useState(false);
     const openModal = () => {
@@ -23,8 +25,8 @@ const UserProjectSkills = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data);
-        const { projectTitle, projectDescription, liveLink, codeLink, duration,workduration } = data;
-        const projectinfo = { projectTitle, projectDescription, liveLink, codeLink, email: user?.email, duration, workduration }
+        const { projectTitle, projectDescription, liveLink, codeLink, duration, workduration } = data;
+        const projectinfo = { projectTitle, projectDescription, liveLink, codeLink, email: user?.email, duration, workduration };
         console.log(projectinfo);
         axiosSequre.post('/project', projectinfo)
             .then(data => {
@@ -42,6 +44,12 @@ const UserProjectSkills = () => {
                 setError(err.massage)
             })
     };
+    //    project delet 
+    const deletProject = (id) => {
+        console.log(id);
+
+    };
+
     return (
         <div className='px-5 py-5'>
             <div className='flex flex-col shadowdiv border p-4 rounded-md'>
@@ -50,21 +58,20 @@ const UserProjectSkills = () => {
                     <FaPlus className='border-2 border-blue-500 p-1 rounded-full text-[20px] text-blue-500'></FaPlus>
                     <label onClick={openModal} className="link text-blue-500">Add Project</label>
                 </div>
-
                 {
-                    projectskills.map(projectskill => <div key={projectskill?._id} className='profile-shadow border px-4 py-4 mt-2 rounded-lg'>
-                    <div className='flex flex-col justify-start items-start'>
-                        <h1 className='font bold font-sans text-2xl'>{projectskill?.projectTitle}</h1>
-                        <h1 className='link text-blue-500 font-bold font-sans'><span>{projectskill?.workduration}-</span>{projectskill?.duration}</h1>
-                        <p>{projectskill?.projectDescription}</p>
-                        <h1 className='link text-blue-500 font-bold font-sans'>{projectskill?.liveLink}</h1>
-                        <h1 className='link text-blue-500 font-bold font-sans'>{projectskill?.codeLink}</h1>
-                    </div>
-                    <div className='flex justify-end gap-2 mt-3'>
-                        <button className="btn btn-sm bg-green-500 hover:bg-green-700 text-white">Edit</button>
-                        <button className="btn btn-sm bg-red-600 hover:bg-rose-700 text-white">Delet</button>
-                    </div>
-                </div> )
+                    projectskills?.map(projectskill => <div key={projectskill?._id} className='profile-shadow border px-4 py-4 mt-2 rounded-lg'>
+                        <div className='flex flex-col justify-start items-start'>
+                            <h1 className='font bold font-sans text-2xl'>{projectskill?.projectTitle}</h1>
+                            <h1 className='link text-blue-500 font-bold font-sans'><span>{projectskill?.workduration}-</span>{projectskill?.duration}</h1>
+                            <p>{projectskill?.projectDescription}</p>
+                            <h1 className='link text-blue-500 font-bold font-sans'>{projectskill?.liveLink}</h1>
+                            <h1 className='link text-blue-500 font-bold font-sans'>{projectskill?.codeLink}</h1>
+                        </div>
+                        <div className='flex justify-end gap-2 mt-3'>
+                            <button onClick={() => navigate(`/projectupdate/${projectskill?._id}`)} className="btn btn-sm bg-green-500 hover:bg-green-700 text-white">Edit</button>
+                            <button onClick={() => deletProject(projectskill?._id)} className="btn btn-sm bg-red-600 hover:bg-rose-700 text-white">Delet</button>
+                        </div>
+                    </div>)
                 }
             </div>
             {
