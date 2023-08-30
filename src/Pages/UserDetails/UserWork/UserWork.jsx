@@ -10,8 +10,8 @@ const UserWork = () => {
     const { user } = useContext(AuthContext);
     const [axiosSequre] = useAxioSequre();
     const { data: workexperians = [], refetch } = useQuery(['workexperians'], async () => {
-        const res = await axiosSequre.get(`/works/${user?.email}`)
-        return res.data;
+          const res = await axiosSequre.get(`/works/${user?.email}`)
+          return res.data;
     })
 
     // user work experians post database 

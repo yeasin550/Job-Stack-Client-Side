@@ -35,29 +35,15 @@ const JobApplyForm = ({posts}) => {
 
         if (imageResponse.success) {
           const imgURL = imageResponse.data.display_url;
-          const {
-            name,
-            email,
-            number,
-            questions,
-          } = data;
-          const saveUser = {
-            image: imgURL,
-            name,
-            email,
-            number,
-            questions,
-          };
-          console.log(saveUser);
-          axiosSequre
-            .post("/applyJobs", saveUser)
-            .then((response) => {
-              console.log(response);
+          const { name, email,number,questions} = data;
 
+          const saveUser = { image: imgURL, name,email,number,questions,};
+         
+          axiosSequre.post("/applyJobs", saveUser)
+            .then((response) => {
               if (response.data.insertedId) {
                 // Reset the form
                 reset();
-
                 // Display success toast
                 Swal.fire({
                   icon: "success",
