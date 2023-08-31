@@ -45,7 +45,7 @@ const AllUser = () => {
           if (result.isConfirmed) {
             axiosSequre.delete(`/deleteuser/${_id}`).then((data) => {
               if (data?.data.deletedCount > 0) {
-                Swal.fire("Deleted!", "Your Post has been deleted.", "success");
+                Swal.fire("Deleted!", "User has been deleted.", "success");
                 refetch();
               }
             });
@@ -80,6 +80,7 @@ const AllUser = () => {
                     className="w-12 h-12 rounded-full"
                     src={user.image}
                     alt="User Photo"
+                    draggable="false"
                   />
                 </th>
                 <td>{user.name}</td>
@@ -96,13 +97,14 @@ const AllUser = () => {
                     </button>
                   )}
                 </td>
+               
                 <td>
                   <button
                     onClick={() => handleDeleteUser(user._id)}
                     className="btn btn-ghost bg-red-600  text-white"
                   >
                     <FaTrashAlt />
-                        </button>
+                  </button>
                 </td>
               </tr>
             ))}

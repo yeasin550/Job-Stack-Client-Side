@@ -19,11 +19,10 @@ import useAxioSequre from "../../../Hooks/useAxiosSequre";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import Comment from "./Comment";
-import data from "@emoji-mart/data";
-import Picker from "@emoji-mart/react";
 
 const SelfPostDesign = ({ selfpost }) => {
   const { _id, text, image, userPhoto, userName, timeStamp } = selfpost;
+
   const [handleDelete] = useDeletSelfPost();
   const { user } = useContext(AuthContext);
   const [axiosSequre] = useAxioSequre();
@@ -57,8 +56,8 @@ const SelfPostDesign = ({ selfpost }) => {
     console.log(addcomment);
     axiosSequre.post("/comments", addcomment).then((data) => {
       if (data?.data?.insertedId) {
-        reset();
         refetch();
+        reset();
       }
     });
   };
@@ -113,31 +112,18 @@ const SelfPostDesign = ({ selfpost }) => {
 
 
   // like funcation
-  const [likesCount, setLikesCount] = useState(0);
-  const [liked, setLiked] = useState(false);
-
-   const { data: postlike = [] } = useQuery(
-     ["postlike", clickedid],
-     async () => {
-       const res = await axiosSequre.get(`/likes/${clickedid}`);
-       return res.data;
-     }
-   );
-
-  const handleLike = (data) => {
-      const likePost = {
-        postId: _id,
-    };
-    axiosSequre.post("/likes", likePost).then((data) => {
-      if (data?.data?.insertedId) {
-        reset();
-        refetch();
-      }
-    });
-    console.log(likePost);
-  };
-
+  const [like, setLike] = useState(false);
+  const [count,setCount]=useState(0)
  
+  const handleLike = () => {
+    if (!like) {
+      setLike(true)
+      setCount(count + 1)
+    } else {
+      setLike(false)
+        setCount(count - 1);
+    }
+  }
   return (
     <div className="w-[500px] mt-5 p-4  shadow-xl rounded-lg">
       {/* user information */}
@@ -188,16 +174,12 @@ const SelfPostDesign = ({ selfpost }) => {
           onClick={() => handleLike(_id)}
           className="flex items-center gap-1"
         >
-          {/* <button>
-              <AiTwotoneHeart
-                size={30}
-                className="cursor-pointer text-red-600"
-              />
-            </button> */}
-
-          <button>
-            <AiOutlineHeart size={20} className="cursor-pointer" />
-          </button>
+          {like ? (
+            <AiTwotoneHeart size={26} className="cursor-pointer text-red-600" />
+          ) : (
+            <AiOutlineHeart size={26} className="cursor-pointer" />
+          )}
+          <p> likes: {count}</p>
         </div>
         {/* comment button */}
         <div onClick={() => makeComment(_id)} className="">
