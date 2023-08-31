@@ -11,6 +11,7 @@ import AllUser from "../Pages/Dashboard/Admin/AllUser/AllUser";
 import UserProjectUpdateForm from "../Pages/UserDetails/userProjectUpdateData/UserProjectUpdateForm";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import UserProfile from "../Pages/UserProfile/UserProfile";
+import JobApplyForm from "../Pages/JobPostAllPage/JobApplyForm/JobApplyForm";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: "massageroute",
         element: <MessagingRoute></MessagingRoute>,
+      },
+      {
+            path: "jobApplyForm/:id",
+            element: <JobApplyForm></JobApplyForm>,
       },
       {
         path: "projectupdate/:id",
