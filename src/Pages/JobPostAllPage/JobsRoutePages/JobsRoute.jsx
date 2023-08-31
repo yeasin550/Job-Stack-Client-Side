@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import useJobPost from "../../../Hooks/useJobPost"
 import JobPostDesign from "../../Components/JobPostDesign/JobPostDesign";
-import { FaBell, FaFile, FaRegBookmark, FaSearch, FaYoutube } from "react-icons/fa";
-
+import { FaBell, FaFile, FaRegBookmark, FaSearch, FaShoppingBag, FaYoutube } from "react-icons/fa";
+import AppliedJobs from "../JobApplyForm/AppliedJobs";
+import { AuthContext } from "../../../Providers/AuthProvider";
+ import { BsPersonCheckFill } from 'react-icons/bs';
+import AppliedMember from "../AppliedMember/AppliedMember";
 const JobsRoute = () => {
+  const { user } = useContext(AuthContext);
+  // const [appliedJobs, setAppliedJobs] = useState();
   const [searchText, setSearchText] = useState("");
   const [jobposts] = useJobPost();
   const [tabIndex, setTabIndex] = useState(0);
@@ -13,7 +18,7 @@ const JobsRoute = () => {
   const clickactive = (active) => {
     setActive(active);
   };
-  console.log(jobposts);
+  // console.log(jobposts);
   const getUniqueData = (data, property) => {
     let newVal = data.map((curElem) => {
       return curElem[property];
@@ -21,7 +26,6 @@ const JobsRoute = () => {
     return (newVal = ["All", ...new Set(newVal)]);
     // console.log(newVal);
   };
-
   const categoryOnlyData = getUniqueData(jobposts, "jobCategory");
   const handleFilter = (posts) => {
     if (searchText) {
@@ -52,6 +56,24 @@ const JobsRoute = () => {
                   }`}
               >
                 <FaBell /> Job Alerts
+              </Tab>
+              <Tab
+                onClick={() => clickactive("appliedJobs")}
+                className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                  active == "appliedJobs" ? "activetab cursor-pointer" : ""
+                }`}
+              >
+                <FaShoppingBag />
+                Applied Jobs
+              </Tab>
+              <Tab
+                onClick={() => clickactive("appliedMember")}
+                className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                  active == "appliedMember" ? "activetab cursor-pointer" : ""
+                }`}
+              >
+               
+                <BsPersonCheckFill/> Applied Member
               </Tab>
               <Tab
                 onClick={() => clickactive("about")}
@@ -108,7 +130,6 @@ const JobsRoute = () => {
                       ))}
                     </select>
                   </div>
-
                 </form>
 
                 {/* job data display */}
@@ -133,6 +154,20 @@ const JobsRoute = () => {
 
             {/* user Group */}
             <TabPanel>Group</TabPanel>
+            {/* user appliedJobs */}
+            <TabPanel>
+              <h1 className="text-center font-bold text-3xl my-5 text-green-600">
+                My Jobs
+              </h1>
+              <AppliedJobs />
+            </TabPanel>
+            {/* user appliedJobs */}
+            <TabPanel>
+              <h1 className="text-center font-bold text-3xl my-5 text-green-600">
+                Applied Member
+              </h1>
+              <AppliedMember/>
+            </TabPanel>
             {/* User Event*/}
             <TabPanel>Event</TabPanel>
             {/* user Pages  */}

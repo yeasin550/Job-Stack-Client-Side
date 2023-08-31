@@ -44,6 +44,7 @@ const JobPostForm = () => {
           } = data;
           const saveUser = {
             image: imgURL,
+            email: user.email,
             userPhoto: user.photoURL,
             jobDescription,
             jobTitle,
@@ -53,8 +54,7 @@ const JobPostForm = () => {
             location,
             salary,
           };
-          axiosSequre
-            .post("/job", saveUser)
+          axiosSequre .post("/job", saveUser)
             .then((response) => {
               if (response.data.insertedId) {
                 // Reset the form
@@ -95,13 +95,7 @@ const JobPostForm = () => {
           <h1 className="px-3 w-full h-12 rounded-full bg-gray-200 hover:bg-gray-300 text-black flex justify-center items-center text-lg">
             Job post
           </h1>
-          {/* <div>
-            <img
-              className="w-20 h-20 rounded-full"
-              src="https://img.freepik.com/free-vector/tiny-people-searching-business-opportunities_74855-19928.jpg?w=826&t=st=1692091974~exp=1692092574~hmac=15e47b9e6f5cf8f13dc4d8f910d754134ab6a6880e7f3069da352d35299d3039"
-              alt=""
-            />
-          </div> */}
+         
         </label>
       </div>
       <div className="mx-5 md:w-1/2 md:mx-auto px-5 py-10">
@@ -171,6 +165,7 @@ const JobPostForm = () => {
                   </span>
                 )}
               </div>
+            
 
               {/* job Title */}
               <div className="form-control w-full">
