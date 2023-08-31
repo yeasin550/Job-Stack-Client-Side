@@ -1,22 +1,34 @@
 import React, { useEffect, useState } from 'react';
+import useAxioSequre from '../../../Hooks/useAxiosSequre';
+import { useQuery } from '@tanstack/react-query';
 
 const Conversation = ({ data, currentUserId, online}) => {
 
-    const [userData, setUserData] = useState(null)
-
-    useEffect(()=> {
-  
-      const userId = data.members.find((id)=>id!==currentUserId)
+    // const [userData, setUserData] = useState(null)
+    const [axiosSequre] = useAxioSequre();
+    const userId = data?.members?.find((id)=>id!==currentUserId)
       console.log(userId)
+
+      const { data: userData = [], refetch } = useQuery(['userData',userId], async () => {
+        const res = await axiosSequre.get(`/user/${userId}`)
+        return res.data;
+    })
+
+
+
+
+    // useEffect(()=> {
+  
+      
     
-        fetch(`https://jobstack-backend-teal.vercel.app/user/${userId}`)
-        .then((res) => res.json())
-        .then((data) =>{
-        //    console.log(data)
-           setUserData(data)
+    //     fetch(`https://jobstack-backend-teal.vercel.app/user/${userId}`)
+    //     .then((res) => res.json())
+    //     .then((data) =>{
+    //     //    console.log(data)
+    //        setUserData(data)
    
-        })
-       },[])
+    //     })
+    //    },[])
 
     return (
         <div className='flex items-center py-8 border-b border-b-gray-300'>

@@ -14,7 +14,7 @@ const MessageBox = ({chat, currentUserId, setSendMessage, receivedMessage}) => {
     useEffect(()=> {
 
         const userId = chat?.members?.find((id)=>id!==currentUserId)
-        // console.log(userId)
+        console.log(userId)
 
         if (chat !== null)
 

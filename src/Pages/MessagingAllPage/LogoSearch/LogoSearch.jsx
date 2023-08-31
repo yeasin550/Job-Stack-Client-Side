@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from '../../assets/images/Job-Stack.png'
-import { UilSearch } from '@iconscout/react-unicons'
+import logo from '../../../assets/logo/job-stack.png'
+
 import './LogoSearch.css'
 
 
@@ -11,7 +11,7 @@ const LogoSearch = () => {
         <div className="Search">
             <input type="text" placeholder="#Explore"/>
             <div className="s-icon">
-                  <UilSearch/>
+                  {/* <UilSearch/> */}
             </div>
         </div>
       </div>
