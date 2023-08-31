@@ -42,8 +42,8 @@ const Register = () => {
   // main form
 
   const onSubmit = (data) => {
-    console.log(data);
-    if (data.password == data.confirmPassword) {
+
+    if (data?.password == data?.confirmPassword) {
       const formData = new FormData();
       formData.append("image", data.image[0]);
       fetch(img_hosting_url, {

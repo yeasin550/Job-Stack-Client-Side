@@ -18,9 +18,9 @@ import Software from "../../../../assets/categories images/software.jpg";
 
 const Categories = () => {
   return (
-    <div className="max-w-screen-xl px-5 mx-auto pt-28">
+    <div className="max-w-screen-xl  px-5 mx-auto lg:pt-8">
       <div className="text-center mb-9">
-        <h1 className="text-5xl font-bold ">Categories</h1>
+        <h1 className="lg:text-5xl text-3xl font-bold ">Categories</h1>
         <p className="mt-5 text-lg">
           Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula
         </p>

@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import Swal from "sweetalert2";
-
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
@@ -66,3 +65,6 @@ const Sociallogin = () => {
 };
 
 export default Sociallogin;
+
+
+

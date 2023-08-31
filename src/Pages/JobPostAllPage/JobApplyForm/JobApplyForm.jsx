@@ -1,18 +1,15 @@
+
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
-
 const JobApplyForm = () => {
   const { id } = useParams();
   const { user } = useContext(AuthContext);
-  // const [userApply, setUserApply] = useState();
-  const [text, setText] = useState("");
   const [axiosSequre] = useAxioSequre();
   const [userEroor, setUserError] = useState("");
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
@@ -31,82 +28,72 @@ const JobApplyForm = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    const formData = new FormData();
-    formData.append("image", data.image[0]);
+const onSubmit = (data) => {
+  console.log(data);
+  const formData = new FormData();
+  formData.append("image", data.resumeImage[0]);
 
-    fetch(img_hosting_url, {
-      method: "POST",
-      body: formData,
+  fetch(img_hosting_url, {
+    method: "POST",
+    body: formData,
+  })
+    .then((res) => res.json())
+    .then((imageResponse) => {
+      console.log(imageResponse);
+
+      if (imageResponse.success) {
+        const imgURL = imageResponse.data.display_url;
+        const { number, questions } = data;
+        const currentDate = new Date();
+        const day = currentDate.getDate();
+        const month = currentDate.getMonth() + 1;
+        const year = currentDate.getFullYear();
+        const formattedDay = day < 10 ? `0${day}` : day.toString();
+        const formattedMonth = month < 10 ? `0${month}` : month.toString();
+        const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
+        const saveUser = {
+          resumeImage: imgURL,
+          name: user.displayName,
+          applyEmail: user.email,
+          number,
+          postId: id,
+          questions,
+          jobPostEmail: userApply[0]?.email,
+          jobTitle: userApply[0]?.jobTitle,
+          companyName: userApply[0]?.companyName,
+          jobCategory: userApply[0]?.jobCategory,
+          jobDescription: userApply[0]?.jobDescription,
+          salary: userApply[0]?.salary,
+          userPhoto: userApply[0]?.userPhoto,
+          workplace: userApply[0]?.workplace,
+          postDate: formattedDate,
+        };
+        console.log(saveUser);
+        axiosSequre
+          .post("/jobapply", saveUser)
+          .then((response) => {
+                if (response.data.insertedId) {
+                  reset();
+                  Swal.fire({
+                    icon: "success",
+                    title: "Job apply successfully",
+                    showConfirmButton: false,
+                    timer: 3000,
+                  });
+                }
+              })
+              .catch((error) => {
+                setUserError(error.message);
+              });
+      } else {
+        setUserError("Image response not successful");
+      }
     })
-      .then((res) => res.json())
-      .then((imageResponse) => {
-        console.log(imageResponse);
+    .catch((error) => {
+      setUserError(error.message);
+    });
+};
 
-        if (imageResponse.success) {
-          const imgURL = imageResponse.data.display_url;
-          const {number, questions } = data;
-          const currentDate = new Date();
-          const day = currentDate.getDate();
-          const month = currentDate.getMonth() + 1;
-          const year = currentDate.getFullYear();
-          const formattedDay = day < 10 ? `0${day}` : day.toString();
-          const formattedMonth = month < 10 ? `0${month}` : month.toString();
-          const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
-          const saveUser = {
-            image: imgURL,
-            name: user.displayName,
-            applyEmail: user.email,
-            number,
-            postId: id,
-            questions,
-            jobPostEmail: userApply[0]?.email,
-            jobTitle: userApply[0]?.jobTitle,
-            companyName: userApply[0]?.companyName,
-            jobCategory: userApply[0]?.jobCategory,
-            jobDescription: userApply[0]?.jobDescription,
-            salary: userApply[0]?.salary,
-            userPhoto: userApply[0]?.userPhoto,
-            workplace: userApply[0]?.workplace,
-            image: userApply[0]?.image,
-            postDate: formattedDate,
-          };
-          console.log(saveUser);
-          axiosSequre
-            .post("/jobapply", saveUser)
-            .then((response) => {
-              // console.log(response);
-
-              if (response.data.insertedId) {
-                // Reset the form
-                reset();
-
-                // Display success toast
-                Swal.fire({
-                  icon: "success",
-                  title: "Job apply successfully",
-                  showConfirmButton: false,
-                  timer: 3000,
-                });
-
-                // Optionally navigate after some time
-                // setTimeout(() => {
-                //   navigate("/");
-                // }, 2000);
-              }
-            })
-            .catch((error) => {
-              setUserError(error.message);
-            });
-        } else {
-          setUserError("Image response not successful");
-        }
-      })
-      .catch((error) => {
-        setUserError(error.message);
-      });
-  };
   return (
     <div className="w-2/3 mx-auto my-12 border border-green-300 shadow-lg shadow-green-50 px-5 py-5 rounded-md">
       <form
@@ -190,12 +177,12 @@ const JobApplyForm = () => {
           </label>
           <input
             type="file"
-            {...register("image")}
+            {...register("resumeImage")}
             className="file-input file-input-success file-input-bordered w-full"
           />
-          {errors.image && (
+          {errors.resumeImage && (
             <span className="text-red-600 animate-pulse">
-              Image is required
+              Resume is required
             </span>
           )}
         </div>

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import useJobPost from "../../../Hooks/useJobPost";
+import useJobPost from "../../../Hooks/useJobPost"
 import JobPostDesign from "../../Components/JobPostDesign/JobPostDesign";
 import { FaBell, FaFile, FaRegBookmark, FaSearch, FaShoppingBag, FaYoutube } from "react-icons/fa";
 import AppliedJobs from "../JobApplyForm/AppliedJobs";
@@ -27,7 +27,6 @@ const JobsRoute = () => {
     // console.log(newVal);
   };
   const categoryOnlyData = getUniqueData(jobposts, "jobCategory");
-
   const handleFilter = (posts) => {
     if (searchText) {
       if (posts?.jobTitle?.toLowerCase()?.includes(searchText?.toLowerCase())) {
@@ -46,18 +45,15 @@ const JobsRoute = () => {
             <TabList className="flex flex-col justify-center items-start px-5 py-10 gap-6">
               <Tab
                 onClick={() => clickactive("post")}
-                className={` flex items-center gap-2 cursor-pointer userinfotext ${
-                  active == "post" ? "activetab cursor-pointer" : ""
-                }`}
+                className={` flex items-center gap-2 cursor-pointer userinfotext ${active == "post" ? "activetab cursor-pointer" : ""
+                  }`}
               >
                 <FaRegBookmark /> All Jobs
               </Tab>
-
               <Tab
                 onClick={() => clickactive("group")}
-                className={` flex items-center gap-3 cursor-pointer userinfotext ${
-                  active == "group" ? "activetab cursor-pointer" : ""
-                }`}
+                className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "group" ? "activetab cursor-pointer" : ""
+                  }`}
               >
                 <FaBell /> Job Alerts
               </Tab>
@@ -81,25 +77,22 @@ const JobsRoute = () => {
               </Tab>
               <Tab
                 onClick={() => clickactive("about")}
-                className={` flex items-center gap-3 cursor-pointer userinfotext ${
-                  active == "about" ? "activetab cursor-pointer" : ""
-                }`}
+                className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "about" ? "activetab cursor-pointer" : ""
+                  }`}
               >
                 <FaFile /> Resume Builder
               </Tab>
               <Tab
                 onClick={() => clickactive("connect")}
-                className={` flex items-center gap-3 cursor-pointer userinfotext ${
-                  active == "connect" ? "activetab cursor-pointer" : ""
-                }`}
+                className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "connect" ? "activetab cursor-pointer" : ""
+                  }`}
               >
                 <FaYoutube /> Job Seeker Guidance
               </Tab>
               <Tab
                 onClick={() => clickactive("more")}
-                className={` cursor-pointer userinfotext ${
-                  active == "more" ? "activetab cursor-pointer" : ""
-                }`}
+                className={` cursor-pointer userinfotext ${active == "more" ? "activetab cursor-pointer" : ""
+                  }`}
               >
                 Application Settings
               </Tab>

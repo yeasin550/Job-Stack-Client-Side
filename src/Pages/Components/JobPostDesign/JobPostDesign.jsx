@@ -4,17 +4,13 @@ import {
   FaShare,
 } from "react-icons/fa";
 import { FcLike } from "react-icons/fc";
-import JobApplyForm from "../../JobPostAllPage/JobApplyForm/JobApplyForm";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import moment from "moment/moment";
-import { Link, useNavigate } from "react-router-dom";
-// import { useContext } from "react";
-// import { AuthContext } from "../../Providers/AuthProvider";
-
+import { useNavigate } from "react-router-dom";
 const JobPostDesign = ({ posts }) => {
   const navigate = useNavigate();
-
+console.log(posts)
   const { user } = useContext(AuthContext);
 
   return (
@@ -25,10 +21,12 @@ const JobPostDesign = ({ posts }) => {
             <img
               className="h-16 w-16 rounded-full"
               src={user?.photoURL}
+              // src=""
               alt="img"
             />
             <div>
-              <h1 className="font-semibold">{posts?.position}</h1>
+              <h1 className="font-semibold ">{posts?.position}</h1>
+              {/* <h1>5 Days Left</h1> */}
               <h1 className="font-bold text-gray-600">
                 {moment().format("MMMM Do YYYY")}
               </h1>
@@ -50,7 +48,7 @@ const JobPostDesign = ({ posts }) => {
         </div>
         <hr />
 
-        {/* workplace, Location, Job Category div*/}
+        {/* workplace, Location, Job Category */}
 
         <div>
           <h3 className=" flex items-center gap-3 mt-5 font-semibold text-gray-800">
