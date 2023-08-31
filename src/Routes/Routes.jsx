@@ -11,6 +11,7 @@ import AllUser from "../Pages/Dashboard/Admin/AllUser/AllUser";
 import UserProjectUpdateForm from "../Pages/UserDetails/userProjectUpdateData/UserProjectUpdateForm";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import UserProfile from "../Pages/UserProfile/UserProfile";
+import TermsAndConditions from "../Pages/TermsAndConditions/TermsAndConditions";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "projectupdate/:id",
         element: <UserProjectUpdateForm></UserProjectUpdateForm>,
+      },
+      {
+        path: "termsandconditions",
+        element: <TermsAndConditions/>
       },
     ],
   },

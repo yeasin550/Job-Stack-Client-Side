@@ -3,9 +3,11 @@ import { AiFillHome, AiFillMessage, AiFillShopping } from "react-icons/ai";
 import { FaUserCircle, FaUserFriends, FaUsers } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import useAdmin from "../Hooks/useAdmin";
 
 const Dashbord = () => {
-      const { user, logOut } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+ const [isAdmin] = useAdmin();
   return (
     <div>
       <div className="drawer lg:drawer-open">
@@ -29,7 +31,7 @@ const Dashbord = () => {
                 className="object-cover w-24 h-24 mx-2 rounded-full"
                 src={user?.photoURL}
                 alt="avatar"
-                referrerPolicy="no-referrer"
+                draggable="false"
               />
               <Link to="/profile">
                 <h4 className="mx-2 mt-2 font-medium text-gray-800  hover:underline">
