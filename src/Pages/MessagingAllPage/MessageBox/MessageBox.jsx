@@ -123,7 +123,7 @@ const scroll = useRef();
                             return (
                                 <>
                                 <div ref={scroll}
-                                 className={`max-w-[45%] overflow-clip rounded-b-xl p-4 mb-6 ${message.senderId === currentUserId ? ' text-white chat-bubble-primary rounded-tl-xl ml-auto' : 'chat-bubble-secondary rounded-tr-xl'} `}>
+                                 className={`max-w-[45%] overflow-clip rounded-b-xl p-4 mb-6 ${message.senderId === currentUserId ? ' text-white bg-blue-700 rounded-tl-xl ml-auto' : 'bg-blue-500 text-white rounded-tr-xl'} `}>
                                     
                                 <p>{message.text}</p> 
                                 <div className='text-end'>

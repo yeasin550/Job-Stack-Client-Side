@@ -7,25 +7,24 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 import useAxioSequre from '../../../Hooks/useAxiosSequre';
 import { useQuery } from '@tanstack/react-query';
 import LogoSearch from '../LogoSearch/LogoSearch';
+import useBaseAPI from '../../../Hooks/useBaseAPI';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 
 const MessagingRoute = () => {
-
-  // const [userI, setUserI] = useState(JSON.parse(localStorage.getItem('user:detail')))
-
+    
+    const  [baseApi] = useBaseAPI()
     const {user} = useContext(AuthContext)
-    console.log( user)
-
+    
     const socket = useRef();
 
-    const [chats, setChats] = useState([]);
     const [userData, setUserData] = useState([])
     const [onlineUsers, setOnlineUsers] = useState([]);
     const [currentChat, setCurrentChat] = useState(null);
     const [sendMessage, setSendMessage] = useState(null);
     const [receivedMessage, setReceivedMessage] = useState(null);
-    const [id, setId] = useState(null)
-
+   
 
     const [axiosSequre] = useAxioSequre();
     const { data: userss = []} = useQuery(['userss'], async () => {
@@ -33,26 +32,9 @@ const MessagingRoute = () => {
      return res.data;
     })
   
-    
     const userI = userss[0]
     console.log(userI)
 
-    // ===================================================================
-
-    // useEffect(() => {
-    //   const fetchChats = async () => {
-    //     const res = await fetch(`https://jobstack-backend-teal.vercel.app/api/chat/${userI?.id}`, {
-    //       method: 'GET',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       }
-    //     });
-    //     const resData = await res.json()
-    //     setConversation(resData)
-    //     console.log(resData)
-    //   }
-    //   fetchChats()
-    // }, [])
 
     useEffect(() =>{
       fetch('https://jobstack-backend-teal.vercel.app/users')
@@ -68,23 +50,14 @@ const MessagingRoute = () => {
 
  console.log(senderId)
 
-//  const receiver = userData[0]._id
-//  console.log(receiver)
+ const { data: chatdata = [], refetch } = useQuery(['chatdata', userI?._id], async () => {
+  const res = await baseApi.get(`/chat/${userI?._id}`)
+  return res.data;
+})
 
-// const getId = (id) =>{
-//   setId(id)
 
-// }
-// console.log(id)
 
-//  const allUsers = userData?.filter(user => !idsToFilter.includes(user.id));
-
-//  const userId = chat?.members?.find((id)=>id!==currentUserId)
-
-//  const receiverId = receiver?.find((id) =>id !== senderId)
-//  console.log(receiverId)
-
-const getConversatoin = async (receiverId) => {
+const CreateConversation = async (receiverId) => {
   try {
     const response = await fetch('https://jobstack-backend-teal.vercel.app/api/chat', {
       method: 'POST',
@@ -98,8 +71,9 @@ const getConversatoin = async (receiverId) => {
     });
 
     if (response.ok) {
+      refetch()
       const result = await response.text();
-      console.log(result); // Conversation created successfully
+      console.log(result); 
     } else {
       console.error('Failed to create conversation');
     }
@@ -108,14 +82,6 @@ const getConversatoin = async (receiverId) => {
   }
 }
 
-
-
-
-    // ======================================================================
-
-
-    // const [singleUser] = useSingleUser()
-    // console.log(singleUser)
 
 
        // Send Message to socket server
@@ -129,7 +95,7 @@ const getConversatoin = async (receiverId) => {
        // Connect to Socket.io
 
        useEffect(() => {
-        socket.current = io("ws://localhost:8900");
+        socket.current = io("ws://localhost:8800");
         socket.current.emit("new-user-add", userI?._id);
         socket.current.on("get-users", (users) => {
           setOnlineUsers(users);
@@ -146,39 +112,17 @@ const getConversatoin = async (receiverId) => {
           setReceivedMessage(data)})
         }, []);
 
-      
-       
-     // Get the chat in chat section
-  useEffect(() => {
-    const getChats = async () => {
-      try {
-        const { data } = await userChats(userI?._id);
-        setChats(data);
-        console.log(data)
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getChats();
-    
-  }, [userI?._id]);
 
-
-
-
-
-
-  const checkOnlineStatus = (chat) => {
+    const checkOnlineStatus = (chat) => {
     const chatMember = chat.members.find((member) => member !== user._id);
     const online = onlineUsers.find((userI) => userI.userId === chatMember);
     return online ? true : false;
   };
 
-
     return (
    <>
         <div className='w-screen py-2 mx-auto flex'>
-          
+
         <div className='w-[22%] h-screen bg-gray-100 overflow-scroll'>
             <div className='flex items-center my-8 mx-14'>
                 <div><img src={user?.photoURL} width={50} height={50} className='border border-primary p-[2px] rounded-full'  alt=""/></div>
@@ -188,10 +132,11 @@ const getConversatoin = async (receiverId) => {
                 </div>
             </div>
             <hr />
+
             <div className='mx-14 mt-10'>
                 <div className='text-primary text-lg'>Messages</div>
                 <div>
-                {chats.map((chat) => (
+                 {chatdata?.map((chat) => (
                     
               <div
               onClick={() => {
@@ -205,16 +150,14 @@ const getConversatoin = async (receiverId) => {
                 />
               </div>
             ))} 
-            
-            {/* <div className='text-center text-lg font-semibold mt-24'>No Conversations</div> */}
-                    
+                
                 </div>
             </div>
         </div>
 
 
 
-        {/* MESSAGE BOX================================ */}
+        {/* MESSAGE BOX================================ End */}
 
 
         <div className='w-[55%] h-screen bg-white flex flex-col items-center'>
@@ -225,26 +168,23 @@ const getConversatoin = async (receiverId) => {
                      setSendMessage={setSendMessage}
                      receivedMessage={receivedMessage}
                     />
-           
-        </div>
+                    </div>
 
       {/* MESSAGE BOX================================ */}
 
 
-
-        <div className='w-[22%] h-screen bg-gray-50 px-8 py-16 overflow-scroll'><LogoSearch/>
-            <div className='text-primary text-lg'>People</div>
+        <div className='w-[22%] h-screen  bg-gray-50 px-8 py-16 overflow-scroll'><LogoSearch/>
           <hr />
+        <div className='text-primary text-lg'>People</div>
+        
           {userData.map((users) =>(
              <div
-             onClick={() => getConversatoin(users._id)}
+             onClick={() => CreateConversation(users._id)}
 
-             className='cursor-pointer flex items-center'>
+             className='cursor-pointer py-8 flex items-center'>
             <img src={users?.image} className="w-[60px]  h-[60px] rounded-full p-[2px] border border-primary"  alt=""/>
-              <h3 className='text-lg font-semibold'>{users?.name}</h3>
-  
+              <h3 className='text-lg font-semibold pl-4'>{users?.name}</h3>
             </div>
-
           ))}
          
             <div>
