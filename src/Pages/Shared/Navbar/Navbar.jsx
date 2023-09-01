@@ -1,12 +1,16 @@
-import React, {useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo/logo.png";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { FaBell, FaHome, FaRegCommentDots, FaShoppingBag, FaUserAlt, FaUserFriends } from "react-icons/fa";
+import useSingleUser from "../../../Hooks/useSingleUser";
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const { user, logOut } = useContext(AuthContext);
+  const [singleUser, refetch] = useSingleUser();
+  const single = singleUser[0];
+  const navigate = useNavigate();
   // user logout function 
   const handleLogOut = () => {
     logOut()
@@ -99,9 +103,8 @@ const Navbar = () => {
         </div>
 
         <div
-          className={` pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-            navbar ? "block" : "hidden"
-          }`}
+          className={` pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
+            }`}
         >
           <ul className="items-center justify-center text-center text-lg space-y-8 md:flex md:space-x-6 md:space-y-0">
             <li>
@@ -121,47 +124,56 @@ const Navbar = () => {
                 <FaShoppingBag s className="mx-auto"></FaShoppingBag> Jobs
               </Link>
             </li> : ""}
-           {user ?  <li>
+            {user ? <li>
               <Link to="/massageroute">
                 <FaRegCommentDots s className="mx-auto"></FaRegCommentDots>
                 Messaging
               </Link>
             </li> : ""}
-            <li>
-              <Link to="/notifications">
-                <FaBell className="mx-auto"></FaBell>
-                Notifications
-              </Link>
-            </li>
-            <li>
-              <Link to="/profile">
-                <FaUserAlt className="mx-auto"></FaUserAlt> Profile
-              </Link>
-            </li>
+            {
+              user && <li>
+                <Link to="/notifications">
+                  <FaBell className="mx-auto"></FaBell>
+                  Notifications
+                </Link>
+              </li>
+            }
+
           </ul>
         </div>
 
         <div
-          className={` pb-3 mt-8  md:block md:pb-0 md:mt-0  ${
-            navbar ? "block" : "hidden"
-          }`}
+          className={` pb-3 mt-8  md:block md:pb-0 md:mt-0  ${navbar ? "block" : "hidden"
+            }`}
         >
-          {user ? (
-            <Link to="/login">
-              <button
-                onClick={handleLogOut}
-                className="relative flex items-center justify-center text-lg mr-4 gap-2 px-5 py-2.5  bg-green-500 0 text-white rounded-lg shadow-md transition-all hover:shadow-lg  border-2 hover:border-green-500"
-              >
-                LogOut
-              </button>
-            </Link>
-          ) : (
-            <Link to="/login">
-              <button className="relative flex items-center justify-center text-lg mr-4 gap-2 px-5 py-2.5  bg-green-500 rounded-lg shadow-md transition-all hover:shadow-lg border-2 text-white hover:border-green-500">
-                Login
-              </button>
-            </Link>
-          )}
+          {user ? '' : <Link to="/login">
+            <button className="relative flex items-center justify-center text-lg mr-4 gap-2 px-5 py-2.5  bg-green-500 rounded-lg shadow-md transition-all hover:shadow-lg border-2 text-white hover:border-green-500">
+              Login
+            </button>
+          </Link>
+          }
+          
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                {
+                  single?.image ? <div className="w-20 rounded-full border border-blue-500">
+                  <img src={single?.image} alt="logo" />
+                </div> : <FaUserAlt className="w-20 rounded-full border border-blue-500"></FaUserAlt>
+                }
+                
+              </label>
+              <ul tabIndex={0} className="menu menu-sm dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                <li><button onClick={() => navigate('/profile')} className="btn btn-sm w-full bg-green-600 text-white hover:bg-green-500 hover:text-white">Profile</button></li>
+                <li><button onClick={() => navigate('/profile')} className="btn btn-sm w-full bg-blue-600 text-white hover:bg-blue-500 hover:text-white">settings</button></li>
+                <li><button
+                  onClick={handleLogOut}
+                  className="btn btn-sm w-full bg-rose-600 text-white hover:bg-rose-500 hover:text-white"
+                >
+                  LogOut
+                </button></li>
+              </ul>
+            </div>
+          
         </div>
       </div>
     </nav>

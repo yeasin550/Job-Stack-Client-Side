@@ -85,8 +85,6 @@ const ConnectedAllUser = () => {
       {/* all user div  */}
       <div className="max-h-[600px] overflow-y-auto scroll-pr-2  touch-none">
         <ConnectSingleUser />
-        <ConnectSingleUser />
-        <ConnectSingleUser />
       </div>
       {/* all user div  */}
     </div>

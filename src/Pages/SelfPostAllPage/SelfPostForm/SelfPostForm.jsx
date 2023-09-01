@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { AiFillYoutube } from "react-icons/ai";
 import { HiPhoto } from "react-icons/hi2";
@@ -8,11 +7,13 @@ import useAxioSequre from "../../../Hooks/useAxiosSequre";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import useSelfPostfindEmail from "../../../Hooks/useSelfPostfindEmail";
 import { getCurrentTimeStamp } from "../../../Hooks/useMonent";
+import { useForm } from "react-hook-form";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
-const SelfPostForm = ({ refetch }) => {
+const SelfPostForm = () => {
   const { user } = useContext(AuthContext);
   const [axiosSequre] = useAxioSequre();
+  const [singleSelfPost, refetch] = useSelfPostfindEmail();
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
   const [isOpen, setIsOpen] = useState(false);
 
@@ -25,12 +26,7 @@ const SelfPostForm = ({ refetch }) => {
     setIsOpen(false);
   };
 
-  const {
-    register,
-    reset,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit,reset, formState: { errors } } = useForm();
   // Make the POST request
   const onSubmit = (data) => {
     const imgdata = new FormData();
@@ -54,13 +50,14 @@ const SelfPostForm = ({ refetch }) => {
           };
           axiosSequre.post("/selfpost", selfPost).then((data) => {
             if (data.data.insertedId) {
+              reset();
+              refetch();
               Swal.fire({
                 icon: "success",
                 title: "User Post successfully.",
                 timer: 1500,
               });
-              refetch();
-              reset();
+             
             }
           });
         }

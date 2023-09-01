@@ -6,13 +6,11 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
 const JobApplyForm = ({posts}) => {
-  console.log(posts)
   const {user} = useContext(AuthContext)
   const [text, setText] = useState("");
   const [axiosSequre] = useAxioSequre();
   const [userEroor, setUserError] = useState("");
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
-
   const {
     register,
     handleSubmit,
@@ -51,11 +49,6 @@ const JobApplyForm = ({posts}) => {
                   showConfirmButton: false,
                   timer: 3000,
                 });
-
-                // Optionally navigate after some time
-                // setTimeout(() => {
-                //   navigate("/");
-                // }, 2000);
               }
             })
             .catch((error) => {

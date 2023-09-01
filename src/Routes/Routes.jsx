@@ -9,12 +9,14 @@ import MessagingRoute from "../Pages/MessagingAllPage/MessagingRoute/MessagingRo
 import UserProjectUpdateForm from "../Pages/UserDetails/userProjectUpdateData/UserProjectUpdateForm";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import UserProfile from "../Pages/UserProfile/UserProfile";
+import PraivateRoute from "./PraivateRoute/PraivateRoute";
+import CompanyRegistration from "../Pages/UserAuthentication/CompanyRegistration/CompanyRegistration";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
-        errorElement: <ErrorPage/>,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "/",
@@ -27,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: 'login',
                 element: <Login></Login>
+            },
+            {
+                 path: 'companyregister',
+                 element: <CompanyRegistration></CompanyRegistration>
             },
             {
                 path: 'profile',
@@ -48,7 +54,7 @@ const router = createBrowserRouter([
                 path: 'projectupdate/:id',
                 element: <UserProjectUpdateForm></UserProjectUpdateForm>
             }
-            
+
         ]
     },
 ]);

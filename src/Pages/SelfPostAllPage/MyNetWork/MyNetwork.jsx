@@ -4,8 +4,7 @@ import "react-tabs/style/react-tabs.css";
 import SelfPostDesign from "../../Components/SelfPostDesign/SelfPostDesign";
 import useSelfPost from "../../../Hooks/useSelfPost";
 import ConnectedAllUser from "../../Components/ConnectedAllUsers/ConnectedAllUser";
-import AllUsers from "../AllUsers/AllUsers";
-
+import AllUsers from "../AllUsers/AllUsers"
 const MyNetwork = () => {
   const [allselfdata] = useSelfPost();
   const [tabIndex, setTabIndex] = useState(0);
@@ -94,7 +93,9 @@ const MyNetwork = () => {
               <ConnectedAllUser />
             </TabPanel>
             {/* user fllowing and flowers */}
-            <TabPanel>Fllowing and Fllowers</TabPanel>
+            <TabPanel>
+              <AllUsers></AllUsers>
+            </TabPanel>
             {/* user Group */}
             <TabPanel>Group</TabPanel>
             {/* User Event*/}
