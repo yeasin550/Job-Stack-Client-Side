@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import './UserProfile.css'
 import { FaPen, FaUserAlt } from "react-icons/fa";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
@@ -13,15 +13,13 @@ import JobPostDesign from "../Components/JobPostDesign/JobPostDesign";
 import { useForm } from "react-hook-form";
 import ConfirmRequset from "../ConfirmRequest/ConfirmRequset";
 import Temporary from "../Components/Temporary";
-import { AuthContext } from "../../Providers/AuthProvider";
 import useSingleUser from "../../Hooks/useSingleUser";
 import useProfileUpdate from "../../Hooks/useProfileUpdate";
-
+import ConnectedAllUser from "../Components/ConnectedAllUsers/ConnectedAllUser";
 
 const UserProfile = () => {
 
   const [singleSelfPost] = useSelfPostfindEmail();
-  const { user } = useContext(AuthContext);
   const [singlejobposts, refetch] = useJobPosFindEmail();
   const [singleUser] = useSingleUser();
   const single = singleUser[0];
@@ -35,7 +33,6 @@ const UserProfile = () => {
   const clickactive = (active) => {
     setActive(active);
   };
-
   return (
     //div main container
     <div className="mt-6 mb-24 lg:px-44">
@@ -121,8 +118,8 @@ const UserProfile = () => {
                 Connect
               </Tab>
               <Tab
-                onClick={() => clickactive("Connection request")}
-                className={` cursor-pointer text ${active == "Connection request" ? "active cursor-pointer" : ""
+                onClick={() => clickactive("Connectionrequest")}
+                className={` cursor-pointer text ${active == "Connectionrequest" ? "active cursor-pointer" : ""
                   }`}
               >
                 Connection request
@@ -162,7 +159,9 @@ const UserProfile = () => {
               <UserInfo></UserInfo>
             </TabPanel>
             {/* user connect   */}
-            <TabPanel></TabPanel>
+            <TabPanel>
+              <ConnectedAllUser/>
+            </TabPanel>
             {/* user Connect request */}
             <TabPanel>
               <ConfirmRequset></ConfirmRequset>

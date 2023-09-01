@@ -53,8 +53,7 @@ const JobPostForm = ({ refetch }) => {
             location,
             salary,
           };
-          axiosSequre
-            .post("/job", saveUser)
+          axiosSequre .post("/job", saveUser)
             .then((response) => {
               if (response.data.insertedId) {
                 reset();
@@ -165,6 +164,7 @@ const JobPostForm = ({ refetch }) => {
                   </span>
                 )}
               </div>
+            
 
               {/* job Title */}
               <div className="form-control w-full">
