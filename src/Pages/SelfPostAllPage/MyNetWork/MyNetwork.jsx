@@ -13,7 +13,7 @@ const MyNetwork = () => {
         setActive(active);
     };
     return (
-      <div className="px-24 py-20 mb-20 mt-20 ">
+      <div className="px-24 py-10">
         <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <div className="flex gap-1">
             <div className="shadowdiv border rounded-md w-80 h-100%">
@@ -89,7 +89,9 @@ const MyNetwork = () => {
                 </div>
               </TabPanel>
               {/* user Connections  */}
-              <TabPanel>connections</TabPanel>
+              <TabPanel>
+                <ConnectedAllUser></ConnectedAllUser>
+              </TabPanel>
               {/* user fllowing and flowers */}
               <TabPanel>
                 <AllUsers />
