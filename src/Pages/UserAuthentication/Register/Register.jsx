@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Lottie from "lottie-react";
 import signupanimation from "../../../assets/animation/105639-signup.json";
-import { sendEmailVerification } from "firebase/auth";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
@@ -56,10 +55,6 @@ const Register = () => {
             const imgURL = imageResponse.data.display_url;
             createUser(data.email, data.password)
               .then((result) => {
-                const loggedUser = result.user;
-                console.log(loggedUser);
-                sendEmailVerification(loggedUser);
-
                 updateUserProfile(data.name, imgURL);
                 console.log(loggedUser);
                 const saveUser = {
@@ -67,10 +62,11 @@ const Register = () => {
                   email: data.email,
                   image: imgURL,
                   gender: data.gender,
+                  role: 'user'
                 };
                 axiosSequre.post("/users", saveUser).then((data) => {
                   console.log(data);
-                  if (data.data.insertedId){
+                  if (data.data.insertedId) {
                     reset();
                     Swal.fire({
                       icon: "success",
@@ -87,7 +83,32 @@ const Register = () => {
                 setUserError(error.message);
               });
           } else {
-            setUserError("Image response not success");
+            createUser(data.email, data.password)
+              .then((result) => {
+                updateUserProfile(data.name);
+                const saveUser = {
+                  name: data.name,
+                  email: data.email,
+                  gender: data.gender,
+                };
+                axiosSequre.post("/users", saveUser).then((data) => {
+                  console.log(data);
+                  if (data.data.insertedId) {
+                    reset();
+                    Swal.fire({
+                      icon: "success",
+                      title: "User created successfully.",
+                      timer: 1500,
+                    });
+                    setTimeout(() => {
+                      navigate("/"); // Use navigate to navigate
+                    }, 2000);
+                  }
+                });
+              })
+              .catch((error) => {
+                setUserError(error.message);
+              });
           }
         });
     } else {
@@ -171,11 +192,6 @@ const Register = () => {
                 {...register("image")}
                 className="file-input file-input-success file-input-bordered w-full"
               />
-              {errors.image && (
-                <span className="text-red-600 animate-pulse">
-                  Image is required
-                </span>
-              )}
             </div>
           </div>
           <div className="flex gap-5 flex-col lg:flex-row">

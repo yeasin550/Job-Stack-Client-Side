@@ -1,13 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
-import loginanimation from "../../../assets/animation_ll1yt389.json";
+import loginanimation from "../../../assets/animation/animation_ll1yt389.json";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import Sociallogin from "../SocialLogin/Sociallogin";
-import { sendEmailVerification } from "@firebase/auth";
 
 const Login = () => {
 
@@ -32,54 +31,26 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  // const onSubmit = (data) => {
-  //   const email = data?.email;
-  //   const password = data?.password;
-  //   signIn(email, password)
-  //     .then((result) => {
-  //       const user = result.user;
-  //       reset();
-  //       console.log(user);
-  //       Swal.fire({
-  //         icon: "success",
-  //         title: "Login successfully.",
-  //         showConfirmButton: false,
-  //         timer: 1500,
-  //       });
-  //       navigate(from, { replace: true });
-  //     })
-  //     .catch((err) => {
-  //       setError(err.message);
-  //       console.log(err.message);
-  //     });
-  // };
-  
-    const onSubmit = async (data) => {
-      try {
-        // console.log(data);
-        const result = await signIn(data.email, data.password);
-        const loggedUser = result.user;
 
-        // You should import the `sendEmailVerification` function and use it here
-        await sendEmailVerification(loggedUser);
-
+  const onSubmit = (data) => {
+    signIn(data?.email, data?.password)
+      .then(result => {
+        const user = result.user;
+        reset();
+        console.log(user);
         Swal.fire({
-          title: "Email verification sent!",
-          showClass: {
-            popup: "animate__animated animate__fadeInDown",
-          },
-          hideClass: {
-            popup: "animate__animated animate__fadeOutUp",
-          },
+          icon: 'success',
+          title: 'Login successfully.',
+          showConfirmButton: false,
+          timer: 1500
         });
-
-        Swal.fire("Good job!", "Login successfully", "success");
         navigate(from, { replace: true });
-      } catch (error) {
-        console.error("Error logging in:", error);
-      }
-    };
-
+      })
+      .catch(err => {
+        setError(err.message);
+        console.log(err.message);
+      })
+  };
   // handle reset password
   const handleResetPassword = (event) => {
     setError(null);
@@ -171,12 +142,16 @@ const Login = () => {
               />
             </div>
             {error && <p className="text-center text-error mb-2">{error}</p>}
-            <p className="text-center">
+            <div className="flex justify-center font-sans text-[18px] items-center">
               Don't have an account?{" "}
-              <Link to="/signup" className="text-green-500 underline">
-                Create an account
-              </Link>
-            </p>
+             ( <button><Link to="/signup" className="text-blue-500 underline">
+                user
+              </Link></button>/
+              <button><Link to="/companyregister" className="text-blue-500 underline">
+                company
+              </Link></button>)
+
+            </div>
           </form>
           {/* social login google and facebook */}
           <Sociallogin></Sociallogin>

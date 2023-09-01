@@ -4,7 +4,7 @@ import useSelfPostfindEmail from "./useSelfPostfindEmail";
 
 const useDeletSelfPost = () => {
     const [axiosSequre] = useAxioSequre();
-    const [refetch] = useSelfPostfindEmail();
+    const [singleSelfPost, refetch] = useSelfPostfindEmail();
     const handleDelete = (_id) => {
         Swal.fire({
             title: "Are you sure?",

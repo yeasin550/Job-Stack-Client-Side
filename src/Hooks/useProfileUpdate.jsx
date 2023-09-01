@@ -3,7 +3,6 @@ import useAxioSequre from "./useAxiosSequre";
 import useSingleUser from "./useSingleUser";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 const useProfileUpdate = () => {
-
     const [axiosSequre] = useAxioSequre();
     const [singleUser, refetch] = useSingleUser();
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
@@ -35,13 +34,14 @@ const useProfileUpdate = () => {
     //  update user name 
     const updateName = (data) => {
         if (data?.name) {
+            console.log(data?.name)
             const nameUpdate = { name: data?.name };
             console.log(nameUpdate)
             axiosSequre.put(`/editprofile/${singleUser[0]?._id}`, nameUpdate)
             .then(data => {
                 if (data?.data?.modifiedCount) {
                     Swal.fire('Update Name')
-                    refetch();
+                     refetch();
                 }
             });
         }
@@ -50,7 +50,7 @@ const useProfileUpdate = () => {
     //  update user locations 
     const updateLocations = (data) => {
         if (data?.currentLocation) {
-            const locationsad = { locationss: data?.currentLocation };
+            const locationsad = { currentLocation: data?.currentLocation };
             console.log(locationsad)
             axiosSequre.put(`/editprofile/${singleUser[0]?._id}`, locationsad)
             .then(data => {
@@ -101,12 +101,7 @@ const useProfileUpdate = () => {
             });
     };
 
-
-
     return [updateProfileImage, updateBio, updateLocations, updateName, updateCoverPhoto];
 };
 
 export default useProfileUpdate;
-
-
-
