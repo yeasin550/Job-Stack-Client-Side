@@ -23,6 +23,7 @@ const UserProjectSkills = () => {
         return res.data;
     })
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
     const onSubmit = data => {
         console.log(data);
         const { projectTitle, projectDescription, liveLink, codeLink, duration, workduration } = data;
@@ -45,9 +46,27 @@ const UserProjectSkills = () => {
             })
     };
     //    project delet 
-    const deletProject = (id) => {
-        console.log(id);
 
+    const deletProject = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result?.isConfirmed) {
+                axiosSequre.delete(`/deletproject/${id}`)
+                    .then((data) => {
+                        if (data?.data.deletedCount > 0) {
+                            Swal.fire("Deleted!", "Your Project has been deleted.", "success");
+                            refetch();
+                        }
+                    });
+            }
+        });
     };
 
     return (
@@ -116,14 +135,14 @@ const UserProjectSkills = () => {
                                 <label className="label">
                                     <span className="label-text">Project Live Link</span>
                                 </label>
-                                <input {...register("liveLink", { required: true })} type="text" placeholder="type here" className="input input-bordered" />
+                                <input {...register("liveLink", { required: true })} type="url" pattern="https://.*"  placeholder="https://liveLink.com" className="input input-bordered" />
                                 {errors.liveLink && <span className='text-purple-600 animate-pulse'>liveLink is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Project Code Link</span>
                                 </label>
-                                <input {...register("codeLink", { required: true })} type="text" placeholder="type here" className="input input-bordered" />
+                                <input {...register("codeLink", { required: true })} type="url" pattern="https://.*"  placeholder="https://codeLink.com" className="input input-bordered" />
                                 {errors.codeLink && <span className='text-purple-600 animate-pulse'>codeLink is required</span>}
                             </div>
                             <div className="form-control mt-6">

@@ -13,7 +13,7 @@ const AllUsers = () => {
   }, []);
 
   if (!allUser) {
-    return <span className="loading loading-bars loading-lg"></span>;
+    return <div className="text-3xl font-bold font-sans text-green-500">Loding....</div>;
   }
 
   const handleFind = (event) => {
@@ -67,10 +67,10 @@ const AllUsers = () => {
       </div>
       {allUser.length > 0 ? (
         <div>
-          <div className="grid md:grid-cols-4 gap-7 mt-8 px-5 w-full h-screen overflow-auto">
-            {allUser.map((person, buttonText) => (
+          <div className="grid md:grid-cols-3 gap-7  px-5 w-full h-screen overflow-auto">
+            {allUser.map((person) => (
               <ProfileCard
-                key={person._id}
+                key={person?._id}
                 person={person}
                 buttonText="Connect"
               />

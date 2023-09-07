@@ -6,15 +6,21 @@ import Login from "../Pages/UserAuthentication/Login/Login";
 import MyNetwork from "../Pages/SelfPostAllPage/MyNetWork/MyNetwork";
 import JobsRoute from "../Pages/JobPostAllPage/JobsRoutePages/JobsRoute";
 import MessagingRoute from "../Pages/MessagingAllPage/MessagingRoute/MessagingRoute";
+import Dashbord from "../Layout/Dashbord";
+import AllUser from "../Pages/Dashboard/Admin/AllUser/AllUser";
 import UserProjectUpdateForm from "../Pages/UserDetails/userProjectUpdateData/UserProjectUpdateForm";
 import ErrorPage from "../Pages/Error/ErrorPage";
 import UserProfile from "../Pages/UserProfile/UserProfile";
+import PraivateRoute from "./PraivateRoute/PraivateRoute";
+import CompanyRegistration from "../Pages/UserAuthentication/CompanyRegistration/CompanyRegistration";
+import TermsAndConditions from "../Pages/TermsAndConditions/TermsAndConditions";
+import JobApplyForm from "../Pages/JobPostAllPage/JobApplyForm/JobApplyForm";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
-        errorElement: <ErrorPage/>,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "/",
@@ -27,6 +33,10 @@ const router = createBrowserRouter([
             {
                 path: 'login',
                 element: <Login></Login>
+            },
+            {
+                path: 'companyregister',
+                element: <CompanyRegistration></CompanyRegistration>
             },
             {
                 path: 'profile',
@@ -47,10 +57,32 @@ const router = createBrowserRouter([
             {
                 path: 'projectupdate/:id',
                 element: <UserProjectUpdateForm></UserProjectUpdateForm>
-            }
-            
-        ]
+            },
+            {
+                path: "termsandconditions",
+                element: <TermsAndConditions />,
+            },
+            {
+                path: "jobApplyForm/:id",
+                element: <JobApplyForm></JobApplyForm>,
+            }]
     },
+    {
+        path: "dashbord",
+        element: <Dashbord />,
+        children: [
+            {
+                path: "alluser",
+                element: <AllUser />,
+            },
+        ],
+    },
+
 ]);
 
 export default router;
+
+
+
+
+

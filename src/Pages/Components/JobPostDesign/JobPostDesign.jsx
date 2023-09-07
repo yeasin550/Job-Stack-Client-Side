@@ -1,18 +1,16 @@
 import {
   FaCommentAlt,
   FaHandPointDown,
-  FaHandPointUp,
   FaShare,
 } from "react-icons/fa";
-import JobApplyForm from "../../JobPostAllPage/JobApplyForm/JobApplyForm";
+import { FcLike } from "react-icons/fc";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import moment from "moment/moment";
-// import { useContext } from "react";
-// import { AuthContext } from "../../Providers/AuthProvider";
-
+import { useNavigate } from "react-router-dom";
 const JobPostDesign = ({ posts }) => {
-  // const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+console.log(posts)
   const { user } = useContext(AuthContext);
 
   return (
@@ -79,11 +77,19 @@ const JobPostDesign = ({ posts }) => {
             </div>
           </div>
         </div>
-        <JobApplyForm posts={posts}></JobApplyForm>
+
+        {/* <JobApplyForm posts={posts}></JobApplyForm> */}
+
+        <button
+          onClick={() => navigate(`/jobApplyForm/${posts?._id}`)}
+          className="bg-green-500 text-center mt-5 text-white py-2 px-6 rounded-md hover:bg-green-600 transition duration-300 w-full"
+        >
+          Apply Now
+        </button>
 
         <div className="flex bottom-0 justify-around  bg-gray-50 py-3 rounded-md">
           <div className="flex items-center gap-2 cursor-pointer">
-            <FaHandPointUp /> Like
+            <FcLike /> Like
           </div>
           <div className="flex items-center gap-2 cursor-pointer">
             <FaCommentAlt /> Comment

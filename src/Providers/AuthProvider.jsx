@@ -10,7 +10,6 @@ import {
     signInWithPopup,
     signOut,
     updateProfile,
-    sendEmailVerification,
     sendPasswordResetEmail,
 } from "firebase/auth";
 
@@ -39,7 +38,6 @@ const AuthProvider = ({ children }) => {
             auth,
             email,
             password,
-            sendEmailVerification
         );
     };
     //google sign in function

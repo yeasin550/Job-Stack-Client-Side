@@ -5,8 +5,8 @@ import useAxioSequre from "../../../Hooks/useAxiosSequre";
 import { AuthContext } from "../../../Providers/AuthProvider";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
-const JobPostForm = () => {
-  const {user} = useContext(AuthContext)
+const JobPostForm = ({ refetch }) => {
+  const { user } = useContext(AuthContext)
   const [axiosSequre] = useAxioSequre();
   const [userEroor, setUserError] = useState("");
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
@@ -21,8 +21,8 @@ const JobPostForm = () => {
   const onSubmit = (data) => {
     console.log(data)
     const formData = new FormData();
-    formData.append("image", data.image[0]);
-   //image host on imgbb.com
+    formData.append("image", data?.image[0]);
+    //image host on imgbb.com
     fetch(img_hosting_url, {
       method: "POST",
       body: formData,
@@ -30,8 +30,7 @@ const JobPostForm = () => {
       .then((res) => res.json())
       .then((imageResponse) => {
         console.log(imageResponse);
-
-        if (imageResponse.success) {
+        if (imageResponse?.success) {
           const imgURL = imageResponse.data.display_url;
           const {
             jobDescription,
@@ -44,6 +43,7 @@ const JobPostForm = () => {
           } = data;
           const saveUser = {
             image: imgURL,
+            email: user?.email,
             userPhoto: user.photoURL,
             jobDescription,
             jobTitle,
@@ -53,12 +53,11 @@ const JobPostForm = () => {
             location,
             salary,
           };
-          axiosSequre
-            .post("/job", saveUser)
+          axiosSequre .post("/job", saveUser)
             .then((response) => {
               if (response.data.insertedId) {
-                // Reset the form
                 reset();
+                refetch();
                 // Display success toast
                 Swal.fire({
                   icon: "success",
@@ -66,6 +65,7 @@ const JobPostForm = () => {
                   showConfirmButton: false,
                   timer: 3000,
                 });
+                // Reset the for
               }
             })
             .catch((error) => {
@@ -95,13 +95,6 @@ const JobPostForm = () => {
           <h1 className="px-3 w-full h-12 rounded-full bg-gray-200 hover:bg-gray-300 text-black flex justify-center items-center text-lg">
             Job post
           </h1>
-          {/* <div>
-            <img
-              className="w-20 h-20 rounded-full"
-              src="https://img.freepik.com/free-vector/tiny-people-searching-business-opportunities_74855-19928.jpg?w=826&t=st=1692091974~exp=1692092574~hmac=15e47b9e6f5cf8f13dc4d8f910d754134ab6a6880e7f3069da352d35299d3039"
-              alt=""
-            />
-          </div> */}
         </label>
       </div>
       <div className="mx-5 md:w-1/2 md:mx-auto px-5 py-10">
@@ -140,11 +133,10 @@ const JobPostForm = () => {
                   {...register("jobDescription", {
                     required: "Job description is required",
                   })}
-                  className={`pl-3 pt-3 border ${
-                    errors.jobDescription
+                  className={`pl-3 pt-3 border ${errors.jobDescription
                       ? "border-red-500"
                       : "border-green-500"
-                  } resize-none w-full sm:w-1/2 md:w-2/3 lg:w-full`}
+                    } resize-none w-full sm:w-1/2 md:w-2/3 lg:w-full`}
                   cols="54"
                   rows="3"
                   placeholder="Type job description"
@@ -162,6 +154,7 @@ const JobPostForm = () => {
                 </label>
                 <input
                   type="file"
+                  required
                   {...register("image")}
                   className="file-input file-input-success file-input-bordered w-full"
                 />
@@ -171,6 +164,7 @@ const JobPostForm = () => {
                   </span>
                 )}
               </div>
+            
 
               {/* job Title */}
               <div className="form-control w-full">
@@ -298,7 +292,7 @@ const JobPostForm = () => {
               <button className="my-btn w-full mt-5 p-2 text-lg rounded-md text-white bg-green-600 hover:bg-green-700">
                 POST
               </button>
-              {userEroor && <p className="mt-2">{userEroor}</p>}
+              {/* {userEroor && <p className="mt-2">{userEroor}</p>} */}
             </form>
           </div>
         </div>
