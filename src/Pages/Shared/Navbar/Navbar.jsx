@@ -126,19 +126,12 @@ const Navbar = () => {
           className={` pb-3 mt-8  md:block md:pb-0 md:mt-0  ${navbar ? "block" : "hidden"
             }`}
         >
-          {user ? '' : <Link to="/login">
-            <button className="relative flex items-center justify-center text-lg mr-4 gap-2 px-5 py-2.5  bg-green-500 rounded-lg shadow-md transition-all hover:shadow-lg border-2 text-white hover:border-green-500">
-              Login
-            </button>
-          </Link>
-          }
-
-          <div className="dropdown dropdown-end">
+          {user ? <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               {
                 single?.image ? <div className="w-20 rounded-full border border-blue-500">
                   <img src={single?.image} alt="logo" />
-                </div> : <FaUserAlt className="w-20 rounded-full border border-blue-500"></FaUserAlt>
+                </div> : <div className="w-20 rounded-full text-blue-400 border"><FaUserAlt className="w-full h-full" ></FaUserAlt></div>
               }
 
             </label>
@@ -152,8 +145,12 @@ const Navbar = () => {
                 LogOut
               </button></li>
             </ul>
-          </div>
-
+          </div> : <Link to="/login">
+            <button className="relative flex items-center justify-center text-lg mr-4 gap-2 px-5 py-2.5  bg-green-500 rounded-lg shadow-md transition-all hover:shadow-lg border-2 text-white hover:border-green-500">
+              Login
+            </button>
+          </Link>
+          }
         </div>
       </div>
     </nav>

@@ -15,6 +15,7 @@ import PraivateRoute from "./PraivateRoute/PraivateRoute";
 import CompanyRegistration from "../Pages/UserAuthentication/CompanyRegistration/CompanyRegistration";
 import TermsAndConditions from "../Pages/TermsAndConditions/TermsAndConditions";
 import JobApplyForm from "../Pages/JobPostAllPage/JobApplyForm/JobApplyForm";
+import UserDynamicProfile from "../Pages/UserDynamic Profile/UserDynamicProfile";
 
 const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
             {
                 path: 'profile',
                 element: <UserProfile></UserProfile>
+            },
+            {
+               path: 'dynamicprofile/:id',
+               element : <UserDynamicProfile></UserDynamicProfile>
             },
             {
                 path: 'mynetwork',
