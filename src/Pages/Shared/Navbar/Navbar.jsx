@@ -84,17 +84,18 @@ const Navbar = () => {
           }`}
         >
           <ul className="items-center justify-center text-center text-lg space-y-8 md:flex md:space-x-6 md:space-y-0">
-            <li className="flex justify-center">
-              <Link className="flex items-center gap-1" to="/">
-                Home <FaHome />
+            <li className="flex justify-center ">
+              <Link to="/">
+                <FaHome className="mx-auto" />
+                Home
               </Link>
             </li>
 
             {user ? (
-              <li className="flex justify-center">
-                <Link className="flex items-center gap-1" to="/mynetwork">
+              <li className="">
+                <Link to="/myNetworks">
+                  <FaUserFriends className="mx-auto" />
                   My Networks
-                  <FaUserFriends />
                 </Link>
               </li>
             ) : (
@@ -103,8 +104,9 @@ const Navbar = () => {
 
             {user ? (
               <li className="flex justify-center">
-                <Link className="flex items-center gap-1" to="/jobsroute">
-                  Jobs <FaShoppingBag />
+                <Link to="/jobsroute">
+                  <FaShoppingBag className="mx-auto" />
+                  Jobs
                 </Link>
               </li>
             ) : (
@@ -112,9 +114,8 @@ const Navbar = () => {
             )}
             {user ? (
               <li className="flex justify-center">
-                <Link className="flex items-center gap-1" to="/massageroute">
-                  Messaging
-                  <FaRegCommentDots />
+                <Link to="/massageroute">
+                  <FaRegCommentDots className="mx-auto" /> Messaging
                 </Link>
               </li>
             ) : (
@@ -122,17 +123,17 @@ const Navbar = () => {
             )}
             {user && (
               <li className="flex justify-center">
-                <Link className="flex items-center gap-1" to="/notifications">
-                  Notifications
-                  <FaBell />
+                <Link to="/notifications">
+                  <FaBell className="mx-auto" /> Notifications
                 </Link>
               </li>
             )}
             {/* pages  */}
             <li>
               <div className="dropdown dropdown-hover">
-                <label className="flex items-center gap-1" tabIndex={0}>
-                  Pages <FaAngleDown />
+                <label tabIndex={0}>
+                  <FaAngleDown className="mx-auto" />
+                  Pages
                 </label>
                 <ul
                   tabIndex={0}
@@ -179,7 +180,6 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-           
               <li>
                 <button
                   onClick={() => navigate("/profile")}
