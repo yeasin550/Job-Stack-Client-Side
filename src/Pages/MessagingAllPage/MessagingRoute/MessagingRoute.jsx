@@ -10,12 +10,17 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { BiSearch } from "react-icons/bi";
 import "swiper/css";
 import "./message.css";
+import { useLocation } from "react-router-dom";
+import UseScrollTop from "../../../Hooks/UseScrollTop";
 
 const MessagingRoute = () => {
   const [baseApi] = useBaseAPI();
   const { user } = useContext(AuthContext);
   const [search, setSearch] = useState("");
   const socket = useRef();
+
+  const { pathname } = useLocation();
+  UseScrollTop(pathname);
 
   const [userData, setUserData] = useState([]);
   const [onlineUsers, setOnlineUsers] = useState([]);
@@ -141,8 +146,8 @@ const MessagingRoute = () => {
 
   return (
     <>
-      <div className="w-screen h-screen mx-auto flex">
-        <div className="w-[30%] h-screen bg-gray-100 px-6 overflow-scroll">
+      <div className="w-screen h-screen mx-auto md:flex">
+        <div className="md:w-[30%]  bg-gray-100 px-6 overflow-scroll">
           <div className="font-bold mt-6 pl-4 text-2xl">Chats</div>
           <div className="">
             <div className="py-6 flex items-center">
@@ -219,7 +224,7 @@ const MessagingRoute = () => {
 
         {/* MESSAGE BOX================================ End */}
 
-        <div className="w-[69%] h-screen bg-white flex flex-col ">
+        <div className="md:w-[69%] mt-8 md:mt-0 bg-white flex flex-col ">
           <MessageBox
             chat={currentChat}
             currentUserId={userI?._id}

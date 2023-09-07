@@ -16,7 +16,6 @@ import Temporary from "../Components/Temporary";
 import useSingleUser from "../../Hooks/useSingleUser";
 import useProfileUpdate from "../../Hooks/useProfileUpdate";
 import ConnectedAllUser from "../Components/ConnectedAllUsers/ConnectedAllUser";
-
 const UserProfile = () => {
 
   const [singleSelfPost] = useSelfPostfindEmail();
@@ -147,6 +146,21 @@ const UserProfile = () => {
             </TabPanel>
             {/* user job post job post */}
             <TabPanel>
+             
+                {/* <Link
+                  className="flex justify-center items-center gap-3 border border-gray-300 shadow-sm bg-gray-50 rounded-md py-5 px-3  w-full"
+                  to="/jobPostForm"
+                >
+                  <img
+                    className="w-14 h-14 rounded-full"
+                    src="https://i.ibb.co/0fZvJMk/364805402-265317659588730-4531070019685307614-n.jpg"
+                    alt=""
+                  />
+                  <h1 className="px-3 w-full h-12 rounded-full bg-gray-200 hover:bg-gray-300 text-black flex justify-center items-center text-lg">
+                    Job post
+                  </h1>
+                </Link> */}
+             
               <JobPostForm refetch={refetch}></JobPostForm>
               <div>
                 {singlejobposts?.map((posts) => (
@@ -160,7 +174,7 @@ const UserProfile = () => {
             </TabPanel>
             {/* user connect   */}
             <TabPanel>
-              <ConnectedAllUser/>
+              <ConnectedAllUser />
             </TabPanel>
             {/* user Connect request */}
             <TabPanel>
@@ -179,12 +193,26 @@ const UserProfile = () => {
         <div className="modal">
           <div className="modal-box">
             <div className="modal-action">
-              <label htmlFor="my_modal_13" className="btn text-white btn-circle bg-green-600 border-none absolute top-3 right-3">X</label>
+              <label
+                htmlFor="my_modal_13"
+                className="btn text-white btn-circle bg-green-600 border-none absolute top-3 right-3"
+              >
+                X
+              </label>
             </div>
             <form onSubmit={handleSubmit(updateCoverPhoto)}>
               <h3 className="font-bold text-lg">Update Cover Photo</h3>
-              <input {...register("bgImage")} required type="file" className="file-input file-input-bordered file-input-success w-full mt-10" />
-              <input type="submit" value="Update" className="w-full bg-green-600 mt-4 text-white h-10 rounded-lg" />
+              <input
+                {...register("bgImage")}
+                required
+                type="file"
+                className="file-input file-input-bordered file-input-success w-full mt-10"
+              />
+              <input
+                type="submit"
+                value="Update"
+                className="w-full bg-green-600 mt-4 text-white h-10 rounded-lg"
+              />
             </form>
           </div>
         </div>
@@ -203,8 +231,17 @@ const UserProfile = () => {
                 <label className="label">
                   <span className="label-text">Update Profile Image</span>
                 </label>
-                <input  {...register("image")} required type="file" className="file-input file-input-bordered file-input-success w-full" />
-                <input type="submit" value="Save Changes" className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg" />
+                <input
+                  {...register("image")}
+                  required
+                  type="file"
+                  className="file-input file-input-bordered file-input-success w-full"
+                />
+                <input
+                  type="submit"
+                  value="Save Changes"
+                  className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg"
+                />
               </div>
             </form>
             {/* update name  */}
@@ -213,8 +250,17 @@ const UserProfile = () => {
                 <label className="label">
                   <span className="label-text">Add Bio</span>
                 </label>
-                <textarea {...register("bio")} required className="textarea textarea-success w-full" placeholder="Bio"></textarea>
-                <input type="submit" value="Save Changes" className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg" />
+                <textarea
+                  {...register("bio")}
+                  required
+                  className="textarea textarea-success w-full"
+                  placeholder="Bio"
+                ></textarea>
+                <input
+                  type="submit"
+                  value="Save Changes"
+                  className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg"
+                />
               </div>
             </form>
             {/* update bio  */}
@@ -223,8 +269,17 @@ const UserProfile = () => {
                 <label className="label">
                   <span className="label-text">Update Name</span>
                 </label>
-                <input {...register("name")} required className="input input-bordered input-success w-full" placeholder="type here"></input>
-                <input type="submit" value="Save Changes" className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg" />
+                <input
+                  {...register("name")}
+                  required
+                  className="input input-bordered input-success w-full"
+                  placeholder="type here"
+                ></input>
+                <input
+                  type="submit"
+                  value="Save Changes"
+                  className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg"
+                />
               </div>
             </form>
             {/* update current location  */}
@@ -233,14 +288,23 @@ const UserProfile = () => {
                 <label className="label">
                   <span className="label-text">Update Current Location</span>
                 </label>
-                <input {...register("currentLocation")} required className="input input-bordered input-success w-full" placeholder="type here"></input>
-                <input type="submit" value="Save Changes" className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg" />
+                <input
+                  {...register("currentLocation")}
+                  required
+                  className="input input-bordered input-success w-full"
+                  placeholder="type here"
+                ></input>
+                <input
+                  type="submit"
+                  value="Save Changes"
+                  className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg"
+                />
               </div>
             </form>
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-
+import { FiDelete } from "react-icons/fi";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
@@ -7,83 +7,113 @@ import { useQuery } from "@tanstack/react-query";
 import AppliedJobsDetails from "./AppliedJobsDetails";
 
 const AppliedJobs = () => {
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
   const [axiosSequre] = useAxioSequre();
 
-const { data: appliedJobs = [], refetch } = useQuery(["appliedJobs", user?.email],
-  async () => {
-    const res = await axiosSequre.get(`jobsapply/${user?.email}`);
-    return res.data;
-  }
-);
+  const { data: appliedJobs = [], refetch } = useQuery(
+    ["appliedJobs", user?.email],
+    async () => {
+      const res = await axiosSequre.get(`jobsapply/${user?.email}`);
+      return res.data;
+    }
+  );
   console.log(appliedJobs);
-  
+
   return (
     <div className="px-5">
       <div className="grid lg:grid-cols-1 gap-3">
-        {appliedJobs.map((applied) => (
-          <AppliedJobsDetails
-            key={applied._id}
-            applied={applied}
-          ></AppliedJobsDetails>
-        ))}
+        <div className="py-5 px-5">
+          <div className="overflow-x-auto">
+            <table className="table table-zebra w-full">
+              <thead>
+                <tr className="uppercase  lg:text-transparent bg-clip-text  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+                  <th>Sl</th>
+                  <th>image</th>
+                  <th>User Name</th>
+                  <th>User Email</th>
+                  <th>User Number</th>
+                  <th className="text-center">Resume</th>
+                  <th>Task</th>
+                </tr>
+              </thead>
+              <tbody>
+                {appliedJobs?.map((appliedJob, index) => (
+                  <tr key={appliedJob._id}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <img
+                        className="w-12 h-12 rounded-md"
+                        src={appliedJob?.userPhoto}
+                        alt="class"
+                      />
+                    </td>
+                    <td>{appliedJob?.name}</td>
+                    <td>{appliedJob?.applyEmail}</td>
+                    <td>+{appliedJob?.number}</td>
+                    {/* <td>{appliedJob?.price}</td>
+                    <td>{appliedJob.seats}</td> */}
+                    <td>
+                      <label htmlFor="my_modal_6">
+                        <h1 className="font-semibold text-white text-center cursor-pointer text-lg bg-green-500 px-2 py-1 rounded-md">
+                          View Resume
+                        </h1>
+                      </label>
+                    </td>
+                    <td>
+                      <h1 className="font-semibold text-white text-center cursor-pointer text-lg bg-green-500 px-2 py-1 rounded-md">
+                          Send
+                        </h1>
+                    </td>
+                    <input
+                      type="checkbox"
+                      id="my_modal_6"
+                      className="modal-toggle"
+                    />
+                    <div className="modal py-0">
+                      <div className="absolute modal-box">
+                        <div className="relative -top-12 left-6 modal-action">
+                          <label
+                            htmlFor="my_modal_6"
+                            className="btn text-white absolute top-3 right-3 btn-outline btn-circle bg-green-600 rounded-full hover:bg-green-700"
+                          >
+                            {/* <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="h-6 w-6"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              sdivoke="currentColor"
+                            >
+                              <path
+                                sdivokeLinecap="round"
+                                sdivokeLinejoin="round"
+                                sdivokeWidth="2"
+                                d="M6 18L18 6M6 6l12 12"
+                              />
+                            </svg> */}
+                            <FiDelete className="text-3xl" />
+                          </label>
+                        </div>
+                        <form className="w-full border-bg-white rounded-lg text-black">
+                          <div className="relative w-full">
+                            <h1 className="font-semibold text-2xl text-center mb-2">
+                              Resume
+                            </h1>
+                            <img
+                              className="w-full"
+                              src={appliedJob?.resumeImage}
+                              alt=""
+                            />
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-      {/* <div className="relative border-[1px]  py-5 my-5  px-5 border-green-500 shadow-sm shadow-green-500">
-        <div className="flex justify-between">
-          <div className="flex-col items-center gap-3">
-            <div className="flex items-center gap-3">
-              <img
-                className="h-20 w-20 rounded-full"
-                src="https://img.freepik.com/free-vector/heart-logo_126523-587.jpg?w=740&t=st=1693226217~exp=1693226817~hmac=7bfa4747aaa6d910ec6c4c71bbf6b23c2933a343716962635bba8751ad47be76"
-                alt="img"
-              />
-              <div>
-                <h1 className="font-semibold">React Developer</h1>
-                <h1 className="font-bold text-gray-600">5 days ago</h1>
-              </div>
-            </div>
-            <Link to="/massageroute">
-              <button className="bg-green-500 px-2 py-1 my-1 rounded-md text-white w-[210px] mt-3">
-                Contact
-              </button>
-            </Link>
-          </div>
-          <div className="">
-            <div className="flex items-center gap-2">
-              <img
-                className="h-10 w-10 rounded-full"
-                src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?w=740&t=st=1693304549~exp=1693305149~hmac=1cb92ed3b7f54c71cb6e129d15ac162b06e5b960efd1b46fe0eb9594503062ad"
-                alt=""
-              />
-              <h1 className="font-bold text-lg ">Personal Info</h1>
-            </div>
-            <div className="mb-2">
-              <h1 className="font-semibold">Name : </h1>
-              <p> Yeasin Arafat</p>
-            </div>
-            <div className="my-2">
-              <h1 className="font-semibold">Email : </h1>
-              <p> your@gmail.com</p>
-            </div>
-            <div className="my-2">
-              <h1 className="font-semibold">Phone : </h1>
-              <p> +3412342143</p>
-            </div>
-          </div>
-
-        </div>
-        <hr />
-        <div className="mt-5">
-          <h1 className="font-bold">Why should you hire?</h1>
-          <p>
-            I should be hired for this role because of my relevant skills,
-            experience, and passion for the industry. I've researched the
-            company and can add value to its growth. My positive attitude, work
-            ethics, and long-term goals align with the job requirements, making
-            me a committed and valuable asset to the company.”
-          </p>
-        </div>
-      </div> */}
     </div>
   );
 };

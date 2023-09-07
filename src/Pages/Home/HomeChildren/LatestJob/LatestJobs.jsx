@@ -1,212 +1,64 @@
 import React, { useState } from "react";
-import './job.css'
+import { useParams } from "react-router-dom";
 import JobCard from "./JobCard";
-import apple from "../../../../assets/Jobs/apple.png";
-import google from "../../../../assets/Jobs/google.png";
-import starbuck from "../../../../assets/Jobs/starbuck.png";
-import volkswagen from "../../../../assets/Jobs/volkswagen.png";
-import nike from "../../../../assets/Jobs/nike.png";
-import meta from "../../../../assets/Jobs/meta.png";
+import useJobs from "../../../../Hooks/useJobs";
+import "./job.css";
 
 const LatestJobs = () => {
-     const [activeTab, setActiveTab] = useState(1);
+  const [activeTab, setActiveTab] = useState(1);
+  const categories = ["Remote", "Onsite"];
+  const { workplace } = useParams();
+  const [job] = useJobs();
+  const initialIndex = categories.indexOf(workplace);
+  const [tabIndex, setTabIndex] = useState(initialIndex);
 
-     const handleTabClick = (id) => {
-       setActiveTab(id);
-     };
+  const Remote = job.filter((item) => item.workplace === "Remote");
+  const Onsite = job.filter((item) => item.workplace === "Onsite");
+
+  const handleTabClick = (id) => {
+    setActiveTab(id);
+  };
   return (
-    <div className="max-w-screen-xl lg:px-5 mx-auto pt-10 lg:pt-24 lg:pb-4 lg:mb-20">
-      <div className="text-center mb-9">
-        <h1 className="lg:text-5xl text-3xl font-bold ">Latest Jobs</h1>
-        <p className="mt-5 text-lg">
+    <div className="max-w-screen-xl px-5 mx-auto my-16">
+      <div className="text-center mb-5">
+        <h1 className="text-3xl font-bold ">Latest Jobs</h1>
+        <p className="mt-2 text-lg">
           Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula
         </p>
       </div>
 
       <div>
-        <ul className="tabs text-xl font-semibold">
+        <ul
+          className="tabs text-xl font-semibold"
+          defaultIndex={tabIndex}
+          onSelect={(index) => setTabIndex(index)}
+        >
           <li
             className={activeTab === 1 ? "active" : ""}
             onClick={() => handleTabClick(1)}
           >
-            All
+            Remote
           </li>
           <li
             className={activeTab === 2 ? "active" : ""}
             onClick={() => handleTabClick(2)}
           >
-            Full Time
-          </li>
-          <li
-            className={activeTab === 3 ? "active" : ""}
-            onClick={() => handleTabClick(3)}
-          >
-            Part Time
-          </li>
-          <li
-            className={activeTab === 4 ? "active" : ""}
-            onClick={() => handleTabClick(4)}
-          >
-            Remort
+            Onsite
           </li>
         </ul>
 
         <div className="tab_content">
           {activeTab === 1 && (
-            <>
-              <div className="tab_panel md:flex items-center gap-8">
-                <JobCard
-                  image={apple}
-                  title={"IOS Developer"}
-                  company={"Apple"}
-                  Technology={"React js"}
-                  address={"Cupertino, USA"}
-                  price={"$35000 - $40000"}
-                  time={"Full Time"}
-                />
-                <JobCard
-                  image={google}
-                  title={"Web Developer"}
-                  company={"Google"}
-                  Technology={"Font-end"}
-                  address={"Mountain, USA"}
-                  price={"$35000 - $40000"}
-                  time={"Part Time"}
-                />
-              </div>
+            <div className="tab_panel">
               <div className="tab_panel md:flex items-center gap-8 mt-6">
-                <JobCard
-                  image={starbuck}
-                  title={"Finance Manager"}
-                  company={"Starbucks"}
-                  Technology={"Back-end"}
-                  address={"Seattle, USA"}
-                  price={"$35000 - $40000"}
-                  time={"Part Time"}
-                />
-                <JobCard
-                  image={volkswagen}
-                  title={"Account Manager"}
-                  company={"Volkswagen"}
-                  Technology={"Mern Stack"}
-                  address={"Wolfsburg, DE"}
-                  price={"$35000 - $40000"}
-                  time={"Full Time"}
-                />
+                <JobCard items={Remote}></JobCard>
               </div>
-              <div className="tab_panel md:flex items-center gap-8 mt-6">
-                <JobCard
-                  image={nike}
-                  title={"Marketing Director"}
-                  company={"nike"}
-                  Technology={"Full stack"}
-                  address={"Beaverton, USA"}
-                  price={"$35000 - $40000"}
-                  time={"Full Time"}
-                />
-                <JobCard
-                  image={meta}
-                  title={"Digital Marketing"}
-                  company={"meta"}
-                  Technology={"SEO"}
-                  address={"Menlo Park, USA"}
-                  price={"$35000 - $40000"}
-                  time={"Part Time"}
-                />
-              </div>
-            </>
+            </div>
           )}
           {activeTab === 2 && (
             <div className="tab_panel">
               <div className="tab_panel md:flex items-center gap-8 mt-6">
-                <JobCard
-                  image={google}
-                  title={"Web Developer"}
-                  company={"Google"}
-                  Technology={"Font-end"}
-                  address={"Mountain, USA"}
-                  price={"$35000 - $40000"}
-                  time={"Full Time"}
-                />
-                <JobCard
-                  image={apple}
-                  title={"IOS Developer"}
-                  company={"Apple"}
-                  Technology={"React js"}
-                  address={"Cupertino, USA"}
-                  price={"$35000 - $40000"}
-                  time={"Full Time"}
-                />
-              </div>
-              <div className="tab_panel md:flex items-center gap-8 mt-6">
-                <JobCard
-                  image={nike}
-                  title={"Marketing Director"}
-                  company={"nike"}
-                  Technology={"Full stack"}
-                  address={"Beaverton, USA"}
-                  price={"$35000 - $40000"}
-                  time={"Full Time"}
-                />
-                <JobCard
-                  image={volkswagen}
-                  title={"Account Manager"}
-                  company={"Volkswagen"}
-                  Technology={"Mern Stack"}
-                  address={"Wolfsburg, DE"}
-                  price={"$35000 - $40000"}
-                  time={"Full Time"}
-                />
-              </div>
-            </div>
-          )}
-          {activeTab === 3 && (
-            <div className="tab_panel">
-              {" "}
-              <div className="tab_panel md:flex items-center gap-8 mt-6">
-                <JobCard
-                  image={starbuck}
-                  title={"Finance Manager"}
-                  company={"Starbucks"}
-                  Technology={"Back-end"}
-                  address={"Seattle, USA"}
-                  price={"$35000 - $40000"}
-                  time={"Part Time"}
-                />
-                <JobCard
-                  image={meta}
-                  title={"Digital Marketing"}
-                  company={"meta"}
-                  Technology={"SEO"}
-                  address={"Menlo Park, USA"}
-                  price={"$35000 - $40000"}
-                  time={"Part Time"}
-                />
-              </div>
-            </div>
-          )}
-          {activeTab === 4 && (
-            <div className="tab_panel">
-              {" "}
-              <div className="tab_panel md:flex items-center gap-8 mt-6">
-                <JobCard
-                  image={apple}
-                  title={"IOS Developer"}
-                  company={"Apple"}
-                  Technology={"React js"}
-                  address={"Cupertino, USA"}
-                  price={"$35000 - $40000"}
-                  time={"Remort"}
-                />
-                <JobCard
-                  image={volkswagen}
-                  title={"Account Manager"}
-                  company={"Volkswagen"}
-                  Technology={"Mern Stack"}
-                  address={"Wolfsburg, DE"}
-                  price={"$35000 - $40000"}
-                  time={"Remort"}
-                />
+                <JobCard items={Onsite}></JobCard>
               </div>
             </div>
           )}

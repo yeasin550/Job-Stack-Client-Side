@@ -1,134 +1,155 @@
 import React from "react";
 import { FaHandPointRight, FaRegCommentDots, FaUserAlt } from "react-icons/fa";
-// import  './NewsInsights.css'
+import { BiRightArrowAlt } from "react-icons/bi";
+// aso animation
+import Aos from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import images from '../../../../assets/images/home-banner.png'
+
 const NewsInsights = () => {
+  // aos annimation
+  useEffect(() => {
+    Aos.init();
+  }, []);
   return (
-    <div className="my-16 md:px-20 ">
+    <div className="max-w-screen-xl px-5 mx-auto">
       <div className="text-center space-y-5 my-5">
-        <h1 className="lg:text-4xl text-2xl font-bold text-green-500">News & Insights</h1>
+        <h1 className="md:text-4xl text-2xl font-bold">Recent News Articles</h1>
         <p className="text-lg">
-          Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula
+          Fresh job related news content posted each day.
         </p>
       </div>
-      <div className="grid lg:gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div
+        data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="1500"
+        className="grid lg:gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+      >
         {/* div-1 */}
-        <div className="w-full max-w-screen-xl mx-auto p-5 sm:p-10 md:p-2">
+        <div className="w-full shadow-xl rounded-md max-w-screen-xl mx-auto sm:p-10 md:p-4">
           <div className="rounded overflow-hidden flex flex-col max-w-xl mx-auto">
             <a href="#">
               <img
                 className="w-full transform transition-transform hover:scale-125 duration-700"
-                src="https://i.ibb.co/cC1vyyC/1.jpg"
+                src="https://job-board.dexignzone.com/xhtml/images/blog/default/thum3.jpg"
                 alt="Sunset in the mountains"
               />
             </a>
-            <div className="relative -mt-16 px-10 pt-5 lg:pb-8 pb-6 bg-white m-10 shadow-md shadow-gray-200 space-y-6">
-              <div className="flex gap-8">
-                <p className="flex justify-center items-center gap-3">
-                  <FaUserAlt></FaUserAlt> <spna>Admin</spna>
-                </p>
-                <p className="flex justify-center items-center gap-3">
-                  <FaRegCommentDots></FaRegCommentDots> Comments
+            <div className="mt-3">
+              <div className="flex gap-8 items-center">
+                <p> August 31, 2023</p>
+                <p className="flex items-center gap-2">
+                  <FaRegCommentDots /> 12 Comment
                 </p>
               </div>
-              <a
-                href="#"
-                className="font-bold text-xl hover:text-green-500 transition duration-500 ease-in-out inline-block mb-2"
-              >
-                How To Work Instagram Marketing
-              </a>
-              <button className="bg-green-500 py-2 px-6 rounded-sm text-white hover:bg-black  border border-green-500 text-lg flex justify-center items-center gap-3 duration-700">
-                Read More{" "}
-                <span>
-                  <FaHandPointRight></FaHandPointRight>
-                </span>
-              </button>
+              <h1 className="text-xl my-2 font-semibold">
+                Attract Sales And Profits
+              </h1>
+              <p>
+                A job ravenously while Far much that one rank beheld after
+                outside....
+              </p>
+              <p className="mt-3 font-semibold text-blue-600 cursor-pointer flex items-center gap-2">
+                Read More
+                <BiRightArrowAlt className="text-xl" />
+              </p>
             </div>
           </div>
         </div>
 
         {/* div-2 */}
-        <div className="max-w-screen-xl mx-auto p-5 sm:p-4 md:p-2">
+        <div className="max-w-screen-xl shadow-xl rounded-md  mx-auto p-5 sm:p-4 md:p-2">
           <div className="rounded overflow-hidden flex flex-col max-w-xl mx-auto">
             <a href="#">
               <img
                 className="w-full transform transition-transform hover:scale-125 duration-700"
-                // src="https://i.ibb.co/b74kyf4/2.jpg"
-                src="https://i.ibb.co/cC1vyyC/1.jpg"
+                src="https://job-board.dexignzone.com/xhtml/images/blog/default/thum2.jpg"
                 alt="Sunset in the mountains"
               />
             </a>
 
-            <div className="relative -mt-16 px-10 pt-5 pb-6 lg:pb-8 bg-white m-10 shadow-md shadow-gray-200 space-y-6">
-              <div className="flex gap-8">
-                <p className="flex justify-center items-center gap-3">
-                  <FaUserAlt></FaUserAlt> <spna>Admin</spna>
-                </p>
-                <p className="flex justify-center items-center gap-3">
-                  <FaRegCommentDots></FaRegCommentDots> Comments
+            <div className="mt-3">
+              <div className="flex gap-8 items-center">
+                <p> September 1, 2023</p>
+                <p className="flex items-center gap-2">
+                  <FaRegCommentDots /> 16 Comment
                 </p>
               </div>
-              <a
-                href="#"
-                className="font-bold text-xl inline-block hover:text-green-500 transition duration-500 ease-in-out mb-2"
-              >
-                Businesses Thriving, Are Not Societies.
-              </a>
-              <button className="bg-green-500 py-2 px-6 rounded-sm text-white hover:bg-black  border border-green-500 text-lg flex justify-center items-center gap-3 duration-700">
-                Read More{" "}
-                <span>
-                  <FaHandPointRight></FaHandPointRight>
-                </span>
-              </button>
+              <h1 className="text-xl my-2 font-semibold">
+                5 Tips For Your Job Interviews
+              </h1>
+              <p>
+                A job ravenously while Far much that one rank beheld after
+                outside....
+              </p>
+              <p className="mt-3 font-semibold text-blue-600 cursor-pointer flex items-center gap-2">
+                Read More
+                <BiRightArrowAlt className="text-xl" />
+              </p>
             </div>
           </div>
         </div>
 
         {/* div-3 */}
-        <div className="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-2">
+        <div className="max-w-screen-xl shadow-xl rounded-md  mx-auto p-5 sm:p-10 md:p-2">
           <div className="rounded overflow-hidden flex flex-col max-w-xl mx-auto">
             <a href="#">
               <img
                 className="w-full transform transition-transform hover:scale-125 duration-700"
-                src="https://i.ibb.co/bFwMDk4/3.jpg"
+                src="https://job-board.dexignzone.com/xhtml/images/blog/default/thum1.jpg"
                 alt="Sunset in the mountains"
               />
             </a>
-            <div className="relative -mt-16 px-10 pt-5 lg:pb-8 pb-6 bg-white m-10 shadow-md shadow-gray-300 space-y-6">
-              <div className="flex gap-8">
-                <p className="flex justify-center items-center gap-3">
-                  <FaUserAlt></FaUserAlt> <spna>Admin</spna>
-                </p>
-                <p className="flex justify-center items-center gap-3">
-                  <FaRegCommentDots></FaRegCommentDots> Comments
+            <div className="mt-3">
+              <div className="flex gap-8 items-center">
+                <p> September 3, 2023</p>
+                <p className="flex items-center gap-2">
+                  <FaRegCommentDots /> 9 Comment
                 </p>
               </div>
-              <a
-                href="#"
-                className="font-bold text-xl inline-block hover:text-green-500 transition duration-500 ease-in-out mb-2"
-              >
-                TNike Shoes Attract More For Sales.
-              </a>
-              <button className="bg-green-500 py-2 px-6 rounded-sm text-white hover:bg-black  border border-green-500 text-lg flex justify-center items-center gap-3 duration-700">
+              <h1 className="text-xl my-2 font-semibold">
+                Overworked Newspaper Editor
+              </h1>
+              <p>
+                A job ravenously while Far much that one rank beheld after
+                outside....
+              </p>
+              <p className="mt-3 font-semibold text-blue-600 cursor-pointer flex items-center gap-2">
                 Read More
-                <span>
-                  <FaHandPointRight></FaHandPointRight>
-                </span>
-              </button>
+                <BiRightArrowAlt className="text-xl" />
+              </p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* post jobs now */}
-      <div className="flex justify-between  items-center shadow-lg shadow-gray-300 lg:my-10 lg:px-0 px-2">
-        <div className="lg:text-4xl text-xl lg:py-7 py-2 lg:px-9 px-6 font-bold custom-shape  relative bg-green-500 text-white">
-          Post jobs now
-        </div>
-        <div className="px-3">Start your free trial today, no credit card is required.</div>
-        <div>
-          <button className="bg-green-500 py-2 px-8 rounded-sm text-white hover:bg-white hover:text-black border border-green-500 text-lg duration-1000">
-            Post Now!
-          </button>
+      <div className="banner text-white p-5 md:h-52 h-full rounded-md mt-20">
+        <div className="md:flex justify-evenly items-center">
+          <div>
+            <h1 className="text-3xl font-semibold md:-mt-7">
+              Are You Looking For A
+             Dream Job?
+            </h1>
+            <p className="text-xl mt-2">
+              2400+ candidates are available for your company.
+            </p>
+          </div>
+
+          <div className="">
+            <img
+              className="md:h-64 -mt-12 hidden md:block"
+              src={images}
+              alt="images"
+              draggable='false'
+            />
+          </div>
+          <div className="">
+            <Link to="jobsroute">
+              <button className="banner-button mt-2 md:-mt-8">Browse Jobs</button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

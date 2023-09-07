@@ -5,7 +5,7 @@ const Comment = ({ commentInfo }) => {
   return (
     <div className="flex items-center gap-2 mt-3">
       <div >
-        <img className="h-10 w-10 rounded-full" src={userPhoto} alt="" />
+        <img className="h-10 w-10 rounded-full" src={userPhoto} alt="user Photo" />
       </div>
       <div className="">
         <h1 className='font-bold text-lg'>{userName}</h1>

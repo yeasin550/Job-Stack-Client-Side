@@ -180,6 +180,7 @@ const MessageBox = ({
 
                   <div
                     ref={scroll}
+                    onMouseEnter={handleMouseEnter}
                     className={`max-w-[45%] relative rounded-b-xl p-4 mb-6 ${
                       message.senderId === currentUserId
                         ? " text-white bg-sky-600 rounded-tl-xl ml-auto"
@@ -207,13 +208,7 @@ const MessageBox = ({
 
                       {/* ===============Message======== */}
 
-                      <p
-                        //  onMouseEnter={handleMouseEnter}
-                        onClick={() => handleMouseEnter(message?._id)}
-                        className="message-text"
-                      >
-                        {message.text}
-                      </p>
+                      <p className="message-text">{message.text}</p>
                       <div className="text-end">
                         <span className="text-sm">
                           {format(message.createdAt)}
@@ -266,7 +261,7 @@ const MessageBox = ({
             </svg>
           </div>
           <div
-            className={`ml-4 p-2 cursor-pointer bg-light rounded-full ${"pointer-events-none"}`}
+            className={`ml-4 hidden md:block p-2 cursor-pointer bg-light rounded-full ${"pointer-events-none"}`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
