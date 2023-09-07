@@ -4,10 +4,11 @@ import { AuthContext } from "../Providers/AuthProvider";
 import useAxioSequre from "./useAxiosSequre";
 
 const useJobPosFindEmail = () => {
-const {user} = useContext(AuthContext);
+
+    const { user } = useContext(AuthContext);
     const [axiosSequre] = useAxioSequre();
 
-const { refetch, data: singlejobposts = [] } = useQuery({
+    const { refetch, data: singlejobposts = [] } = useQuery({
         queryKey: ['singlejobposts', user?.email],
         queryFn: async () => {
             const res = await axiosSequre(`/job?email=${user?.email}`)
@@ -15,7 +16,7 @@ const { refetch, data: singlejobposts = [] } = useQuery({
         },
     })
 
-    return [singlejobposts, refetch]
+    return [singlejobposts, refetch];
 };
 
-export default useJobPosFindEmail;
+export default useJobPosFindEmail;      

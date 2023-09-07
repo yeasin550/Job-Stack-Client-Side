@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './UserProfile.css'
-import { FaPen } from "react-icons/fa";
+import { FaPen, FaUserAlt } from "react-icons/fa";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import UserInfo from "../UserDetails/UserInfo/UserInfo";
@@ -11,14 +11,18 @@ import useJobPosFindEmail from "../../Hooks/useJobPosFindEmail";
 import useSelfPostfindEmail from "../../Hooks/useSelfPostfindEmail";
 import JobPostDesign from "../Components/JobPostDesign/JobPostDesign";
 import { useForm } from "react-hook-form";
-import useProfileUpdate from "../../Hooks/useProfileUpdate";
 import ConfirmRequset from "../ConfirmRequest/ConfirmRequset";
+import Temporary from "../Components/Temporary";
+import useSingleUser from "../../Hooks/useSingleUser";
+import useProfileUpdate from "../../Hooks/useProfileUpdate";
 import ConnectedAllUser from "../Components/ConnectedAllUsers/ConnectedAllUser";
 const UserProfile = () => {
 
-  const [singleSelfPost, refetch] = useSelfPostfindEmail();
-
-  const [jobposts] = useJobPosFindEmail();
+  const [singleSelfPost] = useSelfPostfindEmail();
+  const [singlejobposts, refetch] = useJobPosFindEmail();
+  const [singleUser] = useSingleUser();
+  const single = singleUser[0];
+  console.log(single);
   const { register, handleSubmit } = useForm();
   const [updateProfileImage, updateBio, updateLocations, updateName, updateCoverPhoto] = useProfileUpdate();
   //  activie tabindex set this state 
@@ -28,7 +32,6 @@ const UserProfile = () => {
   const clickactive = (active) => {
     setActive(active);
   };
-
   return (
     //div main container
     <div className="mt-6 mb-24 lg:px-44">
@@ -37,44 +40,43 @@ const UserProfile = () => {
         <div className="border profile-shadow rounded-md">
           {/* background image*/}
           <div className="w-full h-[300px] relative">
-            <img
-              className="rounded-t-md w-full h-full"
-              src="https://i.ibb.co/4g9QMky/description.jpg"
-              alt="background image"
-            />
-            <label
-              htmlFor="my_modal_13"
-              className="text-[20px] text-white btn-md absolute bottom-3 right-3 font-bold btn btn-circle border-none hover:bg-blue-600 bg-blue-500"
-            >
-              <FaPen></FaPen>
-            </label>
+            {
+              single?.bgImage ? <img
+                className="rounded-t-md w-full h-full"
+                src={single?.bgImage}
+                alt="background image"
+              /> : <img src="https://i.ibb.co/3vVkcNV/download-2.jpg" alt="logo" />
+            }
+            <label htmlFor="my_modal_13" className="text-[20px] text-white btn-md absolute bottom-3 right-3 font-bold btn btn-circle border-none hover:bg-blue-600 bg-blue-500" ><FaPen></FaPen></label>
           </div>
           {/* user picture and details  */}
           <div className="flex justify-start px-4  gap-5">
             <div className="w-48 h-48 relative">
-              <img
-                className="w-48 h-48 border rounded-full absolute  -top-12"
-                src="https://i.ibb.co/0fZvJMk/364805402-265317659588730-4531070019685307614-n.jpg"
-                alt=""
-              />
+              {
+                single?.image ? <img
+                  className="w-48 h-48 border rounded-full absolute -top-12"
+                  src={single?.image}
+                  alt="logo"
+                /> : <FaUserAlt className="w-48 h-48 border rounded-full absolute -top-12"></FaUserAlt>
+              }
             </div>
             <div className="mt-5">
               <div>
-                <p className="text-3xl font-bold font-sans">Munimul Islam</p>
-                <p className="text-[18px] font-sans font-semibold">
-                  {" "}
-                  InterNational University of Scholars
-                </p>
-                <p>Dhaka, Dhaka, Bangladesh</p>
-                <p className="link text-blue-500">32 Connection</p>
+                <p className="text-3xl font-bold font-sans">{single?.name}</p>
+                {
+                  single?.university && <p className="text-[18px] font-sans font-semibold">
+                    {single?.university}
+                  </p>
+                }
+                {single?.currentLocation && <p>{single?.currentLocation}</p>}
+                {
+                  single?.bio && <p>{single?.bio}</p>
+                }
               </div>
             </div>
           </div>
           <div className="flex justify-end relative mr-4 -top-24">
-            <label
-              htmlFor="my_modal_6"
-              className="flex justify-center items-center gap-2 hover:bg-green-500 btn bg-green-500 text-white btn-sm"
-            >
+            <label htmlFor="my_modal_19" className="flex justify-center items-center gap-2 hover:bg-green-500 btn bg-green-500 text-white btn-sm">
               <FaPen></FaPen> Edit Profile
             </label>
           </div>
@@ -87,57 +89,51 @@ const UserProfile = () => {
             <TabList className="flex justify-center items-center border py-2 profile-shadow  gap-6 mb-8">
               <Tab
                 onClick={() => clickactive("post")}
-                className={` cursor-pointer text ${
-                  active == "post" ? "active cursor-pointer" : ""
-                }`}
+                className={` cursor-pointer text ${active == "post" ? "active cursor-pointer" : ""
+                  }`}
               >
                 Post
               </Tab>
 
               <Tab
                 onClick={() => clickactive("jobpost")}
-                className={` cursor-pointer text ${
-                  active == "jobpost" ? "active cursor-pointer" : ""
-                }`}
+                className={` cursor-pointer text ${active == "jobpost" ? "active cursor-pointer" : ""
+                  }`}
               >
                 Job Post
               </Tab>
               <Tab
                 onClick={() => clickactive("about")}
-                className={` cursor-pointer text ${
-                  active == "about" ? "active cursor-pointer" : ""
-                }`}
+                className={` cursor-pointer text ${active == "about" ? "active cursor-pointer" : ""
+                  }`}
               >
                 About
               </Tab>
               <Tab
                 onClick={() => clickactive("connect")}
-                className={` cursor-pointer text ${
-                  active == "connect" ? "active cursor-pointer" : ""
-                }`}
+                className={` cursor-pointer text ${active == "connect" ? "active cursor-pointer" : ""
+                  }`}
               >
                 Connect
               </Tab>
               <Tab
-                onClick={() => clickactive("Connection request")}
-                className={` cursor-pointer text ${
-                  active == "Connection request" ? "active cursor-pointer" : ""
-                }`}
+                onClick={() => clickactive("Connectionrequest")}
+                className={` cursor-pointer text ${active == "Connectionrequest" ? "active cursor-pointer" : ""
+                  }`}
               >
                 Connection request
               </Tab>
               <Tab
                 onClick={() => clickactive("more")}
-                className={` cursor-pointer text ${
-                  active == "more" ? "active cursor-pointer" : ""
-                }`}
+                className={` cursor-pointer text ${active == "more" ? "active cursor-pointer" : ""
+                  }`}
               >
                 More
               </Tab>
             </TabList>
             {/* users self  post */}
             <TabPanel>
-              <SelfPostForm refetch={refetch}></SelfPostForm>
+              <SelfPostForm ></SelfPostForm>
               <div className="grid md:grid-cols-2 px-10 gap-10 mt-10 ">
                 {singleSelfPost?.map((selfpost) => (
                   <SelfPostDesign
@@ -167,7 +163,7 @@ const UserProfile = () => {
              
               <JobPostForm refetch={refetch}></JobPostForm>
               <div>
-                {jobposts?.map((posts) => (
+                {singlejobposts?.map((posts) => (
                   <JobPostDesign key={posts?._id} posts={posts}></JobPostDesign>
                 ))}
               </div>
@@ -185,7 +181,9 @@ const UserProfile = () => {
               <ConfirmRequset></ConfirmRequset>
             </TabPanel>
             {/* user more featuesr add  */}
-            <TabPanel></TabPanel>
+            <TabPanel>
+              <Temporary></Temporary>
+            </TabPanel>
           </Tabs>
         </div>
       </div>
@@ -221,16 +219,11 @@ const UserProfile = () => {
       </div>
       {/* user profile image modal  */}
       <div>
-        <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+        <input type="checkbox" id="my_modal_19" className="modal-toggle" />
         <div className="modal">
           <div className="modal-box">
             <div className="modal-action">
-              <label
-                htmlFor="my_modal_6"
-                className="btn text-white btn-circle bg-green-600 border-none absolute top-3 right-3"
-              >
-                X
-              </label>
+              <label htmlFor="my_modal_19" className="btn text-white btn-circle bg-green-600 border-none absolute top-3 right-3">X</label>
             </div>
             {/* update image  */}
             <form onSubmit={handleSubmit(updateProfileImage)}>
@@ -252,7 +245,7 @@ const UserProfile = () => {
               </div>
             </form>
             {/* update name  */}
-            <form action="" onSubmit={handleSubmit(updateName)}>
+            <form action="" onSubmit={handleSubmit(updateBio)}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Add Bio</span>
@@ -271,7 +264,7 @@ const UserProfile = () => {
               </div>
             </form>
             {/* update bio  */}
-            <form action="" onSubmit={handleSubmit(updateBio)}>
+            <form action="" onSubmit={handleSubmit(updateName)}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Update Name</span>

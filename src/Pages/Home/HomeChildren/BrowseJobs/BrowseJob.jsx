@@ -1,44 +1,113 @@
-import React from 'react';
-import Img from '../../../../assets/images/home.png'
-import {FaBookmark, FaRegAddressCard} from 'react-icons/fa';
-import { TfiEmail } from "react-icons/tfi";
+import React, { useState } from 'react';
+import banner from '../../../../assets/images/populer-job.jpg';
+import CountUp from "react-countup";
+import ScrollTrigger from "react-scroll-trigger";
+import LazyLoad from 'react-lazy-load';
+
 const BrowseJob = () => {
-    return (
-        <div className='lg:p-12 mb-6 max-w-screen-xl px-5 mx-auto'>
-        <div className='grid md:grid-cols-2 gap-5'>
-           <div className='space-y-4'>
-               <h1 className='lg:text-5xl text-3xl mt-6 font-bold'>Suits Jobs For You.</h1>
-              <div className='border borderl'>
-              <p className='pl-3 text-lg text-gray-400'>There are many variations of passages of Lorem Ipsum Fasts Fastsby humour, by injected humour, or coved ceilings.</p>
-              </div>
-              <div className='space-y-3 text-lg text-gray-400 pt-5'>
-              <p className='flex items-center'>
-              <FaBookmark/>
-              <p className='pl-2'>Bookmark Jobs</p>
-              </p>
-              <p className='flex items-center'>
-             <FaRegAddressCard/>
-               <p className='pl-2'>Apply with you Resume</p>
-              </p>
-               <p className='flex items-center'>
-              <TfiEmail/>
-               <p className='pl-2'>Get nofified</p>
-              </p>
-              </div>
-              <div className='pt-6'>
-              <button className="bg-green-500 py-2 px-6 rounded-sm text-white hover:bg-white hover:text-black  border border-green-500 text-lg flex justify-center items-center gap-3 duration-700">
-               Browse Jobs
-             </button>
-              </div>
-           </div>
-           <div>
-              <div className='mt-8'>
-              <img  src={Img} alt="" />
-              </div>
-           </div>
-       </div>
+   const [countOn, setCountOn] = useState(false);
+  return (
+    <div className="max-w-screen-xl mx-auto px-5 py-10">
+      <div className="grid md:grid-cols-2 gap-5 items-center">
+        {/* left site */}
+        <div className="">
+          <LazyLoad offset={300}>
+            <img
+              className="rounded-md"
+              src={banner}
+              alt="banner"
+              draggable="false"
+            />
+          </LazyLoad>
+        </div>
+        {/* right site */}
+        <div className="">
+          <h1 className="text-4xl font-bold">
+            Trusted & Popular Job and Career Link up site
+          </h1>
+          <p className="mt-7 text-lg text-justify">
+            Welcome to Job-Stack, your trusted and popular destination for
+            connecting with exciting job opportunities and advancing your
+            career. Join our thriving community of professionals, where you can
+            network, explore, and thrive in your chosen field. Discover the path
+            to your dream job today!
+          </p>
+          <div className="flex justify-evenly mt-5">
+            <div className="text-center ">
+              <ScrollTrigger
+                className="text-3xl font-bold text-blue-600"
+                onEnter={() => setCountOn(true)}
+                onExit={() => setCountOn(false)}
+              >
+                {countOn && (
+                  <CountUp start={0} end={1200} duration={3} delay={0} />
+                )}
+                +
+              </ScrollTrigger>
+              <h1 className="">Job Available</h1>
+            </div>
+
+            <div className="text-center">
+              <ScrollTrigger
+                className="text-3xl font-bold text-blue-600"
+                onEnter={() => setCountOn(true)}
+                onExit={() => setCountOn(false)}
+              >
+                {countOn && (
+                  <CountUp start={0} end={970} duration={3} delay={0} />
+                )}
+                +
+              </ScrollTrigger>
+              <h1 className="">Submitted CV</h1>
+            </div>
+
+            <div className="text-center">
+              <ScrollTrigger
+                className="text-3xl font-bold text-blue-600"
+                onEnter={() => setCountOn(true)}
+                onExit={() => setCountOn(false)}
+              >
+                {countOn && (
+                  <CountUp start={0} end={140} duration={3} delay={0} />
+                )}
+                +
+              </ScrollTrigger>
+              <h1 className="">Company</h1>
+            </div>
+          </div>
+          <div className="flex justify-evenly mt-5">
+            <div className="text-center">
+              <ScrollTrigger
+                className="text-3xl font-bold text-blue-600"
+                onEnter={() => setCountOn(true)}
+                onExit={() => setCountOn(false)}
+              >
+                {countOn && (
+                  <CountUp start={0} end={1700} duration={3} delay={0} />
+                )}
+                +
+              </ScrollTrigger>
+              <h1 className="">Registered Member</h1>
+            </div>
+
+            <div className="text-center">
+              <ScrollTrigger
+                className="text-3xl font-bold text-blue-600"
+                onEnter={() => setCountOn(true)}
+                onExit={() => setCountOn(false)}
+              >
+                {countOn && (
+                  <CountUp start={0} end={1290} duration={3} delay={0} />
+                )}
+                +
+              </ScrollTrigger>
+              <h1 className="">Appointed to Job</h1>
+            </div>
+          </div>
+        </div>
       </div>
-    );
+    </div>
+  );
 };
 
 export default BrowseJob;

@@ -4,7 +4,6 @@ import useSingleUser from '../../../Hooks/useSingleUser';
 import { FcLike } from "react-icons/fc";
 import useWorkExperians from '../../../Hooks/useWorkExperians';
 import useEducation from '../../../Hooks/useEducation';
-
 const UserOverView = () => {
     const [singleUser] = useSingleUser();
     const user = singleUser[0];
@@ -17,7 +16,7 @@ const UserOverView = () => {
         <>
             <div className='px-6 py-6'>
                 {/* user work overview  */}
-                <div className='flex justify-between items-center mt-2'>
+                { workexperians && <div className='flex justify-between items-center mt-2'>
                     <div className='flex gap-10'>
                         <FaShoppingBag className='text-2xl text-yellow-700'></FaShoppingBag>
                         <div className='flex '>
@@ -34,8 +33,9 @@ const UserOverView = () => {
                         </ul>
                     </div>
                 </div>
+                }
                 {/* user education overview  */}
-                <div className='flex justify-between items-center mt-2'>
+                {userVersity && <div className='flex justify-between items-center mt-2'>
                     <div className='flex gap-10'>
                         <FaGraduationCap className='text-2xl text-black'></FaGraduationCap>
                         <div>
@@ -51,8 +51,9 @@ const UserOverView = () => {
                         </ul>
                     </div>
                 </div>
+                }
                 {/* user current city  */}
-                <div className='flex justify-between items-center mt-2'>
+                {user?.currentLocation && <div className='flex justify-between items-center mt-2'>
                     <div className='flex gap-10'>
                         <FaHome className='text-2xl text-blue-500'></FaHome>
                         <h1 className=' font-sans'> Lives in<span className='text-[18px] ml-2 text-blue-500'>{user?.currentLocation}</span></h1>
@@ -65,8 +66,9 @@ const UserOverView = () => {
                         </ul>
                     </div>
                 </div>
+                }
                 {/* user home city  */}
-                <div className='flex justify-between items-center mt-2'>
+                {user?.homeLocation && <div className='flex justify-between items-center mt-2'>
                     <div className='flex gap-10'>
                         <FaHome className='text-2xl text-blue-500'></FaHome>
                         <h1 className=' font-sans'>From<span className='text-[18px] text-blue-500 ml-2'>{user?.homeLocation}</span></h1>
@@ -79,6 +81,7 @@ const UserOverView = () => {
                         </ul>
                     </div>
                 </div>
+                }
                 {/* user marride Status  */}
                 <div className='flex justify-between items-center mt-2'>
                     <div className='flex gap-10'>
@@ -94,7 +97,7 @@ const UserOverView = () => {
                     </div>
                 </div>
                 {/* birthdate  */}
-                <div className='flex justify-between items-center mt-2'>
+                {user?.date && <div className='flex justify-between items-center mt-2'>
                     <div className='flex gap-10'>
                         <FaBirthdayCake className='text-2xl text-rose-700' />
                         <h1 className='font-sans'>Date Of Birth <span className='ml-2 text-blue-500'>{user?.date}-{user?.month}-{user?.year}</span></h1>
@@ -107,13 +110,14 @@ const UserOverView = () => {
                         </ul>
                     </div>
                 </div>
+                }
                 {/* user phone no  */}
-                <div className='flex justify-between items-center mt-2'>
+                {user?.phoneNumber && <div className='flex justify-between items-center mt-2'>
                     <div className='flex gap-10'>
                         <FaPhone className='text-2xl text-green-600'></FaPhone>
                         <div className='flex gap-2'>
-                        <p>mobile</p>
-                        <h1 className='font-bold font-sans text-blue-500'>{user?.phoneNumber}</h1>
+                            <p>mobile</p>
+                            <h1 className='font-bold font-sans text-blue-500'>{user?.phoneNumber}</h1>
                         </div>
                     </div>
                     <div className="dropdown dropdown-top dropdown-end">
@@ -124,6 +128,7 @@ const UserOverView = () => {
                         </ul>
                     </div>
                 </div>
+                }
             </div>
         </>
     );

@@ -6,7 +6,7 @@ import { AuthContext } from '../Providers/AuthProvider';
 const useWorkExperians = () => {
     const { user } = useContext(AuthContext);
     const [axiosSequre] = useAxioSequre();
-    const { data: workexperians = [], refetch } = useQuery(['workexperians'], async () => {
+    const { data: workexperians = [], refetch } = useQuery(['workexperians', user?.email], async () => {
         const res = await axiosSequre.get(`/works/${user?.email}`)
         return res.data;
     })

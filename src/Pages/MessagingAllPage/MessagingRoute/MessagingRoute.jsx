@@ -1,27 +1,30 @@
 import React, {  useContext, useEffect, useRef, useState } from 'react';
-import { userChats } from '../../../API/ChatRequest';
 import { io } from "socket.io-client";
 import MessageBox from '../MessageBox/MessageBox';
 import Conversation from '../Conversation/Conversation';
-import useSingleUser from '../../../Hooks/useSingleUser';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import useAxioSequre from '../../../Hooks/useAxiosSequre';
 import { useQuery } from '@tanstack/react-query';
+import useBaseAPI from '../../../Hooks/useBaseAPI';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { BiSearch } from "react-icons/bi";
+import 'swiper/css';
+import './message.css'
 
 
 const MessagingRoute = () => {
-
+    
+    const [baseApi] = useBaseAPI()
     const {user} = useContext(AuthContext)
-    console.log( user)
-
+    const [search, setSearch] = useState("")
     const socket = useRef();
 
-    const [chats, setChats] = useState([]);
+    const [userData, setUserData] = useState([])
     const [onlineUsers, setOnlineUsers] = useState([]);
     const [currentChat, setCurrentChat] = useState(null);
     const [sendMessage, setSendMessage] = useState(null);
     const [receivedMessage, setReceivedMessage] = useState(null);
-
+   
 
     const [axiosSequre] = useAxioSequre();
     const { data: userss = []} = useQuery(['userss'], async () => {
@@ -29,14 +32,73 @@ const MessagingRoute = () => {
      return res.data;
     })
   
-    
     const userI = userss[0]
     console.log(userI)
 
 
-    // const [singleUser] = useSingleUser()
-    // console.log(singleUser)
+    useEffect(() =>{
+      fetch('https://jobstack-backend-teal.vercel.app/users')
+      .then((res) => res.json())
+      .then((data) =>{
+       console.log(data)
+       setUserData(data)
+    })
+      
+    },[])
 
+ const senderId = userI?._id 
+
+ console.log(senderId)
+
+ const { data: chatdata = [], refetch } = useQuery(['chatdata', userI?._id], async () => {
+ const res = await baseApi.get(`/chat/${userI?._id}`)
+ return res.data;
+})
+
+
+// ============== Chat Delete =====================
+
+const handleDeleteChat = (id) => {
+  console.log(id)
+  fetch(`https://chat-app-project-server.vercel.app/deletechat/${id}`, {
+    method: 'DELETE'
+  })
+  .then(res => res.json())
+  .then(data => {
+      console.log(data)
+      const updateChat = chatdata?.filter(chat => chat._id !== data._id)
+      setCurrentChat(updateChat)
+      refetch()
+  })
+  
+}
+
+
+const CreateConversation = async (receiverId) => {
+  try {
+    const response = await fetch('https://jobstack-backend-teal.vercel.app/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        senderId: senderId,
+        receiverId: receiverId,
+      }),
+      
+    });
+
+    if (response.ok) {
+      refetch()
+      const result = await response.text();
+      console.log(result); 
+    } else {
+      console.error('Failed to create conversation');
+    }
+  } catch (error) {
+    console.error('Error creating conversation:', error);
+  }
+}
 
        // Send Message to socket server
 
@@ -66,89 +128,123 @@ const MessagingRoute = () => {
           setReceivedMessage(data)})
         }, []);
 
-      
-       
-     // Get the chat in chat section
-  useEffect(() => {
-    const getChats = async () => {
-      try {
-        const { data } = await userChats(userI?._id);
-        setChats(data);
-        console.log(data)
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getChats();
-    
-  }, [userI?._id]);
 
+        const handleSearch = () => {
+          fetch(`https://jobstack-backend-teal.vercel.app/users-search/${search}`)
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              setUserData(data);
+            });
+        };
 
-  const checkOnlineStatus = (chat) => {
+    const checkOnlineStatus = (chat) => {
     const chatMember = chat.members.find((member) => member !== user._id);
     const online = onlineUsers.find((userI) => userI.userId === chatMember);
     return online ? true : false;
   };
 
-
     return (
    <>
-        <div className='w-screen py-2 mx-auto flex'>
-        <div className='w-[22%] h-screen bg-gray-100 overflow-scroll'>
-            <div className='flex items-center my-8 mx-14'>
-                <div><img src={user?.photoURL} width={50} height={50} className='border border-primary p-[2px] rounded-full'  alt=""/></div>
-                <div className='ml-8'>
-                    <h3 className='text-2xl'>{user?.displayName}</h3>
-                    <p className='text-lg font-light'>{user?.email}</p>
-                </div>
+        <div className='w-screen h-screen mx-auto flex'>
+
+        <div className='w-[30%] h-screen bg-gray-100 px-6 overflow-scroll'>
+        <div className='font-bold mt-6 pl-4 text-2xl'>Chats</div>
+            <div className=''>
+             <div className='py-6 flex items-center'>
+             <input type="text" 
+             placeholder='Search Messages or Users'
+             onChange={(e) => setSearch(e.target.value)}
+             
+             className='bg-gray-300 px-6 py-3 w-full outline-none rounded'/>
+             <BiSearch 
+             onClick={handleSearch}
+             className='h-[30px] w-[30px] items-end cursor-pointer -ml-12'/>
+             </div>
             </div>
             <hr />
-            <div className='mx-14 mt-10'>
-                <div className='text-primary text-lg'>Messages</div>
+            <div>
+        <Swiper
+        slidesPerView={4}
+        spaceBetween={10}
+        pagination={{
+          clickable: true,
+        }}
+        className="mySwiper">
+
+        {userData.map((users) =>(
+          <div className='px-4'>
+            <SwiperSlide>
+            <div>
+            <div 
+             onClick={() => CreateConversation(users._id)}
+            className='cursor-pointer py-4 items-center h-[100px] w-[100px] '>
+          
+            <img  src={users?.image} className="w-[45px]  h-[45px] rounded-full p-[2px] border border-primary" alt="" />
+            <h6 className='pt-3'>{users?.name}</h6>
+            
+          </div>
+
+              <div>
+
+              </div>
+            </div>
+            </SwiperSlide>
+          </div>
+          ))}
+         </Swiper>
+            </div>
+            
+
+              <hr />
+            <div className='mx-4 mt-4'>
+                <div className='font-medium text-xl'>Recent</div>
                 <div>
-                {chats.map((chat) => (
+                 {chatdata?.map((chat) => (
+
+                  
                     
               <div
               onClick={() => {
                 setCurrentChat(chat); 
+                
               }}     
               >
                 <Conversation
                   data={chat}
                   currentUserId={userI?._id}
                   online={checkOnlineStatus(chat)}
+                  handleDeleteChat = {handleDeleteChat}
+                 
                 />
+                  {/* <div  onClick={() => handleDeleteChat(chat?._id)}>
+           
+            </div> */}
+                
               </div>
             ))} 
-            
-            {/* <div className='text-center text-lg font-semibold mt-24'>No Conversations</div> */}
-                    
+
+         
                 </div>
             </div>
         </div>
 
 
 
-        {/* MESSAGE BOX================================ */}
+        {/* MESSAGE BOX================================ End */}
 
-
-        <div className='w-[55%] h-screen bg-white flex flex-col items-center'>
+        <div className='w-[69%] h-screen bg-white flex flex-col '>
             
-                    <MessageBox
-                     chat={currentChat}
-                     currentUserId={userI?._id}
-                     setSendMessage={setSendMessage}
-                     receivedMessage={receivedMessage}
-                    />
-           
-        </div>
-        <div className='w-[22%] h-screen bg-gray-200 px-8 py-16 overflow-scroll'>
-            <div className='text-primary text-lg'>People</div>
-            <div>
-                
-            </div>
-        </div>
+             <MessageBox
+              chat={currentChat}
+              currentUserId={userI?._id}
+              setSendMessage={setSendMessage}
+              receivedMessage={receivedMessage}
+              handleDeleteChat = {handleDeleteChat}
+              />
+              </div>
+
+      {/* MESSAGE BOX================================ */}
     </div>
    </>
     );

@@ -4,8 +4,7 @@ import "react-tabs/style/react-tabs.css";
 import SelfPostDesign from "../../Components/SelfPostDesign/SelfPostDesign";
 import useSelfPost from "../../../Hooks/useSelfPost";
 import ConnectedAllUser from "../../Components/ConnectedAllUsers/ConnectedAllUser";
-import AllUsers from "../AllUsers/AllUsers";
-
+import AllUsers from "../AllUsers/AllUsers"
 const MyNetwork = () => {
     const [allselfdata] = useSelfPost();
     const [tabIndex, setTabIndex] = useState(0);
@@ -14,7 +13,7 @@ const MyNetwork = () => {
         setActive(active);
     };
     return (
-      <div className="px-24 py-12 ">
+      <div className="px-24 py-10">
         <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <div className="flex gap-1">
             <div className="shadowdiv border rounded-md w-80 h-100%">
@@ -80,7 +79,7 @@ const MyNetwork = () => {
             <div className="w-full rounded-md shadowdiv border">
               {/* user Activities */}
               <TabPanel>
-                <div className="grid place-items-center h-screen overflow-auto">
+                <div className="grid place-items-center h-screen gap-10 overflow-auto">
                   {allselfdata?.map((selfpost) => (
                     <SelfPostDesign
                       key={selfpost?._id}
@@ -90,7 +89,9 @@ const MyNetwork = () => {
                 </div>
               </TabPanel>
               {/* user Connections  */}
-              <TabPanel>connections</TabPanel>
+              <TabPanel>
+                <ConnectedAllUser></ConnectedAllUser>
+              </TabPanel>
               {/* user fllowing and flowers */}
               <TabPanel>
                 <AllUsers />
@@ -122,7 +123,9 @@ const MyNetwork = () => {
               <ConnectedAllUser />
             </TabPanel>
             {/* user fllowing and flowers */}
-            <TabPanel>Fllowing and Fllowers</TabPanel>
+            <TabPanel>
+              <AllUsers></AllUsers>
+            </TabPanel>
             {/* user Group */}
             <TabPanel>Group</TabPanel>
             {/* User Event*/}
