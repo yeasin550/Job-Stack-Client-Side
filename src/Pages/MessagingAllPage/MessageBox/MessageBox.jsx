@@ -2,14 +2,19 @@ import React, { useEffect, useRef, useState } from 'react';
 import { addMessage, getMessages } from '../../../API/MessageRequest';
 import { format } from "timeago.js";
 import InputEmoji from 'react-input-emoji'
+import { BiSolidPhoneCall, BiSolidVideo, BiUser } from "react-icons/bi";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { MdDelete } from "react-icons/md";
+import './MessageBox.css'
 
 
-const MessageBox = ({chat, currentUserId, setSendMessage, receivedMessage}) => {
+
+const MessageBox = ({chat, currentUserId, setSendMessage, handleDeleteChat, receivedMessage}) => {
 
     const [userData, setUserData] = useState(null)
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState("");
-
+    const [isDivVisible, setIsDivVisible] = useState(false);
    
     useEffect(()=> {
 
@@ -33,7 +38,7 @@ const MessageBox = ({chat, currentUserId, setSendMessage, receivedMessage}) => {
       try {
         const { data } = await getMessages(chat._id);
         setMessages(data);
-        // console.log(data)
+        console.log(data)
       } catch (error) {
         console.log(error);
       }
@@ -42,6 +47,19 @@ const MessageBox = ({chat, currentUserId, setSendMessage, receivedMessage}) => {
     if (chat !== null) fetchMessages();
   }, [chat]);
 
+
+
+  const handleDeleteMessage = (id) => {
+    fetch(`https://chat-app-project-server.vercel.app/deletemessage/${id}`, {
+      method: 'DELETE'
+    })
+    .then(res => res.json())
+    .then(data => {
+    const updateMessage = messages?.filter(message => message._id !== data._id)
+    setMessages(updateMessage)
+    })
+    
+  }
 
 
     // Always scroll to last Message
@@ -92,54 +110,139 @@ useEffect(()=> {
 
 },[receivedMessage])
 
+//  ===========Mouse Handle================
+
+const handleMouseEnter = () => {
+  setIsDivVisible(true);
+};
+
+const handleMouseLeave = () => {
+  setIsDivVisible(false);
+};
+
+
 const scroll = useRef();
 
     return (
         <>
-            <div className=' bg-gray-200 h-[80px] my-6 rounded-full flex items-center px-14 py-2'>
-                <div className='cursor-pointer'> 
-            <img src={userData?.image} width={60} height={60} className="rounded-full"  alt=""/> </div>
-                <div className='ml-6 mr-auto'>
-                    <h3 className='text-lg'>{userData?.name}</h3>
-                    <p className='text-sm font-light text-gray-600'>{userData?.email}</p>
-                </div>
-                <div className='cursor-pointer'>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-phone-outgoing" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
-                        <line x1="15" y1="9" x2="20" y2="4" />
-                        <polyline points="16 4 20 4 20 8" />
-                    </svg>
-                    <hr />
-                </div>
+        <div className='mt-8 px-2'>
+          <div className='flex items-center justify-between'>
+          <div className='flex items-center mb-6 pl-4'>
+            <img src={userData?.image} className="w-[60px]  h-[60px] rounded-full p-[1px] border border-primary" alt="" />
+            <h1 className='pl-4 font-medium text-xl'>{userData?.name}</h1>
+          </div>
+         <div className='items-end text-end flex'>
+          <BiSolidPhoneCall className='h-[25px] w-[25px] mr-6 cursor-pointer'/>
+          <BiSolidVideo className='h-[25px] w-[25px] mr-6 cursor-pointer'/>
+          <BiUser className='h-[25px] w-[25px] mr-6 cursor-pointer'/>
+          <div className="dropdown dropdown-left mr-12 cursor-pointer">
+          <label tabIndex={0}>
+            <BsThreeDotsVertical />
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box "
+          >
+            <button
+              onClick={() => handleDeleteChat(chat?._id)}
+              className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
+            >
+              <MdDelete />
+              Delete
+            </button>
+          </ul>
+        </div>
          </div>
-
+          </div>
+          <hr className='' />
+        </div>
+          
+        
         <div className='h-[75%] w-full overflow-scroll shadow-sm'>
-            <div className='p-14'>
+            <div className='p-6'>
 
                 {
                     messages?.length > 0 ?
                         messages?.map(( message) => {
                             return (
                                 <>
-                                <div ref={scroll}
-                                 className={`max-w-[45%] overflow-clip rounded-b-xl p-4 mb-6 ${message.senderId === currentUserId ? ' text-white bg-blue-700 rounded-tl-xl ml-auto' : 'bg-blue-500 text-white rounded-tr-xl'} `}>
-                                    
-                                <p>{message.text}</p> 
-                                <div className='text-end'>
-                                <span className='text-sm'>{format(message.createdAt)}</span>
-                                </div>
-                                 </div>
-                                <div></div>
-                                </>
-                            )
-                        }) : <div className='text-center text-lg font-semibold mt-24'>No Messages or No Conversation Selected</div>
+            
+          {/* <div className="dropdown dropdown-right">
+            <label tabIndex={0}>
+             <BsThreeDotsVertical />
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box "
+          >
+            <button
+              onClick={() => handleDeleteMessage(message?._id)}
+              className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
+            >
+              <MdDelete />
+              Delete
+            </button>
+          </ul>
+        </div>  */}
+                              
+       
+                    <div ref={scroll}
+                    onMouseEnter={handleMouseEnter}
+                        
+                   className={`max-w-[45%]  relative rounded-b-xl p-4 mb-6 ${message.senderId === currentUserId ? ' text-white bg-sky-600 rounded-tl-xl ml-auto' : 'bg-chat rounded-tr-xl'} `}> 
+
+                   <div className='relative'>
+
+                    {/* ============================ */}
+
+            {/* <div 
+            onMouseLeave={handleMouseLeave}
+            className={`absolute -left-24   dropdown  dropdown-bottom
+             ${isDivVisible ? 'block' : 'hidden'}`}>
+                 
+          <label tabIndex={0} className='btn'> <BsThreeDotsVertical /> </label>
+         <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box">
+         <button
+              onClick={() => handleDeleteMessage(message?._id)}
+              className="flex items-center gap-1 text-lg hover:bg-slate-400 w-full py-1 rounded-lg ps-2 font-semibold"
+            >
+              <MdDelete />
+              Delete
+            </button>
+        </ul>
+    
+        </div>   */}
+            
+              <div className={` ${message.senderId === currentUserId ? ' absolute -left-20' : ' absolute -right-20'} `}> 
+              <button className={`btn ${isDivVisible ? 'block' : 'hidden'} `}
+                  onClick={() => handleDeleteMessage(message?._id)}
+                  onMouseLeave={handleMouseLeave}
+                   >
+                  <MdDelete className='w-5 h-5'/>
+                  
+                 </button>
+              </div>
+
+
+
+        {/* ===============Message======== */}
+                       <p>{message.text}</p> 
+                            <div className='text-end'>
+                            <span className='text-sm'>{format(message.createdAt)}</span>
+                            </div>
+                             </div>
+
+                         </div>
+
+                      </>
+                          )
+                      }) : <div className='text-center text-lg font-semiboldmt-24'>No Messages or No Conversation Selected</div>
                 }
             </div>
         </div>
         {
-            <div className='p-14 w-full flex items-center'>
-                <div className="w-full">
+            <div className='p-6 w-full flex items-center'>
+                <div className="w-full drop-shadow-xl p-4">
               <InputEmoji
                 value={newMessage}
                 onChange={handleChange}
@@ -153,7 +256,7 @@ const scroll = useRef();
                 // ref={imageRef}
               />
             </div>{" "}
-                <div className={`ml-4 p-2 cursor-pointer bg-light rounded-full `} onClick = {handleSend}>
+                <div className={`p-2 cursor-pointer bg-light rounded-full `} onClick = {handleSend}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-send" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <line x1="10" y1="14" x2="21" y2="3" />

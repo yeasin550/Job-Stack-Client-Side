@@ -1,22 +1,22 @@
 import React, {  useContext, useEffect, useRef, useState } from 'react';
-import { userChats } from '../../../API/ChatRequest';
 import { io } from "socket.io-client";
 import MessageBox from '../MessageBox/MessageBox';
 import Conversation from '../Conversation/Conversation';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import useAxioSequre from '../../../Hooks/useAxiosSequre';
 import { useQuery } from '@tanstack/react-query';
-import LogoSearch from '../LogoSearch/LogoSearch';
 import useBaseAPI from '../../../Hooks/useBaseAPI';
-import axios from 'axios';
-import Swal from 'sweetalert2';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { BiSearch } from "react-icons/bi";
+import 'swiper/css';
+import './message.css'
 
 
 const MessagingRoute = () => {
     
-    const  [baseApi] = useBaseAPI()
+    const [baseApi] = useBaseAPI()
     const {user} = useContext(AuthContext)
-    
+    const [search, setSearch] = useState("")
     const socket = useRef();
 
     const [userData, setUserData] = useState([])
@@ -39,7 +39,7 @@ const MessagingRoute = () => {
     useEffect(() =>{
       fetch('https://jobstack-backend-teal.vercel.app/users')
       .then((res) => res.json())
-    .then((data) =>{
+      .then((data) =>{
        console.log(data)
        setUserData(data)
     })
@@ -51,10 +51,27 @@ const MessagingRoute = () => {
  console.log(senderId)
 
  const { data: chatdata = [], refetch } = useQuery(['chatdata', userI?._id], async () => {
-  const res = await baseApi.get(`/chat/${userI?._id}`)
-  return res.data;
+ const res = await baseApi.get(`/chat/${userI?._id}`)
+ return res.data;
 })
 
+
+// ============== Chat Delete =====================
+
+const handleDeleteChat = (id) => {
+  console.log(id)
+  fetch(`https://chat-app-project-server.vercel.app/deletechat/${id}`, {
+    method: 'DELETE'
+  })
+  .then(res => res.json())
+  .then(data => {
+      console.log(data)
+      const updateChat = chatdata?.filter(chat => chat._id !== data._id)
+      setCurrentChat(updateChat)
+      refetch()
+  })
+  
+}
 
 
 const CreateConversation = async (receiverId) => {
@@ -68,6 +85,7 @@ const CreateConversation = async (receiverId) => {
         senderId: senderId,
         receiverId: receiverId,
       }),
+      
     });
 
     if (response.ok) {
@@ -81,8 +99,6 @@ const CreateConversation = async (receiverId) => {
     console.error('Error creating conversation:', error);
   }
 }
-
-
 
        // Send Message to socket server
 
@@ -113,6 +129,15 @@ const CreateConversation = async (receiverId) => {
         }, []);
 
 
+        const handleSearch = () => {
+          fetch(`https://jobstack-backend-teal.vercel.app/users-search/${search}`)
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              setUserData(data);
+            });
+        };
+
     const checkOnlineStatus = (chat) => {
     const chatMember = chat.members.find((member) => member !== user._id);
     const online = onlineUsers.find((userI) => userI.userId === chatMember);
@@ -121,36 +146,85 @@ const CreateConversation = async (receiverId) => {
 
     return (
    <>
-        <div className='w-screen py-2 mx-auto flex'>
+        <div className='w-screen h-screen mx-auto flex'>
 
-        <div className='w-[22%] h-screen bg-gray-100 overflow-scroll'>
-            <div className='flex items-center my-8 mx-14'>
-                <div><img src={user?.photoURL} width={50} height={50} className='border border-primary p-[2px] rounded-full'  alt=""/></div>
-                <div className='ml-8'>
-                    <h3 className='text-2xl'>{user?.displayName}</h3>
-                    <p className='text-lg font-light'>{user?.email}</p>
-                </div>
+        <div className='w-[30%] h-screen bg-gray-100 px-6 overflow-scroll'>
+        <div className='font-bold mt-6 pl-4 text-2xl'>Chats</div>
+            <div className=''>
+             <div className='py-6 flex items-center'>
+             <input type="text" 
+             placeholder='Search Messages or Users'
+             onChange={(e) => setSearch(e.target.value)}
+             
+             className='bg-gray-300 px-6 py-3 w-full outline-none rounded'/>
+             <BiSearch 
+             onClick={handleSearch}
+             className='h-[30px] w-[30px] items-end cursor-pointer -ml-12'/>
+             </div>
             </div>
             <hr />
+            <div>
+        <Swiper
+        slidesPerView={4}
+        spaceBetween={10}
+        pagination={{
+          clickable: true,
+        }}
+        className="mySwiper">
 
-            <div className='mx-14 mt-10'>
-                <div className='text-primary text-lg'>Messages</div>
+        {userData.map((users) =>(
+          <div className='px-4'>
+            <SwiperSlide>
+            <div>
+            <div 
+             onClick={() => CreateConversation(users._id)}
+            className='cursor-pointer py-4 items-center h-[100px] w-[100px] '>
+          
+            <img  src={users?.image} className="w-[45px]  h-[45px] rounded-full p-[2px] border border-primary" alt="" />
+            <h6 className='pt-3'>{users?.name}</h6>
+            
+          </div>
+
+              <div>
+
+              </div>
+            </div>
+            </SwiperSlide>
+          </div>
+          ))}
+         </Swiper>
+            </div>
+            
+
+              <hr />
+            <div className='mx-4 mt-4'>
+                <div className='font-medium text-xl'>Recent</div>
                 <div>
                  {chatdata?.map((chat) => (
+
+                  
                     
               <div
               onClick={() => {
                 setCurrentChat(chat); 
+                
               }}     
               >
                 <Conversation
                   data={chat}
                   currentUserId={userI?._id}
                   online={checkOnlineStatus(chat)}
+                  handleDeleteChat = {handleDeleteChat}
+                 
                 />
+                  {/* <div  onClick={() => handleDeleteChat(chat?._id)}>
+           
+            </div> */}
+                
               </div>
             ))} 
-                
+
+         
                 </div>
             </div>
         </div>
@@ -159,37 +233,18 @@ const CreateConversation = async (receiverId) => {
 
         {/* MESSAGE BOX================================ End */}
 
-
-        <div className='w-[55%] h-screen bg-white flex flex-col items-center'>
+        <div className='w-[69%] h-screen bg-white flex flex-col '>
             
-                    <MessageBox
-                     chat={currentChat}
-                     currentUserId={userI?._id}
-                     setSendMessage={setSendMessage}
-                     receivedMessage={receivedMessage}
-                    />
-                    </div>
+             <MessageBox
+              chat={currentChat}
+              currentUserId={userI?._id}
+              setSendMessage={setSendMessage}
+              receivedMessage={receivedMessage}
+              handleDeleteChat = {handleDeleteChat}
+              />
+              </div>
 
       {/* MESSAGE BOX================================ */}
-
-
-        <div className='w-[22%] h-screen  bg-gray-50 px-8 py-16 overflow-scroll'><LogoSearch/>
-          <hr />
-        <div className='text-primary text-lg'>People</div>
-        
-          {userData.map((users) =>(
-             <div
-             onClick={() => CreateConversation(users._id)}
-
-             className='cursor-pointer py-8 flex items-center'>
-            <img src={users?.image} className="w-[60px]  h-[60px] rounded-full p-[2px] border border-primary"  alt=""/>
-              <h3 className='text-lg font-semibold pl-4'>{users?.name}</h3>
-            </div>
-          ))}
-         
-            <div>
-            </div>
-        </div>
     </div>
    </>
     );

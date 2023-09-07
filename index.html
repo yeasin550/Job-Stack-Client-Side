@@ -1,15 +1,20 @@
 <!doctype html>
 <html data-theme="light" lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/logo/Black_White_Simple_Monochrome_Initial_Name_Logo-removebg-preview%20(1).png" />
+  <link rel="icon" type="image/svg+xml" href="./public/Job-Stack.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Job-Stack</title>
 </head>
+
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+
   <!-- email js  -->
+
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
   </script>
   <script type="text/javascript">
@@ -17,5 +22,22 @@
       emailjs.init("2ZgeUEUGJ8jr3PzXW");
     })();
   </script>
+
+  <!-- Swiper cdn -->
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js">
+  </script>
+
+    <script>
+       var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+    </script>
 </body>
+
 </html>

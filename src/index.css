@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .borderl{
     border-width: 0 0 0 4px ;
     border-color: #00B04D;
