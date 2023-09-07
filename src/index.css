@@ -2,50 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
-
-.borderl{
-    border-width: 0 0 0 4px ;
-    border-color: #00B04D;
+body{
+font-family: 'Poppins', sans-serif;
 }
 
-.shadowdiv{
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+.borderl {
+  border-width: 0 0 0 4px;
+  border-color: #1b18a1;
 }
 
-.image-upload{
-    border: 1px solid rgb(51, 45, 45);
+.shadowdiv {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
-.shadowform{
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+
+.image-upload {
+  border: 1px solid rgb(51, 45, 45);
+}
+.shadowform {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
+    rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
+    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
 }
 
 .activetab {
-    font-size: 18px !important;
-    cursor: pointer !important;
-    text-align: center !important;
-    padding-top: 8px !important;
-    padding-bottom: 8px !important;
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-    border-radius: 8px !important;
-    width: 100%;
-    background-color: rgb(70, 73, 70) !important;
-    color: white !important;
-    text-align: left !important;
-    font-weight: 800px !important;
+  font-size: 18px !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+  border-radius: 8px !important;
+  width: 100%;
+  background-color: rgb(70, 73, 70) !important;
+  color: white !important;
+  text-align: left !important;
+  font-weight: 800px !important;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
 
-::-webkit-scrollbar{
-    display: none;
-  }
-
- .online-dot {
-    background-color: rgb(47, 255, 151);
-    border-radius: 60%;
-    position: absolute;
-    left: 6rem;
-    width: 1rem;
-    height: 1rem;
-  }
-  
+.online-dot {
+  background-color: #1b18a1;
+  border-radius: 60%;
+  position: absolute;
+  left: 6rem;
+  width: 1rem;
+  height: 1rem;
+}
+/* linear-gradient */
+.banner {
+  background-image: -webkit-linear-gradient(right, #0090e4 0%, #1b18a1 100%);
+}
+/* categorires-card section */
+.categorires-card:hover {
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(to right, darkblue, #0090e4) 1;
+}
+/* admin home page charts shadow */
+.chat-shadow{
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+/* Link active color */
+.activeLink{
+  color: purple !important;
+  background-color: crimson !important;
+}

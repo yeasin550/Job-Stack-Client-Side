@@ -1,26 +1,18 @@
 import React from "react";
 
-const Card = ({ images, icon, title, num }) => {
+const Card = ({ icon, title, num }) => {
   return (
     <div>
-  <div className="card hover:cursor-pointer card-compact bg-base-100 shadow-xl hover:scale-110 transition-transform duration-300">
-    <figure>
-      <img className="h-40 w-full" src={images} alt="Image" />
-    </figure>
-    <div className="card-body">
-      <div className="-mt-12 text-white">
-        <button className="text-5xl bg-[#00B04D] px-2 py-2 rounded-md">
-          {icon}
-        </button>
+      <div className="bg-slate-50 p-7 categorires-card rounded-md shadow-xl cursor-pointer hover:scale-110 transition-transform duration-300">
+        <div className="text-3xl flex justify-center text-white ">
+          <button className="banner rounded-full p-5">{icon}</button>
+        </div>
+        <div className="text-center">
+          <h1 className="py-3 text-xl font-semibold">{title}</h1>
+          <h1 className="">{num} Jobs</h1>
+        </div>
       </div>
-      <h2 className="card-title font-bold">{title}</h2>
-      <p className="mb-3">
-        Posted Jobs:{" "}
-        <span className="px-3 py-1 bg-[#00B04D] rounded-md text-white">{num}</span>{" "}
-      </p>
     </div>
-  </div>
-</div>
   );
 };
 

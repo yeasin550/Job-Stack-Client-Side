@@ -1,80 +1,62 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "./Card";
-import { FaLaptop, FaHeadphonesAlt } from "react-icons/fa";
-import { LuBus } from "react-icons/lu";
-import { LiaSimCardSolid } from "react-icons/lia";
+import { FaLaptop } from "react-icons/fa";
+import { SiAzuredataexplorer, SiTaichigraphics } from "react-icons/si";
+import { TfiWrite } from "react-icons/tfi";
+import { LiaSchoolSolid } from "react-icons/lia";
 import { FaChalkboardTeacher } from "react-icons/fa";
-import { VscGraphLine } from "react-icons/vsc";
+import { BiDollarCircle } from "react-icons/bi";
 import { GiTeacher } from "react-icons/gi";
-import { PiSimCardFill } from "react-icons/pi";
-import softer from '../../../../assets/categories images/IT Software.jpg'
-import Delivery from "../../../../assets/categories images/delivery.jpg";
-import Sales from "../../../../assets/categories images/customercare.jpg";
-import Call from "../../../../assets/categories images/receptionist.jpg";
-import Teacher from "../../../../assets/categories images/teacher.jpg";
-import Theme from "../../../../assets/categories images/development.jpg";
-import Designer from "../../../../assets/categories images/designer.jpg";
-import Software from "../../../../assets/categories images/software.jpg";
+import { Link } from "react-router-dom";
+// aso animation
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const Categories = () => {
+   useEffect(() => {
+     Aos.init();
+   }, []);
   return (
     <div className="max-w-screen-xl  px-5 mx-auto lg:pt-8">
       <div className="text-center mb-9">
-        <h1 className="lg:text-5xl text-3xl font-bold ">Categories</h1>
-        <p className="mt-5 text-lg">
-          Mauris ut cursus nunc. Morbi eleifend, ligula at consectetur vehicula
-        </p>
+        <h1 className="md:text-4xl text-3xl font-bold ">Top Categories</h1>
       </div>
-      <div className="grid md:grid-cols-4 gap-8">
-        <Card
-          images={softer}
-          icon={<FaLaptop />}
-          title={"IT Software"}
-          num={1200}
-        />
-        <Card
-          images={Delivery}
-          icon={<LuBus />}
-          title={"Delivery Jobs"}
-          num={1460}
-        />
-        <Card
-          images={Sales}
-          icon={<VscGraphLine />}
-          title={"Sales Market"}
-          num={1920}
-        />
-        <Card
-          images={Call}
-          icon={<FaHeadphonesAlt />}
-          title={"Call Center"}
-          num={1700}
-        />
-        <Card
-          images={Teacher}
-          icon={<FaChalkboardTeacher />}
-          title={"Tutor/Teacher"}
-          num={1233}
-        />
-        <Card
-          images={Theme}
-          icon={<LiaSimCardSolid />}
-          title={"Theme Build"}
-          num={1679}
-        />
-        <Card
-          images={Designer}
-          icon={<GiTeacher />}
-          title={"UI Designer"}
-          num={1280}
-        />
-        <Card
-          images={Software}
-          icon={<PiSimCardFill />}
-          title={"Software Making"}
-          num={1430}
-        />
-      </div>
+      <Link to="jobsroute">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="3000"
+          className="grid md:grid-cols-4 gap-10 mt-14"
+        >
+          <Card icon={<FaLaptop />} title={"Web & Software Dev"} num={1200} />
+          <Card
+            icon={<SiAzuredataexplorer />}
+            title={"Data Science & Analitycs"}
+            num={1460}
+          />
+          <Card icon={<BiDollarCircle />} title={"Accounting"} num={1920} />
+          <Card
+            icon={<TfiWrite />}
+            title={"Writing & Translations"}
+            num={1700}
+          />
+          <Card
+            icon={<FaChalkboardTeacher />}
+            title={"Sales & Marketing"}
+            num={1233}
+          />
+          <Card
+            icon={<SiTaichigraphics />}
+            title={"Graphics & Design"}
+            num={1679}
+          />
+          <Card icon={<GiTeacher />} title={"Digital Marketing"} num={1280} />
+          <Card
+            icon={<LiaSchoolSolid />}
+            title={"Education & Training"}
+            num={1430}
+          />
+        </div>
+      </Link>
     </div>
   );
 };
