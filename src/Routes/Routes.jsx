@@ -22,88 +22,87 @@ import UserReport from "../Pages/Dashboard/Admin/UserReport/UserReport";
 import PostReport from "../Pages/Dashboard/Admin/PostReport/PostReport";
 
 const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <Main></Main>,
+    errorElement: <ErrorPage />,
+    children: [
+      {
         path: "/",
-        element: <Main></Main>,
-        errorElement: <ErrorPage />,
-        children: [
-            {
-                path: "/",
-                element: <Home></Home>
-            },
-            {
-                path: 'signup',
-                element: <Register></Register>
-            },
-            {
-                path: 'login',
-                element: <Login></Login>
-            },
-            {
-                path: 'companyregister',
-                element: <CompanyRegistration></CompanyRegistration>
-            },
-            {
-                path: 'profile',
-                element: <UserProfile></UserProfile>
-            },
-            {
-                path: 'mynetwork',
-                element: <MyNetwork></MyNetwork>
-            },
-            {
-                path: 'jobsroute',
-                element: <JobsRoute></JobsRoute>
-            },
-            {
-                path: 'massageroute',
-                element: <MessagingRoute></MessagingRoute>
-            },
-            {
-                path: 'projectupdate/:id',
-                element: <UserProjectUpdateForm></UserProjectUpdateForm>
-            },
-            {
-                path: "termsandconditions",
-                element: <TermsAndConditions />,
-            },
-            {
-                path: "jobApplyForm/:id",
-                element: <JobApplyForm></JobApplyForm>,
-            },
-            {
-                path: "about",
-                element: <AboutPage/>
-            },
-            {
-                path: "contact",
-                element: <Contuct/>
-            },
-        ]
-    },
-    {
-        path: "dashbord",
-        element: <Dashbord />,
-        children: [
-            {
-                path: "adminhome",
-                element: <AdminHome/>
-            },
-            {
-                path: "alluser",
-                element: <AllUser />,
-            },
-            {
-                path: "userreport",
-                element: <UserReport/>
-            },
-            {
-                path: "postreport",
-                element: <PostReport/>
-            },
-        ],
-    },
-
+        element: <Home></Home>,
+      },
+      {
+        path: "signup",
+        element: <Register></Register>,
+      },
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "companyregister",
+        element: <CompanyRegistration></CompanyRegistration>,
+      },
+      {
+        path: "profile",
+        element: <UserProfile></UserProfile>,
+      },
+      {
+        path: "myNetworks",
+        element: <MyNetwork></MyNetwork>,
+      },
+      {
+        path: "jobsroute",
+        element: <JobsRoute></JobsRoute>,
+      },
+      {
+        path: "massageroute",
+        element: <MessagingRoute></MessagingRoute>,
+      },
+      {
+        path: "projectupdate/:id",
+        element: <UserProjectUpdateForm></UserProjectUpdateForm>,
+      },
+      {
+        path: "termsandconditions",
+        element: <TermsAndConditions />,
+      },
+      {
+        path: "jobApplyForm/:id",
+        element: <JobApplyForm></JobApplyForm>,
+      },
+      {
+        path: "about",
+        element: <AboutPage />,
+      },
+      {
+        path: "contact",
+        element: <Contuct />,
+      },
+    ],
+  },
+  {
+    path: "dashbord",
+    element: <Dashbord />,
+    children: [
+      {
+        path: "adminhome",
+        element: <AdminHome />,
+      },
+      {
+        path: "alluser",
+        element: <AllUser />,
+      },
+      {
+        path: "userreport",
+        element: <UserReport />,
+      },
+      {
+        path: "postreport",
+        element: <PostReport />,
+      },
+    ],
+  },
 ]);
 
 export default router;

@@ -6,6 +6,7 @@ import {
   FaAngleDown,
   FaBell,
   FaHome,
+  FaSun,
   FaRegCommentDots,
   FaShoppingBag,
   FaUserAlt,
@@ -13,6 +14,7 @@ import {
 } from "react-icons/fa";
 import useSingleUser from "../../../Hooks/useSingleUser";
 import useAdmin from "../../../Hooks/useAdmin";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
@@ -29,6 +31,24 @@ const Navbar = () => {
       })
       .catch((error) => console.log(error));
   };
+  // dark theme
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme ? savedTheme : "light";
+  });
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
 
   return (
     <nav className="w-full banner text-white sticky z-50 top-0 left-0">
@@ -206,6 +226,19 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
+        </div>
+        <div onClick={handleTheme}>
+          {theme === "dark" ? (
+            <FaMoon
+              className="transform scale-x-[-1] bg-gray-800 text-white rounded-full p-2"
+              size={32}
+            />
+          ) : (
+            <FaSun
+              className="bg-gray-500 text-amber-400 rounded-full p-2"
+              size={32}
+            />
+          )}
         </div>
       </div>
     </nav>
