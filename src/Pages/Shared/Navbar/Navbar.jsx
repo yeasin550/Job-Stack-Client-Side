@@ -1,8 +1,17 @@
-import React, {useContext, useState } from "react";
+import React, {useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo/logo.png";
 import { AuthContext } from "../../../Providers/AuthProvider";
-import { FaBell, FaHome, FaRegCommentDots, FaShoppingBag, FaUserAlt, FaUserFriends } from "react-icons/fa";
+import {
+  FaBell,
+  FaSun,
+  FaMoon,
+  FaHome,
+  FaRegCommentDots,
+  FaShoppingBag,
+  FaUserAlt,
+  FaUserFriends,
+} from "react-icons/fa";
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
@@ -15,9 +24,27 @@ const Navbar = () => {
       })
       .catch((error) => console.log(error));
   };
+  // dark theme
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme ? savedTheme : "light";
+  });
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
 
   return (
-    <nav className="w-full bg-white shadow sticky z-30 top-0 left-0">
+    <nav className="w-full bg-white  shadow sticky z-30 top-0 left-0">
       <div className="justify-between px-5 mx-auto lg:max-w-screen-xl md:items-center md:flex sticky ">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
           <div className="flex gap-8 items-center">
@@ -110,23 +137,36 @@ const Navbar = () => {
               </Link>
             </li>
 
-            {user ? <li>
-              <Link to="/mynetwork">
-                <FaUserFriends className="mx-auto"></FaUserFriends> My Networks
-              </Link>
-            </li> : ""}
+            {user ? (
+              <li>
+                <Link to="/mynetwork">
+                  <FaUserFriends className="mx-auto"></FaUserFriends> My
+                  Networks
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
 
-            {user ? <li>
-              <Link to="/jobsroute">
-                <FaShoppingBag s className="mx-auto"></FaShoppingBag> Jobs
-              </Link>
-            </li> : ""}
-           {user ?  <li>
-              <Link to="/massageroute">
-                <FaRegCommentDots s className="mx-auto"></FaRegCommentDots>
-                Messaging
-              </Link>
-            </li> : ""}
+            {user ? (
+              <li>
+                <Link to="/jobsroute">
+                  <FaShoppingBag s className="mx-auto"></FaShoppingBag> Jobs
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
+            {user ? (
+              <li>
+                <Link to="/massageroute">
+                  <FaRegCommentDots s className="mx-auto"></FaRegCommentDots>
+                  Messaging
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
             <li>
               <Link to="/notifications">
                 <FaBell className="mx-auto"></FaBell>
@@ -161,6 +201,19 @@ const Navbar = () => {
                 Login
               </button>
             </Link>
+          )}
+        </div>
+        <div onClick={handleTheme}>
+          {theme === "dark" ? (
+            <FaMoon
+              className="transform scale-x-[-1] bg-gray-800 text-white rounded-full p-2"
+              size={32}
+            />
+          ) : (
+            <FaSun
+              className="bg-gray-500 text-amber-400 rounded-full p-2"
+              size={32}
+            />
           )}
         </div>
       </div>

@@ -2,53 +2,72 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AppliedJobsDetails = ({ applied }) => {
-    const { image, name, userPhoto, questions, companyName } = applied;
-    // console.log(applied);
+    const {
+      image,
+      name,
+      number,
+      userPhoto,
+      jobTitle,
+      questions,
+      companyName,
+      applyEmail,
+      resumeImage,
+      jobCategory,
+      salary,
+    } = applied;
+    console.log(applied);
     return (
-      <div className="relative border-[1px] rounded py-5 my-5  px-5 border-green-500 shadow-sm shadow-green-500">
-        <div className="flex justify-between items-center">
-          <div>
-            <div className="flex items-center gap-3">
-              <div>
+      <div>
+        <tr>
+          <th>1</th>
+          <td>Cy Ganderton</td>
+          <td>Quality Control Specialist</td>
+          <td>Littel, Schaden and Vandervort</td>
+          <td>Canada</td>
+          <td>12/16/2020</td>
+          <td>Blue</td>
+        </tr>
+      
+        <div className="flex items-center">
+          <div className="px-6 py-4 whitespace-nowrap">
+            <div className="flex items-center">
+              <div className="flex-shrink-0 h-10 w-10">
                 <img
-                  className="w-20 h-20 rounded-sm border border-green-500"
-                  src={image}
+                  className="h-10 w-10 rounded-full"
+                  src={userPhoto}
                   alt=""
                 />
               </div>
-              <div className="space-y-2">
-                <h1 className="font-semibold text-lg">React Developer</h1>
-                <h1 className="font-semibold text-lg"> {companyName}</h1>
+              <div className="ml-4">
+                <div className="text-sm font-medium text-gray-900">{name}</div>
+                <div className="text-sm text-gray-500">{applyEmail}</div>
               </div>
             </div>
           </div>
-          <div className="flex-col items-center gap-3">
-            <div className="flex items-center gap-3">
-              <img
-                className="h-20 w-20 rounded-full border"
-                src={userPhoto}
-                alt="img"
-              />
-              <div className="space-y-2">
-                <h1 className="font-semibold">{name}</h1>
-                {/* <button className="font-semibold text-white text-lg bg-green-500 px-2 py-1 rounded-md">
-                  View Resume
-                </button> */}
-                <label htmlFor="my_modal_6">
-                  <h1 className="font-semibold text-white cursor-pointer text-lg bg-green-500 px-2 py-1 rounded-md">
-                    View Resume
-                  </h1>
-                </label>
-              </div>
-            </div>
+          <div className="px-6 py-4 whitespace-nowrap">
+            <div className="text-sm text-gray-900">{jobTitle}</div>
+            <div className="text-sm text-gray-500">${salary}</div>
           </div>
-        </div>
-        <div className="mt-5">
-          <h1 className="font-bold">Why should you hire?</h1>
-          <p>{questions}</p>
+          <div className="px-6 ml-5  py-4 whitespace-nowrap">
+            <div className="text-sm text-gray-900">+{number}</div>
+            <div className="text-sm text-gray-500">{jobCategory}</div>
+          </div>
+          <div className="px-6 py-4 whitespace-nowrap">
+            <label htmlFor="my_modal_6">
+              <h1 className="font-semibold text-white cursor-pointer text-lg bg-green-500 px-2 py-1 rounded-md">
+                View Resume
+              </h1>
+            </label>
+          </div>
+          {/* <div className="px-6 py-4 whitespace-nowrap">
+            <label htmlFor="my_modal_5">
+              <h1 className="font-semibold text-white cursor-pointer text-lg bg-green-500 px-2 py-1 rounded-md">
+                View Details
+              </h1>
+            </label>
+          </div> */}
         </div>
 
-        {/* resume modal */}
         <input type="checkbox" id="my_modal_6" className="modal-toggle" />
         <div className="modal py-0">
           <div className="absolute modal-box">
@@ -62,26 +81,23 @@ const AppliedJobsDetails = ({ applied }) => {
                   className="h-6 w-6"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke="currentColor"
+                  sdivoke="currentColor"
                 >
                   <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
+                    sdivokeLinecap="round"
+                    sdivokeLinejoin="round"
+                    sdivokeWidth="2"
                     d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>
               </label>
             </div>
             <form className="w-full border-bg-white rounded-lg text-black">
-              {/* job descriptions */}
               <div className="relative w-full">
-                <h1 className="font-semibold text-2xl text-center mb-2">Resume</h1>
-                <img
-                  className="w-full"
-                  src="https://img.freepik.com/free-vector/resume-cv-job-flat-infographic-composition-with-example-job-application-editable-text-skills-avatar-vector-illustration_1284-84163.jpg?w=360&t=st=1693480746~exp=1693481346~hmac=efb0eade3361f29619dfdcaefe554facb79c1f2d7dba6f4343ab5183343ee59d"
-                  alt=""
-                />
+                <h1 className="font-semibold text-2xl text-center mb-2">
+                  Resume
+                </h1>
+                <img className="w-full" src={resumeImage} alt="" />
               </div>
             </form>
           </div>

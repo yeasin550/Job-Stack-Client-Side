@@ -12,6 +12,7 @@ import UserProjectUpdateForm from "../Pages/UserDetails/userProjectUpdateData/Us
 import ErrorPage from "../Pages/Error/ErrorPage";
 import UserProfile from "../Pages/UserProfile/UserProfile";
 import JobApplyForm from "../Pages/JobPostAllPage/JobApplyForm/JobApplyForm";
+// import JobPostForm from "../Pages/JobPostAllPage/JobPostForm/JobPostForm";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
         path: "projectupdate/:id",
         element: <UserProjectUpdateForm></UserProjectUpdateForm>,
       },
+      // {
+      //   path: "jobPostForm",
+      //   element: <JobPostForm></JobPostForm>,
+      // },
     ],
   },
   {

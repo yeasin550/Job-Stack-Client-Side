@@ -14,13 +14,14 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
-import useJobsBooksMarks from "../../../Hooks/useJobsBooksMarks";
-const JobPostDesign = ({ posts }) => {
-  const [handleBookMark] = useJobsBooksMarks();
+// import useJobsBooksMarks from "../../../Hooks/useJobsBooksMarks";
+const BookMarkJobs = ({ bookJobs }) => {
+  //   const [handleBookMark] = useJobsBooksMarks();
   const navigate = useNavigate();
-  // console.log(posts);
+  // console.log(bookJobs);
   const { user } = useContext(AuthContext);
-    // console.log(posts);
+
+  console.log(bookJobs);
 
   return (
     <div className="grid grid-cols-1">
@@ -28,7 +29,7 @@ const JobPostDesign = ({ posts }) => {
         <div className="flex justify-end gap-2 mb-3 text-xl">
           <FaShareAlt className="cursor-pointer" />
           <FaRegBookmark
-            onClick={() => handleBookMark(posts)}
+            // onClick={() => handleBookMark(bookJobs)}
             className="cursor-pointer"
           />
         </div>
@@ -37,13 +38,13 @@ const JobPostDesign = ({ posts }) => {
             <div className="flex items-center gap-3">
               <img
                 className="h-16 w-16 border  border-blue-500 rounded-full"
-                src={posts?.userPhoto}
+                src={bookJobs?.userPhoto}
                 // src=""
                 alt="img"
               />
               <div>
                 <h1 className="font-semibold ">
-                  Front-End Developer{posts?.position}
+                  Front-End Developer{bookJobs?.position}
                 </h1>
                 {/* <h1>5 Days Left</h1> */}
                 <h1 className="font-bold text-gray-600">
@@ -55,22 +56,22 @@ const JobPostDesign = ({ posts }) => {
             <div className="px-2 py-1 rounded-md">
               {/* <h1 className="font-semibold">Workplace</h1> */}
               <h1 className="bg-gray-200 w-[300px] mt-3 text-center font-bold px-3 py-1 hover:border-blue-500 border hover:shadow-lg hover:bg-white rounded-md text-purple-700">
-                {posts?.workplace}
+                {bookJobs?.workplace}
               </h1>
             </div>
           </div>
           <div className="flex items-center">
             <img
-              src={posts?.image}
+              src={bookJobs?.image}
               alt="Company Logo"
               className="w-20 h-20 rounded-md mr-4 border border-gray-400"
             />
             <div>
               <h2 className=" font-semibold text-gray-800">
-                {posts?.jobTitle}
+                {bookJobs?.jobTitle}
               </h2>
-              <p className="text-gray-600 ">{posts?.companyName}</p>
-              <p>{posts?.location}</p>
+              <p className="text-gray-600 ">{bookJobs?.companyName}</p>
+              <p>{bookJobs?.location}</p>
             </div>
           </div>
         </div>
@@ -79,7 +80,7 @@ const JobPostDesign = ({ posts }) => {
           <div className="w-1/2 flex gap-9">
             <div className="space-y-1">
               <h1 className="flex items-center gap-1">
-                <BiDollarCircle /> Salary : ${posts?.salary}/month
+                <BiDollarCircle /> Salary : ${bookJobs?.salary}/month
               </h1>
               <h1 className="flex items-center gap-1">
                 <MdDateRange /> Closing date : 2023-09-14
@@ -97,7 +98,7 @@ const JobPostDesign = ({ posts }) => {
           <div className="w-1/2 justify-end flex items-center gap-3 ">
             <FaRegBookmark className="text-3xl cursor-pointer" />
             <button
-              onClick={() => navigate(`/jobApplyForm/${posts?._id}`)}
+              onClick={() => navigate(`/jobApplyForm/${bookJobs?._id}`)}
               className="bg-blue-600 text-center text-white py-2 px-6 rounded-md hover:bg-blue-800  duration-300 w-1/2   bg-gradient-to-r from-blue-500 to-blue-700  font-semibold   hover:from-blue-700 hover:to-purple-900 transition-all "
             >
               Apply Now
@@ -116,7 +117,7 @@ const JobPostDesign = ({ posts }) => {
               Descriptions <FaHandPointDown />
             </h3>
             <h1 className="font-semibold text-xl">Overview:</h1>
-            <p className="text-gray-600">{posts?.jobDescription}</p>
+            <p className="text-gray-600">{bookJobs?.jobDescription}</p>
           </div>
           {/* div-2 */}
           <div className="my-5">
@@ -184,34 +185,34 @@ const JobPostDesign = ({ posts }) => {
           <h3 className=" flex items-center gap-3 mt-5 font-semibold text-gray-800">
             Job Descriptions <FaHandPointDown />
           </h3>
-          <p className="text-gray-600">{posts?.jobDescription}</p>
+          <p className="text-gray-600">{bookJobs?.jobDescription}</p>
         </div> */}
         <div className="md:flex justify-between gap-3 mt-8">
           <div className="md:flex items-center gap-8">
             {/* <div className="mb-4 px-2 py-1 rounded-md">
               <h1 className="font-semibold">Workplace</h1>
-              <p>{posts?.workplace}</p>
+              <p>{bookJobs?.workplace}</p>
             </div> */}
 
             {/* <div className="mb-4 px-2 py-1 rounded-md">
               <h1 className="font-semibold">Locations</h1>
-              <p>{posts?.location}</p>
+              <p>{bookJobs?.location}</p>
             </div> */}
             {/* <div className="mb-4 px-2 py-1 rounded-md">
               <h1 className="font-semibold">Job-Category</h1>
-              <p>{posts?.jobCategory}</p>
+              <p>{bookJobs?.jobCategory}</p>
             </div> */}
             {/* <div className="mb-4 px-2 py-1 rounded-md">
               <h2 className="font-semibold">Salary</h2>
-              <p> ${posts?.salary}/per year</p>
+              <p> ${bookJobs?.salary}/per year</p>
             </div> */}
           </div>
         </div>
 
-        {/* <JobApplyForm posts={posts}></JobApplyForm> */}
+        {/* <JobApplyForm bookJobs={bookJobs}></JobApplyForm> */}
 
         {/* <button
-          onClick={() => navigate(`/jobApplyForm/${posts?._id}`)}
+          onClick={() => navigate(`/jobApplyForm/${bookJobs?._id}`)}
           className="bg-green-500 text-center mt-5 text-white py-2 px-6 rounded-md hover:bg-green-600 transition duration-300 w-full"
         >
           Apply Now
@@ -233,4 +234,4 @@ const JobPostDesign = ({ posts }) => {
   );
 };
 
-export default JobPostDesign;
+export default BookMarkJobs;

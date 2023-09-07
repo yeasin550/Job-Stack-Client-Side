@@ -14,7 +14,6 @@ import { useForm } from "react-hook-form";
 import useProfileUpdate from "../../Hooks/useProfileUpdate";
 import ConfirmRequset from "../ConfirmRequest/ConfirmRequset";
 import ConnectedAllUser from "../Components/ConnectedAllUsers/ConnectedAllUser";
-
 const UserProfile = () => {
 
   const [singleSelfPost, refetch] = useSelfPostfindEmail();
@@ -43,7 +42,12 @@ const UserProfile = () => {
               src="https://i.ibb.co/4g9QMky/description.jpg"
               alt="background image"
             />
-            <label htmlFor="my_modal_13" className="text-[20px] text-white btn-md absolute bottom-3 right-3 font-bold btn btn-circle border-none hover:bg-blue-600 bg-blue-500" ><FaPen></FaPen></label>
+            <label
+              htmlFor="my_modal_13"
+              className="text-[20px] text-white btn-md absolute bottom-3 right-3 font-bold btn btn-circle border-none hover:bg-blue-600 bg-blue-500"
+            >
+              <FaPen></FaPen>
+            </label>
           </div>
           {/* user picture and details  */}
           <div className="flex justify-start px-4  gap-5">
@@ -67,7 +71,10 @@ const UserProfile = () => {
             </div>
           </div>
           <div className="flex justify-end relative mr-4 -top-24">
-            <label htmlFor="my_modal_6" className="flex justify-center items-center gap-2 hover:bg-green-500 btn bg-green-500 text-white btn-sm">
+            <label
+              htmlFor="my_modal_6"
+              className="flex justify-center items-center gap-2 hover:bg-green-500 btn bg-green-500 text-white btn-sm"
+            >
               <FaPen></FaPen> Edit Profile
             </label>
           </div>
@@ -105,15 +112,17 @@ const UserProfile = () => {
               </Tab>
               <Tab
                 onClick={() => clickactive("connect")}
-                className={` cursor-pointer text ${active == "connect" ? "active cursor-pointer" : ""
+                className={` cursor-pointer text ${
+                  active == "connect" ? "active cursor-pointer" : ""
                 }`}
               >
                 Connect
               </Tab>
               <Tab
                 onClick={() => clickactive("Connection request")}
-                className={` cursor-pointer text ${active == "Connection request" ? "active cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer text ${
+                  active == "Connection request" ? "active cursor-pointer" : ""
+                }`}
               >
                 Connection request
               </Tab>
@@ -141,6 +150,21 @@ const UserProfile = () => {
             </TabPanel>
             {/* user job post job post */}
             <TabPanel>
+             
+                {/* <Link
+                  className="flex justify-center items-center gap-3 border border-gray-300 shadow-sm bg-gray-50 rounded-md py-5 px-3  w-full"
+                  to="/jobPostForm"
+                >
+                  <img
+                    className="w-14 h-14 rounded-full"
+                    src="https://i.ibb.co/0fZvJMk/364805402-265317659588730-4531070019685307614-n.jpg"
+                    alt=""
+                  />
+                  <h1 className="px-3 w-full h-12 rounded-full bg-gray-200 hover:bg-gray-300 text-black flex justify-center items-center text-lg">
+                    Job post
+                  </h1>
+                </Link> */}
+             
               <JobPostForm refetch={refetch}></JobPostForm>
               <div>
                 {jobposts?.map((posts) => (
@@ -154,11 +178,11 @@ const UserProfile = () => {
             </TabPanel>
             {/* user connect   */}
             <TabPanel>
-              <ConnectedAllUser/>
+              <ConnectedAllUser />
             </TabPanel>
             {/* user Connect request */}
             <TabPanel>
-            <ConfirmRequset></ConfirmRequset>
+              <ConfirmRequset></ConfirmRequset>
             </TabPanel>
             {/* user more featuesr add  */}
             <TabPanel></TabPanel>
@@ -171,12 +195,26 @@ const UserProfile = () => {
         <div className="modal">
           <div className="modal-box">
             <div className="modal-action">
-              <label htmlFor="my_modal_13" className="btn text-white btn-circle bg-green-600 border-none absolute top-3 right-3">X</label>
+              <label
+                htmlFor="my_modal_13"
+                className="btn text-white btn-circle bg-green-600 border-none absolute top-3 right-3"
+              >
+                X
+              </label>
             </div>
             <form onSubmit={handleSubmit(updateCoverPhoto)}>
               <h3 className="font-bold text-lg">Update Cover Photo</h3>
-              <input {...register("bgImage")} required type="file" className="file-input file-input-bordered file-input-success w-full mt-10" />
-              <input type="submit" value="Update" className="w-full bg-green-600 mt-4 text-white h-10 rounded-lg" />
+              <input
+                {...register("bgImage")}
+                required
+                type="file"
+                className="file-input file-input-bordered file-input-success w-full mt-10"
+              />
+              <input
+                type="submit"
+                value="Update"
+                className="w-full bg-green-600 mt-4 text-white h-10 rounded-lg"
+              />
             </form>
           </div>
         </div>
@@ -187,7 +225,12 @@ const UserProfile = () => {
         <div className="modal">
           <div className="modal-box">
             <div className="modal-action">
-              <label htmlFor="my_modal_6" className="btn text-white btn-circle bg-green-600 border-none absolute top-3 right-3">X</label>
+              <label
+                htmlFor="my_modal_6"
+                className="btn text-white btn-circle bg-green-600 border-none absolute top-3 right-3"
+              >
+                X
+              </label>
             </div>
             {/* update image  */}
             <form onSubmit={handleSubmit(updateProfileImage)}>
@@ -195,8 +238,17 @@ const UserProfile = () => {
                 <label className="label">
                   <span className="label-text">Update Profile Image</span>
                 </label>
-                <input  {...register("image")} required type="file" className="file-input file-input-bordered file-input-success w-full" />
-                <input type="submit" value="Save Changes" className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg" />
+                <input
+                  {...register("image")}
+                  required
+                  type="file"
+                  className="file-input file-input-bordered file-input-success w-full"
+                />
+                <input
+                  type="submit"
+                  value="Save Changes"
+                  className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg"
+                />
               </div>
             </form>
             {/* update name  */}
@@ -205,8 +257,17 @@ const UserProfile = () => {
                 <label className="label">
                   <span className="label-text">Add Bio</span>
                 </label>
-                <textarea {...register("bio")} required className="textarea textarea-success w-full" placeholder="Bio"></textarea>
-                <input type="submit" value="Save Changes" className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg" />
+                <textarea
+                  {...register("bio")}
+                  required
+                  className="textarea textarea-success w-full"
+                  placeholder="Bio"
+                ></textarea>
+                <input
+                  type="submit"
+                  value="Save Changes"
+                  className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg"
+                />
               </div>
             </form>
             {/* update bio  */}
@@ -215,8 +276,17 @@ const UserProfile = () => {
                 <label className="label">
                   <span className="label-text">Update Name</span>
                 </label>
-                <input {...register("name")} required className="input input-bordered input-success w-full" placeholder="type here"></input>
-                <input type="submit" value="Save Changes" className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg" />
+                <input
+                  {...register("name")}
+                  required
+                  className="input input-bordered input-success w-full"
+                  placeholder="type here"
+                ></input>
+                <input
+                  type="submit"
+                  value="Save Changes"
+                  className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg"
+                />
               </div>
             </form>
             {/* update current location  */}
@@ -225,14 +295,23 @@ const UserProfile = () => {
                 <label className="label">
                   <span className="label-text">Update Current Location</span>
                 </label>
-                <input {...register("currentLocation")} required className="input input-bordered input-success w-full" placeholder="type here"></input>
-                <input type="submit" value="Save Changes" className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg" />
+                <input
+                  {...register("currentLocation")}
+                  required
+                  className="input input-bordered input-success w-full"
+                  placeholder="type here"
+                ></input>
+                <input
+                  type="submit"
+                  value="Save Changes"
+                  className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg"
+                />
               </div>
             </form>
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 

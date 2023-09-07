@@ -3,22 +3,33 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import useJobPost from "../../../Hooks/useJobPost"
 import JobPostDesign from "../../Components/JobPostDesign/JobPostDesign";
-import { FaBell, FaFile, FaRegBookmark, FaSearch, FaShoppingBag, FaYoutube } from "react-icons/fa";
+import { FaBell, FaBookmark, FaFile, FaHouseDamage, FaRegBookmark, FaSearch, FaShoppingBag, FaYoutube } from "react-icons/fa";
+import { AiFillSetting } from "react-icons/ai";
 import AppliedJobs from "../JobApplyForm/AppliedJobs";
 import { AuthContext } from "../../../Providers/AuthProvider";
  import { BsPersonCheckFill } from 'react-icons/bs';
 import AppliedMember from "../AppliedMember/AppliedMember";
+import JobGuidance from "../JobGuidance/JobGuidance";
+import BookMarkJobs from "../BookMarkJobs/BookMarkJobs";
+import getBookMarkJobs from "../../../Hooks/getBookMarkJobs";
 const JobsRoute = () => {
   const { user } = useContext(AuthContext);
-  // const [appliedJobs, setAppliedJobs] = useState();
+  const [active, setActive] = useState("All");
   const [searchText, setSearchText] = useState("");
   const [jobposts] = useJobPost();
+  const [bookMarkJobs] = getBookMarkJobs();
   const [tabIndex, setTabIndex] = useState(0);
-  const [active, setActive] = useState("");
+
+  const bookJobs = bookMarkJobs[0];
+  console.log(bookJobs);
   const clickactive = (active) => {
-    setActive(active);
+    if (active === "post") {
+      setActive("All");
+    } else {
+      setActive(active);
+    }
   };
-  // console.log(jobposts);
+  
   const getUniqueData = (data, property) => {
     let newVal = data.map((curElem) => {
       return curElem[property];
@@ -27,6 +38,7 @@ const JobsRoute = () => {
     // console.log(newVal);
   };
   const categoryOnlyData = getUniqueData(jobposts, "jobCategory");
+
   const handleFilter = (posts) => {
     if (searchText) {
       if (posts?.jobTitle?.toLowerCase()?.includes(searchText?.toLowerCase())) {
@@ -37,23 +49,27 @@ const JobsRoute = () => {
     } else return true;
   };
 
+
   return (
     <div className="px-16 py-12 ">
       <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <div className="flex gap-1">
           <div className="shadowdiv border rounded-md w-80 h-100%">
-            <TabList className="flex flex-col justify-center items-start px-5 py-10 gap-6">
+            <TabList className="flex sticky top-24 flex-col justify-center items-start px-5 py-10 gap-6">
               <Tab
+                // onClick={() => clickactive("post")}
                 onClick={() => clickactive("post")}
-                className={` flex items-center gap-2 cursor-pointer userinfotext ${active == "post" ? "activetab cursor-pointer" : ""
-                  }`}
+                className={` flex items-center gap-2 cursor-pointer userinfotext ${
+                  active == "post" ? "activetab cursor-pointer" : ""
+                }`}
               >
-                <FaRegBookmark /> All Jobs
+                <FaHouseDamage /> All Jobs
               </Tab>
               <Tab
                 onClick={() => clickactive("group")}
-                className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "group" ? "activetab cursor-pointer" : ""
-                  }`}
+                className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                  active == "group" ? "activetab cursor-pointer" : ""
+                }`}
               >
                 <FaBell /> Job Alerts
               </Tab>
@@ -64,7 +80,7 @@ const JobsRoute = () => {
                 }`}
               >
                 <FaShoppingBag />
-                Applied Jobs
+                Applied Member
               </Tab>
               <Tab
                 onClick={() => clickactive("appliedMember")}
@@ -72,28 +88,39 @@ const JobsRoute = () => {
                   active == "appliedMember" ? "activetab cursor-pointer" : ""
                 }`}
               >
-               
-                <BsPersonCheckFill/> Applied Member
+                <BsPersonCheckFill /> Applied Jobs
+              </Tab>
+              <Tab
+                onClick={() => clickactive("bookmarkJobs")}
+                className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                  active == "bookmarkJobs" ? "activetab cursor-pointer" : ""
+                }`}
+              >
+                <FaRegBookmark /> Favorites Jobs
               </Tab>
               <Tab
                 onClick={() => clickactive("about")}
-                className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "about" ? "activetab cursor-pointer" : ""
-                  }`}
+                className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                  active == "about" ? "activetab cursor-pointer" : ""
+                }`}
               >
                 <FaFile /> Resume Builder
               </Tab>
               <Tab
                 onClick={() => clickactive("connect")}
-                className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "connect" ? "activetab cursor-pointer" : ""
-                  }`}
+                className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                  active == "connect" ? "activetab cursor-pointer" : ""
+                }`}
               >
                 <FaYoutube /> Job Seeker Guidance
               </Tab>
               <Tab
                 onClick={() => clickactive("more")}
-                className={` cursor-pointer userinfotext ${active == "more" ? "activetab cursor-pointer" : ""
-                  }`}
+                className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                  active == "more" ? "activetab cursor-pointer" : ""
+                }`}
               >
+                <AiFillSetting />
                 Application Settings
               </Tab>
             </TabList>
@@ -110,7 +137,7 @@ const JobsRoute = () => {
                       value={searchText}
                       type="text"
                       placeholder="Search your jobs title"
-                      className="w-full md:w-80 px-3 h-10 rounded-l border-2 border-green-500 focus:outline-none focus:border-green-700"
+                      className="w-full md:w-80 px-3 rounded-sm h-10  border-2 border-blue-500 focus:outline-none focus:blue-green-700"
                     />
                     <FaSearch className="absolute top-3 text-gray-400 right-2" />
                   </div>
@@ -119,7 +146,7 @@ const JobsRoute = () => {
                     <select
                       id="jobCategory"
                       name="jobCategory"
-                      className="h-10 border-2 cursor-pointer border-green-500 focus:outline-none focus:border-green-500 rounded px-2 md:px-2 py-0 md:py-1 tracking-wider"
+                      className="h-10 border-2 cursor-pointer border-blue-500 focus:outline-none focus:blue-green-500 rounded px-2 md:px-2 py-0 md:py-1 tracking-wider"
                       onChange={(e) => setActive(e.target.value)}
                       value={active}
                     >
@@ -152,8 +179,8 @@ const JobsRoute = () => {
               </div>
             </TabPanel>
 
-            {/* user Group */}
-            <TabPanel>Group</TabPanel>
+            {/* user Job alert */}
+            <TabPanel>The Job Notification section</TabPanel>
             {/* user appliedJobs */}
             <TabPanel>
               <h1 className="text-center font-bold text-3xl my-5 text-green-600">
@@ -164,14 +191,38 @@ const JobsRoute = () => {
             {/* user appliedJobs */}
             <TabPanel>
               <h1 className="text-center font-bold text-3xl my-5 text-green-600">
-                Applied Member
+                Applied Job
               </h1>
-              <AppliedMember/>
+              <AppliedMember />
+            </TabPanel>
+            {/* baokmark jobs */}
+            <TabPanel>
+              <h1 className="text-center font-bold text-3xl my-5 text-green-600">
+                Favorite Member
+              </h1>
+              
+              <BookMarkJobs bookJobs={bookJobs} />
             </TabPanel>
             {/* User Event*/}
-            <TabPanel>Event</TabPanel>
+            <TabPanel>
+              <h1 className="text-center my-3 font-bold text-4xl text-lime-400">
+                Craft Your Career Story
+              </h1>
+              <div className="container mx-auto mt-8 pb-3 w-9/12 rounded-md">
+                <div className="aspect-w-16 aspect-h-9">
+                  <iframe
+                    src="https://www.youtube.com/embed/Ll62YIkEvs8?si=d0gSnZMq_Ss5lU4n"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              </div>
+            </TabPanel>
             {/* user Pages  */}
-            <TabPanel>Pages</TabPanel>
+            <TabPanel>
+              <JobGuidance />
+            </TabPanel>
             {/* user Newslater */}
             <TabPanel>NewsLater</TabPanel>
           </div>
