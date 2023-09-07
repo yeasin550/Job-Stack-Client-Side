@@ -10,7 +10,8 @@ const AllUser = () => {
     const res = await axiosSequre.get("/users");
     return res.data;
   });
-    
+
+  // user to admin funcation
   const handleMakeAdmin = (user) => {
     fetch(`https://jobstack-backend-teal.vercel.app/users/admin/${user._id}`, {
       method: "PATCH",
@@ -29,40 +30,40 @@ const AllUser = () => {
           });
         }
       });
-    };
+  };
 
-// user delete funcation
-      const handleDeleteUser = (_id) => {
-        Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, delete it!",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            axiosSequre.delete(`/deleteuser/${_id}`).then((data) => {
-              if (data?.data.deletedCount > 0) {
-                Swal.fire("Deleted!", "User has been deleted.", "success");
-                refetch();
-              }
-            });
+  // user delete funcation
+  const handleDeleteUser = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSequre.delete(`/deleteuser/${_id}`).then((data) => {
+          if (data?.data.deletedCount > 0) {
+            Swal.fire("Deleted!", "User has been deleted.", "success");
+            refetch();
           }
         });
-      };
+      }
+    });
+  };
 
   return (
     <div className="w-full">
       <h3 className="text-3xl font-semibold my-4">
-        Total Users: {users.length}
+        {/* Total Users: {users.length} */}
       </h3>
-      <div className="overflow-x-auto">
+      <div className="overflow-auto">
         <table className="table table-zebra w-full">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="text-lg">
               <th>SL No</th>
               <th>Image</th>
               <th>Name</th>
@@ -97,7 +98,7 @@ const AllUser = () => {
                     </button>
                   )}
                 </td>
-               
+
                 <td>
                   <button
                     onClick={() => handleDeleteUser(user._id)}

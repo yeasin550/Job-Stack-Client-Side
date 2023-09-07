@@ -12,11 +12,13 @@ import {
 
 const Footer = () => {
   return (
-    <div className="bg-[#282828] text-white">
-      <div className="max-w-screen-xl px-5 mx-auto pt-24  ">
+    <div
+      className="text-white bg-black mt-20"
+    >
+      <div className="max-w-screen-xl px-5 mx-auto pt-12  ">
         <div className="grid md:grid-cols-4 gap-5">
           <div className="">
-            <img className="h-20" src={logo} alt="" />
+            <img className="h-20" src={logo} alt="logo" />
             <p className=" mt-3">
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantiu doloremque laudantium

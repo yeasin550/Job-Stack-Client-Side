@@ -2,7 +2,15 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logo/logo.png";
 import { AuthContext } from "../../../Providers/AuthProvider";
-import { FaBell, FaHome, FaRegCommentDots, FaShoppingBag, FaUserAlt, FaUserFriends } from "react-icons/fa";
+import {
+  FaAngleDown,
+  FaBell,
+  FaHome,
+  FaRegCommentDots,
+  FaShoppingBag,
+  FaUserAlt,
+  FaUserFriends,
+} from "react-icons/fa";
 import useSingleUser from "../../../Hooks/useSingleUser";
 import useAdmin from "../../../Hooks/useAdmin";
 
@@ -13,7 +21,7 @@ const Navbar = () => {
   const single = singleUser[0];
   const navigate = useNavigate();
   const [isAdmin] = useAdmin();
-  // user logout function 
+  // user logout function
   const handleLogOut = () => {
     logOut()
       .then((result) => {
@@ -23,18 +31,18 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="w-full bg-white shadow sticky z-30 top-0 left-0">
+    <nav className="w-full banner text-white sticky z-50 top-0 left-0">
       <div className="justify-between px-5 mx-auto lg:max-w-screen-xl md:items-center md:flex sticky ">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
           <div className="navbar-start ml-0">
             <Link to="/">
-              <img className="h-10 md:h-full" src={logo} alt="" />
+              <img className="h-10 md:h-full" src={logo} alt="logo" />
             </Link>
           </div>
 
           <div className="md:hidden">
             <button
-              className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+              className="p-2 text-white rounded-md outline-none focus:border-gray-400 focus:border"
               onClick={() => setNavbar(!navbar)}
             >
               {navbar ? (
@@ -71,89 +79,133 @@ const Navbar = () => {
         </div>
 
         <div
-          className={` pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
-            }`}
+          className={` pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+            navbar ? "block" : "hidden"
+          }`}
         >
           <ul className="items-center justify-center text-center text-lg space-y-8 md:flex md:space-x-6 md:space-y-0">
-            <li>
-              <Link to="/">
-                <FaHome className="mx-auto"></FaHome>Home
+            <li className="flex justify-center">
+              <Link className="flex items-center gap-1" to="/">
+                Home <FaHome />
               </Link>
             </li>
 
             {user ? (
-              <li>
-                <Link to="/mynetwork">
-                  <FaUserFriends className="mx-auto"></FaUserFriends> My
-                  Networks
+              <li className="flex justify-center">
+                <Link className="flex items-center gap-1" to="/mynetwork">
+                  My Networks
+                  <FaUserFriends />
                 </Link>
               </li>
             ) : (
               ""
             )}
 
-            {user ? <li>
-              <Link to="/jobsroute">
-                <FaShoppingBag s className="mx-auto"></FaShoppingBag> Jobs
-              </Link>
-            </li> : ""}
-            {user ? <li>
-              <Link to="/massageroute">
-                <FaRegCommentDots s className="mx-auto"></FaRegCommentDots>
-                Messaging
-              </Link>
-            </li> : ""}
-            {
-              user && <li>
-                <Link to="/notifications">
-                  <FaBell className="mx-auto"></FaBell>
-                  Notifications
+            {user ? (
+              <li className="flex justify-center">
+                <Link className="flex items-center gap-1" to="/jobsroute">
+                  Jobs <FaShoppingBag />
                 </Link>
               </li>
-            }
-            <li>
-              {isAdmin && (
-                <Link to="/dashbord">
-                  <FaUserAlt className="mx-auto"></FaUserAlt> dashbord
+            ) : (
+              ""
+            )}
+            {user ? (
+              <li className="flex justify-center">
+                <Link className="flex items-center gap-1" to="/massageroute">
+                  Messaging
+                  <FaRegCommentDots />
                 </Link>
-              )}
+              </li>
+            ) : (
+              ""
+            )}
+            {user && (
+              <li className="flex justify-center">
+                <Link className="flex items-center gap-1" to="/notifications">
+                  Notifications
+                  <FaBell />
+                </Link>
+              </li>
+            )}
+            {/* pages  */}
+            <li>
+              <div className="dropdown dropdown-hover">
+                <label className="flex items-center gap-1" tabIndex={0}>
+                  Pages <FaAngleDown />
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[1] menu p-2 bg-blue-500 rounded-box w-52"
+                >
+                  <li>
+                    <Link to="about">About Us</Link>
+                  </li>
+                  <li>
+                    <Link to="contact">Contact</Link>
+                  </li>
+                </ul>
+              </div>
             </li>
-
           </ul>
         </div>
 
         <div
-          className={` pb-3 mt-8  md:block md:pb-0 md:mt-0  ${navbar ? "block" : "hidden"
-            }`}
+          className={` pb-3 mt-8  md:block md:pb-0 md:mt-0  ${
+            navbar ? "block" : "hidden"
+          }`}
         >
-          {user ? '' : <Link to="/login">
-            <button className="relative flex items-center justify-center text-lg mr-4 gap-2 px-5 py-2.5  bg-green-500 rounded-lg shadow-md transition-all hover:shadow-lg border-2 text-white hover:border-green-500">
-              Login
-            </button>
-          </Link>
-          }
+          {user ? (
+            ""
+          ) : (
+            <Link to="/login">
+              <button className="relative flex items-center justify-center text-lg mr-4 gap-2 px-5 py-2.5  bg-green-500 rounded-lg shadow-md transition-all hover:shadow-lg border-2 text-white hover:border-green-500">
+                Login
+              </button>
+            </Link>
+          )}
 
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              {
-                single?.image ? <div className="w-20 rounded-full border border-blue-500">
+              {single?.image ? (
+                <div className="w-20 rounded-full border border-blue-500">
                   <img src={single?.image} alt="logo" />
-                </div> : <FaUserAlt className="w-20 rounded-full border border-blue-500"></FaUserAlt>
-              }
-
+                </div>
+              ) : (
+                <FaUserAlt className="w-20 rounded-full border border-blue-500"></FaUserAlt>
+              )}
             </label>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-              <li><button onClick={() => navigate('/profile')} className="btn btn-sm w-full bg-green-600 text-white hover:bg-green-500 hover:text-white">Profile</button></li>
-              <li><button onClick={() => navigate('/profile')} className="btn btn-sm w-full bg-blue-600 text-white hover:bg-blue-500 hover:text-white">settings</button></li>
-              <li><button
-                onClick={handleLogOut}
-                className="btn btn-sm w-full bg-rose-600 text-white hover:bg-rose-500 hover:text-white"
-              >
-                LogOut
-              </button></li>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+           
+              <li>
+                <button
+                  onClick={() => navigate("/profile")}
+                  className="btn btn-sm w-full bg-green-600 text-white hover:bg-green-500 hover:text-white"
+                >
+                  Profile
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => navigate("/profile")}
+                  className="btn btn-sm w-full bg-blue-600 text-white hover:bg-blue-500 hover:text-white"
+                >
+                  settings
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={handleLogOut}
+                  className="btn btn-sm w-full bg-rose-600 text-white hover:bg-rose-500 hover:text-white"
+                >
+                  LogOut
+                </button>
+              </li>
             </ul>
           </div>
-
         </div>
       </div>
     </nav>
@@ -161,4 +213,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

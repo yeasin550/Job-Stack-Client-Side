@@ -165,7 +165,7 @@ const SelfPostDesign = ({ selfpost }) => {
       {/* user post */}
       <div className="mt-4 ">
         <ReadMorText>{text}</ReadMorText>
-        <img className="mt-2 w-full h-80" src={image} alt="" />
+        <img className="mt-2 w-full h-80" src={image} alt="user photo" />
       </div>
 
       {/* like comment and shear section */}
