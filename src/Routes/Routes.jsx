@@ -9,13 +9,17 @@ import MessagingRoute from "../Pages/MessagingAllPage/MessagingRoute/MessagingRo
 import Dashbord from "../Layout/Dashbord";
 import AllUser from "../Pages/Dashboard/Admin/AllUser/AllUser";
 import UserProjectUpdateForm from "../Pages/UserDetails/userProjectUpdateData/UserProjectUpdateForm";
-import ErrorPage from "../Pages/Error/ErrorPage";
+import ErrorPage from "../Pages/Shared/Error/ErrorPage";
 import UserProfile from "../Pages/UserProfile/UserProfile";
-import PraivateRoute from "./PraivateRoute/PraivateRoute";
 import CompanyRegistration from "../Pages/UserAuthentication/CompanyRegistration/CompanyRegistration";
 import TermsAndConditions from "../Pages/TermsAndConditions/TermsAndConditions";
 import JobApplyForm from "../Pages/JobPostAllPage/JobApplyForm/JobApplyForm";
 import UserDynamicProfile from "../Pages/UserDynamic Profile/UserDynamicProfile";
+import AboutPage from "../Pages/PagesComponents/AboutPage/AboutPage";
+import Contuct from "../Pages/PagesComponents/Contact/Contuct";
+import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
+import UserReport from "../Pages/Dashboard/Admin/UserReport/UserReport";
+import PostReport from "../Pages/Dashboard/Admin/PostReport/PostReport";
 
 const router = createBrowserRouter([
     {
@@ -44,8 +48,8 @@ const router = createBrowserRouter([
                 element: <UserProfile></UserProfile>
             },
             {
-               path: 'dynamicprofile/:id',
-               element : <UserDynamicProfile></UserDynamicProfile>
+                path: 'dynamicprofile/:id',
+                element: <UserDynamicProfile></UserDynamicProfile>
             },
             {
                 path: 'mynetwork',
@@ -70,15 +74,38 @@ const router = createBrowserRouter([
             {
                 path: "jobApplyForm/:id",
                 element: <JobApplyForm></JobApplyForm>,
-            }]
+            },
+            {
+                path: "about",
+                element: <AboutPage />,
+            },
+            {
+                path: "contact",
+                element: <Contuct />,
+            },
+
+        ]
     },
+
     {
         path: "dashbord",
         element: <Dashbord />,
         children: [
             {
+                path: "adminhome",
+                element: <AdminHome />,
+            },
+            {
                 path: "alluser",
                 element: <AllUser />,
+            },
+            {
+                path: "userreport",
+                element: <UserReport />,
+            },
+            {
+                path: "postreport",
+                element: <PostReport />,
             },
         ],
     },
@@ -86,8 +113,3 @@ const router = createBrowserRouter([
 ]);
 
 export default router;
-
-
-
-
-

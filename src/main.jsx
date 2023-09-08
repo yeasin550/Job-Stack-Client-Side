@@ -8,7 +8,7 @@ import AuthProvider from './Providers/AuthProvider';
 const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <div>
+  <div className='max-w-screen-xl mx-auto'>
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />

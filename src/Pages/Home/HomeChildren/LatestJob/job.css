@@ -1,21 +1,22 @@
-
 .tabs {
     display: flex;
     justify-content: center;
+    justify-items: center;
 }
 
 .tabs li {
     display: block;
-    padding: 10px 23px;
+    /* padding: 10px 23px; */
     background: #fff;
     margin-right: 12px;
     border-radius: 6px;
-    cursor: pointer;
+    cursor: pointer;   
 }
 
 .tabs li.active {
-    background: #00B04D;
+    background: #1B18A1;
     color: #fff;
+    
 }
 
 .tab_content {
@@ -30,4 +31,16 @@
 .job-card{
     border: 1px solid rgb(203 213 225);
     
+}
+
+.card{
+  transition: 400ms;
+}
+.card:hover {
+  transform: scale(1.1, 1.1);
+  direction: 1s;
+}
+.cards:hover > .card:not(:hover) {
+  filter: blur(10px);
+  transform: scale(0.9, 0.9);
 }

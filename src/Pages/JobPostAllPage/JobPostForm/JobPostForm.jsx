@@ -212,6 +212,9 @@ const JobPostForm = ({ refetch }) => {
                   </option>
                   <option>Remote</option>
                   <option>Onsite</option>
+                  <option>Internship</option>
+                  <option>Full Time</option>
+                  <option>Part Time</option>
                 </select>
                 {errors.workplace && (
                   <span className="text-red-600">Workplace is required</span>
