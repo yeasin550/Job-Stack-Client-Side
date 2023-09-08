@@ -7,11 +7,12 @@ import {
   FaBell,
   FaHome,
   FaSun,
+  FaMoon,
   FaRegCommentDots,
   FaShoppingBag,
   FaUserAlt,
   FaUserFriends,
-  FaMoon,
+
 } from "react-icons/fa";
 import useSingleUser from "../../../Hooks/useSingleUser";
 import useAdmin from "../../../Hooks/useAdmin";
@@ -100,8 +101,9 @@ const Navbar = () => {
         </div>
 
         <div
-          className={` pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
-            }`}
+          className={` pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+            navbar ? "block" : "hidden"
+          }`}
         >
           <ul className="items-center justify-center text-center text-lg space-y-8 md:flex md:space-x-6 md:space-y-0">
             <li className="flex justify-center ">
@@ -171,49 +173,56 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div className={` pb-3 mt-8  md:block md:pb-0 md:mt-0  ${navbar ? "block" : "hidden"}`}>
+        <div
+          className={` pb-3 mt-8  md:block md:pb-0 md:mt-0  ${
+            navbar ? "block" : "hidden"
+          }`}
+        >
           <div className="dropdown dropdown-end flex justify-center items-center gap-3">
             <div>
-
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              {single?.image ?
-                <div className="w-20 rounded-full border border-blue-500">
-                  <img src={single?.image} alt="logo" />
-                </div> : <div className="w-20 rounded-full text-blue-400 border"><FaUserAlt className="w-full h-full" ></FaUserAlt></div>
-              }
-
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <button
-                  onClick={() => navigate("/profile")}
-                  className="btn btn-sm w-full bg-green-600 text-white hover:bg-green-500 hover:text-white"
-                >
-                  Profile
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => navigate("/profile")}
-                  className="btn btn-sm w-full bg-blue-600 text-white hover:bg-blue-500 hover:text-white"
-                >
-                  settings
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={handleLogOut}
-                  className="btn btn-sm w-full bg-rose-600 text-white hover:bg-rose-500 hover:text-white"
-                >
-                  LogOut
-                </button>
-              </li>
-            </ul>
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                {single?.image ? (
+                  <div className="w-20 rounded-full border border-blue-500">
+                    <img src={single?.image} alt="logo" />
+                  </div>
+                ) : (
+                  <div className="w-20 rounded-full text-blue-400 border">
+                    <FaUserAlt className="w-full h-full"></FaUserAlt>
+                  </div>
+                )}
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <button
+                    onClick={() => navigate("/profile")}
+                    className="btn btn-sm w-full bg-green-600 text-white hover:bg-green-500 hover:text-white"
+                  >
+                    Profile
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={() => navigate("/profile")}
+                    className="btn btn-sm w-full bg-blue-600 text-white hover:bg-blue-500 hover:text-white"
+                  >
+                    settings
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={handleLogOut}
+                    className="btn btn-sm w-full bg-rose-600 text-white hover:bg-rose-500 hover:text-white"
+                  >
+                    LogOut
+                  </button>
+                </li>
+              </ul>
             </div>
-            <div onClick={handleTheme}>
+            {/* darkMode */}
+            <div className="cursor-pointer" onClick={handleTheme}>
               {theme === "dark" ? (
                 <FaMoon
                   className="transform scale-x-[-1] bg-gray-800 text-white rounded-full p-2"
@@ -226,11 +235,10 @@ const Navbar = () => {
                 />
               )}
             </div>
-
           </div>
         </div>
       </div>
-    </nav >
+    </nav>
   );
 };
 

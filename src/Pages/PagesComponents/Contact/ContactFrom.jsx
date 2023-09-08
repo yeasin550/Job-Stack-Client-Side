@@ -116,7 +116,7 @@ const ContactFrom = () => {
             </div>
           </form>
         </div>
-        <div className="bg-slate-200 p-6 rounded-md">
+        <div className="bg-slate-200 dark:text-black p-6 rounded-md">
           <div className="">
             <p className="text-xl font-semibold">GET IN TOUCH</p>
             <h1 className="text-3xl font-bold mt-2">Ready to Get Started?</h1>

@@ -9,7 +9,7 @@ const PromotingCareer = () => {
     setActiveTab(index);
   };
   return (
-    <div className="md:flex justify-center px-5 lg:px-28 gap-12 lg:py-10  py-4 bg-blue-50">
+    <div className="md:flex justify-center px-5 lg:px-28 gap-12 lg:py-10  py-4 bg-blue-50 dark:bg-black">
       <div className="w-full justify-center items-center lg:mt-20 md:w-1/2 space-y-9 py-4">
         <h1 className="lg:text-5xl text-3xl font-bold">Promoting Career</h1>
         <p>
@@ -24,7 +24,7 @@ const PromotingCareer = () => {
           </button>
         </Link>
       </div>
-      <div className="w-full md:w-1/2">
+      <div className="w-full dark:text-black md:w-1/2">
         <Tabs>
           <div className="flex gap-2 justify-center mt-6">
             <hr className=" border-[1px] w-full mt-8"></hr>

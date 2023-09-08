@@ -17,10 +17,10 @@ const Testimonial = () => {
     Aos.init();
   }, []);
   return (
-    <div className="my-20 ">
+    <div className="my-20 dark:text-black">
       <div className="max-w-screen-xl px-5 mx-auto">
         <div className="text-center">
-          <p className="text-3xl font-bold mb-2">
+          <p className="text-3xl dark:text-white font-bold mb-2">
             Clents Testimonials
           </p>
           <h1 className="text-lg font-bold mb-8">

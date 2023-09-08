@@ -19,7 +19,7 @@ const LatestJobs = () => {
     setActiveTab(id);
   };
   return (
-    <div className="max-w-screen-xl px-5 mx-auto my-16">
+    <div className="max-w-screen-xl px-5 dark:text-black mx-auto my-16">
       <div className="text-center mb-5">
         <h1 className="text-3xl font-bold ">Latest Jobs</h1>
         <p className="mt-2 text-lg">
