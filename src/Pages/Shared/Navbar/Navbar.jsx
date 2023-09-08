@@ -11,6 +11,7 @@ import {
   FaShoppingBag,
   FaUserAlt,
   FaUserFriends,
+  FaMoon,
 } from "react-icons/fa";
 import useSingleUser from "../../../Hooks/useSingleUser";
 import useAdmin from "../../../Hooks/useAdmin";
@@ -99,9 +100,8 @@ const Navbar = () => {
         </div>
 
         <div
-          className={` pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-            navbar ? "block" : "hidden"
-          }`}
+          className={` pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
+            }`}
         >
           <ul className="items-center justify-center text-center text-lg space-y-8 md:flex md:space-x-6 md:space-y-0">
             <li className="flex justify-center ">
@@ -113,7 +113,7 @@ const Navbar = () => {
 
             {user ? (
               <li className="">
-                <Link to="/myNetworks">
+                <Link to="/myNetwork">
                   <FaUserFriends className="mx-auto" />
                   My Networks
                 </Link>
@@ -171,30 +171,17 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <div
-          className={` pb-3 mt-8  md:block md:pb-0 md:mt-0  ${
-            navbar ? "block" : "hidden"
-          }`}
-        >
-          {user ? (
-            ""
-          ) : (
-            <Link to="/login">
-              <button className="relative flex items-center justify-center text-lg mr-4 gap-2 px-5 py-2.5  bg-green-500 rounded-lg shadow-md transition-all hover:shadow-lg border-2 text-white hover:border-green-500">
-                Login
-              </button>
-            </Link>
-          )}
+        <div className={` pb-3 mt-8  md:block md:pb-0 md:mt-0  ${navbar ? "block" : "hidden"}`}>
+          <div className="dropdown dropdown-end flex justify-center items-center gap-3">
+            <div>
 
-          <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              {single?.image ? (
+              {single?.image ?
                 <div className="w-20 rounded-full border border-blue-500">
                   <img src={single?.image} alt="logo" />
-                </div>
-              ) : (
-                <FaUserAlt className="w-20 rounded-full border border-blue-500"></FaUserAlt>
-              )}
+                </div> : <div className="w-20 rounded-full text-blue-400 border"><FaUserAlt className="w-full h-full" ></FaUserAlt></div>
+              }
+
             </label>
             <ul
               tabIndex={0}
@@ -225,24 +212,27 @@ const Navbar = () => {
                 </button>
               </li>
             </ul>
+            </div>
+            <div onClick={handleTheme}>
+              {theme === "dark" ? (
+                <FaMoon
+                  className="transform scale-x-[-1] bg-gray-800 text-white rounded-full p-2"
+                  size={32}
+                />
+              ) : (
+                <FaSun
+                  className="bg-gray-500 text-amber-400 rounded-full p-2"
+                  size={32}
+                />
+              )}
+            </div>
+
           </div>
         </div>
-        <div onClick={handleTheme}>
-          {theme === "dark" ? (
-            <FaMoon
-              className="transform scale-x-[-1] bg-gray-800 text-white rounded-full p-2"
-              size={32}
-            />
-          ) : (
-            <FaSun
-              className="bg-gray-500 text-amber-400 rounded-full p-2"
-              size={32}
-            />
-          )}
-        </div>
       </div>
-    </nav>
+    </nav >
   );
 };
 
 export default Navbar;
+

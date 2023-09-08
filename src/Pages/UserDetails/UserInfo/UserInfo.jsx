@@ -15,7 +15,6 @@ const UserInfo = () => {
   const clickactive = (active) => {
     setActive(active);
   };
-
   return (
     <div>
       <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
@@ -28,7 +27,6 @@ const UserInfo = () => {
               <Tab onClick={() => clickactive("about")} className={` cursor-pointer userinfotext ${active == 'about' ? 'userinfo cursor-pointer' : ''}`}>Work Experians</Tab>
               <Tab onClick={() => clickactive("connect")} className={` cursor-pointer userinfotext ${active == 'connect' ? 'userinfo cursor-pointer' : ''}`}>Skills</Tab>
               <Tab onClick={() => clickactive("more")} className={` cursor-pointer userinfotext ${active == 'more' ? 'userinfo cursor-pointer' : ''}`}>Project</Tab>
-
             </TabList>
           </div>
           <div className='w-full profile-shadow border'>
@@ -41,21 +39,21 @@ const UserInfo = () => {
               <UserEducation></UserEducation>
             </TabPanel>
             {/* user contact and basic info  */}
-             <TabPanel>
-              <ContactBasicInfo></ContactBasicInfo>
-             </TabPanel>
-            {/* user work Experians  */}
-             <TabPanel>
-               <UserWork></UserWork>
-             </TabPanel>
-             {/* User Skills  */}
-             <TabPanel>
-              <UserSkills></UserSkills>
-             </TabPanel>
-              {/* user Project Skills  */}
               <TabPanel>
-               <UserProjectSkills></UserProjectSkills>
+              <ContactBasicInfo></ContactBasicInfo>
               </TabPanel>
+            {/* user work Experians  */}
+               <TabPanel>
+               <UserWork></UserWork>
+               </TabPanel>
+             {/* User Skills  */}
+               <TabPanel>
+              <UserSkills></UserSkills>
+               </TabPanel>
+              {/* user Project Skills  */}
+               <TabPanel>
+               <UserProjectSkills></UserProjectSkills>
+               </TabPanel>
           </div>
         </div>
       </Tabs>

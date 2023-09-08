@@ -106,36 +106,6 @@ const MyNetwork = () => {
               <TabPanel>NewsLater</TabPanel>
             </div>
           </div>
-          <div className="w-full rounded-md shadowdiv border">
-            {/* user Activities */}
-            <TabPanel>
-              <div className="grid lg:grid-cols-2 gap-10 px-5 py-10 ">
-                {allselfdata?.map((selfpost) => (
-                  <SelfPostDesign
-                    key={selfpost?._id}
-                    selfpost={selfpost}
-                  ></SelfPostDesign>
-                ))}
-              </div>
-            </TabPanel>
-            {/* user Connections  */}
-            <TabPanel>
-              <ConnectedAllUser />
-            </TabPanel>
-            {/* user fllowing and flowers */}
-            <TabPanel>
-              <AllUsers></AllUsers>
-            </TabPanel>
-            {/* user Group */}
-            <TabPanel>Group</TabPanel>
-            {/* User Event*/}
-            <TabPanel>Event</TabPanel>
-            {/* user Pages  */}
-            <TabPanel>Pages</TabPanel>
-            {/* user Newslater */}
-            <TabPanel>NewsLater</TabPanel>
-          </div>
-      
       </Tabs>
     </div>
   );
