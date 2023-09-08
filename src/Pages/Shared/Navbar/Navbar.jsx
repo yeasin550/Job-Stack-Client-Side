@@ -7,6 +7,7 @@ import {
   FaBell,
   FaHome,
   FaSun,
+  FaMoon,
   FaRegCommentDots,
   FaShoppingBag,
   FaUserAlt,
@@ -227,7 +228,8 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <div onClick={handleTheme}>
+        {/* darkMode */}
+        <div className="cursor-pointer" onClick={handleTheme}>
           {theme === "dark" ? (
             <FaMoon
               className="transform scale-x-[-1] bg-gray-800 text-white rounded-full p-2"

@@ -5,8 +5,8 @@ import { GiSecretBook, GiSettingsKnobs } from "react-icons/gi";
 
 const JobGuidance = () => {
   return (
-    <div className="mx-12">
-      <h1 className="text-center font-bold text-4xl text-green-500 my-5">
+    <div className="lg:mx-12 mx-4">
+      <h1 className="text-center font-bold text-4xl text-blue-800 dark:text-white my-5">
         Essential Job Search Tips
       </h1>
       <div className="space-y-2">
@@ -24,19 +24,19 @@ const JobGuidance = () => {
           provide them with career guidance and employment services.
         </p>
       </div>
-      <div className="bg-orange-400 text-center py-9 mt-6 rounded-md text-white">
-        <p className="text-lg">What you need to know</p>
-        <h1 className="text-3xl font-semibold">
-          Careerer Guidance $ Job Guidance{" "}
+      <div className=" text-center text-white py-9 mt-5 px-6 rounded-md   duration-300 w-full   bg-gradient-to-r font-semibold   from-blue-700 to-purple-900 transition-all">
+        <p className="text-lg">What you need to know?</p>
+        <h1 className="text-2xl font-semibold">
+          Careerer Guidance $ Job Guidance!
         </h1>
       </div>
       <div className="mt-10 text-lg space-y-5 divide-y divide-green-500">
-        <div className="flex items-center gap-3">
-          <div className="w-32 h-20 rounded-full border border-orange-500 bg-gray-200 flex items-center justify-center">
+        <div className="lg:flex items-center gap-3">
+          <div className="lg:w-[145px] lg:mb-0 mb-2 h-20 lg:rounded-full rounded-md border border-blue-500 bg-gray-200 flex items-center justify-center">
             <FcDocument className="text-gray-600 text-6xl" />
           </div>
           <div>
-            <h1 className="font-bold text-xl">Create a Strong Profile</h1>
+            <h1 className="font-bold text-lg">Create a Strong Profile</h1>
             <p>
               Your profile is your digital resume. Make it shine with a
               professional photo, a catchy headline, and a compelling summary
@@ -44,13 +44,13 @@ const JobGuidance = () => {
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-3 py-3">
-          <div className="w-32 h-20 rounded-full border border-orange-500 bg-gray-200 flex items-center justify-center">
+        <div className="lg:flex items-center gap-3 py-3">
+          <div className="lg:w-[135px] lg:mb-0 mb-2 h-20 lg:rounded-full rounded-md border border-blue-500 bg-gray-200 flex items-center justify-center">
             <LuFileSearch className="text-gray-600 text-6xl" />
           </div>
 
           <div>
-            <h1 className="font-bold text-xl">Job Search Strategies</h1>
+            <h1 className="font-bold text-lg">Job Search Strategies</h1>
             <p>
               Explore job listings, connect with professionals, and follow
               companies. Customize your applications and make the most of
@@ -58,12 +58,12 @@ const JobGuidance = () => {
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-3 py-3">
-          <div className="w-32 h-20 rounded-full border border-orange-500 bg-gray-200 flex items-center justify-center">
+        <div className="lg:flex items-center gap-3 py-3">
+          <div className="lg:w-[140px] lg:mb-0 mb-2 h-20 lg:rounded-full rounded-md border border-blue-500 bg-gray-200 flex items-center justify-center">
             <GiSettingsKnobs className="text-gray-600 text-6xl" />
           </div>
           <div>
-            <h1 className="font-bold text-xl">Effective Applications</h1>
+            <h1 className="font-bold text-lg">Effective Applications</h1>
             <p>
               Tailor your applications for each job. Showcase your
               qualifications, skills, and enthusiasm for the role. A
@@ -71,13 +71,13 @@ const JobGuidance = () => {
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-3 py-3">
-          <div className="w-32 h-20 rounded-full border border-orange-500 bg-gray-200 flex items-center justify-center">
+        <div className="lg:flex items-center gap-3 py-3">
+          <div className="lg:w-32 h-20 lg:mb-0 mb-2 lg:rounded-full rounded-md border border-blue-500 bg-gray-200 flex items-center justify-center">
             <FcKey className="text-gray-600 text-6xl" />
           </div>
 
           <div>
-            <h1 className="font-bold text-xl"> Interview Success</h1>
+            <h1 className="font-bold text-lg"> Interview Success</h1>
             <p>
               Prepare for interviews by researching the company, practicing
               common questions, and showcasing your qualifications. First
@@ -85,12 +85,12 @@ const JobGuidance = () => {
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-3 py-3">
-          <div className="w-56 h-24 border border-orange-500 rounded-full bg-gray-200 flex items-center justify-center">
+        <div className="lg:flex items-center gap-3 py-3">
+          <div className="lg:w-56 lg:mb-0 mb-2 h-20 border border-blue-800 rounded-md lg:rounded-full bg-gray-200 flex items-center justify-center">
             <GiSecretBook className="text-gray-600 text-6xl" />
           </div>
           <div>
-            <h1 className="font-bold text-xl">Seek Feedback</h1>
+            <h1 className="font-bold text-lg">Seek Feedback</h1>
             <p>
               Don't be afraid to seek feedback from mentors or peers.
               Constructive criticism can help you improve your job search

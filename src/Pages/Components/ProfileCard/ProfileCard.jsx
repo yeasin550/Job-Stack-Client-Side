@@ -34,7 +34,7 @@ const ProfileCard = ({ person, buttonText }) => {
 
 
   return (
-    <div className="w-60 h-72 shadow-2xl rounded-lg relative">
+    <div className="lg:w-60 h-72 shadow-2xl rounded-lg relative">
       <div className="">
         <img
           className="h-14 w-full rounded-tl-lg rounded-tr-lg"

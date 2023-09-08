@@ -5,7 +5,7 @@ import Navbar from '../Pages/Shared/Navbar/Navbar';
 
 const Main = () => {
     return (
-      <div className="dark:bg-black dark:text-white text-black">
+      <div className="dark:bg-black dark:text-white text-black duration-500">
         <Navbar />
         <Outlet />
         <Footer />
