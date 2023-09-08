@@ -22,7 +22,6 @@ const UserProfile = () => {
   const [singlejobposts, refetch] = useJobPosFindEmail();
   const [singleUser] = useSingleUser();
   const single = singleUser[0];
-  console.log(single);
   const { register, handleSubmit } = useForm();
   const [updateProfileImage, updateBio, updateLocations, updateName, updateCoverPhoto] = useProfileUpdate();
   //  activie tabindex set this state 
@@ -45,7 +44,7 @@ const UserProfile = () => {
                 className="rounded-t-md w-full h-full"
                 src={single?.bgImage}
                 alt="background image"
-              /> : <img src="https://i.ibb.co/3vVkcNV/download-2.jpg" alt="logo" />
+              /> : <img className="rounded-t-md w-full h-full" src="https://i.ibb.co/3vVkcNV/download-2.jpg" alt="logo" />
             }
             <label htmlFor="my_modal_13" className="text-[20px] text-white btn-md absolute bottom-3 right-3 font-bold btn btn-circle border-none hover:bg-blue-600 bg-blue-500" ><FaPen></FaPen></label>
           </div>
