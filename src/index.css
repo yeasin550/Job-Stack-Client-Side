@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-font-family: 'Poppins', sans-serif;
+body {
+  font-family: "Poppins", sans-serif;
 }
-.borderl{
-    border-width: 0 0 0 4px ;
-    border-color: #00B04D;
+.borderl {
+  border-width: 0 0 0 4px;
+  border-color: #00b04d;
 }
 
 .borderl {
@@ -68,24 +68,21 @@ font-family: 'Poppins', sans-serif;
   border-image: linear-gradient(to right, darkblue, #0090e4) 1;
 }
 /* admin home page charts shadow */
-.chat-shadow{
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+.chat-shadow {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 /* Link active color */
-.activeLink{
+.activeLink {
   color: purple !important;
   background-color: crimson !important;
 }
-::-webkit-scrollbar{
-    display: none;
-  }
 
- .online-dot {
-    background-color: rgb(47, 255, 151);
-    border-radius: 60%;
-    position: absolute;
-    left: 6rem;
-    width: 1rem;
-    height: 1rem;
-  }
-  
+.online-dot {
+  background-color: rgb(47, 255, 151);
+  border-radius: 60%;
+  position: absolute;
+  left: 6rem;
+  width: 1rem;
+  height: 1rem;
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { MdDelete } from "react-icons/md";
+import Image from "../../../assets/images/images.jpg";
 
 const Conversation = ({ data, currentUserId, handleDeleteChat, online }) => {
   const [userData, setUserData] = useState([]);
@@ -23,7 +24,7 @@ const Conversation = ({ data, currentUserId, handleDeleteChat, online }) => {
             {online && <div className=""></div>}
             <div>
               <img
-                src={userData?.image}
+                src={userData && userData ? userData.image : Image}
                 className="w-[50px]  h-[50px] rounded-full p-[2px] border border-primary"
                 alt=""
               />
