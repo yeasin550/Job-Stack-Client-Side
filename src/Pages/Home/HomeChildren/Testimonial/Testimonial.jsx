@@ -20,9 +20,7 @@ const Testimonial = () => {
     <div className="my-20 ">
       <div className="max-w-screen-xl px-5 mx-auto">
         <div className="text-center">
-          <p className="text-3xl font-bold mb-2">
-            Clents Testimonials
-          </p>
+          <p className="text-3xl font-bold mb-2">Clents Testimonials</p>
           <h1 className="text-lg font-bold mb-8">
             What A Job Holder Says About Us
           </h1>
@@ -65,7 +63,7 @@ const Testimonial = () => {
                 />
               </div>
               <div className="">
-                <h1 className="text-xl font-bold">Andnew Smith</h1>
+                <h1 className="text-xl font-bold"> Leo Levi</h1>
                 <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -91,7 +89,7 @@ const Testimonial = () => {
               </div>
               <div className="">
                 <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
+                <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -115,8 +113,8 @@ const Testimonial = () => {
                 />
               </div>
               <div className="">
-                <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
+                <h1 className="text-xl font-bold"> Sebastian Theo</h1>
+                <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -140,8 +138,8 @@ const Testimonial = () => {
                 />
               </div>
               <div className="">
-                <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
+                <h1 className="text-xl font-bold"> Jack Kai</h1>
+                <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -165,8 +163,8 @@ const Testimonial = () => {
                 />
               </div>
               <div className="">
-                <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
+                <h1 className="text-xl font-bold"> Mason Michael</h1>
+                <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -190,8 +188,8 @@ const Testimonial = () => {
                 />
               </div>
               <div className="">
-                <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
+                <h1 className="text-xl font-bold"> Jayden Julian</h1>
+                <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -215,8 +213,8 @@ const Testimonial = () => {
                 />
               </div>
               <div className="">
-                <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
+                <h1 className="text-xl font-bold"> Theodore Wyatt</h1>
+                <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
                   <AiTwotoneStar />

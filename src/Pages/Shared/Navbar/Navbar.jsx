@@ -165,6 +165,9 @@ const Navbar = () => {
                   <li>
                     <Link to="contact">Contact</Link>
                   </li>
+                  <li>
+                    <Link to="review">Review</Link>
+                  </li>
                 </ul>
               </div>
             </li>

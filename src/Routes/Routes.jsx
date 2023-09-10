@@ -20,6 +20,8 @@ import Contuct from "../Pages/PagesComponents/Contact/Contuct";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
 import UserReport from "../Pages/Dashboard/Admin/UserReport/UserReport";
 import PostReport from "../Pages/Dashboard/Admin/PostReport/PostReport";
+import ClientReview from "../Pages/PagesComponents/ClientReview/ClientReview";
+import NewsArticles from "../Pages/Dashboard/Admin/NewsArticles/NewsArticles";
 
 const router = createBrowserRouter([
   {
@@ -79,6 +81,10 @@ const router = createBrowserRouter([
         path: "contact",
         element: <Contuct />,
       },
+      {
+        path: "review",
+        element: <ClientReview />,
+      },
     ],
   },
   {
@@ -100,6 +106,10 @@ const router = createBrowserRouter([
       {
         path: "postreport",
         element: <PostReport />,
+      },
+      {
+        path: "news-articles",
+        element: <NewsArticles/>
       },
     ],
   },
