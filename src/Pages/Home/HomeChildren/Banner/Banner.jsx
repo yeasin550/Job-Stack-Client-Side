@@ -9,19 +9,21 @@ import banner6 from "../../../../assets/images/banner6.png";
 import Typewriter from "typewriter-effect";
 import { Link, useLocation } from "react-router-dom";
 import UseScrollTop from "../../../../Hooks/UseScrollTop";
+import banner from "../../../../assets/images/banner.png";
+import bk from "../../../../assets/images/Blue_Black_Futuristic_And_Modern_Technology_Logo__5_-removebg-preview.png";
 
 const Banner = () => {
    const { pathname } = useLocation();
    UseScrollTop(pathname);
   return (
-    <div className="banner side-bar text-white">
-      <div className="max-w-screen-xl px-5 mx-auto min-h-screen ">
-        <div className="grid md:grid-cols-2 gap-4 items-center justify-center  pt-28">
+    <div className="banner  side-bar">
+      <div className="md:px-20 px-5">
+        <div className="grid md:grid-cols-2 gap-4 items-center justify-center py-10 md:py-24">
           {/*text part */}
           <div className="items-center justify-center space-y-6 ">
-            <h1 className="text-3xl font-bold">
+            <h1 className="md:text-5xl text-transparent bg-clip-text  bg-gradient-to-r from-white via-yellow-400 to-white text-2xl font-bold">
               Your Excellent Find Job
-              <span className="text-3xl font-bold">
+              <span className="md:text-5xl text-2xl font-bold">
                 <Typewriter
                   options={{
                     strings: [
@@ -37,23 +39,23 @@ const Banner = () => {
               </span>
             </h1>
 
-            <h3 className="text-xl mt-20">
-              Are you on the hunt for your dream job or searching for the
-              perfect candidate to join your team? Look no further! Job-Stack is
+            <h3 className="lg:text-xl text-[16px]  text-white mt-20">
+              Are you on the hunt for your dream job searching for the
+              perfect candidate to join your team? Look no further! JobStack is
               your one-stop destination for all your career needs.
             </h3>
 
-            <div className="flex items-center gap-10 mt-44">
-              <div className="pt-6">
+            <div className="flex items-center gap-10 mt-4">
+              <div className="lg:pt-6">
                 <Link to="jobsroute">
-                  <button className="banner-button">Browse Jobs</button>
+                  <button className="banner-button ">Browse Jobs</button>
                 </Link>
               </div>
             </div>
           </div>
 
           {/* image part */}
-          <div className="block ">
+          <div className="md:block hidden ">
             <div className=" banner-imgs">
               <div className="banner-1 shape-1">
                 <img src={banner1} alt="images" />
@@ -65,9 +67,9 @@ const Banner = () => {
                 <img src={banner3} alt="images" />
               </div>
               <div className="banner-4 shape-3">
-                <img src={banner4} alt="images" />
+                <img  src={banner4} alt="images" />
               </div>
-              <div className="banner-5 shape-2">
+              <div className="banner-5  shape-2">
                 <img src={banner5} alt="images" />
               </div>
               <div className="banner-6 shape-2">
@@ -75,13 +77,14 @@ const Banner = () => {
               </div>
             </div>
           </div>
+          {/* rotate Background */}
+           <div className="md:hidden relative py-12 order-first px-2 w-full">
+           <img className="w-full z-10 relative"  src={banner} alt="" />
+           <img className="absolute top-16 w-full animate-spin-slow" src={bk} alt="" />
+
+         </div>
+
         </div>
-      </div>
-      <div className="waves-section md:mt-0 mt-24">
-        <div className="wave wave-1"></div>
-        <div className="wave wave-2"></div>
-        <div className="wave wave-3"></div>
-        <div className="wave wave-4"></div>
       </div>
     </div>
   );

@@ -14,29 +14,27 @@ const NewsInsights = () => {
     Aos.init();
   }, []);
   return (
-    <div className="max-w-screen-xl px-5 mx-auto">
-      <div className="text-center space-y-5 my-5">
-        <h1 className="md:text-4xl text-2xl font-bold">Recent News Articles</h1>
-        <p className="text-lg">
-          Fresh job related news content posted each day.
+    <div className="banner py-16 lg:px-14 px-3" >
+      <div className="text-center mb-14">
+        <h1 className="md:text-4xl text-2xl uppercase text-transparent bg-clip-text  bg-gradient-to-r from-white to-yellow-400 font-bold">Recent News Articles</h1>
+        <p className="md:text-lg text-[16px] text-white mt-4">
+          Explore our carefully curated collection of recent news articles<br />thoughtfully selected to keep you informed and inspired.
         </p>
       </div>
       <div
-        data-aos="fade-down"
+        data-aos="fade-up"
         data-aos-easing="linear"
         data-aos-duration="1500"
-        className="grid lg:gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        className="grid lg:gap-6 gap-4 md:grid-cols-2 lg:grid-cols-3"
       >
         {/* div-1 */}
-        <div className="w-full shadow-xl rounded-md max-w-screen-xl mx-auto sm:p-10 md:p-4">
-          <div className="rounded overflow-hidden flex flex-col max-w-xl mx-auto">
-            <a href="#">
-              <img
-                className="w-full transform transition-transform hover:scale-125 duration-700"
-                src="https://job-board.dexignzone.com/xhtml/images/blog/default/thum3.jpg"
-                alt="Sunset in the mountains"
-              />
-            </a>
+        <div className="w-full shadow-xl bg-white rounded-md p-2 md:p-4">
+          <div className="rounded overflow-hidden flex flex-col">
+            <img
+              className="w-full transform transition-transform hover:scale-90 duration-700"
+              src="https://job-board.dexignzone.com/xhtml/images/blog/default/thum3.jpg"
+              alt="Sunset in the mountains"
+            />
             <div className="mt-3">
               <div className="flex gap-8 items-center">
                 <p> August 31, 2023</p>
@@ -60,15 +58,14 @@ const NewsInsights = () => {
         </div>
 
         {/* div-2 */}
-        <div className="max-w-screen-xl shadow-xl rounded-md  mx-auto p-5 sm:p-4 md:p-2">
-          <div className="rounded overflow-hidden flex flex-col max-w-xl mx-auto">
-            <a href="#">
-              <img
-                className="w-full transform transition-transform hover:scale-125 duration-700"
-                src="https://job-board.dexignzone.com/xhtml/images/blog/default/thum2.jpg"
-                alt="Sunset in the mountains"
-              />
-            </a>
+        <div className=" w-full shadow-xl rounded-md bg-white  p-2 md:p-2">
+          <div className="rounded overflow-hidden flex flex-col">
+
+            <img
+              className="w-full transform transition-transform hover:scale-90 duration-700"
+              src="https://job-board.dexignzone.com/xhtml/images/blog/default/thum2.jpg"
+              alt="Sunset in the mountains"
+            />
 
             <div className="mt-3">
               <div className="flex gap-8 items-center">
@@ -93,15 +90,15 @@ const NewsInsights = () => {
         </div>
 
         {/* div-3 */}
-        <div className="max-w-screen-xl shadow-xl rounded-md  mx-auto p-5 sm:p-10 md:p-2">
-          <div className="rounded overflow-hidden flex flex-col max-w-xl mx-auto">
-            <a href="#">
-              <img
-                className="w-full transform transition-transform hover:scale-125 duration-700"
-                src="https://job-board.dexignzone.com/xhtml/images/blog/default/thum1.jpg"
-                alt="Sunset in the mountains"
-              />
-            </a>
+        <div className="w-full shadow-xl rounded-md bg-white p-2 md:p-2">
+          <div className="rounded overflow-hidden flex flex-col">
+
+            <img
+              className="w-full transform transition-transform hover:scale-90 duration-700"
+              src="https://job-board.dexignzone.com/xhtml/images/blog/default/thum1.jpg"
+              alt="Sunset in the mountains"
+            />
+
             <div className="mt-3">
               <div className="flex gap-8 items-center">
                 <p> September 3, 2023</p>
@@ -125,12 +122,12 @@ const NewsInsights = () => {
         </div>
       </div>
 
-      <div className="banner text-white p-5 md:h-52 h-full rounded-md mt-20">
-        <div className="md:flex justify-evenly items-center">
+      <div className=" mid-banner text-white  p-5 md:h-52 h-full py-4 md:py-0 rounded-md mt-28">
+        <div className="md:flex md:justify-evenly  justify-center  items-center">
           <div>
-            <h1 className="text-3xl font-semibold md:-mt-7">
+            <h1 className="md:text-3xl text-xl font-semibold md:-mt-7">
               Are You Looking For A
-             Dream Job?
+              Dream Job?
             </h1>
             <p className="text-xl mt-2">
               2400+ candidates are available for your company.
@@ -145,9 +142,9 @@ const NewsInsights = () => {
               draggable='false'
             />
           </div>
-          <div className="">
-            <Link to="jobsroute">
-              <button className="banner-button mt-2 md:-mt-8">Browse Jobs</button>
+          <div className="mt-6 md:mt-0">
+            <Link to="/jobsroute">
+              <button className="banner-button font-bold mt-2 md:-mt-8">Browse Jobs</button>
             </Link>
           </div>
         </div>

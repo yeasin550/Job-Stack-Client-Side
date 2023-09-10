@@ -17,13 +17,13 @@ const Testimonial = () => {
     Aos.init();
   }, []);
   return (
-    <div className="my-20 dark:text-black">
+    <div className="banner py-12">
       <div className="max-w-screen-xl px-5 mx-auto">
         <div className="text-center">
-          <p className="text-3xl dark:text-white font-bold mb-2">
+          <p className="text-4xl text-transparent bg-clip-text uppercase  bg-gradient-to-r from-white to-yellow-400 font-bold mb-2">
             Clents Testimonials
           </p>
-          <h1 className="text-lg font-bold mb-8 dark:text-white">
+          <h1 className="md:text-lg text-[16px]  text-white  mb-8">
             What A Job Holder Says About Us
           </h1>
         </div>
