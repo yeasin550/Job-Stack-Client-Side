@@ -104,13 +104,13 @@ const MessageBox = ({
   //  ===========Mouse Handle================
 
   const handleMouseEnter = (id) => {
-    console.log(id);
-    setIsDivVisible(true);
+    
+    setIsDivVisible(id);
   };
 
   const handleMouseLeave = (id) => {
-    console.log(id);
-    setIsDivVisible(false);
+   
+    setIsDivVisible(id);
   };
 
   const scroll = useRef();
@@ -177,6 +177,8 @@ const MessageBox = ({
             </button>
           </ul>
         </div>  */}
+
+        {/* TODO // Delet option  not end  */}
 
                   <div
                     ref={scroll}

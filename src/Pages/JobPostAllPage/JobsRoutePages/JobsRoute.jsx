@@ -49,7 +49,6 @@ const JobsRoute = () => {
     } else return true;
   };
 
-
   return (
     <div className="px-16 py-12 ">
       <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>

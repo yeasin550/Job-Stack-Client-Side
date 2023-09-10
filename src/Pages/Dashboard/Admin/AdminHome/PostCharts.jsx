@@ -177,7 +177,7 @@ export default function PostChart() {
     <div className="chat-shadow p-4 rounded-lg px-20">
       <h1 className="text-2xl font-bold mb-4">Post Chart</h1>
       <BarChart
-        width={900}
+        width={800}
         height={300}
         margin={{
           top: 5,

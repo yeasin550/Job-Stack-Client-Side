@@ -66,7 +66,7 @@ export default function UserChart() {
     <div className="chat-shadow p-2 rounded-lg px-20">
       <h1 className="text-2xl font-bold mb-4">User Chart</h1>
       <BarChart
-        width={900}
+        width={800}
         height={300}
         data={data}
         margin={{

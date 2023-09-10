@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../../assets/logo/job-stack.png";
+import logo from "../../../assets/logo/Colorful_Modern_K_Letter_Free_Logo-removebg-preview (2).png";
 import { Link } from "react-router-dom";
 import {
   FaFacebook,
@@ -13,15 +13,19 @@ import {
 const Footer = () => {
   return (
     <div
-      className="text-white bg-black mt-20"
+      className="text-white banner "
     >
-      <div className="max-w-screen-xl px-5 mx-auto pt-12  ">
-        <div className="grid md:grid-cols-4 gap-5">
+      <div className="pt-10">
+        <div className="grid md:justify-items-center md:grid-cols-4 gap-6 md:px-16 px-3">
           <div className="">
-            <img className="h-20" src={logo} alt="logo" />
-            <p className=" mt-3">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantiu doloremque laudantium
+           
+              <div className="flex justify-start items-center ml-0">
+                <img className="w-12 md:w-16" src={logo} alt="logo" />
+                <p className="text-[24px]  font-bold font-sans">JOBSTACK</p>
+              </div>
+            <p className=" mt-4">
+              Sed ut perspiciatis unde omnis istee natus error sit voluptatem
+              or have accusantiu doloremque laudantium
             </p>
           </div>
           <div className="mt-5 md:mt-0">
