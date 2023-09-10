@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
 import { useQuery } from "@tanstack/react-query";
-import AppliedJobsDetails from "./AppliedJobsDetails";
 
 const AppliedJobs = () => {
   const { user } = useContext(AuthContext);
@@ -50,8 +49,6 @@ const AppliedJobs = () => {
                     <td>{appliedJob?.name}</td>
                     <td>{appliedJob?.applyEmail}</td>
                     <td>+{appliedJob?.number}</td>
-                    {/* <td>{appliedJob?.price}</td>
-                    <td>{appliedJob.seats}</td> */}
                     <td>
                       <label htmlFor="my_modal_6">
                         <h1 className="font-semibold text-white text-center cursor-pointer text-lg bg-green-500 px-2 py-1 rounded-md">

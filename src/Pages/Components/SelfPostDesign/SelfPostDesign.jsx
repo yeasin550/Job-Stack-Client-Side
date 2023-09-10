@@ -125,7 +125,7 @@ const SelfPostDesign = ({ selfpost }) => {
     }
   }
   return (
-    <div className="w-[500px] mt-5 p-4  shadow-xl rounded-lg">
+    <div className="lg:w-[500px] w-full mt-5 p-4 shadow-xl rounded-lg">
       {/* user information */}
       <div className="mt-3 flex justify-between items-center">
         <div className="flex items-center gap-3">
@@ -334,3 +334,6 @@ const SelfPostDesign = ({ selfpost }) => {
 };
 
 export default SelfPostDesign;
+
+
+

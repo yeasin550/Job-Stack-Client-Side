@@ -140,14 +140,14 @@ const ContactFrom = () => {
             </div>
             <div className="form-control -mt-3">
               <label className="label">
-                <span className="label-text ">Email</span>
+                <span className="label-text dark:text-white ">Email</span>
               </label>
 
               <input
                 type="email"
                 {...register("email", { required: true })}
                 placeholder="email"
-                className="input input-bordered w-full bg-slate-200"
+                className="input input-bordered dark:text-black w-full bg-slate-200"
               />
               {errors.email && (
                 <span className="text-red-800">Email is required</span>
@@ -155,13 +155,13 @@ const ContactFrom = () => {
             </div>
             <div className="-mt-3">
               <label className="label">
-                <span className="label-text ">Message</span>
+                <span className="label-text dark:text-white ">Message</span>
               </label>
               <textarea
                 {...register("message", { required: true })}
                 rows="6"
                 placeholder="Message"
-                className="rounded-md px-3 w-full bg-slate-200"
+                className="rounded-md px-3 dark:text-black w-full bg-slate-200"
               ></textarea>
               {errors.message && (
                 <span className="text-red-800">Message is required</span>

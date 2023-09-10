@@ -20,7 +20,6 @@ const JobApplyForm = () => {
       return res.data;
     }
   );
-  // console.log(userApply);
   const {
     register,
     handleSubmit,

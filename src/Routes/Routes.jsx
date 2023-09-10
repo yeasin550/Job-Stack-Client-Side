@@ -11,10 +11,10 @@ import AllUser from "../Pages/Dashboard/Admin/AllUser/AllUser";
 import UserProjectUpdateForm from "../Pages/UserDetails/userProjectUpdateData/UserProjectUpdateForm";
 import ErrorPage from "../Pages/Shared/Error/ErrorPage";
 import UserProfile from "../Pages/UserProfile/UserProfile";
-import PraivateRoute from "./PraivateRoute/PraivateRoute";
 import CompanyRegistration from "../Pages/UserAuthentication/CompanyRegistration/CompanyRegistration";
 import TermsAndConditions from "../Pages/TermsAndConditions/TermsAndConditions";
 import JobApplyForm from "../Pages/JobPostAllPage/JobApplyForm/JobApplyForm";
+import UserDynamicProfile from "../Pages/UserDynamic Profile/UserDynamicProfile";
 import AboutPage from "../Pages/PagesComponents/AboutPage/AboutPage";
 import Contuct from "../Pages/PagesComponents/Contact/Contuct";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
@@ -50,7 +50,11 @@ const router = createBrowserRouter([
         element: <UserProfile></UserProfile>,
       },
       {
-        path: "myNetworks",
+        path: "dynamicprofile/:id",
+        element: <UserDynamicProfile></UserDynamicProfile>,
+      },
+      {
+        path: "mynetwork",
         element: <MyNetwork></MyNetwork>,
       },
       {
@@ -87,6 +91,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+
   {
     path: "dashbord",
     element: <Dashbord />,
@@ -109,15 +114,12 @@ const router = createBrowserRouter([
       },
       {
         path: "news-articles",
-        element: <NewsArticles/>
+        element: <NewsArticles />,
       },
     ],
   },
 ]);
 
 export default router;
-
-
-
 
 

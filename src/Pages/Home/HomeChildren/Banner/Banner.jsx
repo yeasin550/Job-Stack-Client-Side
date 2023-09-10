@@ -19,9 +19,9 @@ const Banner = () => {
         <div className="grid md:grid-cols-2 gap-4 items-center justify-center  pt-28">
           {/*text part */}
           <div className="items-center justify-center space-y-6 ">
-            <h1 className="md:text-5xl text-3xl font-bold">
+            <h1 className="text-3xl font-bold">
               Your Excellent Find Job
-              <span className="md:text-5xl text-3xl font-bold">
+              <span className="text-3xl font-bold">
                 <Typewriter
                   options={{
                     strings: [

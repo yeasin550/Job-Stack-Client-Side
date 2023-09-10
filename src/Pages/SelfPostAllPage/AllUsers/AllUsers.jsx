@@ -51,7 +51,7 @@ const AllUsers = () => {
                     name="searchText"
                     type="text"
                     placeholder="Find Connect"
-                    className="bg-slate-100 h-10 px-40 ps-3 rounded-full text-sm focus:outline-none"
+                    className="bg-slate-100 h-10 px-40 ps-3 border border-blue-700 rounded-full text-sm focus:outline-none"
                   />
                   <button
                     type="submit"
@@ -67,7 +67,7 @@ const AllUsers = () => {
       </div>
       {allUser.length > 0 ? (
         <div>
-          <div className="grid md:grid-cols-3 gap-7  px-5 w-full h-screen overflow-auto">
+          <div className="grid md:grid-cols-4 gap-7  px-5 w-full h-screen overflow-auto">
             {allUser.map((person) => (
               <ProfileCard
                 key={person?._id}

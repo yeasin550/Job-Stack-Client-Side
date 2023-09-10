@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
 import { FiDelete } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
-import AppliedMemberJobDetails from "./AppliedMemberJobDetails";
+
 
 const AppliedMember = () => {
   const navigate = useNavigate();
@@ -52,9 +52,7 @@ const AppliedMember = () => {
                       {posts?.jobTitle} <br />
                       {posts?.jobCategory}
                     </td>
-                    <td>
-                      Canada{posts?.location} & {posts?.workplace}
-                    </td>
+                    <td>Canada{posts?.location} & {posts?.workplace}</td>
                     <td>{posts?.postDate}</td>
                     <td>Front-End{posts?.position}</td>
                     <td>${posts?.salary}</td>

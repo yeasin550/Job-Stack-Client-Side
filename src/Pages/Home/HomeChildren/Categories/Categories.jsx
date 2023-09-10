@@ -17,9 +17,9 @@ const Categories = () => {
      Aos.init();
    }, []);
   return (
-    <div className="max-w-screen-xl  px-5 mx-auto lg:pt-8">
+    <div className="max-w-screen-xl dark:text-black  px-5 mx-auto lg:pt-8">
       <div className="text-center mb-9">
-        <h1 className="md:text-4xl text-3xl font-bold ">Top Categories</h1>
+        <h1 className="md:text-4xl text-3xl  dark:text-white font-bold ">Top Categories</h1>
       </div>
       <Link to="jobsroute">
         <div

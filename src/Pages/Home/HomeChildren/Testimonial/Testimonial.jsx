@@ -17,11 +17,13 @@ const Testimonial = () => {
     Aos.init();
   }, []);
   return (
-    <div className="my-20 ">
+    <div className="my-20 dark:text-black">
       <div className="max-w-screen-xl px-5 mx-auto">
         <div className="text-center">
-          <p className="text-3xl font-bold mb-2">Clents Testimonials</p>
-          <h1 className="text-lg font-bold mb-8">
+          <p className="text-3xl dark:text-white font-bold mb-2">
+            Clents Testimonials
+          </p>
+          <h1 className="text-lg font-bold mb-8 dark:text-white">
             What A Job Holder Says About Us
           </h1>
         </div>
@@ -113,7 +115,7 @@ const Testimonial = () => {
                 />
               </div>
               <div className="">
-                <h1 className="text-xl font-bold"> Sebastian Theo</h1>
+                <h1 className="text-xl font-bold">Andnew Smith</h1>
                 <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -138,7 +140,7 @@ const Testimonial = () => {
                 />
               </div>
               <div className="">
-                <h1 className="text-xl font-bold"> Jack Kai</h1>
+                <h1 className="text-xl font-bold">Andnew Smith</h1>
                 <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -163,7 +165,7 @@ const Testimonial = () => {
                 />
               </div>
               <div className="">
-                <h1 className="text-xl font-bold"> Mason Michael</h1>
+                <h1 className="text-xl font-bold">Andnew Smith</h1>
                 <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -188,7 +190,7 @@ const Testimonial = () => {
                 />
               </div>
               <div className="">
-                <h1 className="text-xl font-bold"> Jayden Julian</h1>
+                <h1 className="text-xl font-bold">Andnew Smith</h1>
                 <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -202,7 +204,8 @@ const Testimonial = () => {
                 </p>
               </div>
             </div>
-          </SwiperSlide>
+          </SwiperSlide >
+            
           <SwiperSlide className="my-8 text-center categorires-card">
             <div className="bg-slate-100 py-5 px-10 rounded-md">
               <div className="flex justify-center mb-3">
@@ -213,7 +216,7 @@ const Testimonial = () => {
                 />
               </div>
               <div className="">
-                <h1 className="text-xl font-bold"> Theodore Wyatt</h1>
+                <h1 className="text-xl font-bold">Andnew Smith</h1>
                 <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
