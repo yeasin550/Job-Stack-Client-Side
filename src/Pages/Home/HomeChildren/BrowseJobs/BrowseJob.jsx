@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import banner from '../../../../assets/images/populer-job.jpg';
 import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
-import LazyLoad from 'react-lazy-load';
 
 const BrowseJob = () => {
    const [countOn, setCountOn] = useState(false);
@@ -11,14 +10,12 @@ const BrowseJob = () => {
       <div className="grid md:grid-cols-2 gap-5 items-center">
         {/* left site */}
         <div className="">
-          <LazyLoad offset={300}>
             <img
               className="rounded-md"
               src={banner}
               alt="banner"
               draggable="false"
             />
-          </LazyLoad>
         </div>
         {/* right site */}
         <div className="">

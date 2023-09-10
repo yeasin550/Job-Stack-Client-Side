@@ -65,7 +65,7 @@ const Testimonial = () => {
                 />
               </div>
               <div className="">
-                <h1 className="text-xl font-bold">Andnew Smith</h1>
+                <h1 className="text-xl font-bold"> Leo Levi</h1>
                 <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -204,7 +204,8 @@ const Testimonial = () => {
                 </p>
               </div>
             </div>
-          </SwiperSlide>
+          </SwiperSlide >
+            
           <SwiperSlide className="my-8 text-center categorires-card">
             <div className="bg-slate-100 py-5 px-10 rounded-md">
               <div className="flex justify-center mb-3">

@@ -9,7 +9,7 @@ const ContuctBanner = () => {
       <div
         className="relative bg-cover bg-no-repeat bg-center h-80"
         style={{
-          backgroundImage: `url(https://expert-themes.com/html/meto/images/background/pattern-15.png)`,
+          backgroundImage: `url(https://www.vtdesignz.com/wp-content/uploads/2016/06/about-us-banner.jpg)`,
         }}
       >
         <div className="absolute inset-0 banner opacity-60"></div>
