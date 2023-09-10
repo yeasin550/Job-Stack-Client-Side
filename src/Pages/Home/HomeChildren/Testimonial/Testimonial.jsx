@@ -23,7 +23,7 @@ const Testimonial = () => {
           <p className="text-3xl dark:text-white font-bold mb-2">
             Clents Testimonials
           </p>
-          <h1 className="text-lg font-bold mb-8">
+          <h1 className="text-lg font-bold mb-8 dark:text-white">
             What A Job Holder Says About Us
           </h1>
         </div>
@@ -91,7 +91,7 @@ const Testimonial = () => {
               </div>
               <div className="">
                 <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
+                <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -116,7 +116,7 @@ const Testimonial = () => {
               </div>
               <div className="">
                 <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
+                <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -141,7 +141,7 @@ const Testimonial = () => {
               </div>
               <div className="">
                 <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
+                <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -166,7 +166,7 @@ const Testimonial = () => {
               </div>
               <div className="">
                 <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
+                <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -191,7 +191,7 @@ const Testimonial = () => {
               </div>
               <div className="">
                 <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
+                <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -216,7 +216,7 @@ const Testimonial = () => {
               </div>
               <div className="">
                 <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
+                <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
                   <AiTwotoneStar />
