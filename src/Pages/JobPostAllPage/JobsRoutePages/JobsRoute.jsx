@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import useJobPost from "../../../Hooks/useJobPost"
@@ -12,6 +12,8 @@ import AppliedMember from "../AppliedMember/AppliedMember";
 import JobGuidance from "../JobGuidance/JobGuidance";
 import BookMarkJobs from "../BookMarkJobs/BookMarkJobs";
 import getBookMarkJobs from "../../../Hooks/getBookMarkJobs";
+import { useLocation } from "react-router";
+import UseScrollTop from "../../../Hooks/UseScrollTop";
 const JobsRoute = () => {
   const { user } = useContext(AuthContext);
   const [active, setActive] = useState("All");
@@ -48,12 +50,14 @@ const JobsRoute = () => {
       }
     } else return true;
   };
+const { pathname } = useLocation();
+UseScrollTop(pathname);
 
   return (
-    <div className="px-16 py-12 ">
+    <div className="lg:px-16 py-12 ">
       <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-        <div className="flex gap-1">
-          <div className="shadowdiv border rounded-md w-80 h-100%">
+        <div className="lg:flex gap-1">
+          <div className="shadowdiv border rounded-md lg:w-80 h-100%">
             <TabList className="flex sticky top-24 flex-col justify-center items-start px-5 py-10 gap-6">
               <Tab
                 // onClick={() => clickactive("post")}
@@ -129,14 +133,14 @@ const JobsRoute = () => {
             <TabPanel>
               <div>
                 {/* job category ways filter */}
-                <form className="flex flex-col-reverse justify-center md:flex-row gap-3 mt-7">
+                <form className="flex flex-col-reverse  lg:mx-0 mx-5 justify-center md:flex-row gap-3 mt-7">
                   <div className="flex relative">
                     <input
                       onChange={(e) => setSearchText(e.target.value)}
                       value={searchText}
                       type="text"
                       placeholder="Search your jobs title"
-                      className="w-full md:w-80 px-3 rounded-sm h-10  border-2 border-blue-500 focus:outline-none focus:blue-green-700"
+                      className="w-full md:w-80 px-3 rounded-sm h-10 dark:text-black border-2 border-blue-500 focus:outline-none focus:blue-green-700"
                     />
                     <FaSearch className="absolute top-3 text-gray-400 right-2" />
                   </div>
@@ -145,7 +149,7 @@ const JobsRoute = () => {
                     <select
                       id="jobCategory"
                       name="jobCategory"
-                      className="h-10 border-2 cursor-pointer border-blue-500 focus:outline-none focus:blue-green-500 rounded px-2 md:px-2 py-0 md:py-1 tracking-wider"
+                      className="h-10 border-2 cursor-pointer border-blue-500 dark:text-black focus:outline-none focus:blue-green-500 rounded px-2 md:px-2 py-0 md:py-1 tracking-wider"
                       onChange={(e) => setActive(e.target.value)}
                       value={active}
                     >
@@ -182,32 +186,32 @@ const JobsRoute = () => {
             <TabPanel>The Job Notification section</TabPanel>
             {/* user appliedJobs */}
             <TabPanel>
-              <h1 className="text-center font-bold text-3xl my-5 text-green-600">
+              <h1 className="text-center font-bold text-3xl my-5 text-green-600 dark:text-white">
                 My Jobs
               </h1>
               <AppliedJobs />
             </TabPanel>
             {/* user appliedJobs */}
             <TabPanel>
-              <h1 className="text-center font-bold text-3xl my-5 text-green-600">
+              <h1 className="text-center font-bold text-3xl my-5 text-green-600 dark:text-white">
                 Applied Job
               </h1>
               <AppliedMember />
             </TabPanel>
             {/* baokmark jobs */}
             <TabPanel>
-              <h1 className="text-center font-bold text-3xl my-5 text-green-600">
+              <h1 className="text-center font-bold text-3xl my-5 text-green-600 dark:text-white">
                 Favorite Member
               </h1>
-              
+
               <BookMarkJobs bookJobs={bookJobs} />
             </TabPanel>
             {/* User Event*/}
             <TabPanel>
-              <h1 className="text-center my-3 font-bold text-4xl text-lime-400">
+              <h1 className="text-center my-3 font-bold text-4xl text-blue-800 dark:text-white">
                 Craft Your Career Story
               </h1>
-              <div className="container mx-auto mt-8 pb-3 w-9/12 rounded-md">
+              <div className="container mx-auto mt-8 pb-3 lg:w-11/12 rounded-md">
                 <div className="aspect-w-16 aspect-h-9">
                   <iframe
                     src="https://www.youtube.com/embed/Ll62YIkEvs8?si=d0gSnZMq_Ss5lU4n"

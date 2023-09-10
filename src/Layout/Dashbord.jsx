@@ -75,11 +75,11 @@ const Dashbord = () => {
                   </a>
                 </li>
               </Link>
-              <Link to="/dashbord/postreport">
+              <Link to="/dashbord/news-articles">
                 <li>
                   <a>
                     <TbBrandGooglePhotos />
-                    Post Report
+                    NewsArticles
                   </a>
                 </li>
               </Link>

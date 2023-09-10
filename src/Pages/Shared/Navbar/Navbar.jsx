@@ -7,11 +7,12 @@ import {
   FaBell,
   FaHome,
   FaSun,
+  FaMoon,
   FaRegCommentDots,
   FaShoppingBag,
   FaUserAlt,
   FaUserFriends,
-  FaMoon,
+
 } from "react-icons/fa";
 import useSingleUser from "../../../Hooks/useSingleUser";
 import useAdmin from "../../../Hooks/useAdmin";
@@ -99,8 +100,9 @@ const Navbar = () => {
         </div>
 
         <div
-          className={` pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
-            }`}
+          className={` pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+            navbar ? "block" : "hidden"
+          }`}
         >
           <ul className="items-center justify-center text-center text-lg space-y-8 md:flex md:space-x-6 md:space-y-0">
             <li className="flex justify-center ">
@@ -164,13 +166,20 @@ const Navbar = () => {
                   <li>
                     <Link to="contact">Contact</Link>
                   </li>
+                  <li>
+                    <Link to="review">Review</Link>
+                  </li>
                 </ul>
               </div>
             </li>
           </ul>
         </div>
 
-        <div className={` pb-3 mt-8  md:block md:pb-0 md:mt-0  ${navbar ? "block" : "hidden"}`}>
+        <div
+          className={` pb-3 mt-8  md:block md:pb-0 md:mt-0  ${
+            navbar ? "block" : "hidden"
+          }`}
+        >
           <div className="dropdown dropdown-end flex justify-center items-center gap-3">
             {
               user ? <div>
@@ -241,7 +250,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </nav >
+    </nav>
   );
 };
 

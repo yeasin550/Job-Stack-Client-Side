@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import banner from '../../../../assets/images/populer-job.jpg';
 import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
-import LazyLoad from 'react-lazy-load';
 
 const BrowseJob = () => {
    const [countOn, setCountOn] = useState(false);

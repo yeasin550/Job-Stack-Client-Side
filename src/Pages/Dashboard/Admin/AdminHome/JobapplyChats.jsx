@@ -62,11 +62,12 @@ const data = [
   },
 ];
 export default function JobapplyChats() {
-    return (
-      <div className="chat-shadow p-2 rounded-lg px-20">
-        <h1 className="text-2xl font-bold mb-4">JobApply Chart</h1>
+  return (
+    <div className="chat-shadow p-2 rounded-lg px-4 md:px-20">
+      <h1 className="text-2xl font-bold mb-4">JobApply Chart</h1>
+      <div className="md:w-96">
         <LineChart
-          width={800}
+          width={window.innerWidth < 576 ? window.innerWidth : 768}
           height={300}
           data={data}
           margin={{
@@ -90,5 +91,34 @@ export default function JobapplyChats() {
           <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
         </LineChart>
       </div>
-    );
+    </div>
+
+    // <div className="chat-shadow p-2 rounded-lg px-20">
+    //   <h1 className="text-2xl font-bold mb-4">JobApply Chart</h1>
+    //   <LineChart
+    //     width={900}
+    //     height={300}
+    //     data={data}
+    //     margin={{
+    //       top: 5,
+    //       right: 30,
+    //       left: 20,
+    //       bottom: 5,
+    //     }}
+    //   >
+    //     <CartesianGrid strokeDasharray="3 3" />
+    //     <XAxis dataKey="name" />
+    //     <YAxis />
+    //     <Tooltip />
+    //     <Legend />
+    //     <Line
+    //       type="monotone"
+    //       dataKey="pv"
+    //       stroke="#0000FF"
+    //       activeDot={{ r: 8 }}
+    //     />
+    //     <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+    //   </LineChart>
+    // </div>
+  );
 }

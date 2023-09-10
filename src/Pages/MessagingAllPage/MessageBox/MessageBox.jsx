@@ -4,6 +4,7 @@ import { format } from "timeago.js";
 import InputEmoji from "react-input-emoji";
 import { BiSolidPhoneCall, BiSolidVideo, BiUser } from "react-icons/bi";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import Image from "../../../assets/images/images.jpg";
 import { MdDelete } from "react-icons/md";
 import "./MessageBox.css";
 
@@ -121,7 +122,7 @@ const MessageBox = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center mb-6 pl-4">
             <img
-              src={userData?.image}
+              src={userData && userData ? userData.image : Image}
               className="w-[60px]  h-[60px] rounded-full p-[1px] border border-primary"
               alt=""
             />
@@ -157,35 +158,14 @@ const MessageBox = ({
         <div className="p-6">
           {messages?.length > 0 ? (
             messages?.map((message) => {
-              console.log(message?._id);
               return (
                 <>
-                  {/* <div className="dropdown dropdown-right">
-            <label tabIndex={0}>
-             <BsThreeDotsVertical />
-          </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box "
-          >
-            <button
-              onClick={() => handleDeleteMessage(message?._id)}
-              className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
-            >
-              <MdDelete />
-              Delete
-            </button>
-          </ul>
-        </div>  */}
-
-        {/* TODO // Delet option  not end  */}
-
                   <div
                     ref={scroll}
                     onMouseEnter={handleMouseEnter}
                     className={`max-w-[45%] relative rounded-b-xl p-4 mb-6 ${
                       message.senderId === currentUserId
-                        ? " text-white bg-sky-600 rounded-tl-xl ml-auto"
+                        ? " text-white banner rounded-tl-xl ml-auto"
                         : "bg-chat rounded-tr-xl"
                     } `}
                   >
@@ -212,7 +192,7 @@ const MessageBox = ({
 
                       <p className="message-text">{message.text}</p>
                       <div className="text-end">
-                        <span className="text-sm">
+                        <span className="text-xs ">
                           {format(message.createdAt)}
                         </span>
                       </div>
@@ -222,8 +202,8 @@ const MessageBox = ({
               );
             })
           ) : (
-            <div className="text-center text-lg font-semiboldmt-24">
-              No Messages or No Conversation Selected
+            <div className="text-center mt-32 text-lg font-semiboldmt-24">
+              No Conversation Selected
             </div>
           )}
         </div>
@@ -286,6 +266,154 @@ const MessageBox = ({
         </div>
       }
     </>
+
+    // <div>
+    //   {userData?.length > 0 ? (
+    //     <>
+    //       <div className="mt-8 px-2">
+    //         <div className="flex flex-col md:flex-row items-center justify-between">
+    //           <div className="flex items-center mb-4 md:mb-0 pl-4">
+    //             <img
+    //               src={userData?.image}
+    //               className="w-[60px] h-[60px] rounded-full p-[1px] border border-primary"
+    //               alt=""
+    //             />
+    //             <h1 className="pl-4 font-medium text-xl">{userData?.name}</h1>
+    //           </div>
+    //           <div className="flex items-center md:items-end text-center md:text-end mt-4 md:mt-0">
+    //             <BiSolidPhoneCall className="h-[25px] w-[25px] mr-4 md:mr-6 cursor-pointer" />
+    //             <BiSolidVideo className="h-[25px] w-[25px] mr-4 md:mr-6 cursor-pointer" />
+    //             <BiUser className="h-[25px] w-[25px] mr-4 md:mr-6 cursor-pointer" />
+    //             <div className="dropdown dropdown-left cursor-pointer">
+    //               <label tabIndex={0}>
+    //                 <BsThreeDotsVertical />
+    //               </label>
+    //               <ul
+    //                 tabIndex={0}
+    //                 className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box"
+    //               >
+    //                 <button
+    //                   onClick={() => handleDeleteChat(chat?._id)}
+    //                   className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
+    //                 >
+    //                   <MdDelete />
+    //                   Delete
+    //                 </button>
+    //               </ul>
+    //             </div>
+    //           </div>
+    //         </div>
+    //         <hr className="mt-4" />
+    //       </div>
+
+    //       <div className="h-[75%] w-full overflow-scroll shadow-sm">
+    //         <div className="p-6">
+    //           {messages?.map((message) => (
+    //             <div
+    //               key={message._id}
+    //               ref={scroll}
+    //               onMouseEnter={handleMouseEnter}
+    //               className={`max-w-[45%] relative rounded-b-xl p-4 mb-6 ${
+    //                 message.senderId === currentUserId
+    //                   ? "text-white banner rounded-tl-xl ml-auto"
+    //                   : "bg-chat rounded-tr-xl"
+    //               }`}
+    //             >
+    //               <div className="relative">
+    //                 <div
+    //                   className={`${
+    //                     message.senderId === currentUserId
+    //                       ? "absolute -left-20"
+    //                       : "absolute -right-20"
+    //                   }`}
+    //                 >
+    //                   <button
+    //                     className={`btn ${
+    //                       isDivVisible && message?._id ? "block" : "hidden"
+    //                     }`}
+    //                     onClick={() => handleDeleteMessage(message?._id)}
+    //                     onMouseLeave={handleMouseLeave}
+    //                   >
+    //                     <MdDelete className="w-5 h-5" />
+    //                   </button>
+    //                 </div>
+
+    //                 {/* ===============Message======== */}
+
+    //                 <p className="message-text">{message.text}</p>
+    //                 <div className="text-end">
+    //                   <span className="text-xs">
+    //                     {format(message.createdAt)}
+    //                   </span>
+    //                 </div>
+    //               </div>
+    //             </div>
+    //           ))}
+    //         </div>
+    //       </div>
+
+    //       <div className="p-4 w-full">
+    //         <div className="flex items-center">
+    //           <div className="w-full">
+    //             <InputEmoji value={newMessage} onChange={handleChange} />
+
+    //             <input
+    //               type="file"
+    //               name=""
+    //               id=""
+    //               style={{ display: "none" }}
+    //               // ref={imageRef}
+    //             />
+    //           </div>
+    //           <div
+    //             className="p-2 cursor-pointer bg-light rounded-full"
+    //             onClick={handleSend}
+    //           >
+    //             <svg
+    //               xmlns="http://www.w3.org/2000/svg"
+    //               className="icon icon-tabler icon-tabler-send"
+    //               width="30"
+    //               height="30"
+    //               viewBox="0 0 24 24"
+    //               stroke-width="1.5"
+    //               stroke="#2c3e50"
+    //               fill="none"
+    //               stroke-linecap="round"
+    //               stroke-linejoin="round"
+    //             >
+    //               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    //               <line x1="10" y1="14" x2="21" y2="3" />
+    //               <path d="M21 3l-6.5 18a0.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a0.55 .55 0 0 1 0 -1l18 -6.5" />
+    //             </svg>
+    //           </div>
+    //           <div className="ml-4 p-2 cursor-pointer bg-light rounded-full pointer-events-none">
+    //             <svg
+    //               xmlns="http://www.w3.org/2000/svg"
+    //               className="icon icon-tabler icon-tabler-circle-plus"
+    //               width="30"
+    //               height="30"
+    //               viewBox="0 0 24 24"
+    //               stroke-width="1.5"
+    //               stroke="#2c3e50"
+    //               fill="none"
+    //               stroke-linecap="round"
+    //               stroke-linejoin="round"
+    //             >
+    //               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    //               <circle cx="12" cy="12" r="9" />
+    //               <line x1="9" y1="12" x2="15" y2="12" />
+    //               <line x1="12" y1="9" x2="12" y2="15" />
+    //             </svg>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </>
+    //   ) : (
+    //     <div className="text-center text-lg font-semibold mt-4">
+    //       No Messages or No Conversation Selected
+    //     </div>
+    //   )}
+    // </div>
   );
 };
 

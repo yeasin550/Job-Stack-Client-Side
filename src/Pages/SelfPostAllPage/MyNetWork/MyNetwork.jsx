@@ -13,11 +13,11 @@ const MyNetwork = () => {
         setActive(active);
     };
     return (
-      <div className="px-24 py-10">
+      <div className="lg:px-24 px-2 py-10">
         <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-          <div className="flex gap-1">
-            <div className="shadowdiv border rounded-md w-80 h-100%">
-              <TabList className="flex flex-col justify-center items-start px-5 py-10 gap-6">
+          <div className="lg:flex gap-1">
+            <div className="shadowdiv border rounded-md lg:w-80 w-full h-100%">
+              <TabList className="flex  flex-col justify-center items-start px-5 py-10 gap-6">
                 <Tab
                   onClick={() => clickactive("post")}
                   className={` cursor-pointer userinfotext ${
@@ -79,7 +79,7 @@ const MyNetwork = () => {
             <div className="w-full rounded-md shadowdiv border">
               {/* user Activities */}
               <TabPanel>
-                <div className="grid place-items-center h-screen gap-10 overflow-auto">
+                <div className="grid lg:grid-cols-2 place-items-center h-screen gap-10 overflow-auto">
                   {allselfdata?.map((selfpost) => (
                     <SelfPostDesign
                       key={selfpost?._id}

@@ -113,7 +113,7 @@ const MessagingRoute = () => {
   // Connect to Socket.io
 
   useEffect(() => {
-    socket.current = io("ws://localhost:8900");
+    socket.current = io("ws://localhost:8800");
     socket.current.emit("new-user-add", userI?._id);
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
@@ -205,6 +205,7 @@ const MessagingRoute = () => {
                 <div
                   onClick={() => {
                     setCurrentChat(chat);
+                    console.log("hokko");
                   }}
                 >
                   <Conversation
@@ -213,9 +214,6 @@ const MessagingRoute = () => {
                     online={checkOnlineStatus(chat)}
                     handleDeleteChat={handleDeleteChat}
                   />
-                  {/* <div  onClick={() => handleDeleteChat(chat?._id)}>
-           
-            </div> */}
                 </div>
               ))}
             </div>

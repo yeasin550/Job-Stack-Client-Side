@@ -23,7 +23,7 @@ const JobPostDesign = ({ posts }) => {
     // console.log(posts);
 
   return (
-    <div className="grid grid-cols-1">
+    <div className="grid grid-cols-1 dark:text-black">
       <div className=" bg-white shadow-lg rounded-md mt-5 p-6 border border-purple-500">
         <div className="flex justify-end gap-2 mb-3 text-xl">
           <FaShareAlt className="cursor-pointer" />
@@ -32,7 +32,7 @@ const JobPostDesign = ({ posts }) => {
             className="cursor-pointer"
           />
         </div>
-        <div className="flex justify-between items-center mb-5">
+        <div className="lg:flex justify-between items-center mb-5">
           <div>
             <div className="flex items-center gap-3">
               <img
@@ -54,7 +54,7 @@ const JobPostDesign = ({ posts }) => {
 
             <div className="px-2 py-1 rounded-md">
               {/* <h1 className="font-semibold">Workplace</h1> */}
-              <h1 className="bg-gray-200 w-[300px] mt-3 text-center font-bold px-3 py-1 hover:border-blue-500 border hover:shadow-lg hover:bg-white rounded-md text-purple-700">
+              <h1 className="bg-gray-200 lg:w-[300px] mt-3 text-center font-bold px-3 py-1 hover:border-blue-500 border hover:shadow-lg hover:bg-white rounded-md text-purple-700">
                 {posts?.workplace}
               </h1>
             </div>
@@ -75,8 +75,8 @@ const JobPostDesign = ({ posts }) => {
           </div>
         </div>
         {/* quatitiy div */}
-        <div className="flex justify-between items-center">
-          <div className="w-1/2 flex gap-9">
+        <div className="lg:flex justify-between items-center">
+          <div className="lg:w-1/2 lg:mb-0 mb-3 lg:flex gap-9">
             <div className="space-y-1">
               <h1 className="flex items-center gap-1">
                 <BiDollarCircle /> Salary : ${posts?.salary}/month
@@ -94,20 +94,17 @@ const JobPostDesign = ({ posts }) => {
               </h1>
             </div>
           </div>
-          <div className="w-1/2 justify-end flex items-center gap-3 ">
-            <FaRegBookmark className="text-3xl cursor-pointer" />
+          <div className="lg:w-1/2 justify-end flex items-center gap-3 ">
+            {/* <FaRegBookmark className="text-3xl cursor-pointer" /> */}
             <button
               onClick={() => navigate(`/jobApplyForm/${posts?._id}`)}
-              className="bg-blue-600 text-center text-white py-2 px-6 rounded-md hover:bg-blue-800  duration-300 w-1/2   bg-gradient-to-r from-blue-500 to-blue-700  font-semibold   hover:from-blue-700 hover:to-purple-900 transition-all "
+              className="bg-blue-600 text-center text-white py-2 px-6 rounded-md hover:bg-blue-800  duration-300 lg:w-1/2 w-full  bg-gradient-to-r from-blue-500 to-blue-700  font-semibold   hover:from-blue-700 hover:to-purple-900 transition-all "
             >
               Apply Now
             </button>
           </div>
         </div>
         <hr className="my-5 border border-purple-500" />
-
-        {/* workplace, Location, Job Category */}
-
         {/* description div */}
         <div>
           {/* div-1 */}
@@ -160,7 +157,7 @@ const JobPostDesign = ({ posts }) => {
           <hr className="my-5 border border-purple-500" />
           <div className="my-5">
             <h1 className="font-semibold text-2xl">Skills_____</h1>
-            <div className="flex gap-3 ml-5 mt-3">
+            <div className="lg:flex gap-3 lg:ml-5 mt-3">
               <h1 className="bg-gray-200 font-bold px-3 py-1 hover:border-blue-500 border hover:shadow-lg hover:bg-white rounded-md text-purple-700">
                 Html
               </h1>
@@ -179,55 +176,6 @@ const JobPostDesign = ({ posts }) => {
             </div>
           </div>
         </div>
-
-        {/* <div>
-          <h3 className=" flex items-center gap-3 mt-5 font-semibold text-gray-800">
-            Job Descriptions <FaHandPointDown />
-          </h3>
-          <p className="text-gray-600">{posts?.jobDescription}</p>
-        </div> */}
-        <div className="md:flex justify-between gap-3 mt-8">
-          <div className="md:flex items-center gap-8">
-            {/* <div className="mb-4 px-2 py-1 rounded-md">
-              <h1 className="font-semibold">Workplace</h1>
-              <p>{posts?.workplace}</p>
-            </div> */}
-
-            {/* <div className="mb-4 px-2 py-1 rounded-md">
-              <h1 className="font-semibold">Locations</h1>
-              <p>{posts?.location}</p>
-            </div> */}
-            {/* <div className="mb-4 px-2 py-1 rounded-md">
-              <h1 className="font-semibold">Job-Category</h1>
-              <p>{posts?.jobCategory}</p>
-            </div> */}
-            {/* <div className="mb-4 px-2 py-1 rounded-md">
-              <h2 className="font-semibold">Salary</h2>
-              <p> ${posts?.salary}/per year</p>
-            </div> */}
-          </div>
-        </div>
-
-        {/* <JobApplyForm posts={posts}></JobApplyForm> */}
-
-        {/* <button
-          onClick={() => navigate(`/jobApplyForm/${posts?._id}`)}
-          className="bg-green-500 text-center mt-5 text-white py-2 px-6 rounded-md hover:bg-green-600 transition duration-300 w-full"
-        >
-          Apply Now
-        </button> */}
-
-        {/* <div className="flex bottom-0 justify-around  bg-gray-50 py-3 rounded-md">
-          <div className="flex items-center gap-2 cursor-pointer">
-            <FcLike /> Like
-          </div>
-          <div className="flex items-center gap-2 cursor-pointer">
-            <FaCommentAlt /> Comment
-          </div>
-          <div className="flex items-center gap-2 cursor-pointer">
-            <FaShare /> Share
-          </div>
-        </div> */}
       </div>
     </div>
   );

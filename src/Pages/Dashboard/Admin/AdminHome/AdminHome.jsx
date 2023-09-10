@@ -135,9 +135,9 @@ const AdminHome = () => {
       {/* Charts */}
       <div className="flex flex-col gap-14 mt-24">
         <UserChart />
-        <JobChats />
-        <PostChart/>
-        <JobapplyChats />
+        {/* <JobChats /> */}
+        {/* <PostChart/> */}
+        {/* <JobapplyChats /> */}
       </div>
     </div>
   );

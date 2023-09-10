@@ -20,96 +20,106 @@ import Contuct from "../Pages/PagesComponents/Contact/Contuct";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
 import UserReport from "../Pages/Dashboard/Admin/UserReport/UserReport";
 import PostReport from "../Pages/Dashboard/Admin/PostReport/PostReport";
+import ClientReview from "../Pages/PagesComponents/ClientReview/ClientReview";
+import NewsArticles from "../Pages/Dashboard/Admin/NewsArticles/NewsArticles";
 
 const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <Main></Main>,
+    errorElement: <ErrorPage />,
+    children: [
+      {
         path: "/",
-        element: <Main></Main>,
-        errorElement: <ErrorPage />,
-        children: [
-            {
-                path: "/",
-                element: <Home></Home>
-            },
-            {
-                path: 'signup',
-                element: <Register></Register>
-            },
-            {
-                path: 'login',
-                element: <Login></Login>
-            },
-            {
-                path: 'companyregister',
-                element: <CompanyRegistration></CompanyRegistration>
-            },
-            {
-                path: 'profile',
-                element: <UserProfile></UserProfile>
-            },
-            {
-                path: 'dynamicprofile/:id',
-                element: <UserDynamicProfile></UserDynamicProfile>
-            },
-            {
-                path: 'mynetwork',
-                element: <MyNetwork></MyNetwork>
-            },
-            {
-                path: 'jobsroute',
-                element: <JobsRoute></JobsRoute>
-            },
-            {
-                path: 'massageroute',
-                element: <MessagingRoute></MessagingRoute>
-            },
-            {
-                path: 'projectupdate/:id',
-                element: <UserProjectUpdateForm></UserProjectUpdateForm>
-            },
-            {
-                path: "termsandconditions",
-                element: <TermsAndConditions />,
-            },
-            {
-                path: "jobApplyForm/:id",
-                element: <JobApplyForm></JobApplyForm>,
-            },
-            {
-                path: "about",
-                element: <AboutPage />,
-            },
-            {
-                path: "contact",
-                element: <Contuct />,
-            },
+        element: <Home></Home>,
+      },
+      {
+        path: "signup",
+        element: <Register></Register>,
+      },
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "companyregister",
+        element: <CompanyRegistration></CompanyRegistration>,
+      },
+      {
+        path: "profile",
+        element: <UserProfile></UserProfile>,
+      },
+      {
+        path: "dynamicprofile/:id",
+        element: <UserDynamicProfile></UserDynamicProfile>,
+      },
+      {
+        path: "mynetwork",
+        element: <MyNetwork></MyNetwork>,
+      },
+      {
+        path: "jobsroute",
+        element: <JobsRoute></JobsRoute>,
+      },
+      {
+        path: "massageroute",
+        element: <MessagingRoute></MessagingRoute>,
+      },
+      {
+        path: "projectupdate/:id",
+        element: <UserProjectUpdateForm></UserProjectUpdateForm>,
+      },
+      {
+        path: "termsandconditions",
+        element: <TermsAndConditions />,
+      },
+      {
+        path: "jobApplyForm/:id",
+        element: <JobApplyForm></JobApplyForm>,
+      },
+      {
+        path: "about",
+        element: <AboutPage />,
+      },
+      {
+        path: "contact",
+        element: <Contuct />,
+      },
+      {
+        path: "review",
+        element: <ClientReview />,
+      },
+    ],
+  },
 
-        ]
-    },
-
-    {
-        path: "dashbord",
-        element: <Dashbord />,
-        children: [
-            {
-                path: "adminhome",
-                element: <AdminHome />,
-            },
-            {
-                path: "alluser",
-                element: <AllUser />,
-            },
-            {
-                path: "userreport",
-                element: <UserReport />,
-            },
-            {
-                path: "postreport",
-                element: <PostReport />,
-            },
-        ],
-    },
-
+  {
+    path: "dashbord",
+    element: <Dashbord />,
+    children: [
+      {
+        path: "adminhome",
+        element: <AdminHome />,
+      },
+      {
+        path: "alluser",
+        element: <AllUser />,
+      },
+      {
+        path: "userreport",
+        element: <UserReport />,
+      },
+      {
+        path: "postreport",
+        element: <PostReport />,
+      },
+      {
+        path: "news-articles",
+        element: <NewsArticles />,
+      },
+    ],
+  },
 ]);
 
 export default router;
+
+
