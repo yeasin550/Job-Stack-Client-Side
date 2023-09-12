@@ -1,16 +1,18 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../../../assets/logo/logo.png";
+import logo from "../../../assets/logo/Colorful_Modern_K_Letter_Free_Logo-removebg-preview (2).png";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import {
   FaAngleDown,
   FaBell,
   FaHome,
   FaSun,
+  FaMoon,
   FaRegCommentDots,
   FaShoppingBag,
   FaUserAlt,
   FaUserFriends,
+
 } from "react-icons/fa";
 import useSingleUser from "../../../Hooks/useSingleUser";
 import useAdmin from "../../../Hooks/useAdmin";
@@ -51,13 +53,12 @@ const Navbar = () => {
 
 
   return (
-    <nav className="w-full banner text-white sticky z-50 top-0 left-0">
+    <nav className="w-full banner text-white sticky lg:px-8 z-40 top-0 left-0">
       <div className="justify-between px-5 mx-auto lg:max-w-screen-xl md:items-center md:flex sticky ">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
-          <div className="navbar-start ml-0">
-            <Link to="/">
-              <img className="h-10 md:h-full" src={logo} alt="logo" />
-            </Link>
+          <div className="navbar-start flex justify-center items-center  ml-0">
+            <img className="w-12 md:w-12" src={logo} alt="logo" />
+            <p className="text-[20px]  font-bold font-sans">JOBSTACK</p>
           </div>
 
           <div className="md:hidden">
@@ -113,7 +114,7 @@ const Navbar = () => {
 
             {user ? (
               <li className="">
-                <Link to="/myNetworks">
+                <Link to="/myNetwork">
                   <FaUserFriends className="mx-auto" />
                   My Networks
                 </Link>
@@ -165,6 +166,9 @@ const Navbar = () => {
                   <li>
                     <Link to="contact">Contact</Link>
                   </li>
+                  <li>
+                    <Link to="review">Review</Link>
+                  </li>
                 </ul>
               </div>
             </li>
@@ -176,69 +180,74 @@ const Navbar = () => {
             navbar ? "block" : "hidden"
           }`}
         >
-          {user ? (
-            ""
-          ) : (
-            <Link to="/login">
-              <button className="relative flex items-center justify-center text-lg mr-4 gap-2 px-5 py-2.5  bg-green-500 rounded-lg shadow-md transition-all hover:shadow-lg border-2 text-white hover:border-green-500">
-                Login
-              </button>
-            </Link>
-          )}
+          <div className="dropdown dropdown-end flex justify-center items-center gap-3">
+            {
+              user ? <div>
 
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              {single?.image ? (
-                <div className="w-20 rounded-full border border-blue-500">
-                  <img src={single?.image} alt="logo" />
-                </div>
+                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                  {single?.image ?
+                    <div className="w-20 rounded-full border border-blue-500">
+                      <img src={single?.image} alt="logo" />
+                    </div> : <div className="w-20 rounded-full text-yellow-400 shadow-xl border-2  bg-gray-600 border-gray-500"><FaUserAlt className="w-full h-full" ></FaUserAlt></div>
+                  }
+
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <button
+                      onClick={() => navigate("/profile")}
+                      className="btn btn-sm w-full mb-1"
+                    >
+                      Profile
+                    </button>
+                  </li>
+                   <li>
+                      <button
+                        onClick={() => navigate("/dashbord/adminhome")}
+                        className="btn btn-sm w-full  mb-1"
+                      >
+                        DashBoard
+                      </button>
+                    </li>
+                  
+
+                  <li>
+                    <button
+                      onClick={() => navigate("/profile")}
+                      className="btn btn-sm w-full  mb-1"
+                    >
+                      settings
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={handleLogOut}
+                      className="btn btn-sm w-full  mb-1"
+                    >
+                      LogOut
+                    </button>
+                  </li>
+                </ul>
+              </div> : <button className="btn btn-sm hover:bg-gray-400 hover:text-white  border-none" onClick={() => navigate('/login')}>Login</button>
+            }
+
+            <div onClick={handleTheme}>
+              {theme === "dark" ? (
+                <FaMoon
+                  className="transform scale-x-[-1] bg-gray-800 text-white rounded-full p-2"
+                  size={32}
+                />
               ) : (
-                <FaUserAlt className="w-20 rounded-full border border-blue-500"></FaUserAlt>
+                <FaSun
+                  className="bg-white text-yellow-500 rounded-full p-2"
+                  size={32}
+                />
               )}
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <button
-                  onClick={() => navigate("/profile")}
-                  className="btn btn-sm w-full bg-green-600 text-white hover:bg-green-500 hover:text-white"
-                >
-                  Profile
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => navigate("/profile")}
-                  className="btn btn-sm w-full bg-blue-600 text-white hover:bg-blue-500 hover:text-white"
-                >
-                  settings
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={handleLogOut}
-                  className="btn btn-sm w-full bg-rose-600 text-white hover:bg-rose-500 hover:text-white"
-                >
-                  LogOut
-                </button>
-              </li>
-            </ul>
+            </div>
           </div>
-        </div>
-        <div onClick={handleTheme}>
-          {theme === "dark" ? (
-            <FaMoon
-              className="transform scale-x-[-1] bg-gray-800 text-white rounded-full p-2"
-              size={32}
-            />
-          ) : (
-            <FaSun
-              className="bg-gray-500 text-amber-400 rounded-full p-2"
-              size={32}
-            />
-          )}
         </div>
       </div>
     </nav>
@@ -246,3 +255,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

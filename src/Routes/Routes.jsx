@@ -11,15 +11,17 @@ import AllUser from "../Pages/Dashboard/Admin/AllUser/AllUser";
 import UserProjectUpdateForm from "../Pages/UserDetails/userProjectUpdateData/UserProjectUpdateForm";
 import ErrorPage from "../Pages/Shared/Error/ErrorPage";
 import UserProfile from "../Pages/UserProfile/UserProfile";
-import PraivateRoute from "./PraivateRoute/PraivateRoute";
 import CompanyRegistration from "../Pages/UserAuthentication/CompanyRegistration/CompanyRegistration";
 import TermsAndConditions from "../Pages/TermsAndConditions/TermsAndConditions";
 import JobApplyForm from "../Pages/JobPostAllPage/JobApplyForm/JobApplyForm";
+import UserDynamicProfile from "../Pages/UserDynamic Profile/UserDynamicProfile";
 import AboutPage from "../Pages/PagesComponents/AboutPage/AboutPage";
 import Contuct from "../Pages/PagesComponents/Contact/Contuct";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
 import UserReport from "../Pages/Dashboard/Admin/UserReport/UserReport";
 import PostReport from "../Pages/Dashboard/Admin/PostReport/PostReport";
+import ClientReview from "../Pages/PagesComponents/ClientReview/ClientReview";
+import NewsArticles from "../Pages/Dashboard/Admin/NewsArticles/NewsArticles";
 
 const router = createBrowserRouter([
   {
@@ -48,7 +50,11 @@ const router = createBrowserRouter([
         element: <UserProfile></UserProfile>,
       },
       {
-        path: "myNetworks",
+        path: "dynamicprofile/:id",
+        element: <UserDynamicProfile></UserDynamicProfile>,
+      },
+      {
+        path: "mynetwork",
         element: <MyNetwork></MyNetwork>,
       },
       {
@@ -79,8 +85,13 @@ const router = createBrowserRouter([
         path: "contact",
         element: <Contuct />,
       },
+      {
+        path: "review",
+        element: <ClientReview />,
+      },
     ],
   },
+
   {
     path: "dashbord",
     element: <Dashbord />,
@@ -101,13 +112,14 @@ const router = createBrowserRouter([
         path: "postreport",
         element: <PostReport />,
       },
+      {
+        path: "news-articles",
+        element: <NewsArticles />,
+      },
     ],
   },
 ]);
 
 export default router;
-
-
-
 
 

@@ -11,7 +11,7 @@ import { MdDashboard } from "react-icons/md";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import useAdmin from "../Hooks/useAdmin";
-import images from '../assets/logo/logo.png'
+import images from '../assets/logo/Blue_Black_Futuristic_And_Modern_Technology_Logo-removebg-preview.png'
 import ActiveLink from "../Hooks/ActiveLink";
 
 const Dashbord = () => {
@@ -21,7 +21,7 @@ const Dashbord = () => {
     <div>
       <div className="drawer lg:drawer-open ">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content px-20 py-5">
+        <div className="drawer-content px-10 py-5">
           {/* Page content here */}
           <label
             htmlFor="my-drawer-2"
@@ -37,15 +37,16 @@ const Dashbord = () => {
           <ul className="menu p-4 w-80 banner  min-h-full text-white text-xl font-semibold">
             <div className="flex flex-col items-center mt-6 mb-5 -mx-2">
               <img
-                className="object-cover w-24 h-24 mx-2 m-5 rounded-full"
+                className="object-cover w-24 h-24 mx-2 rounded-full"
                 src={images}
                 alt="avatar"
                 draggable="false"
               />
               <Link to="/profile">
-                <h4 className="mx-2 mt-2 font-medium text-white hover:underline">
-                  {user?.displayName}
+                <h4 className="mx-2 text-center font-medium text-white hover:underline">
+                 JOSTACK
                 </h4>
+                <h1 className=" text-center font-sans text-xl">{user?.displayName}(Admin)</h1>
               </Link>
             </div>
             {/* Sidebar content here */}
@@ -74,11 +75,11 @@ const Dashbord = () => {
                   </a>
                 </li>
               </Link>
-              <Link to="/dashbord/postreport">
+              <Link to="/dashbord/news-articles">
                 <li>
                   <a>
                     <TbBrandGooglePhotos />
-                    Post Report
+                    NewsArticles
                   </a>
                 </li>
               </Link>

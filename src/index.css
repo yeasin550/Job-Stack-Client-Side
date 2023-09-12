@@ -45,6 +45,16 @@ body {
   font-weight: 800px !important;
 }
 
+.tabbuttonactive {
+  color: black !important;
+  background-color: aliceblue !important;
+  border-radius: 18px !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+  padding-top: 5px !important;
+  padding-bottom: 6px !important;
+
+}
 ::-webkit-scrollbar {
   display: none;
 }
@@ -61,6 +71,14 @@ body {
 .banner {
   background-image: -webkit-linear-gradient(right, #0090e4 0%, #1b18a1 100%);
 }
+
+.mid-banner{
+  background: #ac9524;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, rgb(192, 195, 19), #e7c507);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, rgb(203, 197, 11), rgb(202, 176, 10)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+
 /* categorires-card section */
 .categorires-card:hover {
   border-width: 1px;

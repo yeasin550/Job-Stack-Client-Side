@@ -4,21 +4,16 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import handleButtonDesiable from "../../../Hooks/handleButtonDesiable";
 import { getCurrentTimeStamp } from "../../../Hooks/useMonent";
+import { useNavigate } from "react-router-dom";
 
 const ProfileCard = ({ person, buttonText }) => {
   const { _id, name, image, email } = person;
   const { user } = useContext(AuthContext);
-
+  const navigate = useNavigate();
 
   const [connectRequest] = SendConnectRequest();
   const [reaquestsend] = handleButtonDesiable();
-
-
-  
   const requestBTN = reaquestsend?.map((request) => request?.userID);
-  
-  // console.log(requestBTN);
-
 
   const userconnect = {
     userID: _id,
@@ -30,11 +25,8 @@ const ProfileCard = ({ person, buttonText }) => {
     timeStamp: getCurrentTimeStamp("LLL"),
   };
 
-  console.log(_id);
-
-
   return (
-    <div className="w-60 h-72 shadow-2xl rounded-lg relative">
+    <div className="lg:w-60 h-72 shadow-2xl rounded-lg relative">
       <div className="">
         <img
           className="h-14 w-full rounded-tl-lg rounded-tr-lg"
@@ -42,7 +34,7 @@ const ProfileCard = ({ person, buttonText }) => {
           alt="cover photo"
           draggable="false"
         />
-        <div className="flex justify-center -mt-12">
+        <div  onClick={() => navigate(`/dynamicprofile/${_id}`) } className="flex justify-center cursor-pointer -mt-12">
           {image && (
             <img
               className="h-[100px] w-[100px] rounded-full"
@@ -59,7 +51,7 @@ const ProfileCard = ({ person, buttonText }) => {
         <p>React.js Developer</p>
         <div
           onClick={() => connectRequest(userconnect)}
-          disabled={requestBTN.includes(person._id)}
+          disabled={requestBTN.includes(_id)}
           className="flex justify-center"
         >
           <button className="px-16 rounded-full outline outline-offset-2 outline-2 outline-blue-500 text-blue-500 font-semibold flex items-center gap-2 absolute bottom-4">

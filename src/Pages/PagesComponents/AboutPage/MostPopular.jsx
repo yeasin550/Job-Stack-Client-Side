@@ -25,7 +25,7 @@ const MostPopular = () => {
               their dream jobs and top talent right here. Start your journey to
               success today with Job-Stack
             </p>
-            <div className="mt-7 grid grid-cols-3 gap-5">
+            <div className="mt-7 grid grid-cols-2 gap-5">
               <div className="flex items-center gap-2 text-xl">
                 <button className="banner rounded-full p-2 text-white">
                   <FaUsers />

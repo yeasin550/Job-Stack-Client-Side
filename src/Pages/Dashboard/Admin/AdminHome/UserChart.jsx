@@ -63,10 +63,10 @@ const data = [
 
 export default function UserChart() {
   return (
-    <div className="chat-shadow p-2 rounded-lg px-20">
+    <div className="chat-shadow p-2 rounded-lg px-20 overflow-x-scroll">
       <h1 className="text-2xl font-bold mb-4">User Chart</h1>
       <BarChart
-        width={900}
+        width={800}
         height={300}
         data={data}
         margin={{

@@ -17,13 +17,13 @@ const Testimonial = () => {
     Aos.init();
   }, []);
   return (
-    <div className="my-20 ">
+    <div className="banner py-12">
       <div className="max-w-screen-xl px-5 mx-auto">
         <div className="text-center">
-          <p className="text-3xl font-bold mb-2">
+          <p className="text-4xl text-transparent bg-clip-text uppercase  bg-gradient-to-r from-white to-yellow-400 font-bold mb-2">
             Clents Testimonials
           </p>
-          <h1 className="text-lg font-bold mb-8">
+          <h1 className="md:text-lg text-[16px]  text-white  mb-8">
             What A Job Holder Says About Us
           </h1>
         </div>
@@ -65,6 +65,31 @@ const Testimonial = () => {
                 />
               </div>
               <div className="">
+                <h1 className="text-xl font-bold"> Leo Levi</h1>
+                <div className="flex justify-center text-yellow-400 mt-1">
+                  <AiTwotoneStar />
+                  <AiTwotoneStar />
+                  <AiTwotoneStar />
+                  <AiTwotoneStar />
+                  <AiTwotoneStar />
+                </div>
+                <p>
+                  Since my son went to school in Padora, my son was able to
+                  discover his hidden talents.
+                </p>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide className="my-8 text-center categorires-card">
+            <div className="bg-slate-100 py-5 px-10 rounded-md">
+              <div className="flex justify-center mb-3">
+                <img
+                  className="h-20 w-20 rounded-full -mt-14"
+                  src={image1}
+                  alt="image"
+                />
+              </div>
+              <div className="">
                 <h1 className="text-xl font-bold">Andnew Smith</h1>
                 <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
@@ -91,7 +116,7 @@ const Testimonial = () => {
               </div>
               <div className="">
                 <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
+                <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -116,7 +141,7 @@ const Testimonial = () => {
               </div>
               <div className="">
                 <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
+                <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -141,7 +166,7 @@ const Testimonial = () => {
               </div>
               <div className="">
                 <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
+                <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -166,7 +191,7 @@ const Testimonial = () => {
               </div>
               <div className="">
                 <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
+                <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
                   <AiTwotoneStar />
@@ -179,7 +204,8 @@ const Testimonial = () => {
                 </p>
               </div>
             </div>
-          </SwiperSlide>
+          </SwiperSlide >
+            
           <SwiperSlide className="my-8 text-center categorires-card">
             <div className="bg-slate-100 py-5 px-10 rounded-md">
               <div className="flex justify-center mb-3">
@@ -191,32 +217,7 @@ const Testimonial = () => {
               </div>
               <div className="">
                 <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                </div>
-                <p>
-                  Since my son went to school in Padora, my son was able to
-                  discover his hidden talents.
-                </p>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="my-8 text-center categorires-card">
-            <div className="bg-slate-100 py-5 px-10 rounded-md">
-              <div className="flex justify-center mb-3">
-                <img
-                  className="h-20 w-20 rounded-full -mt-14"
-                  src={image1}
-                  alt="image"
-                />
-              </div>
-              <div className="">
-                <h1 className="text-xl font-bold">Andnew Smith</h1>
-                 <div className="flex justify-center text-yellow-400 mt-1">
+                <div className="flex justify-center text-yellow-400 mt-1">
                   <AiTwotoneStar />
                   <AiTwotoneStar />
                   <AiTwotoneStar />

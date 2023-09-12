@@ -67,7 +67,7 @@ export default function JobChats() {
     <div className="chat-shadow py-10 rounded-lg px-20">
       <h1 className="text-2xl font-bold mb-4">Job Chart</h1>
       <BarChart
-        width={900}
+        width={800}
         height={300}
         data={data}
         margin={{

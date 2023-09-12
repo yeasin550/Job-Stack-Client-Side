@@ -17,14 +17,14 @@ const Categories = () => {
      Aos.init();
    }, []);
   return (
-    <div className="max-w-screen-xl  px-5 mx-auto lg:pt-8">
+    <div className="md:py-28 py-14 banner lg:px-14 px-4">
       <div className="text-center mb-9">
-        <h1 className="md:text-4xl text-3xl font-bold ">Top Categories</h1>
+        <h1 className="md:text-4xl uppercase text-transparent bg-clip-text  bg-gradient-to-r from-white to-yellow-400 text-3xl font-bold">Top Categories</h1>
       </div>
       <Link to="jobsroute">
         <div
           data-aos="fade-up"
-          data-aos-duration="3000"
+          data-aos-duration="2000"
           className="grid md:grid-cols-4 gap-10 mt-14"
         >
           <Card icon={<FaLaptop />} title={"Web & Software Dev"} num={1200} />
