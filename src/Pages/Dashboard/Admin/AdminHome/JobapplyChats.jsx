@@ -45,7 +45,7 @@ export default function JobapplyChats() {
   return (
     <div className="chat-shadow rounded-lg ">
       <h1 className="text-2xl font-bold mb-4">JobApply Chart</h1>
-      <div className="">
+      <ResponsiveContainer width="100%" height={300}>
         <LineChart
           width={500}
           height={300}
@@ -70,7 +70,7 @@ export default function JobapplyChats() {
           />
           <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
         </LineChart>
+         </ResponsiveContainer>
       </div>
-    </div>
   );
 }

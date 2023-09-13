@@ -133,25 +133,27 @@ export default function PostChart() {
   return (
     <div className="chat-shadow rounded-lg">
       <h1 className="text-2xl font-bold mb-4">Post Chart</h1>
-      <BarChart
-        width={500}
-        height={300}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-        data={data}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="pv" stackId="a" fill="#0F52BA" />
-        <Bar dataKey="amt" stackId="a" fill="#40E0D0" />
-        <Bar dataKey="uv" stackId="a" fill="#B6D0E2" />
-      </BarChart>
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart
+          width={500}
+          height={300}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+          data={data}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="pv" stackId="a" fill="#0F52BA" />
+          <Bar dataKey="amt" stackId="a" fill="#40E0D0" />
+          <Bar dataKey="uv" stackId="a" fill="#B6D0E2" />
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
   }
