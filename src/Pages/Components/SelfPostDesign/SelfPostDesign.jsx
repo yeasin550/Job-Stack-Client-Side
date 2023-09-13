@@ -295,29 +295,6 @@ const SelfPostDesign = ({ selfpost }) => {
                   defaultValue={text}
                 ></textarea>
               </div>
-              {/* images */}
-              {/* <div className="image-upload flex items-center gap-12 rounded-2xl justify-center">
-                <div className="">
-                  <h1 className="text-lg ">Add Photo</h1>
-                </div>
-                <div className="">
-                  <label htmlFor="file-input">
-                    <img
-                      className="w-11 h-12"
-                      src="https://i.ibb.co/x5snGtV/image.png"
-                      alt="Upload"
-                      defaultValue={image}
-                    />
-                    
-                  </label>
-                  <input
-                    className="hidden"
-                    id="file-input"
-                    type="file"
-                    {...register("image")}
-                  />
-                </div>
-              </div> */}
               <button className="w-full py-2 mt-3 bg-green-500 rounded-md text-white cursor-pointer">
                 <input type="submit" value="Update Post" />
               </button>
