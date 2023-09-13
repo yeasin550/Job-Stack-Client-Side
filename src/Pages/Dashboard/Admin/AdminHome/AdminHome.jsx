@@ -43,7 +43,7 @@ const AdminHome = () => {
                   {countOn && (
                     <CountUp
                       start={0}
-                      end={1579}
+                      end={stats.users}
                       duration={3}
                       delay={0}
                     />
@@ -68,7 +68,7 @@ const AdminHome = () => {
               <div className="ml-2">
                 <div className=" text-center text-5xl">
                   {countOn && (
-                    <CountUp start={0} end={1328} duration={3} delay={0} />
+                    <CountUp start={0} end={stats.job} duration={3} delay={0} />
                   )}
                 </div>
                 <div className=" text-white text-center text-2xl">Jobs</div>
@@ -93,7 +93,7 @@ const AdminHome = () => {
                   {countOn && (
                     <CountUp
                       start={0}
-                      end={1183}
+                      end={stats.selfpost}
                       duration={3}
                       delay={0}
                     />
@@ -120,7 +120,7 @@ const AdminHome = () => {
                   {countOn && (
                     <CountUp
                       start={0}
-                      end={1294}
+                      end={stats.jobapply}
                       duration={3}
                       delay={0}
                     />
@@ -133,10 +133,10 @@ const AdminHome = () => {
         </div>
       </div>
       {/* Charts */}
-      <div className="flex flex-col gap-14 mt-24">
+      <div className="grid md:grid-cols-2 gap-10 mt-16">
         <UserChart />
         <JobChats />
-        <PostChart/>
+        <PostChart />
         <JobapplyChats />
       </div>
     </div>

@@ -67,7 +67,7 @@ const AllUsers = () => {
       </div>
       {allUser.length > 0 ? (
         <div>
-          <div className="grid md:grid-cols-4 gap-7  px-5 w-full h-screen overflow-auto">
+          <div className="grid md:grid-cols-3 gap-7  px-5 w-full h-screen overflow-auto">
             {allUser.map((person) => (
               <ProfileCard
                 key={person?._id}

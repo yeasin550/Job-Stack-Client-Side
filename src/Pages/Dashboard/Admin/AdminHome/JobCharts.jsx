@@ -11,63 +11,42 @@ import {
 
 const data = [
   {
-    name: "Jan",
-    pv: 400,
-    uv: 10,
+    name: "Sat",
+    pv: 223,
+    uv: 400,
   },
   {
-    name: "Fed",
+    name: "Sun",
     pv: 368,
-    uv: 10,
   },
   {
-    name: "Mar",
-    pv: 256,
+    name: "Mon",
+    pv: 296,
   },
   {
-    name: "Api",
-    pv: 346,
+    name: "Tues",
+    pv: 236,
   },
   {
-    name: "May",
-    pv: 299,
+    name: "Wed",
+    pv: 289,
   },
   {
-    name: "Jun",
-    pv: 329,
+    name: "	Thurs",
+    pv: 250,
   },
   {
-    name: "Jul",
-    pv: 365,
-  },
-  {
-    name: "Aug",
-    pv: 265,
-  },
-  {
-    name: "Sep",
-    pv: 375,
-  },
-  {
-    name: "Oct",
-    pv: 215,
-  },
-  {
-    name: "Nov",
-    pv: 315,
-  },
-  {
-    name: "Dec",
-    pv: 365,
+    name: "Fri",
+    pv: 368,
   },
 ];
 
 export default function JobChats() {
   return (
-    <div className="chat-shadow py-10 rounded-lg px-20">
+    <div className="chat-shadow rounded-lg ">
       <h1 className="text-2xl font-bold mb-4">Job Chart</h1>
       <BarChart
-        width={800}
+        width={500}
         height={300}
         data={data}
         margin={{

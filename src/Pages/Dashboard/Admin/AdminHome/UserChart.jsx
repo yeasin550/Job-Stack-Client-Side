@@ -11,62 +11,42 @@ import {
 
 const data = [
   {
-    name: "Jan",
+    name: "Sat",
     pv: 223,
     uv: 400,
   },
   {
-    name: "Feb",
+    name: "Sun",
     pv: 368,
   },
   {
-    name: "Mar",
+    name: "Mon",
     pv: 296,
   },
   {
-    name: "Apr",
+    name: "Tues",
     pv: 236,
   },
   {
-    name: "May",
+    name: "Wed",
     pv: 289,
   },
   {
-    name: "Jun",
+    name: "	Thurs",
     pv: 250,
   },
   {
-    name: "Jul",
+    name: "Fri",
     pv: 368,
-  },
-  {
-    name: "Aug",
-    pv: 215,
-  },
-  {
-    name: "Sep",
-    pv: 315,
-  },
-  {
-    name: "Oct",
-    pv: 195,
-  },
-  {
-    name: "Nov",
-    pv: 315,
-  },
-  {
-    name: "Dec",
-    pv: 215,
-  },
+  }
 ];
 
 export default function UserChart() {
   return (
-    <div className="chat-shadow p-2 rounded-lg px-20 overflow-x-scroll">
+    <div className="chat-shadow rounded-lg ">
       <h1 className="text-2xl font-bold mb-4">User Chart</h1>
       <BarChart
-        width={800}
+        width={500}
         height={300}
         data={data}
         margin={{
