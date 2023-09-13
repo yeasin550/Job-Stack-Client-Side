@@ -81,17 +81,17 @@ const JobTaskAlert = () => {
             jobTask={jobTasks}
           >
             <div className=" bg-gray-200 px-3  py-4 rounded shadow p-4 my-5 mx-3  space-y-3">
-              <p className="text-gray-600 text-sm w-9/12">
+              <p className="text-gray-600 text-sm w-full lg:w-9/12">
                 {jobTasks?.jobTask}
               </p>
-              <p className="flex items-center gap-3">
+              <p className="lg:flex items-center gap-3">
                 <span className="font-semibold">Assignment Task :</span>{" "}
                 <a
                   href={jobTasks?.docs}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <p className="bg-gray-300 text-red-700 hover:bg-white hover:shadow-md px-3 py-1 rounded-md font-bold hover:border-purple-700 border">
+                  <p className="bg-gray-300 text-red-700 hover:bg-white  hover:shadow-md px-3 py-1 rounded-md font-bold hover:border-purple-700 border">
                     {jobTasks?.docs}
                   </p>
                 </a>
@@ -113,14 +113,14 @@ const JobTaskAlert = () => {
                   href={complete?.docs}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex justify-end bg-gray-300  text-red-700 hover:bg-white hover:shadow-md px-3 py-1 rounded-md font-bold hover:border-purple-700 border"
+                  className="flex justify-end bg-gray-300  text-red-700 hover:bg-white hover:shadow-md px-3 py-1 lg:ml-0 ml-3 rounded-md font-bold hover:border-purple-700 border"
                 >
                   {complete?.docs}
                 </a>
               ))}
             </div>
             <div className="mx-5 mb-5">
-              <form onSubmit={handleSubmit(onSubmit)} className="flex gap-5">
+              <form onSubmit={handleSubmit(onSubmit)} className="lg:flex gap-5">
                 <div className="form-control w-full">
                   <label className="label">
                     <span className="label-text font-semibold"></span>
@@ -135,7 +135,7 @@ const JobTaskAlert = () => {
                     <span className="text-red-600">Docs is required</span>
                   )}
                 </div>
-                <button className="bg-green-600 mt-4 text-center text-white  px-3 rounded-md hover:bg-blue-800  duration-300 text-sm w-3/12 bg-gradient-to-r from-green-500 to-blue-700  font-semibold   hover:from-blue-700 hover:to-purple-900 transition-all">
+                <button className="bg-green-600 mt-4 text-center text-white py-3 lg:py-0 px-3 rounded-md hover:bg-blue-800  duration-300 text-sm w-full lg:w-3/12 bg-gradient-to-r from-green-500 to-blue-700  font-semibold   hover:from-blue-700 hover:to-purple-900 transition-all">
                   Submit Assignment
                 </button>
               </form>

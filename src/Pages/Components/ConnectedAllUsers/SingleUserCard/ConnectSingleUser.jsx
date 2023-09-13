@@ -6,11 +6,13 @@ import { BiDotsHorizontalRounded } from "react-icons/bi";
 import { BsFillTrashFill } from "react-icons/bs";
 import Swal from "sweetalert2";
 import useAxioSequre from "../../../../Hooks/useAxiosSequre";
+import { useNavigate } from "react-router-dom";
 
 const ConnectSingleUser = ({data, refetch}) => {
 
   const {name, image, _id} = data;
   const [axiosSequre] = useAxioSequre();
+  const navigate = useNavigate();
 
   // delete user 
   const handleRequestDelete = (id) => {
@@ -50,7 +52,7 @@ const ConnectSingleUser = ({data, refetch}) => {
           </div>
         </div>
         <div className="flex justify-center items-center">
-          <button className="font-semibold text-green-600 border-2 px-4 py-1.5 hover:cursor-pointer hover:border-[3px] border-green-600  hover:bg-green-100 rounded-3xl">
+          <button onClick={() => navigate('/massageroute')} className="font-semibold text-green-600 border-2 px-4 py-1.5 hover:cursor-pointer hover:border-[3px] border-green-600  hover:bg-green-100 rounded-3xl">
             Massage
           </button>
 

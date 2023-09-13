@@ -18,8 +18,12 @@ import UserDynamicProfile from "../Pages/UserDynamic Profile/UserDynamicProfile"
 import AboutPage from "../Pages/PagesComponents/AboutPage/AboutPage";
 import Contuct from "../Pages/PagesComponents/Contact/Contuct";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
-import UserReport from "../Pages/Dashboard/Admin/UserReport/UserReport";
-import PostReport from "../Pages/Dashboard/Admin/PostReport/PostReport";
+import ClientReview from "../Pages/PagesComponents/ClientReview/ClientReview";
+import NewsArticles from "../Pages/Dashboard/Admin/NewsArticles/NewsArticles";
+import FAQ from "../Pages/PagesComponents/FAQ/FAQ";
+import ArticlesAndNews from "../Pages/PagesComponents/ArticlesAndNews/ArticlesAndNews";
+import Details from "../Pages/PagesComponents/ArticlesAndNews/Details";
+import AllArticles from "../Pages/Dashboard/AllArticles/AllArticles";
 import JobTaskForm from "../Pages/JobPostAllPage/JobApplyForm/SendTaskForm";
 
 const router = createBrowserRouter([
@@ -77,6 +81,10 @@ const router = createBrowserRouter([
         element: <JobApplyForm></JobApplyForm>,
       },
       {
+        path: "jobTaskForm",
+        element: <JobTaskForm />,
+      },
+      {
         path: "about",
         element: <AboutPage />,
       },
@@ -85,8 +93,24 @@ const router = createBrowserRouter([
         element: <Contuct />,
       },
       {
-        path: "jobTaskForm",
-        element: <JobTaskForm />,
+        path: "review",
+        element: <ClientReview />,
+      },
+      {
+        path: "faq",
+        element: <FAQ />,
+      },
+      {
+        path: "articles-news",
+        element: <ArticlesAndNews />,
+      },
+      {
+        path: "/details/:id",
+        element: <Details />,
+        loader: ({ params }) =>
+          fetch(
+            `https://jobstack-backend-teal.vercel.app/news-article/${params.id}`
+          ),
       },
     ],
   },
@@ -104,12 +128,12 @@ const router = createBrowserRouter([
         element: <AllUser />,
       },
       {
-        path: "userreport",
-        element: <UserReport />,
+        path: "all-articles",
+        element: <AllArticles/>
       },
       {
-        path: "postreport",
-        element: <PostReport />,
+        path: "news-articles",
+        element: <NewsArticles />,
       },
     ],
   },

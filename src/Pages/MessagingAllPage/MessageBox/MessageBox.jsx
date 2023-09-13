@@ -4,6 +4,7 @@ import { format } from "timeago.js";
 import InputEmoji from "react-input-emoji";
 import { BiSolidPhoneCall, BiSolidVideo, BiUser } from "react-icons/bi";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import Image from "../../../assets/images/images.jpg";
 import { MdDelete } from "react-icons/md";
 import "./MessageBox.css";
 
@@ -104,13 +105,13 @@ const MessageBox = ({
   //  ===========Mouse Handle================
 
   const handleMouseEnter = (id) => {
-    console.log(id);
-    setIsDivVisible(true);
+    
+    setIsDivVisible(id);
   };
 
   const handleMouseLeave = (id) => {
-    console.log(id);
-    setIsDivVisible(false);
+   
+    setIsDivVisible(id);
   };
 
   const scroll = useRef();
@@ -121,7 +122,7 @@ const MessageBox = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center mb-6 pl-4">
             <img
-              src={userData?.image}
+              src={userData && userData ? userData.image : Image}
               className="w-[60px]  h-[60px] rounded-full p-[1px] border border-primary"
               alt=""
             />
@@ -157,33 +158,14 @@ const MessageBox = ({
         <div className="p-6">
           {messages?.length > 0 ? (
             messages?.map((message) => {
-              console.log(message?._id);
               return (
                 <>
-                  {/* <div className="dropdown dropdown-right">
-            <label tabIndex={0}>
-             <BsThreeDotsVertical />
-          </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box "
-          >
-            <button
-              onClick={() => handleDeleteMessage(message?._id)}
-              className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
-            >
-              <MdDelete />
-              Delete
-            </button>
-          </ul>
-        </div>  */}
-
                   <div
                     ref={scroll}
                     onMouseEnter={handleMouseEnter}
                     className={`max-w-[45%] relative rounded-b-xl p-4 mb-6 ${
                       message.senderId === currentUserId
-                        ? " text-white bg-sky-600 rounded-tl-xl ml-auto"
+                        ? " text-white banner rounded-tl-xl ml-auto"
                         : "bg-chat rounded-tr-xl"
                     } `}
                   >
@@ -210,7 +192,7 @@ const MessageBox = ({
 
                       <p className="message-text">{message.text}</p>
                       <div className="text-end">
-                        <span className="text-sm">
+                        <span className="text-xs ">
                           {format(message.createdAt)}
                         </span>
                       </div>
@@ -220,8 +202,8 @@ const MessageBox = ({
               );
             })
           ) : (
-            <div className="text-center text-lg font-semiboldmt-24">
-              No Messages or No Conversation Selected
+            <div className="text-center mt-32 text-lg font-semiboldmt-24">
+              No Conversation Selected
             </div>
           )}
         </div>

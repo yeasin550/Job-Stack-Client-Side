@@ -9,124 +9,109 @@ const PromotingCareer = () => {
     setActiveTab(index);
   };
   return (
-    <div className="md:flex justify-center px-5 lg:px-28 gap-12 lg:py-10  py-4 bg-blue-50 dark:bg-black">
-      <div className="w-full justify-center items-center lg:mt-20 md:w-1/2 space-y-9 py-4">
-        <h1 className="lg:text-5xl text-3xl font-bold">Promoting Career</h1>
-        <p>
-          There are many variations of passages of Lorem <br /> Ipsum Fasts
-          There are many variations of passages <br /> of Lorem Ipsum Fastsby
-          injected humour fasts there
+    <div className="grid lg:grid-cols-2 px-5 lg:px-16 gap-12 lg:py-8 banner py-4">
+      <div className="w-full justify-center items-center lg:mt-28  space-y-9">
+        <h1 className="lg:text-5xl  text-transparent bg-clip-text  bg-gradient-to-r from-white via-yellow-400 to-white text-3xl font-bold">Promoting Career</h1>
+        <p className="text-white text-lg">
+         
+          We believe in your potential, and we're here to support your journey towards a rewarding career.
+          Take the first step today and transform your aspirations into achievements.
         </p>
 
         <Link to="jobsroute">
-          <button className="banner py-2 px-8 rounded-md text-white text-lg mt-5">
+          <button className="banner-button mt-6">
             Browse Job
           </button>
         </Link>
       </div>
-      <div className="w-full dark:text-black md:w-1/2">
+      <div className="w-full">
         <Tabs>
-          <div className="flex gap-2 justify-center mt-6">
-            <hr className=" border-[1px] w-full mt-8"></hr>
-            <TabList className="flex gap-2">
+          <div className="flex gap-2 justify-center mt-6 ">
+            <hr className="md:block hidden border-[1px] w-full mt-4"></hr>
+            <TabList className="flex justify-center items-center gap-2">
               <Tab
-                className={`py-2 px-4 border-2 text-white rounded-lg border-transparent banner cursor-pointer ${
-                  activeTab === 0
-                    ? "banner text-white"
-                    : "hover:border-blue-600"
-                }`}
+                className={`active ${activeTab === 0
+                    ? "activetab"
+                    : ""
+                  }`}
                 onClick={() => tabClickHandler(0)}
               >
-                Step One
+                Step1
               </Tab>
               <Tab
-                className={`py-2 px-4 border-2 rounded-lg  border-transparent banner text-white cursor-pointer ${
-                  activeTab === 1
-                    ? "banner text-white"
-                    : "hover:border-blue-600"
-                }`}
+                className={`active ${activeTab === 1
+                    ? "activetab "
+                    : ""
+                  }`}
                 onClick={() => tabClickHandler(1)}
               >
-                Step Two
+                Step2
               </Tab>
               <Tab
-                className={`py-2 px-4 border-2 text-white rounded-lg border-transparent banner cursor-pointer ${
-                  activeTab === 2
-                    ? "banner text-white"
-                    : "hover:border-blue-600"
-                }`}
+                className={`active ${activeTab === 2
+                    ? "activetab "
+                    : ""
+                  }`}
                 onClick={() => tabClickHandler(2)}
               >
-                Step Three
+                Step3
               </Tab>
             </TabList>
-            <hr className=" border-[1px] w-full mt-8"></hr>
+            <hr className="md:block hidden border-[1px] w-full mt-4"></hr>
           </div>
 
           <div className="mt-9">
             <TabPanel>
-              <div className="relative rounded-xl bg-white lg:px-10 px-3 py-6 lg:py-20 h-full shadow-sm text-center">
-                <button className="bg-white -top-5 left-[45%]  py3 px-4  border text-lg border-gray-700 absolute btn-circle">
-                  1
-                </button>
-                <a href="/templates" className="group">
+              <div className="relative bg-white flex flex-col justify-center items-center lg:px-10 py-12 px-3 mt-12 rounded-md  space-y-6 ">
+                <button className="border-2 border-gray-600 rounded-full absolute md:-top-8 -top-6  md:w-16 w-12 h-12 md:h-16 text-yellow-400 bg-white text-center text-xl font-bold">1</button>
                   <img
                     src="https://i.ibb.co/PMsYbX6/step-1.png"
                     alt="images"
-                    className="mx-auto lg:h-24 lg:w-20"
                   />
-                  <h3 className="my-3 text-2xl font-bold group-hover:text-primary-500">
+                  <h3 className="md:text-2xl text-lg font-bold">
                     Set Up Your Profile All
                   </h3>
-                  <p className="mt-1.5 text-lg leading-6 text-secondary-500">
+                  <p className="md:text-lg text-center">
                     After signing up to TechCareer, you start to set up your
                     profile and find the hottest & latest tech jobs.
                   </p>
-                </a>
               </div>
             </TabPanel>
+           
             <TabPanel>
-              <div className="relative rounded-xl bg-white lg:px-10 px-3 py-6 lg:py-20 shadow-sm text-center">
-                <button className="bg-white -top-5 left-[45%]  py3 px-4  border text-lg border-gray-700 absolute btn-circle">
-                  2
-                </button>
-                <a href="/templates" className="group">
+              <div className="relative bg-white flex flex-col justify-center items-center lg:px-10 py-12 mt-12 rounded-md  space-y-6 ">
+                <button className="border-2 border-gray-600 rounded-full absolute md:-top-8 -top-6  md:w-16 w-12 h-12 md:h-16 text-yellow-400 bg-white text-center text-xl font-bold">2</button>
                   <img
                     src="https://i.ibb.co/TWZn8Vd/step-2.png"
                     alt="images"
-                    className="mx-auto lg:h-24 lg:w-20"
                   />
-                  <h3 className="my-3 text-2xl font-bold group-hover:text-primary-500">
-                    Create A Pro CV
+                  <h3 className=" md:text-2xl text-lg font-bold">
+                  Create A Pro CV
                   </h3>
-                  <p className="mt-1.5 text-lg leading-6 text-secondary-500">
-                    Techcareer gives you more than 500 pre-made CV samples for
+                  <p className="md:text-lg text-center">
+                  Techcareer gives you more than 500 pre-made CV samples for
                     candidates to personalize their CVs.
                   </p>
-                </a>
               </div>
             </TabPanel>
+           
             <TabPanel>
-              <div className="relative rounded-xl bg-white lg:px-10 px-3 py-6 lg:py-20 shadow-sm text-center">
-                <button className="bg-white -top-5 left-[45%]  py3 px-4  border text-lg border-gray-700 absolute btn-circle">
-                  3
-                </button>
-                <a href="/templates" className="group">
+              <div className="relative bg-white flex flex-col justify-center items-center lg:px-10  py-12 mt-12 rounded-md  space-y-6 ">
+                <button className="border-2 border-gray-600 rounded-full absolute md:-top-8 -top-6 md:w-16 w-12 h-12 md:h-16 text-yellow-400 bg-white text-center md:text-xl font-bold">3</button>
                   <img
                     src="https://i.ibb.co/5R7bq8h/step-3.png"
                     alt="images"
-                    className="mx-auto lg:h-24 lg:w-20"
                   />
-                  <h3 className="my-3 text-2xl font-bold group-hover:text-primary-500">
-                    Get Applied
+                  <h3 className="md:text-2xl text-lg font-bold">
+                  Get Applied
                   </h3>
-                  <p className="mt-1.5 text-lg leading-6 text-secondary-500">
-                    When owning a CV, don't hesitate to submit your CV to easily
+                  <p className="md:text-lg text-center">
+                  When owning a CV, don't hesitate to submit your CV to easily
                     apply for a job from Tech companies.
                   </p>
-                </a>
               </div>
             </TabPanel>
+           
           </div>
         </Tabs>
       </div>

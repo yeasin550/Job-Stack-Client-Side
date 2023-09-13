@@ -2,28 +2,19 @@ import React from "react";
 import { FaPaperPlane, FaSearch, FaUser } from "react-icons/fa";
 import { BsBellFill } from "react-icons/bs";
 import Work from "./work";
-import { Link } from "react-router-dom";
+
 
 const ChooseWork = () => {
   return (
-    <div className="text-white banner">
-      <div className="max-w-screen-xl mx-auto px-5 ">
-        <div className="grid md:grid-cols-2 gap-2 items-center">
-          <div className="">
-            <h1 className="md:text-4xl text-2xl mb-3 mt-6 font-bold">
-              JOBES Working Process
+      <div className="banner py-14 md:py-20">
+            <h1 className="md:text-4xl px-2 md:px-0 text-center text-2xl mb-3 uppercase mt-6 text-transparent bg-clip-text  bg-gradient-to-r from-white to-yellow-400 font-bold">
+              JOBS Working Process
             </h1>
-            <p className=" text-xl mb-5 ">
+            <p className="text-center px-2 md:px-0 text-white md:text-xl mb-5 ">
               To choose your trending job dream & to make future bright.
             </p>
-            <div className="">
-              <Link to="jobsroute">
-                <button className="banner-button">Browse Jobs</button>
-              </Link>
-            </div>
-          </div>
           <div>
-            <div className="grid md:grid-cols-2  lg:gap-5 gap-2 text-center lg:my-10 ">
+            <div className="grid md:grid-cols-4 lg:gap-5 gap-2 py-10 px-3 md:px-16 ">
               <Work
                 titles={"Account Create"}
                 icon={<FaUser className="text-4xl my-2" />}
@@ -55,8 +46,6 @@ const ChooseWork = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
   );
 };
 
