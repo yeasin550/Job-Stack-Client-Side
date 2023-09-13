@@ -3,6 +3,7 @@ import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxioSequre from "../../../../Hooks/useAxiosSequre";
 import { useQuery } from "@tanstack/react-query";
+import images from "../../../../assets/images/images.jpg";
 
 const AllUser = () => {
   const [axiosSequre] = useAxioSequre();
@@ -79,7 +80,7 @@ const AllUser = () => {
                 <th>
                   <img
                     className="w-12 h-12 rounded-full"
-                    src={user.image}
+                    src={user && user.image ? user.image : images}
                     alt="User Photo"
                     draggable="false"
                   />

@@ -19,6 +19,7 @@ import useAxioSequre from "../../../Hooks/useAxiosSequre";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import Comment from "./Comment";
+import images from "../../../../src/assets/images/images.jpg";
 
 const SelfPostDesign = ({ selfpost }) => {
   const { _id, text, image, userPhoto, userName, timeStamp } = selfpost;
@@ -129,7 +130,11 @@ const SelfPostDesign = ({ selfpost }) => {
       {/* user information */}
       <div className="mt-3 flex justify-between items-center">
         <div className="flex items-center gap-3">
-          <img className="w-10 h-10 rounded-full" src={userPhoto} />
+          <img
+            className="w-10 h-10 rounded-full"
+            // src={userPhoto}
+            src={selfpost && selfpost.userPhoto ? selfpost.userPhoto : images}
+          />
           <div className="">
             <p className="font-bold">{userName}</p>
             <p>{timeStamp}</p>

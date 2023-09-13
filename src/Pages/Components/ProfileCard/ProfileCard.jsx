@@ -5,6 +5,7 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import handleButtonDesiable from "../../../Hooks/handleButtonDesiable";
 import { getCurrentTimeStamp } from "../../../Hooks/useMonent";
 import { useNavigate } from "react-router-dom";
+import images from "../../../../src/assets/images/images.jpg";
 
 const ProfileCard = ({ person, buttonText }) => {
   const { _id, name, image, email } = person;
@@ -34,15 +35,17 @@ const ProfileCard = ({ person, buttonText }) => {
           alt="cover photo"
           draggable="false"
         />
-        <div  onClick={() => navigate(`/dynamicprofile/${_id}`) } className="flex justify-center cursor-pointer -mt-12">
-          {image && (
+        <div
+          onClick={() => navigate(`/dynamicprofile/${_id}`)}
+          className="flex justify-center cursor-pointer -mt-12"
+        >          
             <img
               className="h-[100px] w-[100px] rounded-full"
-              src={image}
+              src={person && person.image ? person.image : images}
               alt="user profile photo"
               draggable="false"
             />
-          )}
+        
         </div>
       </div>
       <div className="text-center mt-1 pb-10">
