@@ -10,12 +10,22 @@ import {AiTwotoneStar} from 'react-icons/ai'
 // aso animation
 import Aos from "aos";
 import "aos/dist/aos.css";
+import useAxioSequre from "../../../../Hooks/useAxiosSequre";
+import { useQuery } from "@tanstack/react-query"; 
+import images from "../../../../assets/images/images.jpg";
 
 const Testimonial = () => {
   // aos annimation
   useEffect(() => {
     Aos.init();
   }, []);
+
+    const [axiosSequre] = useAxioSequre();
+    const { data: review = [], refetch } = useQuery(["review"], async () => {
+      const res = await axiosSequre.get("/review");
+      return res.data;
+    });
+  
   return (
     <div className="banner py-12">
       <div className="max-w-screen-xl px-5 mx-auto">
@@ -55,182 +65,30 @@ const Testimonial = () => {
           modules={[Autoplay, FreeMode, Pagination]}
           className="mySwiper"
         >
-          <SwiperSlide className="my-8 text-center categorires-card ">
-            <div className="bg-slate-100 py-5 px-10 rounded-md">
-              <div className="flex justify-center mb-3">
-                <img
-                  className="h-20 w-20 rounded-full -mt-14"
-                  src={image1}
-                  alt="image"
-                />
-              </div>
-              <div className="">
-                <h1 className="text-xl font-bold"> Leo Levi</h1>
-                <div className="flex justify-center text-yellow-400 mt-1">
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
+          {review.map((reviews) => (
+            <SwiperSlide className="my-10 text-center categorires-card ">
+              <div className="bg-slate-100 h-60 py-5 px-10 rounded-md">
+                <div className="flex justify-center mb-3">
+                  <img
+                    className="h-20 w-20 rounded-full -mt-14"
+                    src={reviews && reviews ? reviews.userPhoto : images}
+                    alt="image"
+                  />
                 </div>
-                <p>
-                  Since my son went to school in Padora, my son was able to
-                  discover his hidden talents.
-                </p>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="my-8 text-center categorires-card">
-            <div className="bg-slate-100 py-5 px-10 rounded-md">
-              <div className="flex justify-center mb-3">
-                <img
-                  className="h-20 w-20 rounded-full -mt-14"
-                  src={image1}
-                  alt="image"
-                />
-              </div>
-              <div className="">
-                <h1 className="text-xl font-bold">Andnew Smith</h1>
-                <div className="flex justify-center text-yellow-400 mt-1">
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
+                <div className="">
+                  <h1 className="text-xl font-bold">{reviews.userName}</h1>
+                  <div className="flex justify-center text-yellow-400 mt-1">
+                    <AiTwotoneStar />
+                    <AiTwotoneStar />
+                    <AiTwotoneStar />
+                    <AiTwotoneStar />
+                    <AiTwotoneStar />
+                  </div>
+                  <p>{reviews.reviewtext}</p>
                 </div>
-                <p>
-                  Since my son went to school in Padora, my son was able to
-                  discover his hidden talents.
-                </p>
               </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="my-8 text-center categorires-card">
-            <div className="bg-slate-100 py-5 px-10 rounded-md">
-              <div className="flex justify-center mb-3">
-                <img
-                  className="h-20 w-20 rounded-full -mt-14"
-                  src={image1}
-                  alt="image"
-                />
-              </div>
-              <div className="">
-                <h1 className="text-xl font-bold">Andnew Smith</h1>
-                <div className="flex justify-center text-yellow-400 mt-1">
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                </div>
-                <p>
-                  Since my son went to school in Padora, my son was able to
-                  discover his hidden talents.
-                </p>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="my-8 text-center categorires-card">
-            <div className="bg-slate-100 py-5 px-10 rounded-md">
-              <div className="flex justify-center mb-3">
-                <img
-                  className="h-20 w-20 rounded-full -mt-14"
-                  src={image1}
-                  alt="image"
-                />
-              </div>
-              <div className="">
-                <h1 className="text-xl font-bold">Andnew Smith</h1>
-                <div className="flex justify-center text-yellow-400 mt-1">
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                </div>
-                <p>
-                  Since my son went to school in Padora, my son was able to
-                  discover his hidden talents.
-                </p>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="my-8 text-center categorires-card">
-            <div className="bg-slate-100 py-5 px-10 rounded-md">
-              <div className="flex justify-center mb-3">
-                <img
-                  className="h-20 w-20 rounded-full -mt-14"
-                  src={image1}
-                  alt="image"
-                />
-              </div>
-              <div className="">
-                <h1 className="text-xl font-bold">Andnew Smith</h1>
-                <div className="flex justify-center text-yellow-400 mt-1">
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                </div>
-                <p>
-                  Since my son went to school in Padora, my son was able to
-                  discover his hidden talents.
-                </p>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="my-8 text-center categorires-card">
-            <div className="bg-slate-100 py-5 px-10 rounded-md">
-              <div className="flex justify-center mb-3">
-                <img
-                  className="h-20 w-20 rounded-full -mt-14"
-                  src={image1}
-                  alt="image"
-                />
-              </div>
-              <div className="">
-                <h1 className="text-xl font-bold">Andnew Smith</h1>
-                <div className="flex justify-center text-yellow-400 mt-1">
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                </div>
-                <p>
-                  Since my son went to school in Padora, my son was able to
-                  discover his hidden talents.
-                </p>
-              </div>
-            </div>
-          </SwiperSlide >
-            
-          <SwiperSlide className="my-8 text-center categorires-card">
-            <div className="bg-slate-100 py-5 px-10 rounded-md">
-              <div className="flex justify-center mb-3">
-                <img
-                  className="h-20 w-20 rounded-full -mt-14"
-                  src={image1}
-                  alt="image"
-                />
-              </div>
-              <div className="">
-                <h1 className="text-xl font-bold">Andnew Smith</h1>
-                <div className="flex justify-center text-yellow-400 mt-1">
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                  <AiTwotoneStar />
-                </div>
-                <p>
-                  Since my son went to school in Padora, my son was able to
-                  discover his hidden talents.
-                </p>
-              </div>
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </div>
