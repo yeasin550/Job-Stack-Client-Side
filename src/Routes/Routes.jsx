@@ -24,6 +24,7 @@ import FAQ from "../Pages/PagesComponents/FAQ/FAQ";
 import ArticlesAndNews from "../Pages/PagesComponents/ArticlesAndNews/ArticlesAndNews";
 import Details from "../Pages/PagesComponents/ArticlesAndNews/Details";
 import AllArticles from "../Pages/Dashboard/AllArticles/AllArticles";
+import JobTaskForm from "../Pages/JobPostAllPage/JobApplyForm/SendTaskForm";
 
 const router = createBrowserRouter([
   {
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
       {
         path: "jobApplyForm/:id",
         element: <JobApplyForm></JobApplyForm>,
+      },
+      {
+        path: "jobTaskForm",
+        element: <JobTaskForm />,
       },
       {
         path: "about",

@@ -7,11 +7,11 @@ const getBookMarkJobs = () => {
   const [axiosSequre] = useAxioSequre();
   const { data: bookMarkJobs = [] } = useQuery(["bookMarkJobs", user?.email],
     async () => {
-      const res = await axiosSequre.get(`/bookMarkJobs/${user?.email}`);
+      const res = await axiosSequre.get(`bookMarkJobs/${user?.email}`);
       return res.data;
     }
   );
-  // console.log(bookMarkJobs[0])
+  // console.log(bookMarkJobs)
   return [bookMarkJobs];
 };
 export default getBookMarkJobs;

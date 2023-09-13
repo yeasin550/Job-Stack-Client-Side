@@ -1,32 +1,30 @@
-// import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import useAxioSequre from "./useAxiosSequre";
+// import { data } from "autoprefixer";
 
 const useJobsBooksMarks = () => {
   const [userEroor, setUserError] = useState("");
   const [axiosSequre] = useAxioSequre();
+
   const handleBookMark = (bookMarksData) => {
-axiosSequre
-  .post("/bookMarkJobs", bookMarksData)
-  .then((response) => {
-    if (response.data.insertedId) {
-      Swal.fire({
-        icon: "success",
-        title: "Job post successfully",
-        showConfirmButton: false,
-        timer: 3000,
+    axiosSequre
+      .post("/bookMarkJobs", bookMarksData)
+      .then((response) => {
+        console.log(response);
+        if (response.data.insertedId) {
+          Swal.fire({
+            icon: "success",
+            title: "Job post successfully",
+            showConfirmButton: false,
+            timer: 3000,
+          });
+        }
+      })
+      .catch((error) => {
+        setUserError(error.message);
       });
-    }
-  })
-  .catch((error) => {
-    setUserError(error.message);
-  });
-
- // Console log your data for debugging purposes
- console.log("bookMarksData:", bookMarksData);
-
-    
+    console.log("bookMarksData:", bookMarksData);
   };
 
   return [handleBookMark];
