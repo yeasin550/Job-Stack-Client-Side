@@ -44,9 +44,11 @@ const Dashbord = () => {
               />
               <Link to="/profile">
                 <h4 className="mx-2 text-center font-medium text-white hover:underline">
-                 JOSTACK
+                  JOSTACK
                 </h4>
-                <h1 className=" text-center font-sans text-xl">{user?.displayName}(Admin)</h1>
+                <h1 className=" text-center font-sans text-xl">
+                  {user?.displayName}(Admin)
+                </h1>
               </Link>
             </div>
             {/* Sidebar content here */}
@@ -67,11 +69,11 @@ const Dashbord = () => {
                   </a>
                 </li>
               </Link>
-              <Link to="/dashbord/userreport">
+              <Link to="/dashbord/all-articles">
                 <li>
                   <a>
                     <FaUserAstronaut />
-                    User Report
+                    All Articles
                   </a>
                 </li>
               </Link>
@@ -79,7 +81,7 @@ const Dashbord = () => {
                 <li>
                   <a>
                     <TbBrandGooglePhotos />
-                    NewsArticles
+                    News Articles
                   </a>
                 </li>
               </Link>
