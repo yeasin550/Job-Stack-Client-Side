@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import { useForm } from 'react-hook-form';
 import useAxioSequre from '../../../Hooks/useAxiosSequre';
-import { useQuery } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
 
 const ReviewFrom = () => {
   const {
@@ -26,6 +26,7 @@ const ReviewFrom = () => {
    axiosSequre.post("/review", review).then((data) => {
      if (data?.data?.insertedId) {
        reset();
+        toast.success(`${user?.displayName} Review Add Successfully!`);
      }
    });
  };
@@ -37,54 +38,42 @@ const ReviewFrom = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="card-body bg-slate-200  rounded-lg mb-20"
       >
-        <div className="grid lg:grid-cols-2 gap-10">
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Name</span>
-            </label>
-            <input
-              type="text"
-              {...register("name", { required: true })}
-              placeholder="Your Name"
-              className="input input-bordered w-full"
-              defaultValue={user?.displayName}
-            />
-            {errors.name && (
-              <span className="text-red-800">Name is required</span>
-            )}
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Email</span>
-            </label>
-            <input
-              type="email"
-              {...register("eamil", { required: true })}
-              placeholder="Your Email"
-              className="input input-bordered w-full"
-              defaultValue={user?.email}
-            />
-            {errors.name && (
-              <span className="text-red-800">Email is required</span>
-            )}
-          </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Name</span>
+          </label>
+          <input
+            type="text"
+            {...register("name", { required: true })}
+            placeholder="Your Name"
+            className="input input-bordered w-full"
+            defaultValue={user?.displayName}
+          />
+          {errors.name && (
+            <span className="text-red-800">Name is required</span>
+          )}
         </div>
+
         <div className="">
           <label className="label">
-            <span className="label-text">Message</span>
+            <span className="label-text">Review</span>
           </label>
           <textarea
             {...register("message", { required: true })}
-            rows="3"
-            placeholder="Message"
-            className="rounded-md px-3 w-full "
+            rows="5"
+            placeholder="Write Review text"
+            className="rounded-md p-3 w-full "
           ></textarea>
           {errors.message && (
-            <span className="text-red-800">Message is required</span>
+            <span className="text-red-800">Review Text is required</span>
           )}
         </div>
         <div className="form-control mt-6">
-          <input className="btn btn-primary" type="submit" value="Submit" />
+          <input
+            className="btn btn-primary"
+            type="submit"
+            value="Submit"
+          />
         </div>
       </form>
     </div>

@@ -9,13 +9,13 @@ import { TfiWrite } from "react-icons/tfi";
 const MostPopular = () => {
     return (
       <div className="max-w-screen-xl px-5 mx-auto my-20">
-        <div className="grid md:grid-cols-2 gap-5 items-center">
+        <div className="grid md:grid-cols-2 gap-5">
           <div className="">
             <img src={images} alt="banner images" draggable="false" />
           </div>
           <div className="">
-            <h1 className="text-4xl font-bold"> Why We are Most Popular</h1>
-            <p className="text-lg mt-4 text-justify">
+            <h1 className="text-2xl font-bold"> Why We are Most Popular</h1>
+            <p className=" mt-4 text-justify">
               We've earned our reputation as the most popular job site by
               offering a world of opportunities to job seekers and a seamless
               hiring experience to employers. With a vast selection of job
@@ -25,7 +25,7 @@ const MostPopular = () => {
               their dream jobs and top talent right here. Start your journey to
               success today with Job-Stack
             </p>
-            <div className="mt-7 grid grid-cols-2 gap-5">
+            <div className="mt-5 grid grid-cols-2 gap-5">
               <div className="flex items-center gap-2 text-xl">
                 <button className="banner rounded-full p-2 text-white">
                   <FaUsers />

@@ -77,7 +77,7 @@ const NewsArticles = () => {
             placeholder="Enter Your Articles Title"
             className="input input-bordered w-full"
           />
-          {errors.name && (
+          {errors.title && (
             <span className="text-red-800">Articles Title is required</span>
           )}
         </div>
@@ -105,7 +105,7 @@ const NewsArticles = () => {
             placeholder="Details Your Articles"
             className="rounded-md p-3 w-full "
           ></textarea>
-          {errors.message && (
+          {errors.details && (
             <span className="text-red-800">Details is required</span>
           )}
         </div>
