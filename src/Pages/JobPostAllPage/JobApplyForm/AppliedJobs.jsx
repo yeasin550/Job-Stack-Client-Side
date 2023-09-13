@@ -51,15 +51,17 @@ const AppliedJobs = () => {
                     <td>+{appliedJob?.number}</td>
                     <td>
                       <label htmlFor="my_modal_6">
-                        <h1 className="font-semibold text-white text-center cursor-pointer text-lg bg-green-500 px-2 py-1 rounded-md">
+                        <h1 className="font-semibold text-white text-center cursor-pointer text-sm bg-green-500 px-2 py-1 rounded-md">
                           View Resume
                         </h1>
                       </label>
                     </td>
                     <td>
-                      <h1 className="font-semibold text-white text-center cursor-pointer text-lg bg-green-500 px-2 py-1 rounded-md">
+                      <Link to="/jobTaskForm">
+                        <h1 className="font-semibold text-white text-center cursor-pointer text-sm bg-green-500 px-2 py-1 rounded-md">
                           Send
                         </h1>
+                      </Link>
                     </td>
                     <input
                       type="checkbox"
@@ -73,20 +75,6 @@ const AppliedJobs = () => {
                             htmlFor="my_modal_6"
                             className="btn text-white absolute top-3 right-3 btn-outline btn-circle bg-green-600 rounded-full hover:bg-green-700"
                           >
-                            {/* <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-6 w-6"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              sdivoke="currentColor"
-                            >
-                              <path
-                                sdivokeLinecap="round"
-                                sdivokeLinejoin="round"
-                                sdivokeWidth="2"
-                                d="M6 18L18 6M6 6l12 12"
-                              />
-                            </svg> */}
                             <FiDelete className="text-3xl" />
                           </label>
                         </div>
