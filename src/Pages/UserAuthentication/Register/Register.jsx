@@ -116,13 +116,13 @@ const Register = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row justify-center items-center lg:gap-10 lg:px-20 px-2 mb-24">
+    <div className="banner flex flex-col lg:flex-row justify-center items-center lg:gap-10 lg:px-20 px-2 pb-14">
       <div className="w-full lg:w-3/4">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-full  mt-32   mb-10 lg:p-8 p-4 border border-green-500 bg-white rounded-lg text-black"
+          className="w-full mt-32 mb-10 lg:p-8 p-4 shadowdiv bg-white rounded-md text-black"
         >
-          <h3 className="text-2xl text-center font-bold mb-5">Sign up now!</h3>
+          <h3 className="text-2xl text-center font-bold mb-8">Sign up now</h3>
           <div className="flex gap-5 flex-col lg:flex-row">
             <div className="form-control w-full">
               <label className="label">
@@ -145,11 +145,8 @@ const Register = () => {
               <select
                 {...register("gender", { required: true })}
                 required
-                className="select input input-bordered w-full "
+                className="select  input input-bordered w-full "
               >
-                <option disabled selected>
-                  select gender
-                </option>
                 <option>Female</option>
                 <option>Male</option>
                 <option>Other</option>5432
@@ -189,7 +186,7 @@ const Register = () => {
               <input
                 type="file"
                 {...register("image")}
-                className="file-input file-input-success file-input-bordered w-full"
+                className="file-input  file-input-error file-input-bordered w-full"
               />
             </div>
           </div>
@@ -252,7 +249,7 @@ const Register = () => {
             <input
               type="submit"
               value="Sign Up"
-              className="btn bg-green-500 hover:bg-green-600 text-[20px] border-0 text-white"
+              className="btn banner text-[18px] border-0 text-white"
             />
           </div>
           {userEroor && (

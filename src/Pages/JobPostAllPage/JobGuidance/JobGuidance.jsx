@@ -30,9 +30,9 @@ const JobGuidance = () => {
           Careerer Guidance $ Job Guidance!
         </h1>
       </div>
-      <div className="mt-10 text-lg space-y-5 divide-y divide-green-500">
+      <div className="mt-10 text-lg space-y-5 divide-y divide-purple-500">
         <div className="lg:flex items-center gap-3">
-          <div className="lg:w-[145px] lg:mb-0 mb-2 h-20 lg:rounded-full rounded-md border border-blue-500 bg-gray-200 flex items-center justify-center">
+          <div className="lg:w-[145px] lg:mb-0 mb-2 h-20 lg:rounded-full rounded-md border border-purple-500 bg-gray-200 flex items-center justify-center">
             <FcDocument className="text-gray-600 text-6xl" />
           </div>
           <div>
@@ -45,7 +45,7 @@ const JobGuidance = () => {
           </div>
         </div>
         <div className="lg:flex items-center gap-3 py-3">
-          <div className="lg:w-[135px] lg:mb-0 mb-2 h-20 lg:rounded-full rounded-md border border-blue-500 bg-gray-200 flex items-center justify-center">
+          <div className="lg:w-[135px] lg:mb-0 mb-2 h-20 lg:rounded-full rounded-md border border-purple-500 bg-gray-200 flex items-center justify-center">
             <LuFileSearch className="text-gray-600 text-6xl" />
           </div>
 
@@ -59,7 +59,7 @@ const JobGuidance = () => {
           </div>
         </div>
         <div className="lg:flex items-center gap-3 py-3">
-          <div className="lg:w-[140px] lg:mb-0 mb-2 h-20 lg:rounded-full rounded-md border border-blue-500 bg-gray-200 flex items-center justify-center">
+          <div className="lg:w-[140px] lg:mb-0 mb-2 h-20 lg:rounded-full rounded-md border border-purple-500 bg-gray-200 flex items-center justify-center">
             <GiSettingsKnobs className="text-gray-600 text-6xl" />
           </div>
           <div>
@@ -72,7 +72,7 @@ const JobGuidance = () => {
           </div>
         </div>
         <div className="lg:flex items-center gap-3 py-3">
-          <div className="lg:w-32 h-20 lg:mb-0 mb-2 lg:rounded-full rounded-md border border-blue-500 bg-gray-200 flex items-center justify-center">
+          <div className="lg:w-32 h-20 lg:mb-0 mb-2 lg:rounded-full rounded-md border border-purple-500 bg-gray-200 flex items-center justify-center">
             <FcKey className="text-gray-600 text-6xl" />
           </div>
 
@@ -86,7 +86,7 @@ const JobGuidance = () => {
           </div>
         </div>
         <div className="lg:flex items-center gap-3 py-3">
-          <div className="lg:w-56 lg:mb-0 mb-2 h-20 border border-blue-800 rounded-md lg:rounded-full bg-gray-200 flex items-center justify-center">
+          <div className="lg:w-56 lg:mb-0 mb-2 h-20 border border-purple-800 rounded-md lg:rounded-full bg-gray-200 flex items-center justify-center">
             <GiSecretBook className="text-gray-600 text-6xl" />
           </div>
           <div>

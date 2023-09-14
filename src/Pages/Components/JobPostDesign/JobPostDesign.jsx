@@ -10,20 +10,17 @@ import {
 import { FcLike } from "react-icons/fc";
 import { BiDollarCircle } from "react-icons/bi";
 import { MdDateRange } from "react-icons/md";
-import { useContext } from "react";
-import { AuthContext } from "../../../Providers/AuthProvider";
 import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 import useJobsBooksMarks from "../../../Hooks/useJobsBooksMarks";
 const JobPostDesign = ({ posts }) => {
   const [handleBookMark] = useJobsBooksMarks();
   const navigate = useNavigate();
-  // console.log(posts);
-  const { user } = useContext(AuthContext);
-    // console.log(posts);
+  
+
 
   return (
-    <div className="grid grid-cols-1 dark:text-black">
+    <div className="grid grid-cols-1 ">
       <div className=" bg-white shadow-lg rounded-md mt-5 p-6 border border-purple-500">
         <div className="flex justify-end gap-2 mb-3 text-xl">
           <FaShareAlt className="cursor-pointer" />
@@ -98,7 +95,7 @@ const JobPostDesign = ({ posts }) => {
             {/* <FaRegBookmark className="text-3xl cursor-pointer" /> */}
             <button
               onClick={() => navigate(`/jobApplyForm/${posts?._id}`)}
-              className="bg-blue-600 text-center text-white py-2 px-6 rounded-md hover:bg-blue-800  duration-300 lg:w-1/2 w-full  bg-gradient-to-r from-blue-500 to-blue-700  font-semibold   hover:from-blue-700 hover:to-purple-900 transition-all "
+              className="bg-green-600 text-center text-white py-2 px-6 rounded-md hover:bg-blue-800  duration-300 lg:w-1/2 w-full  bg-gradient-to-r from-green-500 to-blue-700  font-semibold   hover:from-blue-700 hover:to-purple-900 transition-all "
             >
               Apply Now
             </button>

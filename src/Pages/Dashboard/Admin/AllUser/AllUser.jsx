@@ -3,6 +3,7 @@ import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxioSequre from "../../../../Hooks/useAxiosSequre";
 import { useQuery } from "@tanstack/react-query";
+import images from "../../../../assets/images/images.jpg";
 
 const AllUser = () => {
   const [axiosSequre] = useAxioSequre();
@@ -13,7 +14,7 @@ const AllUser = () => {
 
   // user to admin funcation
   const handleMakeAdmin = (user) => {
-    fetch(`https://jobstack-backend-teal.vercel.app/users/admin/${user._id}`, {
+    fetch(`https://jobstack-backend-teal.vercel.app/users/admin/${user?._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -74,20 +75,20 @@ const AllUser = () => {
           </thead>
           <tbody>
             {users.map((user, index) => (
-              <tr key={user._id}>
+              <tr key={user?._id}>
                 <th>{index + 1}</th>
                 <th>
                   <img
                     className="w-12 h-12 rounded-full"
-                    src={user.image}
+                    src={user && user.image ? user.image : images}
                     alt="User Photo"
                     draggable="false"
                   />
                 </th>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
+                <td>{user?.name}</td>
+                <td>{user?.email}</td>
                 <td>
-                  {user.role === "admin" ? (
+                  {user?.role === "admin" ? (
                     "admin"
                   ) : (
                     <button
@@ -101,7 +102,7 @@ const AllUser = () => {
 
                 <td>
                   <button
-                    onClick={() => handleDeleteUser(user._id)}
+                    onClick={() => handleDeleteUser(user?._id)}
                     className="btn btn-ghost bg-red-600  text-white"
                   >
                     <FaTrashAlt />

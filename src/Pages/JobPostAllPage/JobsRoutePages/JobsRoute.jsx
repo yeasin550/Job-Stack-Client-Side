@@ -14,6 +14,8 @@ import BookMarkJobs from "../BookMarkJobs/BookMarkJobs";
 import getBookMarkJobs from "../../../Hooks/getBookMarkJobs";
 import { useLocation } from "react-router";
 import UseScrollTop from "../../../Hooks/UseScrollTop";
+import JobTaskAlert from "../JobTaskAlert/JobTaskAlert";
+import CompleteTask from "../JobApplyForm/CompleteTask";
 const JobsRoute = () => {
   const { user } = useContext(AuthContext);
   const [active, setActive] = useState("All");
@@ -23,7 +25,7 @@ const JobsRoute = () => {
   const [tabIndex, setTabIndex] = useState(0);
 
   const bookJobs = bookMarkJobs[0];
-  console.log(bookJobs);
+  
   const clickactive = (active) => {
     if (active === "post") {
       setActive("All");
@@ -37,10 +39,9 @@ const JobsRoute = () => {
       return curElem[property];
     });
     return (newVal = ["All", ...new Set(newVal)]);
-    // console.log(newVal);
   };
+  
   const categoryOnlyData = getUniqueData(jobposts, "jobCategory");
-
   const handleFilter = (posts) => {
     if (searchText) {
       if (posts?.jobTitle?.toLowerCase()?.includes(searchText?.toLowerCase())) {
@@ -54,13 +55,12 @@ const { pathname } = useLocation();
 UseScrollTop(pathname);
 
   return (
-    <div className="lg:px-16 py-12 ">
+    <div className="lg:px-10 py-12 ">
       <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <div className="lg:flex gap-1">
           <div className="shadowdiv border rounded-md lg:w-80 h-100%">
             <TabList className="flex sticky top-24 flex-col justify-center items-start px-5 py-10 gap-6">
               <Tab
-                // onClick={() => clickactive("post")}
                 onClick={() => clickactive("post")}
                 className={` flex items-center gap-2 cursor-pointer userinfotext ${
                   active == "post" ? "activetab cursor-pointer" : ""
@@ -75,6 +75,22 @@ UseScrollTop(pathname);
                 }`}
               >
                 <FaBell /> Job Alerts
+              </Tab>
+              <Tab
+                onClick={() => clickactive("jobTask")}
+                className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                  active == "jobTask" ? "activetab cursor-pointer" : ""
+                }`}
+              >
+                <FaBell /> Job Task Alerts
+              </Tab>
+              <Tab
+                onClick={() => clickactive("completeJobTask")}
+                className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                  active == "completeJobTask" ? "activetab cursor-pointer" : ""
+                }`}
+              >
+                <FaBell /> Complete Job Task 
               </Tab>
               <Tab
                 onClick={() => clickactive("appliedJobs")}
@@ -184,6 +200,15 @@ UseScrollTop(pathname);
 
             {/* user Job alert */}
             <TabPanel>The Job Notification section</TabPanel>
+            {/* Job Task tab */}
+            <TabPanel>
+              <h1 className="text-center font-bold text-3xl text-blue-700 mt-3"> Job Task</h1>
+              <JobTaskAlert/>
+            </TabPanel>
+            <TabPanel>
+              <h1 className="text-center font-bold text-3xl text-blue-700 mt-3">Employer Complete Job Task</h1>
+              <CompleteTask/>
+            </TabPanel>
             {/* user appliedJobs */}
             <TabPanel>
               <h1 className="text-center font-bold text-3xl my-5 text-green-600 dark:text-white">
@@ -200,8 +225,8 @@ UseScrollTop(pathname);
             </TabPanel>
             {/* baokmark jobs */}
             <TabPanel>
-              <h1 className="text-center font-bold text-3xl my-5 text-green-600 dark:text-white">
-                Favorite Member
+              <h1 className="text-center font-bold text-3xl my-5 text-blue-800 dark:text-white">
+                Favorite Jobs
               </h1>
 
               <BookMarkJobs bookJobs={bookJobs} />

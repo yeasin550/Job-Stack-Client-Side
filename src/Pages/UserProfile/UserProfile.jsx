@@ -16,10 +16,12 @@ import Temporary from "../Components/Temporary";
 import useSingleUser from "../../Hooks/useSingleUser";
 import useProfileUpdate from "../../Hooks/useProfileUpdate";
 import ConnectedAllUser from "../Components/ConnectedAllUsers/ConnectedAllUser";
+import useCompany from "../../Hooks/useCompany";
 const UserProfile = () => {
   const [singleSelfPost] = useSelfPostfindEmail();
   const [singlejobposts, refetch] = useJobPosFindEmail();
   const [singleUser] = useSingleUser();
+  const [isCompany, isCompanyLoading] = useCompany();
   const single = singleUser[0];
   const { register, handleSubmit } = useForm();
   const [
@@ -113,15 +115,17 @@ const UserProfile = () => {
               >
                 Post
               </Tab>
+              {isCompany && (
+                <Tab
+                  onClick={() => clickactive("jobpost")}
+                  className={` cursor-pointer text ${
+                    active == "jobpost" ? "active cursor-pointer" : ""
+                  }`}
+                >
+                  Job Post
+                </Tab>
+              )}
 
-              <Tab
-                onClick={() => clickactive("jobpost")}
-                className={` cursor-pointer text ${
-                  active == "jobpost" ? "active cursor-pointer" : ""
-                }`}
-              >
-                Job Post
-              </Tab>
               <Tab
                 onClick={() => clickactive("about")}
                 className={` cursor-pointer text ${
@@ -158,7 +162,7 @@ const UserProfile = () => {
             {/* users self  post */}
             <TabPanel>
               <SelfPostForm></SelfPostForm>
-              <div className="grid md:grid-cols-2 px-10 gap-10 mt-10 ">
+              <div className="grid md:grid-cols-1 justify-items-center  gap-10 mt-10 ">
                 {singleSelfPost?.map((selfpost) => (
                   <SelfPostDesign
                     key={selfpost?._id}
@@ -170,20 +174,6 @@ const UserProfile = () => {
             </TabPanel>
             {/* user job post job post */}
             <TabPanel>
-              {/* <Link
-                  className="flex justify-center items-center gap-3 border border-gray-300 shadow-sm bg-gray-50 rounded-md py-5 px-3  w-full"
-                  to="/jobPostForm"
-                >
-                  <img
-                    className="w-14 h-14 rounded-full"
-                    src="https://i.ibb.co/0fZvJMk/364805402-265317659588730-4531070019685307614-n.jpg"
-                    alt=""
-                  />
-                  <h1 className="px-3 w-full h-12 rounded-full bg-gray-200 hover:bg-gray-300 text-black flex justify-center items-center text-lg">
-                    Job post
-                  </h1>
-                </Link> */}
-
               <JobPostForm refetch={refetch}></JobPostForm>
               <div>
                 {singlejobposts?.map((posts) => (
