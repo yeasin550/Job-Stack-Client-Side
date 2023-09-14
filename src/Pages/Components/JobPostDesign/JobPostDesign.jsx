@@ -13,11 +13,10 @@ import { MdDateRange } from "react-icons/md";
 import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 import useJobsBooksMarks from "../../../Hooks/useJobsBooksMarks";
+import Image from "../../../assets/images/images.jpg";
 const JobPostDesign = ({ posts }) => {
   const [handleBookMark] = useJobsBooksMarks();
   const navigate = useNavigate();
-  
-
 
   return (
     <div className="grid grid-cols-1 ">
@@ -34,8 +33,7 @@ const JobPostDesign = ({ posts }) => {
             <div className="flex items-center gap-3">
               <img
                 className="h-16 w-16 border  border-blue-500 rounded-full"
-                src={posts?.userPhoto}
-                // src=""
+                src={posts && posts ? posts.userPhoto : Image}
                 alt="img"
               />
               <div>
