@@ -113,7 +113,7 @@ const JobTaskAlert = () => {
                   href={complete?.docs}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex justify-end bg-gray-300  text-red-700 hover:bg-white hover:shadow-md px-3 py-1 lg:ml-0 ml-3 rounded-md font-bold hover:border-purple-700 border"
+                  className="flex justify-end bg-gray-300  text-red-600 hover:bg-white hover:shadow-md px-3 py-1 lg:ml-0 ml-3 rounded-md font-bold hover:border-purple-700 border"
                 >
                   {complete?.docs}
                 </a>
