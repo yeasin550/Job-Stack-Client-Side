@@ -69,7 +69,7 @@ const UserDynamicProfile = () => {
 
   return (
     //div main container
-    <div className="mt-6 mb-24 lg:px-44">
+    <div className="mt-6 mb-24 lg:px-28">
       {/* second container */}
       <div>
         <div className="border profile-shadow rounded-md">
@@ -189,19 +189,15 @@ const UserDynamicProfile = () => {
             </TabPanel>
 
             <TabPanel>
-              <div>
-                {skills?.map((userskill) => (
-                  <div
-                    key={userskill?._id}
-                    className="flex justify-between items-center mt-2"
-                  >
-                    <div className="flex gap-10">
-                      <FaSlack className="text-2xl text-rose-500"></FaSlack>
-
-                      <h1 className="font-bold font-sans">
-                        {userskill?.skill}
-                      </h1>
-                      <p>{userskill?.skillrate}</p>
+              <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-5 justify-center">
+                {skills?.map((skill) => (
+                  <div className="card w-full bg-base-200 shadow-xl">
+                    <div className="justify-items-center mx-auto mt-10">
+                      <FaSlack className="text-4xl text-rose-500"></FaSlack>
+                    </div>
+                    <div className="card-body mx-auto">
+                      <h2 className="card-title">{skill?.skill}</h2>
+                      <p>{skill?.skillrate}</p>
                     </div>
                   </div>
                 ))}
