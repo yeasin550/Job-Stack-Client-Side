@@ -44,7 +44,7 @@ const CompanyRegistration = () => {
                         createUser(data?.email, data?.password)
                             .then((result) => {
                                 updateUserProfile(data.name, imgURL);
-                                console.log(loggedUser);
+                                // console.log(loggedUser);
                                 const saveUser = {
                                     name: data.name,
                                     email: data.email,

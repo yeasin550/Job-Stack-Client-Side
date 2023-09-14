@@ -3,7 +3,7 @@ import { FaBell } from "react-icons/fa";
 
 const Subscribe = () => {
   return (
-      <div className="p-12 max-w-screen-xl px-5 mx-auto  banner text-white rounded-md">
+      <div className="p-12  banner text-white rounded-md mb-20">
         <div className="md:flex justify-evenly items-center">
           {/* Frist div */}
           <div className="flex items-center gap-4">
@@ -17,7 +17,7 @@ const Subscribe = () => {
           <div className="">
             <form className="md:flex items-center gap-10">
               <input
-                className="py-4 dark:text-black w-full mt-3 md:mt-0 md:w-96 ps-3 text-xl rounded-md outline-0"
+                className="py-2 dark:text-black w-full mt-3 md:mt-0 md:w-96 ps-3 text-lg rounded-md outline-0"
                 type="email"
                 name="email"
                 id=""

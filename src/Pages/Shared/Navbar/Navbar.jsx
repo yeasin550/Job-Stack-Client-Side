@@ -168,6 +168,12 @@ const Navbar = () => {
                   <li>
                     <Link to="review">Review</Link>
                   </li>
+                  <li>
+                    <Link to="faq">FAQ</Link>
+                  </li>
+                  <li>
+                    <Link to="articles-news">Articles</Link>
+                  </li>
                 </ul>
               </div>
             </li>
@@ -179,16 +185,18 @@ const Navbar = () => {
             }`}
         >
           <div className="dropdown dropdown-end flex justify-center items-center gap-3">
-            {
-              user ? <div>
-
+            {user ? (
+              <div>
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                  {single?.image ?
+                  {single?.image ? (
                     <div className="w-20 rounded-full border border-blue-500">
                       <img src={single?.image} alt="logo" />
-                    </div> : <div className="w-20 rounded-full text-yellow-400 shadow-xl border-2  bg-gray-600 border-gray-500"><FaUserAlt className="w-full h-full" ></FaUserAlt></div>
-                  }
-
+                    </div>
+                  ) : (
+                    <div className="w-20 rounded-full text-yellow-400 shadow-xl border-2  bg-gray-600 border-gray-500">
+                      <FaUserAlt className="w-full h-full"></FaUserAlt>
+                    </div>
+                  )}
                 </label>
                 <ul
                   tabIndex={0}
@@ -229,8 +237,15 @@ const Navbar = () => {
                     </button>
                   </li>
                 </ul>
-              </div> : <button className="btn btn-sm hover:bg-gray-400 hover:text-white  border-none" onClick={() => navigate('/login')}>Login</button>
-            }
+              </div>
+            ) : (
+              <button
+                className="btn btn-sm hover:bg-gray-400 hover:text-white  border-none"
+                onClick={() => navigate("/login")}
+              >
+                Login
+              </button>
+            )}
 
             <div onClick={handleTheme}>
               {theme === "dark" ? (

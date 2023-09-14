@@ -12,62 +12,42 @@ import {
 
 const data = [
   {
-    name: "Jan",
-    pv: 50,
+    name: "Sat",
+    pv: 223,
     uv: 400,
   },
   {
-    name: "Feb",
-    pv: 218,
+    name: "Sun",
+    pv: 368,
   },
   {
-    name: "Mar",
-    pv: 156,
+    name: "Mon",
+    pv: 296,
   },
   {
-    name: "Apr",
+    name: "Tues",
     pv: 236,
   },
   {
-    name: "May",
-    pv: 160,
+    name: "Wed",
+    pv: 289,
   },
   {
-    name: "Jun",
-    pv: 208,
-  },
-  {
-    name: "Jul",
-    pv: 300,
-  },
-  {
-    name: "Aug",
+    name: "	Thurs",
     pv: 250,
   },
   {
-    name: "Sep",
-    pv: 290,
-  },
-  {
-    name: "Oct",
-    pv: 350,
-  },
-  {
-    name: "Nov",
-    pv: 300,
-  },
-  {
-    name: "Dec",
-    pv: 200,
+    name: "Fri",
+    pv: 368,
   },
 ];
 export default function JobapplyChats() {
   return (
-    <div className="chat-shadow p-2 rounded-lg px-4 md:px-20">
+    <div className="chat-shadow rounded-lg ">
       <h1 className="text-2xl font-bold mb-4">JobApply Chart</h1>
-      <div className="md:w-96">
+      <ResponsiveContainer width="100%" height={300}>
         <LineChart
-          width={window.innerWidth < 576 ? window.innerWidth : 768}
+          width={500}
           height={300}
           data={data}
           margin={{
@@ -90,35 +70,7 @@ export default function JobapplyChats() {
           />
           <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
         </LineChart>
+         </ResponsiveContainer>
       </div>
-    </div>
-
-    // <div className="chat-shadow p-2 rounded-lg px-20">
-    //   <h1 className="text-2xl font-bold mb-4">JobApply Chart</h1>
-    //   <LineChart
-    //     width={900}
-    //     height={300}
-    //     data={data}
-    //     margin={{
-    //       top: 5,
-    //       right: 30,
-    //       left: 20,
-    //       bottom: 5,
-    //     }}
-    //   >
-    //     <CartesianGrid strokeDasharray="3 3" />
-    //     <XAxis dataKey="name" />
-    //     <YAxis />
-    //     <Tooltip />
-    //     <Legend />
-    //     <Line
-    //       type="monotone"
-    //       dataKey="pv"
-    //       stroke="#0000FF"
-    //       activeDot={{ r: 8 }}
-    //     />
-    //     <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-    //   </LineChart>
-    // </div>
   );
 }

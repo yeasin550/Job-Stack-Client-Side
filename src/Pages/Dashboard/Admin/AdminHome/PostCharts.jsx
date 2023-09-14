@@ -97,76 +97,33 @@ import {
 
 const data = [
   {
-    name: "Jan",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
+    name: "Sat",
+    pv: 223,
+    uv: 400,
   },
   {
-    name: "Feb",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
+    name: "Sun",
+    pv: 368,
   },
   {
-    name: "Mar",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
+    name: "Mon",
+    pv: 296,
   },
   {
-    name: "Apr",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
+    name: "Tues",
+    pv: 236,
   },
   {
-    name: "May",
-    uv: 3890,
-    pv: 6800,
-    amt: 2181,
+    name: "Wed",
+    pv: 289,
   },
   {
-    name: "Jun",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
+    name: "	Thurs",
+    pv: 250,
   },
   {
-    name: "Jul",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-  {
-    name: "Aug",
-    uv: 3490,
-    pv: 5300,
-    amt: 4100,
-  },
-  {
-    name: "Sep",
-    uv: 4390,
-    pv: 3800,
-    amt: 6500,
-  },
-  {
-    name: "Oct",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-  {
-    name: "Nov",
-    uv: 4490,
-    pv: 5300,
-    amt: 3100,
-  },
-  {
-    name: "Dec",
-    uv: 4490,
-    pv: 6300,
-    amt: 4100,
+    name: "Fri",
+    pv: 368,
   },
 ];
 
@@ -174,27 +131,29 @@ export default function PostChart() {
 
 
   return (
-    <div className="chat-shadow p-4 rounded-lg px-20">
+    <div className="chat-shadow rounded-lg">
       <h1 className="text-2xl font-bold mb-4">Post Chart</h1>
-      <BarChart
-        width={800}
-        height={300}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-        data={data}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="pv" stackId="a" fill="#0F52BA" />
-        <Bar dataKey="amt" stackId="a" fill="#40E0D0" />
-        <Bar dataKey="uv" stackId="a" fill="#B6D0E2" />
-      </BarChart>
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart
+          width={500}
+          height={300}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+          data={data}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="pv" stackId="a" fill="#0F52BA" />
+          <Bar dataKey="amt" stackId="a" fill="#40E0D0" />
+          <Bar dataKey="uv" stackId="a" fill="#B6D0E2" />
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
   }
