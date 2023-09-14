@@ -4,10 +4,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import handleButtonDesiable from "../../../Hooks/handleButtonDesiable";
 import { getCurrentTimeStamp } from "../../../Hooks/useMonent";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import images from "../../../../src/assets/images/images.jpg";
+import UseScrollTop from "../../../Hooks/UseScrollTop";
 
 const ProfileCard = ({ person, buttonText }) => {
+  const { pathname } = useLocation();
+  UseScrollTop(pathname);
   const { _id, name, image, email } = person;
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -37,7 +40,10 @@ const ProfileCard = ({ person, buttonText }) => {
           alt="cover photo"
           draggable="false"
         />
-        <div onClick={() => navigate(`/dynamicprofile/${_id}`)} className="flex justify-center cursor-pointer -mt-12">
+        <div
+          onClick={() => navigate(`/dynamicprofile/${_id}`)}
+          className="flex justify-center cursor-pointer -mt-12"
+        >
           {image ? (
             <img
               className="h-[100px] w-[100px] rounded-full"

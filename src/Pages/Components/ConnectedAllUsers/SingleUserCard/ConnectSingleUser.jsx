@@ -8,13 +8,12 @@ import Swal from "sweetalert2";
 import useAxioSequre from "../../../../Hooks/useAxiosSequre";
 import { useNavigate } from "react-router-dom";
 
-const ConnectSingleUser = ({data, refetch}) => {
-
-  const {name, image, _id} = data;
+const ConnectSingleUser = ({ data, refetch }) => {
+  const { name, image, _id } = data;
   const [axiosSequre] = useAxioSequre();
   const navigate = useNavigate();
 
-  // delete user 
+  // delete user
   const handleRequestDelete = (id) => {
     axiosSequre.delete(`/deleterequest/${id}`).then((data) => {
       if (data?.data?.deletedCount > 0) {
@@ -28,7 +27,6 @@ const ConnectSingleUser = ({data, refetch}) => {
       }
     });
   };
-
 
   return (
     <div>
@@ -46,13 +44,18 @@ const ConnectSingleUser = ({data, refetch}) => {
               {name}
             </h1>
             <h5 className="text-[15px] line-clamp-2 text-slate-600 leading-4 ">
-              Front End Developer at Dubai Municipality 
+              Front End Developer at Dubai Municipality
             </h5>
-            <h1 className="text-[13px] text-slate-600">Connected 2 weeks ago</h1>
+            <h1 className="text-[13px] text-slate-600">
+              Connected 2 weeks ago
+            </h1>
           </div>
         </div>
         <div className="flex justify-center items-center">
-          <button onClick={() => navigate('/massageroute')} className="font-semibold text-green-600 border-2 px-4 py-1.5 hover:cursor-pointer hover:border-[3px] border-green-600  hover:bg-green-100 rounded-3xl">
+          <button
+            onClick={() => navigate("/massageroute")}
+            className="font-semibold text-green-600 border-2 px-4 py-1.5 hover:cursor-pointer hover:border-[3px] border-green-600  hover:bg-green-100 rounded-3xl"
+          >
             Massage
           </button>
 
@@ -64,7 +67,10 @@ const ConnectSingleUser = ({data, refetch}) => {
               tabIndex={0}
               className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <button onClick={() => handleRequestDelete(_id)} className="text-base flex items-center">
+              <button
+                onClick={() => handleRequestDelete(_id)}
+                className="text-base flex items-center"
+              >
                 <BsFillTrashFill className="text-xl mr-2" />
                 Remove Connection
               </button>

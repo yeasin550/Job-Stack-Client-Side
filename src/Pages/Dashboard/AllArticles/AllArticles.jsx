@@ -2,10 +2,14 @@ import React from "react";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
 import { FaTrashAlt} from "react-icons/fa";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
+import UseScrollTop from "../../../Hooks/UseScrollTop";
 
 const AllArticles = () => {
+  const { pathname } = useLocation();
+  UseScrollTop(pathname);
+
   const [axiosSequre] = useAxioSequre();
   const { data: articles = [], refetch } = useQuery(["articles"], async () => {
     const res = await axiosSequre.get("/news-article");
