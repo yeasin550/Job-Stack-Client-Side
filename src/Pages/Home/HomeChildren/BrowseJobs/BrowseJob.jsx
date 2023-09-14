@@ -10,9 +10,9 @@ const BrowseJob = () => {
         {/* left site */}
         <div className="w-full px-3 lg:px-0">
             <img
-              className="rounded-md  w-ful"
+              className="rounded-md  w-full"
               src="https://i.ibb.co/BqMBCGR/populer-job.jpg"
-              loading="lazy"
+              
               alt="img"
             />
         </div>

@@ -91,10 +91,7 @@ const EveryOneSerchJob = () => {
                                     <button className='btn'>View Details</button>
                                 </div>
                             </div>
-                            //  <JobPostDesign
-                            //     key={posts._id}
-                            //     posts={posts}
-                            // ></JobPostDesign>
+                           
                         ))}
                 </div> : <p>LOding,,,,,,</p>
             }
