@@ -12,9 +12,7 @@ const AllUsers = () => {
       .catch((error) => console.log(error));
   }, []);
 
-
-
-   const handleFind = (event) => {
+  const handleFind = (event) => {
     event.preventDefault();
     const form = event.target;
     const searchText = form.searchText.value;
@@ -65,8 +63,8 @@ const AllUsers = () => {
       </div>
       {allUser ? (
         <div>
-          {
-            allUser.length > 0 ? <div className="grid md:grid-cols-3 gap-7 pb-5  px-5 w-full h-screen overflow-auto">
+          {allUser.length > 0 ? (
+            <div className="grid md:grid-cols-3 gap-7 pb-5  px-5 w-full h-screen overflow-auto">
               {allUser?.map((person) => (
                 <ProfileCard
                   key={person?._id}
@@ -74,7 +72,9 @@ const AllUsers = () => {
                   buttonText="Connect"
                 />
               ))}
-            </div> : <div className="h-[calc(100vh-138px)] lg:px-20 mt-20">
+            </div>
+          ) : (
+            <div className="h-[calc(100vh-138px)] lg:px-20 mt-20">
               <div className="alert alert-info shadow-md rounded-md text-white">
                 <div className="alert alert-warning">
                   <svg
@@ -94,13 +94,12 @@ const AllUsers = () => {
                 </div>
               </div>
             </div>
-          }
+          )}
         </div>
       ) : (
         <div className="flex justify-center items-center mt-10 ">
           <span className="loading loading-spinner w-14 text-success"></span>
         </div>
-
       )}
     </div>
   );

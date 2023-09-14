@@ -32,10 +32,12 @@ const ConnectedAllUser = () => {
   // get data all connected user
   const { user } = useContext(AuthContext);
   const [axiosSequre] = useAxioSequre();
-  const { refetch, data: allConnected = [] } = useQuery( ["allConnected", user?.email], async () => {
+  const { refetch, data: allConnected = [] } = useQuery(
+    ["allConnected", user?.email],
+    async () => {
       const res = await axiosSequre.get(`/connectrequest/${user?.email}`);
       return res.data;
-    },
+    }
   );
 
   // filtering data approved
@@ -43,9 +45,7 @@ const ConnectedAllUser = () => {
     (accept) => accept.status === "aproved"
   );
 
-
   return (
-
     <div className="px-6  py-4">
       {/*page top section  */}
       <div>
@@ -102,17 +102,18 @@ const ConnectedAllUser = () => {
       </div>
       {/* divider  */}
       <div className="divider my-0 py-0 px-0"></div>
-     
-      {
-       allConnect ? <div className="max-h-[600px] overflow-y-auto scroll-pr-2  touch-none">
-          {
-            allConnect?.map(data => <ConnectSingleUser key={data._id} refetch={refetch} data={data} />)
-          }
-        </div> : <div className="flex justify-center items-center mt-10 ">
-        <span className="loading loading-spinner w-14 text-success"></span>
-      </div>
-      }
-     
+
+      {allConnect ? (
+        <div className="max-h-[600px] overflow-y-auto scroll-pr-2  touch-none">
+          {allConnect?.map((data) => (
+            <ConnectSingleUser key={data._id} refetch={refetch} data={data} />
+          ))}
+        </div>
+      ) : (
+        <div className="flex justify-center items-center mt-10 ">
+          <span className="loading loading-spinner w-14 text-success"></span>
+        </div>
+      )}
     </div>
   );
 };

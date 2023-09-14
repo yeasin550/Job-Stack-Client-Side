@@ -26,6 +26,8 @@ import ArticlesAndNews from "../Pages/PagesComponents/ArticlesAndNews/ArticlesAn
 import Details from "../Pages/PagesComponents/ArticlesAndNews/Details";
 import AllArticles from "../Pages/Dashboard/AllArticles/AllArticles";
 import JobTaskForm from "../Pages/JobPostAllPage/JobApplyForm/SendTaskForm";
+import Notification from "../Pages/Notification/Notification";
+import DynamicJobDetails from "../Pages/JobPostAllPage/DynamicJobDetails";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <UserProfile></UserProfile>,
+      },
+      {
+        path: "notification",
+        element: <Notification></Notification>,
       },
       {
         path: "dynamicprofile/:id",
@@ -98,11 +104,14 @@ const router = createBrowserRouter([
         element: <ClientReview />,
       },
       {
-        path: 'jobsearch',
-        element: <EveryOneSerchJob></EveryOneSerchJob>
+        path: "jobsearch",
+        element: <EveryOneSerchJob></EveryOneSerchJob>,
       },
       {
-
+        path: "dynamic/:id",
+        element: <DynamicJobDetails></DynamicJobDetails>,
+      },
+      {
         path: "faq",
         element: <FAQ />,
       },
@@ -118,7 +127,6 @@ const router = createBrowserRouter([
             `https://jobstack-backend-teal.vercel.app/news-article/${params.id}`
           ),
       },
-
     ],
   },
 
@@ -136,7 +144,7 @@ const router = createBrowserRouter([
       },
       {
         path: "all-articles",
-        element: <AllArticles />
+        element: <AllArticles />,
       },
       {
         path: "news-articles",
@@ -147,4 +155,3 @@ const router = createBrowserRouter([
 ]);
 
 export default router;
-

@@ -4,7 +4,7 @@ import "react-tabs/style/react-tabs.css";
 import SelfPostDesign from "../../Components/SelfPostDesign/SelfPostDesign";
 import useSelfPost from "../../../Hooks/useSelfPost";
 import ConnectedAllUser from "../../Components/ConnectedAllUsers/ConnectedAllUser";
-import AllUsers from "../AllUsers/AllUsers"
+import AllUsers from "../AllUsers/AllUsers";
 import ConfirmRequset from "../../ConfirmRequest/ConfirmRequset";
 import UserFollowing from "../../UserConnectedFunctionality/UserFollowing";
 import AllEvents from "./AllEvents/AllEvents";
@@ -23,50 +23,57 @@ const MyNetwork = () => {
             <TabList className="flex  flex-col justify-center items-start px-5 py-10 gap-6">
               <Tab
                 onClick={() => clickactive("post")}
-                className={` cursor-pointer userinfotext ${active == "post" ? "activetab  cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer userinfotext ${
+                  active == "post" ? "activetab  cursor-pointer" : ""
+                }`}
               >
                 Activities
               </Tab>
               <Tab
                 onClick={() => clickactive("activities")}
-                className={` cursor-pointer userinfotext ${active == "activities" ? "activetab cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer userinfotext ${
+                  active == "activities" ? "activetab cursor-pointer" : ""
+                }`}
               >
                 Connections
               </Tab>
               <Tab
                 onClick={() => clickactive("jobpost")}
-                className={` cursor-pointer userinfotext ${active == "jobpost" ? "activetab cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer userinfotext ${
+                  active == "jobpost" ? "activetab cursor-pointer" : ""
+                }`}
               >
                 Find Connect
               </Tab>
               <Tab
                 onClick={() => clickactive("group")}
-                className={` cursor-pointer userinfotext ${active == "group" ? "activetab cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer userinfotext ${
+                  active == "group" ? "activetab cursor-pointer" : ""
+                }`}
               >
                 Connect Request
               </Tab>
               <Tab
                 onClick={() => clickactive("about")}
-                className={` cursor-pointer userinfotext ${active == "about" ? "activetab cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer userinfotext ${
+                  active == "about" ? "activetab cursor-pointer" : ""
+                }`}
               >
                 Event
               </Tab>
               <Tab
                 onClick={() => clickactive("connect")}
-                className={` cursor-pointer userinfotext ${active == "connect" ? "activetab cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer userinfotext ${
+                  active == "connect" ? "activetab cursor-pointer" : ""
+                }`}
               >
-               Following
+                Following
               </Tab>
               <Tab
                 onClick={() => clickactive("more")}
-                className={` cursor-pointer userinfotext ${active == "more" ? "activetab cursor-pointer" : ""
-                  }`}
+                className={` cursor-pointer userinfotext ${
+                  active == "more" ? "activetab cursor-pointer" : ""
+                }`}
               >
                 NewsLater
               </Tab>
@@ -75,18 +82,20 @@ const MyNetwork = () => {
           <div className="w-full  rounded-md shadowdiv border">
             {/* user Activities */}
             <TabPanel>
-              {
-                allselfdata ? <div className="grid  place-items-center h-screen gap-10 overflow-auto">
+              {allselfdata ? (
+                <div className="grid  place-items-center h-screen gap-10 overflow-auto">
                   {allselfdata?.map((selfpost) => (
                     <SelfPostDesign
                       key={selfpost?._id}
                       selfpost={selfpost}
                     ></SelfPostDesign>
                   ))}
-                </div> : <div className="flex justify-center items-center mt-10 ">
+                </div>
+              ) : (
+                <div className="flex justify-center items-center mt-10 ">
                   <span className="loading loading-spinner w-14 text-success"></span>
                 </div>
-              }
+              )}
             </TabPanel>
             {/* user Connections  */}
             <TabPanel>
@@ -107,7 +116,7 @@ const MyNetwork = () => {
              {/* user Pages  */}
             <TabPanel>
               <UserFollowing></UserFollowing>
-              </TabPanel>
+            </TabPanel>
             {/* user Newslater */}
             <TabPanel>NewsLater</TabPanel>
           </div>
