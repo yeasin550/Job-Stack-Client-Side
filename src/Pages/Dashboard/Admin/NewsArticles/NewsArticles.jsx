@@ -2,9 +2,15 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { getCurrentTimeStamp } from "../../../../Hooks/useMonent";
+import { useLocation } from "react-router-dom";
+import UseScrollTop from "../../../../Hooks/UseScrollTop";
 const imgae_hosting = import.meta.env.VITE_Image_Upload_Token;
 
 const NewsArticles = () => {
+
+    const { pathname } = useLocation();
+    UseScrollTop(pathname);
+
   const {
     register,
     reset,

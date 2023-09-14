@@ -11,10 +11,15 @@ import UserChart from "./UserChart";
 import JobChats from "./JobCharts";
 import JobapplyChats from "./JobapplyChats";
 import PostChart from "./PostCharts";
+import { useLocation } from "react-router-dom";
+import UseScrollTop from "../../../../Hooks/UseScrollTop";
 
 const AdminHome = () => {
   const [axiosSecure] = useAxioSequre();
   const [countOn, setCountOn] = useState(false);
+
+    const { pathname } = useLocation();
+    UseScrollTop(pathname);
 
   const { data: stats = {} } = useQuery({
     queryKey: ["admin-stats"],
