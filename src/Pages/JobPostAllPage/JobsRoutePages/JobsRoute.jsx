@@ -25,7 +25,7 @@ const JobsRoute = () => {
   const [tabIndex, setTabIndex] = useState(0);
 
   const bookJobs = bookMarkJobs[0];
-  console.log(bookJobs);
+  
   const clickactive = (active) => {
     if (active === "post") {
       setActive("All");
@@ -39,10 +39,9 @@ const JobsRoute = () => {
       return curElem[property];
     });
     return (newVal = ["All", ...new Set(newVal)]);
-    // console.log(newVal);
   };
+  
   const categoryOnlyData = getUniqueData(jobposts, "jobCategory");
-
   const handleFilter = (posts) => {
     if (searchText) {
       if (posts?.jobTitle?.toLowerCase()?.includes(searchText?.toLowerCase())) {
@@ -62,7 +61,6 @@ UseScrollTop(pathname);
           <div className="shadowdiv border rounded-md lg:w-80 h-100%">
             <TabList className="flex sticky top-24 flex-col justify-center items-start px-5 py-10 gap-6">
               <Tab
-                // onClick={() => clickactive("post")}
                 onClick={() => clickactive("post")}
                 className={` flex items-center gap-2 cursor-pointer userinfotext ${
                   active == "post" ? "activetab cursor-pointer" : ""

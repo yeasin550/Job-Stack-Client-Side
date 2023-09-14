@@ -98,17 +98,17 @@ const CompanyRegistration = () => {
         }
     }
     return (
-        <div className="flex flex-col lg:flex-row justify-center items-center lg:gap-10 lg:px-20 px-2 mb-24">
+        <div className="banner flex flex-col lg:flex-row justify-center items-center lg:gap-10 lg:px-20 px-2 pb-14">
             <div className="w-full lg:w-2/4">
                 <form
                     onSubmit={handleSubmit(companyRegister)}
-                    className="w-full  mt-32   mb-10 lg:p-8 p-4 border border-green-500 bg-white rounded-lg text-black"
+                    className="w-full  mt-32   mb-10 lg:p-8 p-4 shadowdiv bg-white rounded-lg text-black"
                 >
-                    <h3 className="text-2xl text-center font-bold mb-5">Sign up now!</h3>
+                    <h3 className="text-2xl text-center font-bold mb-5">Sign up now</h3>
                     <div className="flex gap-5 flex-col lg:flex-row">
                         <div className="form-control w-full">
                             <label className="label">
-                                <span className="label-text font-semibold">Company Name</span>
+                                <span className="label-text">Company Name</span>
                             </label>
                             <input
                                 type="text"
@@ -125,7 +125,7 @@ const CompanyRegistration = () => {
 
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text font-semibold">Official Email</span>
+                            <span className="label-text">Official Email</span>
                         </label>
                         <input
                             {...register("email", {
@@ -147,19 +147,19 @@ const CompanyRegistration = () => {
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text font-semibold">Upload Company Image</span>
+                            <span className="label-text">Upload Company Image</span>
                         </label>
                         <input
                             type="file"
                             {...register("image")}
-                            className="file-input file-input-success file-input-bordered w-full"
+                            className="file-input file-input-error file-input-bordered w-full"
                         />
                     </div>
 
                     <div className="flex gap-5 flex-col lg:flex-row">
                         <div className="form-control relative w-full">
                             <label className="label">
-                                <span className="label-text font-semibold">Password</span>
+                                <span className="label-text">Password</span>
                             </label>
                             <input
                                 type={shows ? "text" : "password"}
@@ -191,7 +191,7 @@ const CompanyRegistration = () => {
                         </div>
                         <div className="form-control relative w-full">
                             <label className="label">
-                                <span className="label-text font-semibold">Confirm Password</span>
+                                <span className="label-text">Confirm Password</span>
                             </label>
                             <input
                                 type={show ? "text" : "password"}
@@ -211,15 +211,15 @@ const CompanyRegistration = () => {
                             {error && <p className="text-error mb-2">{error}</p>}
                         </div>
                     </div>
-                    <p className='font-sans mt-4 mb-3 '>By registering, you agree to our Terms and Conditions<span className=' text-blue-500'><Link to='/terams'>Terms and Conditions.</Link></span></p>
+                    <p className='font-sans mt-4 mb-3 '>You agree to our Terms and Conditions<span className=' text-blue-400 underline '><Link to='/termsandconditions'>Terms and Conditions.</Link></span></p>
                     <div className="form-control mt-6">
                         <input
                             type="submit"
                             value="Sign Up"
-                            className="btn bg-green-500 hover:bg-green-700 text-[20px] border-0 text-white"
+                            className="btn banner text-[18px] border-0 text-white"
                         />
                     </div>
-                    <p className='text-center font-sans text-[18px] mt-3 font-semibold'>Already registered?<span className='text-blue underline text-blue-500'><Link to='/login'>Login</Link></span></p>
+                    <p className='text-center font-sans text-[18px] mt-3'>Already registered?<span className='text-blue underline text-blue-500'><Link to='/login'>Login</Link></span></p>
                     {userEroor && (
                         <p className="text-center text-error mb-2">{userEroor}</p>
                     )}
@@ -233,3 +233,6 @@ const CompanyRegistration = () => {
 };
 
 export default CompanyRegistration;
+
+
+

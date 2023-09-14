@@ -11,22 +11,24 @@ const LatestJobs = () => {
   const [job] = useJobs();
   const initialIndex = categories.indexOf(workplace);
   const [tabIndex, setTabIndex] = useState(initialIndex);
-  const Remote = job.filter((item) => item.workplace === "Remote");
-  const Onsite = job.filter((item) => item.workplace === "Onsite");
+  const remote = job.filter((item) => item.workplace === "Remote");
+  const onsite = job.filter((item) => item.workplace === "Onsite");
   const handleTabClick = (id) => {
     setActiveTab(id);
   };
   return (
-    <div className="banner">
-      <div className="text-center mb-5">
-        <h1 className="text-4xl uppercase font-bold text-transparent bg-clip-text  bg-gradient-to-r from-white to-yellow-400">Latest Jobs</h1>
-        <p className="mt-2 text-white px-1 lg:px-0 text-lg">
+    
+    <div className="banner lg:px-12">
+      <div className="banner ">
+      <div className="text-center banner  ">
+        <h1 className="text-4xl uppercase font-bold text-transparent bg-clip-text  bg-gradient-to-r from-white to-yellow-400 ">Latest Jobs</h1>
+        <p className="mt-2 mb-4 text-white lg:px-0 text-lg">
           Discover a world of career possibilities with our latest job openings.
         </p>
       </div>
-      <div>
+      <div className="banner">
         <ul
-          className="tabs text-xl font-semibold"
+          className="tabs text-xl banner font-semibold"
           defaultIndex={tabIndex}
           onSelect={(index) => setTabIndex(index)}
         >
@@ -42,23 +44,24 @@ const LatestJobs = () => {
             Onsite
           </li>
         </ul>
-        <div className="tab_content banner">
+        <div className="tab-content banner py-8">
           {activeTab === 1 && (
-            <div className="tab_panel">
-              <div className="tab_panel md:flex items-center gap-8 mt-6">
-                <JobCard items={Remote}></JobCard>
-              </div>
+
+            <div className="tab_panel banner">
+              <JobCard items={remote}></JobCard>
             </div>
-          )}
-          {activeTab === 2 && (
-            <div className="tab_panel ">
-              <div className="tab_panel md:flex items-center gap-8 mt-6">
-                <JobCard items={Onsite}></JobCard>
+
+          )} 
+         {activeTab === 2 && (
+           
+              <div className="tab_panel banner">
+                <JobCard items={onsite}></JobCard>
               </div>
-            </div>
           )}
         </div>
       </div>
+      </div>
+     
     </div>
   );
 };

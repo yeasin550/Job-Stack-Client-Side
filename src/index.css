@@ -5,6 +5,7 @@
 body {
   font-family: "Poppins", sans-serif;
 }
+
 .borderl {
   border-width: 0 0 0 4px;
   border-color: #00b04d;
@@ -23,6 +24,7 @@ body {
 .image-upload {
   border: 1px solid rgb(51, 45, 45);
 }
+
 .shadowform {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
     rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
@@ -39,7 +41,7 @@ body {
   padding-right: 8px !important;
   border-radius: 8px !important;
   width: 100%;
-  background-color: rgb(70, 73, 70) !important;
+  background-color: rgb(205, 205, 24) !important;
   color: white !important;
   text-align: left !important;
   font-weight: 800px !important;
@@ -55,6 +57,7 @@ body {
   padding-bottom: 6px !important;
 
 }
+
 ::-webkit-scrollbar {
   display: none;
 }
@@ -67,16 +70,38 @@ body {
   width: 1rem;
   height: 1rem;
 }
+
 /* linear-gradient */
-.banner {
+/* .banner {
   background-image: -webkit-linear-gradient(right, #0090e4 0%, #1b18a1 100%);
+} */
+.banner {
+  background: #159957;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #155799, #159957);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #155799, #159957);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
-.mid-banner{
-  background: #ac9524;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, rgb(192, 195, 19), #e7c507);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, rgb(203, 197, 11), rgb(202, 176, 10)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+.mid-banner {
+  background: #f7ff00;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #db36a4, #f7ff00);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #db36a4, #f7ff00);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.cardbanner {
+  background: #7474BF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   
+  
+
 }
 
 /* categorires-card section */
@@ -85,11 +110,13 @@ body {
   border-style: solid;
   border-image: linear-gradient(to right, darkblue, #0090e4) 1;
 }
+
 /* admin home page charts shadow */
 .chat-shadow {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
+
 /* Link active color */
 .activeLink {
   color: purple !important;
@@ -104,4 +131,3 @@ body {
   width: 1rem;
   height: 1rem;
 }
-

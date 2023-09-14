@@ -134,7 +134,7 @@ const AdminHome = () => {
       </div>
       {/* Charts */}
       <div className="grid md:grid-cols-2 gap-10 mt-16">
- <UserChart/>
+        <UserChart />
         <JobChats />
         <PostChart />
         <JobapplyChats />

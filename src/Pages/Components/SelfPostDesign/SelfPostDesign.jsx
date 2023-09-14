@@ -8,6 +8,7 @@ import {
   FaLinkedin,
   FaTwitter,
   FaCommentAlt,
+  FaUserAlt,
 } from "react-icons/fa";
 import { AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
 import useDeletSelfPost from "../../../Hooks/useDeletSelfPost";
@@ -19,19 +20,20 @@ import useAxioSequre from "../../../Hooks/useAxiosSequre";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import Comment from "./Comment";
-import images from "../../../../src/assets/images/images.jpg";
+import useSingleUser from "../../../Hooks/useSingleUser";
 
 const SelfPostDesign = ({ selfpost }) => {
-  const { _id, text, image, userPhoto, userName, timeStamp } = selfpost;
+  const { _id, text, image, userPhoto, userName, timeStamp , userId} = selfpost;
 
   const [handleDelete] = useDeletSelfPost();
   const { user } = useContext(AuthContext);
   const [axiosSequre] = useAxioSequre();
+  const [singleUser] = useSingleUser();
   const [clickedid, setClickedid] = useState(null);
   const [handleFacebookShare, handleLinkedinShare, handleTwitterShare] =
     usePostShare();
   const { register, handleSubmit, reset } = useForm();
- 
+
 
   // comment data fucation
   const makeComment = (id) => {
@@ -90,7 +92,6 @@ const SelfPostDesign = ({ selfpost }) => {
     console.log(data);
     const selfPost = {
       text: data.text,
-      // image: data.imgUrl,
     };
 
     axiosSequre
@@ -114,27 +115,23 @@ const SelfPostDesign = ({ selfpost }) => {
 
   // like funcation
   const [like, setLike] = useState(false);
-  const [count,setCount]=useState(0)
- 
+  const [count, setCount] = useState(0)
+
   const handleLike = () => {
     if (!like) {
       setLike(true)
       setCount(count + 1)
     } else {
       setLike(false)
-        setCount(count - 1);
+      setCount(count - 1);
     }
   }
   return (
-    <div className="lg:w-[500px] w-full mt-5 p-4 shadow-xl rounded-lg">
+    <div className="lg:w-[550px] w-full mt-5 p-4 shadow-xl rounded-lg">
       {/* user information */}
       <div className="mt-3 flex justify-between items-center">
         <div className="flex items-center gap-3">
-          <img
-            className="w-10 h-10 rounded-full"
-            // src={userPhoto}
-            src={selfpost && selfpost.userPhoto ? selfpost.userPhoto : images}
-          />
+          {userPhoto ? <img className="w-10 h-10 rounded-full" src={userPhoto} /> : <FaUserAlt className="w-10 h-10 rounded-full bg-gray-200"></FaUserAlt>}
           <div className="">
             <p className="font-bold">{userName}</p>
             <p>{timeStamp}</p>
@@ -142,7 +139,34 @@ const SelfPostDesign = ({ selfpost }) => {
         </div>
 
         {/*Post edit and delete  */}
-        <div className="dropdown dropdown-left">
+        {
+          singleUser[0]?._id == userId ?(
+            <div className="dropdown dropdown-left">
+            <label tabIndex={0}>
+              <BsThreeDots />
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box "
+            >
+              <button
+                onClick={() => makeEdit(_id)}
+                className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
+              >
+                <GrEdit />
+                Edit
+              </button>
+              <button
+                onClick={() => handleDelete(_id)}
+                className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
+              >
+                <MdDelete />
+                Delete
+              </button>
+            </ul>
+          </div> 
+          )
+          :( <div className="dropdown dropdown-left">
           <label tabIndex={0}>
             <BsThreeDots />
           </label>
@@ -155,17 +179,12 @@ const SelfPostDesign = ({ selfpost }) => {
               className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
             >
               <GrEdit />
-              Edit
-            </button>
-            <button
-              onClick={() => handleDelete(_id)}
-              className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
-            >
-              <MdDelete />
-              Delete
+              PostReport
             </button>
           </ul>
-        </div>
+        </div> )
+        }
+        
       </div>
       {/* user post */}
       <div className="mt-4 ">

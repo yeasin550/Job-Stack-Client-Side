@@ -20,6 +20,7 @@ import Contuct from "../Pages/PagesComponents/Contact/Contuct";
 import AdminHome from "../Pages/Dashboard/Admin/AdminHome/AdminHome";
 import ClientReview from "../Pages/PagesComponents/ClientReview/ClientReview";
 import NewsArticles from "../Pages/Dashboard/Admin/NewsArticles/NewsArticles";
+import EveryOneSerchJob from "../Pages/JobPostAllPage/EveryOneSerchJob";
 import FAQ from "../Pages/PagesComponents/FAQ/FAQ";
 import ArticlesAndNews from "../Pages/PagesComponents/ArticlesAndNews/ArticlesAndNews";
 import Details from "../Pages/PagesComponents/ArticlesAndNews/Details";
@@ -97,6 +98,11 @@ const router = createBrowserRouter([
         element: <ClientReview />,
       },
       {
+        path: 'jobsearch',
+        element: <EveryOneSerchJob></EveryOneSerchJob>
+      },
+      {
+
         path: "faq",
         element: <FAQ />,
       },
@@ -112,6 +118,7 @@ const router = createBrowserRouter([
             `https://jobstack-backend-teal.vercel.app/news-article/${params.id}`
           ),
       },
+
     ],
   },
 
@@ -129,7 +136,7 @@ const router = createBrowserRouter([
       },
       {
         path: "all-articles",
-        element: <AllArticles/>
+        element: <AllArticles />
       },
       {
         path: "news-articles",
@@ -140,3 +147,4 @@ const router = createBrowserRouter([
 ]);
 
 export default router;
+

@@ -10,20 +10,17 @@ import {
 import { FcLike } from "react-icons/fc";
 import { BiDollarCircle } from "react-icons/bi";
 import { MdDateRange } from "react-icons/md";
-import { useContext } from "react";
-import { AuthContext } from "../../../Providers/AuthProvider";
 import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 import useJobsBooksMarks from "../../../Hooks/useJobsBooksMarks";
 const JobPostDesign = ({ posts }) => {
   const [handleBookMark] = useJobsBooksMarks();
   const navigate = useNavigate();
-  // console.log(posts);
-  const { user } = useContext(AuthContext);
-    // console.log(posts);
+  
+
 
   return (
-    <div className="grid grid-cols-1 dark:text-black">
+    <div className="grid grid-cols-1 ">
       <div className=" bg-white shadow-lg rounded-md mt-5 p-6 border border-purple-500">
         <div className="flex justify-end gap-2 mb-3 text-xl">
           <FaShareAlt className="cursor-pointer" />

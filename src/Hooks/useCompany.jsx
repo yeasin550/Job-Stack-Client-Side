@@ -2,17 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
 import useAxioSequre from "./useAxiosSequre";
 
-const useAdmin = () => {
+const useCompany = () => {
   const { user, loading } = useAuth();
   const [axiosSecure] = useAxioSequre();
   // use axios secure with react query
-  const { data: isAdmin, isLoading: isAdminLoading } = useQuery({
-    queryKey: ["isAdmin", user?.email],
+  const { data: isCompany, isLoading: isCompanyLoading } = useQuery({
+    queryKey: ["isCompany", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/users/admin/${user?.email}`);
+      const res = await axiosSecure.get(`/company/${user?.email}`);
       return res.data.admin;
     },
   });
-  return [isAdmin, isAdminLoading];
+  return [isCompany, isCompanyLoading];
 };
-export default useAdmin;
+export default useCompany;

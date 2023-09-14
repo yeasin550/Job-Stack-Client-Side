@@ -67,7 +67,7 @@ const Sociallogin = () => {
       <div className="flex justify-center items-center gap-6 mt-4">
         <div
           onClick={handleGoogleSignIn}
-          className="border cursor-pointer flex justify-center items-center gap-2 w-full py-2 border-green-500"
+          className=" banner-button cursor-pointer flex justify-center items-center gap-2 w-full "
         >
           <p className="text-2xl text-yellow-400">
             <FaGoogle />
@@ -76,9 +76,9 @@ const Sociallogin = () => {
         </div>
         <div
           onClick={handleGitHubSignIn}
-          className="border cursor-pointer flex justify-center items-center gap-2 w-full py-2 border-green-500"
+          className="cursor-pointer banner-button flex justify-center items-center gap-2 w-full "
         >
-          <p className="text-2xl text-blue-400">
+          <p className="text-2xl text-black">
             <FaGithub />
           </p>
           <p>GitHub</p>
