@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
-import banner from '../../../../assets/images/populer-job.jpg';
 import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
 
 const BrowseJob = () => {
    const [countOn, setCountOn] = useState(false);
   return (
-    <div className="lg:px-16 banner">
-      <div className="grid md:grid-cols-2 gap-5 justify-center items-center">
+    <div className="lg:px-14 banner">
+      <div className="grid md:grid-cols-2 gap-5 justify-center ">
         {/* left site */}
         <div className="w-full px-3 lg:px-0">
             <img
-              className="rounded-md w-full"
-              src={banner}
-              alt="banner"
+              className="rounded-md  w-ful"
+              src="https://i.ibb.co/BqMBCGR/populer-job.jpg"
+              loading="lazy"
+              alt="img"
             />
         </div>
         {/* right site */}
         <div className="px-3 md:px-0 ">
-          <h1 className="lg:text-4xl text-2xl   text-transparent bg-clip-text  bg-gradient-to-r from-white via-yellow-400 to-white font-bold  ">
+          <h1 className="lg:text-[32px] text-2xl   text-transparent bg-clip-text  bg-gradient-to-r from-white via-yellow-400 to-white font-bold  ">
             Trusted & Popular Job and Career Link up site
           </h1>
           <p className="mt-7  text-[18px] text-white md:text-justify">

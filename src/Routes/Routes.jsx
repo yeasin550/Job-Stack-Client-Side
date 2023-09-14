@@ -22,6 +22,7 @@ import UserReport from "../Pages/Dashboard/Admin/UserReport/UserReport";
 import PostReport from "../Pages/Dashboard/Admin/PostReport/PostReport";
 import ClientReview from "../Pages/PagesComponents/ClientReview/ClientReview";
 import NewsArticles from "../Pages/Dashboard/Admin/NewsArticles/NewsArticles";
+import EveryOneSerchJob from "../Pages/JobPostAllPage/EveryOneSerchJob";
 
 const router = createBrowserRouter([
   {
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
         path: "review",
         element: <ClientReview />,
       },
+      {
+        path: 'jobsearch',
+        element: <EveryOneSerchJob></EveryOneSerchJob>
+      }
     ],
   },
 

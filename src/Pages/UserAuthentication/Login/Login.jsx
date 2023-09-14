@@ -80,13 +80,13 @@ const Login = () => {
 
 
   return (
-    <div>
-      <div className="flex flex-col lg:flex-row justify-center items-center mt-5 px-2 lg:gap-5 gap-5 lg:px-20">
+    <div className='banner'>
+      <div className="flex flex-col lg:flex-row justify-center items-center py-:10 px-2 lg:gap-5 gap-5 lg:px-20">
         {/* Login div start */}
         <div className="w-full lg:px-10">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="w-full lg:p-10 p-3 border border-green-500 bg-white rounded-lg text-black"
+            className="w-full lg:p-10 p-3 border bg-white rounded-lg text-black"
           >
             <h3 className="text-2xl text-center font-bold mb-5">Login Here</h3>
             {/* Email Inpurt Field */}
@@ -95,7 +95,6 @@ const Login = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
-                type="email"
                 {...register("email", { required: true })}
                 placeholder="Enter your email"
                 className="input input-bordered"
@@ -129,27 +128,27 @@ const Login = () => {
                 </span>
               )}
 
-              <label htmlFor="my_modal_6" className="text-left cursor-pointer text-green-500 font-semibold">
+              <label htmlFor="my_modal_6" className="text-left mt-3 mb-4 cursor-pointer text-transparent bg-clip-text  bg-gradient-to-r from-pink-400 via-yellow-400 to-blue-400 font-semibold">
                 Forgot Password?
               </label>
             </div>
             {/* submit button */}
-            <div className="form-control mt-6 mb-4">
+            <div className="form-control  mb-4">
               <input
                 type="submit"
                 value="Login"
-                className="btn bg-green-500 hover:bg-green-600 text-[20px] border-0 text-white"
+                className="btn banner text-[18px] border-0 text-white"
               />
             </div>
             {error && <p className="text-center text-error mb-2">{error}</p>}
             <div className="flex justify-center font-sans text-[18px] items-center">
-              Don't have an account?{" "}
-             ( <button><Link to="/signup" className="text-blue-500 underline">
+              Don't have an account?
+              <button><Link to="/signup" className=" btn btn-xs mx-1 bg-gradient-to-r from-pink-400  to-cyan-400">
                 user
-              </Link></button>/
-              <button><Link to="/companyregister" className="text-blue-500 underline">
+              </Link></button>
+              <button><Link to="/companyregister" className=" btn bg-gradient-to-r from-pink-400  to-cyan-400  btn-xs">
                 company
-              </Link></button>)
+              </Link></button>
 
             </div>
           </form>
@@ -164,23 +163,23 @@ const Login = () => {
               animationData={loginanimation}
               loop={true}
             />
-            ;
+            
           </div>
         </div>
       </div>
       {/* forgot password modal */}
-      <div className="mx-5 my-10 md:w-1/2 md:mx-auto px-5 py-10">
+      <div className="mx-5 md:w-1/2 md:mx-auto px-5">
         <input type="checkbox" id="my_modal_6" className="modal-toggle" />
         <div className="modal">
           <div className="modal-box">
             <form onSubmit={handleResetPassword}>
-              <h4 className="text-green-700 text-2xl font-bold mb-5 text-center">
+              <h4 className=" text-2xl font-bold mt-4 text-center">
                 Forgot Password?
               </h4>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-lg text-green-700 font-semibold">
-                    Your Email :
+                  <span className="label-text text-lgfont-semibold">
+                    Acount Email
                   </span>
                 </label>
                 <label className="">
@@ -188,12 +187,12 @@ const Login = () => {
                     type="email"
                     name="email"
                     placeholder="Enter Your Email"
-                    className='input input-bordered border-green-700 w-full max-w-xs"'
+                    className='input input-bordered w-full max-w-xs"'
                     required
                   />
                 </label>
               </div>
-              <button className="my-btn w-full mt-5 p-2 text-lg rounded-md text-white bg-green-600 hover:bg-green-700">
+              <button className="my-btn w-full mt-5 p-2 text-lg rounded-md text-white banner">
                 Send Email
               </button>
               <p className="text-error text-center mt-2">{error}</p>
@@ -201,9 +200,9 @@ const Login = () => {
             <div className="modal-action">
               <label
                 htmlFor="my_modal_6"
-                className="btn text-white bg-green-600 hover:bg-green-700"
+                className="btn btn-md btn-circle absolute top-2  text-white banner "
               >
-                close
+                X
               </label>
             </div>
           </div>
