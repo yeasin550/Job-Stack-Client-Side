@@ -9,7 +9,6 @@ import Swal from "sweetalert2";
 import Sociallogin from "../SocialLogin/Sociallogin";
 
 const Login = () => {
-
   // Authcontext import auth info and 2 hokks
   const { resetPassword } = useContext(AuthContext);
   const { signIn } = useContext(AuthContext);
@@ -31,25 +30,24 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-
   const onSubmit = (data) => {
     signIn(data?.email, data?.password)
-      .then(result => {
+      .then((result) => {
         const user = result.user;
         reset();
         console.log(user);
         Swal.fire({
-          icon: 'success',
-          title: 'Login successfully.',
+          icon: "success",
+          title: "Login successfully.",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
         navigate(from, { replace: true });
       })
-      .catch(err => {
+      .catch((err) => {
         setError(err.message);
         console.log(err.message);
-      })
+      });
   };
   // handle reset password
   const handleResetPassword = (event) => {
@@ -76,8 +74,6 @@ const Login = () => {
         console.log(error);
       });
   };
-
-
 
   return (
     <div>
@@ -129,7 +125,10 @@ const Login = () => {
                 </span>
               )}
 
-              <label htmlFor="my_modal_6" className="text-left cursor-pointer text-green-500 font-semibold">
+              <label
+                htmlFor="my_modal_6"
+                className="text-left cursor-pointer text-green-500 font-semibold"
+              >
                 Forgot Password?
               </label>
             </div>
@@ -143,14 +142,19 @@ const Login = () => {
             </div>
             {error && <p className="text-center text-error mb-2">{error}</p>}
             <div className="flex justify-center font-sans text-[18px] items-center">
-              Don't have an account?{" "}
-             ( <button><Link to="/signup" className="text-blue-500 underline">
-                user
-              </Link></button>/
-              <button><Link to="/companyregister" className="text-blue-500 underline">
-                company
-              </Link></button>)
-
+              Don't have an account? ({" "}
+              <button>
+                <Link to="/signup" className="text-blue-500 underline">
+                  user
+                </Link>
+              </button>
+              /
+              <button>
+                <Link to="/companyregister" className="text-blue-500 underline">
+                  company
+                </Link>
+              </button>
+              )
             </div>
           </form>
           {/* social login google and facebook */}

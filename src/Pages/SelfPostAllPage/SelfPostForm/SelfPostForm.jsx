@@ -26,7 +26,12 @@ const SelfPostForm = () => {
     setIsOpen(false);
   };
 
-  const { register, handleSubmit,reset, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   // Make the POST request
   const onSubmit = (data) => {
     const imgdata = new FormData();
@@ -57,13 +62,11 @@ const SelfPostForm = () => {
                 title: "User Post successfully.",
                 timer: 1500,
               });
-             
             }
           });
         }
       });
   };
-
 
   return (
     <div>

@@ -106,9 +106,9 @@ const ConnectedAllUser = () => {
       <div className="divider my-0 py-0 px-0"></div>
       {/* all user div  */}
       <div className="max-h-[600px] overflow-y-auto scroll-pr-2  touch-none">
-        {
-          allConnect.map(data => <ConnectSingleUser key={data._id} refetch={refetch} data={data}/>)
-        }
+        {allConnect.map((data) => (
+          <ConnectSingleUser key={data._id} refetch={refetch} data={data} />
+        ))}
       </div>
       {/* all user div  */}
     </div>

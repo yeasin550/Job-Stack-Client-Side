@@ -13,7 +13,11 @@ const AllUsers = () => {
   }, []);
 
   if (!allUser) {
-    return <div className="text-3xl font-bold font-sans text-green-500">Loding....</div>;
+    return (
+      <div className="text-3xl font-bold font-sans text-green-500">
+        Loding....
+      </div>
+    );
   }
 
   const handleFind = (event) => {
