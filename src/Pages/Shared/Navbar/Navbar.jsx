@@ -143,7 +143,7 @@ const Navbar = () => {
             )}
             {user && (
               <li className="flex justify-center">
-                <Link to="/notifications">
+                <Link to="/notification">
                   <FaBell className="mx-auto" /> Notifications
                 </Link>
               </li>

@@ -9,7 +9,6 @@ import Swal from "sweetalert2";
 import Sociallogin from "../SocialLogin/Sociallogin";
 
 const Login = () => {
-
   // Authcontext import auth info and 2 hokks
   const { resetPassword } = useContext(AuthContext);
   const { signIn } = useContext(AuthContext);
@@ -31,25 +30,24 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-
   const onSubmit = (data) => {
     signIn(data?.email, data?.password)
-      .then(result => {
+      .then((result) => {
         const user = result.user;
         reset();
         console.log(user);
         Swal.fire({
-          icon: 'success',
-          title: 'Login successfully.',
+          icon: "success",
+          title: "Login successfully.",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         });
         navigate(from, { replace: true });
       })
-      .catch(err => {
+      .catch((err) => {
         setError(err.message);
         console.log(err.message);
-      })
+      });
   };
   // handle reset password
   const handleResetPassword = (event) => {
@@ -77,10 +75,8 @@ const Login = () => {
       });
   };
 
-
-
   return (
-    <div className='banner'>
+    <div className="banner">
       <div className="flex flex-col lg:flex-row justify-center items-center py-:10 px-2 lg:gap-5 gap-5 lg:px-20">
         {/* Login div start */}
         <div className="w-full lg:px-10">
@@ -128,7 +124,10 @@ const Login = () => {
                 </span>
               )}
 
-              <label htmlFor="my_modal_6" className="text-left mt-3 mb-4 cursor-pointer text-transparent bg-clip-text  bg-gradient-to-r from-pink-400 via-yellow-400 to-blue-400 font-semibold">
+              <label
+                htmlFor="my_modal_6"
+                className="text-left mt-3 mb-4 cursor-pointer text-transparent bg-clip-text  bg-gradient-to-r from-pink-400 via-yellow-400 to-blue-400 font-semibold"
+              >
                 Forgot Password?
               </label>
             </div>
@@ -143,13 +142,22 @@ const Login = () => {
             {error && <p className="text-center text-error mb-2">{error}</p>}
             <div className="flex justify-center font-sans text-[18px] items-center">
               Don't have an account?
-              <button><Link to="/signup" className=" btn btn-xs mx-1 bg-gradient-to-r from-pink-400  to-cyan-400">
-                user
-              </Link></button>
-              <button><Link to="/companyregister" className=" btn bg-gradient-to-r from-pink-400  to-cyan-400  btn-xs">
-                company
-              </Link></button>
-
+              <button>
+                <Link
+                  to="/signup"
+                  className=" btn btn-xs mx-1 bg-gradient-to-r from-pink-400  to-cyan-400"
+                >
+                  user
+                </Link>
+              </button>
+              <button>
+                <Link
+                  to="/companyregister"
+                  className=" btn bg-gradient-to-r from-pink-400  to-cyan-400  btn-xs"
+                >
+                  company
+                </Link>
+              </button>
             </div>
           </form>
           {/* social login google and facebook */}
@@ -163,7 +171,6 @@ const Login = () => {
               animationData={loginanimation}
               loop={true}
             />
-            
           </div>
         </div>
       </div>

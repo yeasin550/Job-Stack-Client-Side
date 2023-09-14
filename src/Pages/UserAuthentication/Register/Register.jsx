@@ -41,7 +41,6 @@ const Register = () => {
   // main form
 
   const onSubmit = (data) => {
-
     if (data?.password == data?.confirmPassword) {
       const formData = new FormData();
       formData.append("image", data.image[0]);
@@ -62,7 +61,7 @@ const Register = () => {
                   email: data.email,
                   image: imgURL,
                   gender: data.gender,
-                  role: 'user'
+                  role: "user",
                 };
                 axiosSequre.post("/users", saveUser).then((data) => {
                   console.log(data);
