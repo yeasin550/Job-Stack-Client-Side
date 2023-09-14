@@ -48,6 +48,7 @@ const NewsInsights = () => {
           <Articles key={article._id} article={article}></Articles>
         ))}
       </div>
+      
       <div className={`flex justify-center mt-10`}>
         {articles.length === 3 ? (
           <button onClick={handleSeeAll} className="px-4 py-2 ">
@@ -58,7 +59,7 @@ const NewsInsights = () => {
             onClick={handleSeeLess}
             className="px-4 py-2 bg-primary text-white rounded-md"
           >
-            {/* See Less */}
+            See Less
           </button>
         )}
       </div>

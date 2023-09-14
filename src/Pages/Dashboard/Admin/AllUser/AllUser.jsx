@@ -4,8 +4,13 @@ import Swal from "sweetalert2";
 import useAxioSequre from "../../../../Hooks/useAxiosSequre";
 import { useQuery } from "@tanstack/react-query";
 import images from "../../../../assets/images/images.jpg";
+import { useLocation } from "react-router-dom";
+import UseScrollTop from "../../../../Hooks/UseScrollTop";
 
 const AllUser = () => {
+  const { pathname } = useLocation();
+  UseScrollTop(pathname);
+
   const [axiosSequre] = useAxioSequre();
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await axiosSequre.get("/users");

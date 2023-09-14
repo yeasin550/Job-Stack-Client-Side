@@ -80,12 +80,11 @@ const Details = () => {
           alt="detais images"
         />
         <div className=" md:-mt-60 z-50">
-          <div className="md:w-9/12 mx-auto mt-20 bg-white">
+          <div className="md:w-9/12 mx-auto mt-20 bg-white text-justify">
             <div className="grid place-items-center">
               <img className="h-80 w-auto  rounded-lg" src={image} alt="" />
             </div>
             <h1 className="text-2xl font-semibold mt-5 bg-white"> {title}</h1>
-
             <p className="text-lg mt-7">{articles?.pointone}</p>
             <p className="text-lg mt-7">{articles?.pointtwo}</p>
             <p className="text-lg mt-7">{articles?.pointthree}</p>
