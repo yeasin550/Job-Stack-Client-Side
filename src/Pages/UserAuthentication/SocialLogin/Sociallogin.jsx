@@ -18,17 +18,21 @@ const Sociallogin = () => {
       .then((result) => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
-        const saveUser = { name: loggedInUser?.displayName, email: loggedInUser?.email, image: loggedInUser?.photoURL }
-        axiosSequre.post("/users", saveUser)
-          .then(() => {
-            Swal.fire({
-              icon: 'success',
-              title: 'Login successfully.',
-              timer: 1500
-            });
-           navigate(from, { replace: true });
-          })
-      }).catch(err => {
+        const saveUser = {
+          name: loggedInUser?.displayName,
+          email: loggedInUser?.email,
+          image: loggedInUser?.photoURL,
+        };
+        axiosSequre.post("/users", saveUser).then(() => {
+          Swal.fire({
+            icon: "success",
+            title: "Login successfully.",
+            timer: 1500,
+          });
+          navigate(from, { replace: true });
+        });
+      })
+      .catch((err) => {
         setError(err.message);
       })
       .catch((err) => {
@@ -37,37 +41,37 @@ const Sociallogin = () => {
   };
   // handle Facebook login or sign in  and data save server
   const handleGitHubSignIn = () => {
-      gitHubSighIn()
-        .then((result) => {
-          const loggedInUser = result.user;
-          console.log(loggedInUser);
-          const saveUser = {
-            name: loggedInUser?.displayName,
-            email: loggedInUser?.email,
-            image: loggedInUser?.photoURL,
-          };
-          axiosSequre.post("/users", saveUser).then(() => {
-            Swal.fire({
-              icon: "success",
-              title: "Login successfully.",
-              timer: 1500,
-            });
-            navigate(from, { replace: true });
+    gitHubSighIn()
+      .then((result) => {
+        const loggedInUser = result.user;
+        console.log(loggedInUser);
+        const saveUser = {
+          name: loggedInUser?.displayName,
+          email: loggedInUser?.email,
+          image: loggedInUser?.photoURL,
+        };
+        axiosSequre.post("/users", saveUser).then(() => {
+          Swal.fire({
+            icon: "success",
+            title: "Login successfully.",
+            timer: 1500,
           });
-        })
-        .catch((err) => {
-          setError(err.message);
-        })
-        .catch((err) => {
-          setError(err.message);
+          navigate(from, { replace: true });
         });
+      })
+      .catch((err) => {
+        setError(err.message);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
   };
   return (
     <div>
       <div className="flex justify-center items-center gap-6 mt-4">
         <div
           onClick={handleGoogleSignIn}
-          className="border cursor-pointer flex justify-center items-center gap-2 w-full py-2 border-green-500"
+          className=" banner-button cursor-pointer flex justify-center items-center gap-2 w-full "
         >
           <p className="text-2xl text-yellow-400">
             <FaGoogle />
@@ -76,9 +80,9 @@ const Sociallogin = () => {
         </div>
         <div
           onClick={handleGitHubSignIn}
-          className="border cursor-pointer flex justify-center items-center gap-2 w-full py-2 border-green-500"
+          className="cursor-pointer banner-button flex justify-center items-center gap-2 w-full "
         >
-          <p className="text-2xl text-blue-400">
+          <p className="text-2xl text-black">
             <FaGithub />
           </p>
           <p>GitHub</p>
@@ -90,6 +94,3 @@ const Sociallogin = () => {
 };
 
 export default Sociallogin;
-
-
-

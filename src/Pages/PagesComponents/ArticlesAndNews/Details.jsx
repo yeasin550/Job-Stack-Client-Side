@@ -18,7 +18,23 @@ const Details = () => {
   const [clickedid, setClickedid] = useState(null);
   const articles = useLoaderData();
 
-  const { _id, title, details, timeStamp, image } = articles;
+  const {
+    _id,
+    title,
+    details,
+    timeStamp,
+    image,
+    pointone,
+    pointtwo,
+    pointthree,
+    pointfour,
+    pointfive,
+    pointsix,
+    pointseven,
+    pointeight,
+    pointnine,
+    pointten,
+  } = articles;
   const {
     register,
     reset,
@@ -64,10 +80,22 @@ const Details = () => {
           alt="detais images"
         />
         <div className=" md:-mt-60 z-50">
-          <div className="md:w-9/12 mx-auto mt-20 bg-white">
-            <img className="h-80 w-full rounded-lg" src={image} alt="" />
+          <div className="md:w-9/12 mx-auto mt-20 bg-white text-justify">
+            <div className="grid place-items-center">
+              <img className="h-80 w-auto  rounded-lg" src={image} alt="" />
+            </div>
             <h1 className="text-2xl font-semibold mt-5 bg-white"> {title}</h1>
-            <p className="text-lg mt-7">{details}</p>
+            <p className="text-lg mt-7">{articles?.pointone}</p>
+            <p className="text-lg mt-7">{articles?.pointtwo}</p>
+            <p className="text-lg mt-7">{articles?.pointthree}</p>
+            <p className="text-lg mt-7">{articles?.pointfour}</p>
+            <p className="text-lg mt-7">{articles?.pointfive}</p>
+            <p className="text-lg mt-7">{articles?.pointsix}</p>
+            <p className="text-lg mt-7">{articles?.pointseven}</p>
+            <p className="text-lg mt-7">{articles?.pointeight}</p>
+            <p className="text-lg mt-7">{articles?.pointnine}</p>
+            <p className="text-lg mt-7">{articles?.pointten}</p>
+            <p className="text-lg mt-7">{articles?.details}</p>
             <p className="my-5"> Post Time {timeStamp}</p>
           </div>
         </div>

@@ -8,13 +8,11 @@ import useAxioSequre from "../../Hooks/useAxiosSequre";
 const ConfirmRequset = () => {
   const { user } = useContext(AuthContext);
   const [axiosSequre] = useAxioSequre();
-  const { refetch, data: allConnectRequest = [] } = useQuery({
-    queryKey: ["allConnectRequest", user?.email],
-    queryFn: async () => {
-      const res = await axiosSequre(`/connectrequest?email=${user?.email}`);
+  const { refetch, data: allConnectRequest = [] } = useQuery( ["allConnectRequest", user?.email], async () => {
+      const res = await axiosSequre.get(`/connectrequest/${user?.email}`);
       return res.data;
     },
-  });
+  );
 
   const allRequest = allConnectRequest.filter(
     (accept) => accept.status === "pending"
@@ -25,7 +23,7 @@ const ConfirmRequset = () => {
       <h1 className="my-3">
         Total Connection Request : <b>{allRequest.length}</b>{" "}
       </h1>
-      <div className="grid px-5 gap-2 lg:grid-cols-4 pb-8 max-h-[650px] overflow-y-auto scroll-pr-2  touch-none">
+      <div className="grid px-5 gap-2 lg:grid-cols-3 pb-8 w-full overflow-y-auto scroll-pr-2  touch-none">
         {allRequest.map((data) => (
           <SingleRequestCard data={data} key={data._id} refetch={refetch} />
         ))}

@@ -100,9 +100,8 @@ const Navbar = () => {
         </div>
 
         <div
-          className={` pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
-            navbar ? "block" : "hidden"
-          }`}
+          className={` pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
+            }`}
         >
           <ul className="items-center justify-center text-center text-lg space-y-8 md:flex md:space-x-6 md:space-y-0">
             <li className="flex justify-center ">
@@ -144,7 +143,7 @@ const Navbar = () => {
             )}
             {user && (
               <li className="flex justify-center">
-                <Link to="/notifications">
+                <Link to="/notification">
                   <FaBell className="mx-auto" /> Notifications
                 </Link>
               </li>
@@ -182,9 +181,8 @@ const Navbar = () => {
         </div>
 
         <div
-          className={` pb-3 mt-8  md:block md:pb-0 md:mt-0  ${
-            navbar ? "block" : "hidden"
-          }`}
+          className={` pb-3 mt-8  md:block md:pb-0 md:mt-0  ${navbar ? "block" : "hidden"
+            }`}
         >
           <div className="dropdown dropdown-end flex justify-center items-center gap-3">
             {user ? (
@@ -212,15 +210,16 @@ const Navbar = () => {
                       Profile
                     </button>
                   </li>
-                  <li>
-                    <button
-                      onClick={() => navigate("/dashbord/adminhome")}
-                      className="btn btn-sm w-full  mb-1"
-                    >
-                      DashBoard
-                    </button>
-                  </li>
-
+                  {
+                    isAdmin && <li>
+                      <button
+                        onClick={() => navigate("/dashbord/adminhome")}
+                        className="btn btn-sm w-full  mb-1"
+                      >
+                        DashBoard
+                      </button>
+                    </li>
+                  }
                   <li>
                     <button
                       onClick={() => navigate("/profile")}

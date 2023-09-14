@@ -47,7 +47,7 @@ const Banner = () => {
 
             <div className="flex items-center gap-10 mt-4">
               <div className="lg:pt-6">
-                <Link to="jobsroute">
+                <Link to="jobsearch">
                   <button className="banner-button ">Browse Jobs</button>
                 </Link>
               </div>

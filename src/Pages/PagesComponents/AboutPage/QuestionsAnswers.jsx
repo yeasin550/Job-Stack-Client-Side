@@ -14,7 +14,7 @@ const QuestionsAnswers = () => {
         </div>
         {/* main part */}
         <div className="grid md:grid-cols-2 gap-8 mt-16">
-          <div className="flex gap-3 shadow p-2">
+          <div className="flex gap-3 shadow hover:shadow-2xl card p-2">
             <h1 className="text-2xl mt-1 text-blue-800">
               <BsQuestionCircle />
             </h1>
@@ -27,7 +27,7 @@ const QuestionsAnswers = () => {
               </p>
             </div>
           </div>
-          <div className="flex gap-3 shadow p-2">
+          <div className="flex gap-3 shadow hover:shadow-2xl card p-2">
             <h1 className="text-2xl mt-1 text-blue-800">
               <BsQuestionCircle />
             </h1>
@@ -41,7 +41,7 @@ const QuestionsAnswers = () => {
               </p>
             </div>
           </div>
-          <div className="flex gap-3 shadow p-2">
+          <div className="flex gap-3 shadow hover:shadow-2xl card p-2">
             <h1 className="text-2xl mt-1 text-blue-800">
               <BsQuestionCircle />
             </h1>
@@ -56,7 +56,7 @@ const QuestionsAnswers = () => {
               </p>
             </div>
           </div>
-          <div className="flex gap-3 shadow p-2">
+          <div className="flex gap-3 shadow hover:shadow-2xl card p-2">
             <h1 className="text-2xl mt-1 text-blue-800">
               <BsQuestionCircle />
             </h1>

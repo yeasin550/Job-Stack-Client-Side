@@ -8,12 +8,15 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import { getCurrentTimeStamp } from "../../../Hooks/useMonent";
 import { useForm } from "react-hook-form";
 import useSelfPostfindEmail from "../../../Hooks/useSelfPostfindEmail";
+import useSingleUser from "../../../Hooks/useSingleUser";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
 const SelfPostForm = () => {
   const { user } = useContext(AuthContext);
   const [axiosSequre] = useAxioSequre();
   const [singleSelfPost, refetch] = useSelfPostfindEmail();
+  const [singleUser] = useSingleUser();
+  console.log(singleUser);
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
   const [isOpen, setIsOpen] = useState(false);
 
@@ -26,7 +29,12 @@ const SelfPostForm = () => {
     setIsOpen(false);
   };
 
-  const { register, handleSubmit,reset, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   // Make the POST request
   const onSubmit = (data) => {
     const imgdata = new FormData();
@@ -47,6 +55,7 @@ const SelfPostForm = () => {
             email: user?.email,
             image: imgUrl,
             timeStamp: getCurrentTimeStamp("LLL"),
+            userId: singleUser[0]?._id,
           };
           axiosSequre.post("/selfpost", selfPost).then((data) => {
             if (data.data.insertedId) {
@@ -57,13 +66,11 @@ const SelfPostForm = () => {
                 title: "User Post successfully.",
                 timer: 1500,
               });
-             
             }
           });
         }
       });
   };
-
 
   return (
     <div>
