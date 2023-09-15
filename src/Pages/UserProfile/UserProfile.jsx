@@ -141,13 +141,6 @@ const UserProfile = () => {
                 Connect
               </Tab>
               <Tab
-                onClick={() => clickactive("Connectionrequest")}
-                className={` cursor-pointer text ${active == "Connectionrequest" ? "active cursor-pointer" : ""
-                  }`}
-              >
-                Connection request
-              </Tab>
-              <Tab
                 onClick={() => clickactive("more")}
                 className={` cursor-pointer text ${active == "more" ? "active cursor-pointer" : ""
                   }`}
@@ -156,7 +149,7 @@ const UserProfile = () => {
               </Tab>
             </TabList>
             {/* users self  post */}
-            <TabPanel>
+             <TabPanel>
               <SelfPostForm></SelfPostForm>
               <div className="grid md:grid-cols-1 justify-items-center  gap-10 mt-10 ">
                 {singleSelfPost?.map((selfpost) => (
@@ -167,7 +160,7 @@ const UserProfile = () => {
                   ></SelfPostDesign>
                 ))}
               </div>
-            </TabPanel>
+             </TabPanel>
             {/* user job post job post */}
             {
               isAdmin || isCompany && <TabPanel>
@@ -186,10 +179,6 @@ const UserProfile = () => {
             {/* user connect   */}
             <TabPanel>
               <ConnectedAllUser />
-            </TabPanel>
-            {/* user Connect request */}
-            <TabPanel>
-              <ConfirmRequset></ConfirmRequset>
             </TabPanel>
             {/* user more featuesr add  */}
             <TabPanel>
