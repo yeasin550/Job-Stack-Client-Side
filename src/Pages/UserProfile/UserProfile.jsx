@@ -17,11 +17,13 @@ import useSingleUser from "../../Hooks/useSingleUser";
 import useProfileUpdate from "../../Hooks/useProfileUpdate";
 import ConnectedAllUser from "../Components/ConnectedAllUsers/ConnectedAllUser";
 import useCompany from "../../Hooks/useCompany";
+import useAdmin from "../../Hooks/useAdmin";
 const UserProfile = () => {
   const [singleSelfPost] = useSelfPostfindEmail();
   const [singlejobposts, refetch] = useJobPosFindEmail();
   const [singleUser] = useSingleUser();
   const [isCompany, isCompanyLoading] = useCompany();
+  const [isAdmin] = useAdmin();
   const single = singleUser[0];
   const { register, handleSubmit } = useForm();
   const [
@@ -109,18 +111,16 @@ const UserProfile = () => {
             <TabList className="flex justify-center items-center border py-2 profile-shadow  gap-6 mb-8">
               <Tab
                 onClick={() => clickactive("post")}
-                className={` cursor-pointer text ${
-                  active == "post" ? "active cursor-pointer" : ""
-                }`}
+                className={` cursor-pointer text ${active == "post" ? "active cursor-pointer" : ""
+                  }`}
               >
                 Post
               </Tab>
-              {isCompany && (
+              {isCompany || isAdmin && (
                 <Tab
                   onClick={() => clickactive("jobpost")}
-                  className={` cursor-pointer text ${
-                    active == "jobpost" ? "active cursor-pointer" : ""
-                  }`}
+                  className={` cursor-pointer text ${active == "jobpost" ? "active cursor-pointer" : ""
+                    }`}
                 >
                   Job Post
                 </Tab>
@@ -128,33 +128,29 @@ const UserProfile = () => {
 
               <Tab
                 onClick={() => clickactive("about")}
-                className={` cursor-pointer text ${
-                  active == "about" ? "active cursor-pointer" : ""
-                }`}
+                className={` cursor-pointer text ${active == "about" ? "active cursor-pointer" : ""
+                  }`}
               >
                 About
               </Tab>
               <Tab
                 onClick={() => clickactive("connect")}
-                className={` cursor-pointer text ${
-                  active == "connect" ? "active cursor-pointer" : ""
-                }`}
+                className={` cursor-pointer text ${active == "connect" ? "active cursor-pointer" : ""
+                  }`}
               >
                 Connect
               </Tab>
               <Tab
                 onClick={() => clickactive("Connectionrequest")}
-                className={` cursor-pointer text ${
-                  active == "Connectionrequest" ? "active cursor-pointer" : ""
-                }`}
+                className={` cursor-pointer text ${active == "Connectionrequest" ? "active cursor-pointer" : ""
+                  }`}
               >
                 Connection request
               </Tab>
               <Tab
                 onClick={() => clickactive("more")}
-                className={` cursor-pointer text ${
-                  active == "more" ? "active cursor-pointer" : ""
-                }`}
+                className={` cursor-pointer text ${active == "more" ? "active cursor-pointer" : ""
+                  }`}
               >
                 More
               </Tab>
@@ -173,14 +169,16 @@ const UserProfile = () => {
               </div>
             </TabPanel>
             {/* user job post job post */}
-            <TabPanel>
-              <JobPostForm refetch={refetch}></JobPostForm>
-              <div>
-                {singlejobposts?.map((posts) => (
-                  <JobPostDesign key={posts?._id} posts={posts}></JobPostDesign>
-                ))}
-              </div>
-            </TabPanel>
+            {
+              isAdmin || isCompany && <TabPanel>
+                <JobPostForm refetch={refetch}></JobPostForm>
+                <div>
+                  {singlejobposts?.map((posts) => (
+                    <JobPostDesign key={posts?._id} posts={posts}></JobPostDesign>
+                  ))}
+                </div>
+              </TabPanel>
+            }
             {/* user about  */}
             <TabPanel>
               <UserInfo></UserInfo>
