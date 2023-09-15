@@ -8,6 +8,7 @@ import AllUsers from "../AllUsers/AllUsers";
 import ConfirmRequset from "../../ConfirmRequest/ConfirmRequset";
 import UserFollowing from "../../UserConnectedFunctionality/UserFollowing";
 import AllEvents from "./AllEvents/AllEvents";
+import UserArticle from "./UserArticle/UserArticle";
 const MyNetwork = () => {
   const [allselfdata] = useSelfPost();
   const [tabIndex, setTabIndex] = useState(0);
@@ -75,7 +76,7 @@ const MyNetwork = () => {
                   active == "more" ? "activetab cursor-pointer" : ""
                 }`}
               >
-                NewsLater
+                User Article
               </Tab>
             </TabList>
           </div>
@@ -118,7 +119,7 @@ const MyNetwork = () => {
               <UserFollowing></UserFollowing>
             </TabPanel>
             {/* user Newslater */}
-            <TabPanel>NewsLater</TabPanel>
+            <TabPanel><UserArticle/></TabPanel>
           </div>
         </div>
       </Tabs>
