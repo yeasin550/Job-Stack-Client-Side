@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import useAxioSequre from "../../Hooks/useAxiosSequre";
 import { useQuery } from "@tanstack/react-query";
-import { FaPlus, FaShoppingBag } from "react-icons/fa";
+import { FaShoppingBag } from "react-icons/fa";
 
 const WorkExprience = () => {
   const { id } = useParams();
