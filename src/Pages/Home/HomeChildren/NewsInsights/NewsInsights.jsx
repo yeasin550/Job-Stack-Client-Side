@@ -29,7 +29,7 @@ const NewsInsights = () => {
         <p className="md:text-lg text-[16px] text-white mt-4">
           Explore our carefully curated collection of recent news articles
           <br />
-          thoughtfully selected to keep you informed and inspired.
+          thoughtfully selected to keep you informed and inspired!
         </p>
       </div>
       <div className="grid md:grid-cols-3 gap-7">
