@@ -1,9 +1,20 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
+import useAxioSequre from '../../../../Hooks/useAxiosSequre';
 
 const BrowseJob = () => {
-   const [countOn, setCountOn] = useState(false);
+  const [countOn, setCountOn] = useState(false);
+
+   const [axiosSecure] = useAxioSequre();
+   const { data: stats = {} } = useQuery({
+     queryKey: ["admin-stats"],
+     queryFn: async () => {
+       const res = await axiosSecure("/admin-stats");
+       return res.data;
+     },
+   });
   return (
     <div className="lg:px-14 banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
       <div className="grid md:grid-cols-2 gap-5 justify-center ">
@@ -36,7 +47,7 @@ const BrowseJob = () => {
                 onExit={() => setCountOn(false)}
               >
                 {countOn && (
-                  <CountUp start={0} end={1200} duration={3} delay={0} />
+                  <CountUp start={0} end={stats.job} duration={3} delay={0} />
                 )}
                 +
               </ScrollTrigger>
@@ -50,7 +61,7 @@ const BrowseJob = () => {
                 onExit={() => setCountOn(false)}
               >
                 {countOn && (
-                  <CountUp start={0} end={970} duration={3} delay={0} />
+                  <CountUp start={0} end={17} duration={3} delay={0} />
                 )}
                 +
               </ScrollTrigger>
@@ -64,7 +75,7 @@ const BrowseJob = () => {
                 onExit={() => setCountOn(false)}
               >
                 {countOn && (
-                  <CountUp start={0} end={140} duration={3} delay={0} />
+                  <CountUp start={0} end={14} duration={3} delay={0} />
                 )}
                 +
               </ScrollTrigger>
@@ -79,7 +90,7 @@ const BrowseJob = () => {
                 onExit={() => setCountOn(false)}
               >
                 {countOn && (
-                  <CountUp start={0} end={1700} duration={3} delay={0} />
+                  <CountUp start={0} end={stats.users} duration={3} delay={0} />
                 )}
                 +
               </ScrollTrigger>
@@ -93,7 +104,7 @@ const BrowseJob = () => {
                 onExit={() => setCountOn(false)}
               >
                 {countOn && (
-                  <CountUp start={0} end={1290} duration={3} delay={0} />
+                  <CountUp start={0} end={29} duration={3} delay={0} />
                 )}
                 +
               </ScrollTrigger>

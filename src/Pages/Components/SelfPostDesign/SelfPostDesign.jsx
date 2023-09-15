@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { MdDelete, MdSend } from "react-icons/md";
 import { GrEdit } from "react-icons/gr";
+import { BiCommentError } from "react-icons/bi";
 import {
   FaShare,
   FaFacebook,
@@ -21,9 +22,13 @@ import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import Comment from "./Comment";
 import useSingleUser from "../../../Hooks/useSingleUser";
+import { useLocation } from "react-router-dom";
+import UseScrollTop from "../../../Hooks/UseScrollTop";
 
 const SelfPostDesign = ({ selfpost }) => {
-  const { _id, text, image, userPhoto, userName, timeStamp , userId} = selfpost;
+  const { pathname } = useLocation();
+  UseScrollTop(pathname);
+  const { _id, text, image, userPhoto, userName, timeStamp, userId } = selfpost;
 
   const [handleDelete] = useDeletSelfPost();
   const { user } = useContext(AuthContext);
@@ -33,7 +38,6 @@ const SelfPostDesign = ({ selfpost }) => {
   const [handleFacebookShare, handleLinkedinShare, handleTwitterShare] =
     usePostShare();
   const { register, handleSubmit, reset } = useForm();
-
 
   // comment data fucation
   const makeComment = (id) => {
@@ -112,26 +116,44 @@ const SelfPostDesign = ({ selfpost }) => {
       });
   };
 
+  // Post Report Modla funcation
+  const [reportModal, setreportModal] = useState(false);
+  const openModal = () => {
+    setreportModal(true);
+  };
+  const closeModal = () => {
+    setreportModal(false);
+  };
+
+    const PostReport = (id) => {
+      setClickedid(id);
+      openModal();
+    };
+
 
   // like funcation
   const [like, setLike] = useState(false);
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   const handleLike = () => {
     if (!like) {
-      setLike(true)
-      setCount(count + 1)
+      setLike(true);
+      setCount(count + 1);
     } else {
-      setLike(false)
+      setLike(false);
       setCount(count - 1);
     }
-  }
+  };
   return (
     <div className="lg:w-[550px] w-full mt-5 p-4 shadow-xl rounded-lg">
       {/* user information */}
       <div className="mt-3 flex justify-between items-center">
         <div className="flex items-center gap-3">
-          {userPhoto ? <img className="w-10 h-10 rounded-full" src={userPhoto} /> : <FaUserAlt className="w-10 h-10 rounded-full bg-gray-200"></FaUserAlt>}
+          {userPhoto ? (
+            <img className="w-10 h-10 rounded-full" src={userPhoto} />
+          ) : (
+            <FaUserAlt className="w-10 h-10 rounded-full bg-gray-200"></FaUserAlt>
+          )}
           <div className="">
             <p className="font-bold">{userName}</p>
             <p>{timeStamp}</p>
@@ -139,9 +161,8 @@ const SelfPostDesign = ({ selfpost }) => {
         </div>
 
         {/*Post edit and delete  */}
-        {
-          singleUser[0]?._id == userId ?(
-            <div className="dropdown dropdown-left">
+        {singleUser[0]?._id == userId ? (
+          <div className="dropdown dropdown-left">
             <label tabIndex={0}>
               <BsThreeDots />
             </label>
@@ -164,27 +185,26 @@ const SelfPostDesign = ({ selfpost }) => {
                 Delete
               </button>
             </ul>
-          </div> 
-          )
-          :( <div className="dropdown dropdown-left">
-          <label tabIndex={0}>
-            <BsThreeDots />
-          </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box "
-          >
-            <button
-              onClick={() => makeEdit(_id)}
-              className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
+          </div>
+        ) : (
+          <div className="dropdown dropdown-left">
+            <label tabIndex={0}>
+              <BsThreeDots />
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box "
             >
-              <GrEdit />
-              PostReport
-            </button>
-          </ul>
-        </div> )
-        }
-        
+              <button
+                onClick={() => PostReport(_id)}
+                className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
+              >
+                <BiCommentError />
+                ReportPost
+              </button>
+            </ul>
+          </div>
+        )}
       </div>
       {/* user post */}
       <div className="mt-4 ">
@@ -322,6 +342,36 @@ const SelfPostDesign = ({ selfpost }) => {
             <div className="modal-action">
               <button
                 onClick={closeModals}
+                className="text-white btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-green-500"
+              >
+                X
+              </button>
+            </div>
+          </div>
+        </dialog>
+      )}
+
+      {/* Post Report modal box */}
+      {reportModal && (
+        <dialog
+          id="my_modal_5"
+          className="modal modal-bottom sm:modal-middle"
+          open
+        >
+          <div method="dialog" className="modal-box">
+            <h1 className="text-center text-2xl font-bold -mt-3 mb-3">
+              Report
+            </h1>
+            <hr />
+            <div className="">
+              <h1>Spam</h1>
+              <h1>Harassment</h1>
+              <h1>False information</h1>
+              <h1>Something Else</h1> 
+            </div>
+            <div className="modal-action">
+              <button
+                onClick={closeModal}
                 className="text-white btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-green-500"
               >
                 X

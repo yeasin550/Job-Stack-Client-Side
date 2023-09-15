@@ -7,6 +7,7 @@ import ConnectedAllUser from "../../Components/ConnectedAllUsers/ConnectedAllUse
 import AllUsers from "../AllUsers/AllUsers";
 import ConfirmRequset from "../../ConfirmRequest/ConfirmRequset";
 import UserFollowing from "../../UserConnectedFunctionality/UserFollowing";
+import AllEvents from "./AllEvents/AllEvents";
 const MyNetwork = () => {
   const [allselfdata] = useSelfPost();
   const [tabIndex, setTabIndex] = useState(0);
@@ -109,8 +110,10 @@ const MyNetwork = () => {
               <ConfirmRequset></ConfirmRequset>
             </TabPanel>
             {/* User Event*/}
-            <TabPanel>Event</TabPanel>
-            {/* user Pages  */}
+            <TabPanel>
+              <AllEvents/>
+            </TabPanel>
+             {/* user Pages  */}
             <TabPanel>
               <UserFollowing></UserFollowing>
             </TabPanel>

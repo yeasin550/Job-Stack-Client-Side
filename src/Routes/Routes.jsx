@@ -27,6 +27,7 @@ import Details from "../Pages/PagesComponents/ArticlesAndNews/Details";
 import AllArticles from "../Pages/Dashboard/AllArticles/AllArticles";
 import JobTaskForm from "../Pages/JobPostAllPage/JobApplyForm/SendTaskForm";
 import Notification from "../Pages/Notification/Notification";
+import DynamicJobDetails from "../Pages/JobPostAllPage/DynamicJobDetails";
 
 const router = createBrowserRouter([
   {
@@ -105,6 +106,10 @@ const router = createBrowserRouter([
       {
         path: "jobsearch",
         element: <EveryOneSerchJob></EveryOneSerchJob>,
+      },
+      {
+        path: "dynamic/:id",
+        element: <DynamicJobDetails></DynamicJobDetails>,
       },
       {
         path: "faq",

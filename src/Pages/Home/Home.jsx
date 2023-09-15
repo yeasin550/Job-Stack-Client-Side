@@ -8,19 +8,34 @@ import PromotingCareer from "./HomeChildren/PromotingCareer/PromotingCareer";
 import NewsInsights from "./HomeChildren/NewsInsights/NewsInsights";
 import GoToTop from "../Shared/GoToTop/GoToTop";
 import Testimonial from "./HomeChildren/Testimonial/Testimonial";
+import { useState } from "react";
+import { useEffect } from "react";
+import Loading from "../Shared/Loading/Loading";
 
 const Home = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
+  }, []);
   return (
     <div>
-      <Banner></Banner>
-      <BrowseJob></BrowseJob>
-      <Categories />
-      <LatestJobs />
-      <ChooseWork></ChooseWork>
-      <PromotingCareer />
-      <NewsInsights />
-      <Testimonial/>
-      <GoToTop />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <Banner></Banner>
+          <BrowseJob></BrowseJob>
+          <Categories />
+          <LatestJobs />
+          <ChooseWork></ChooseWork>
+          <PromotingCareer />
+          <NewsInsights />
+          <Testimonial />
+          <GoToTop />
+        </>
+      )}
     </div>
   );
 };

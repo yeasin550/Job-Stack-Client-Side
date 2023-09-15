@@ -9,6 +9,7 @@ import { getCurrentTimeStamp } from "../../../Hooks/useMonent";
 import { useForm } from "react-hook-form";
 import useSelfPostfindEmail from "../../../Hooks/useSelfPostfindEmail";
 import useSingleUser from "../../../Hooks/useSingleUser";
+import toast from "react-hot-toast";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
 const SelfPostForm = () => {
@@ -16,10 +17,9 @@ const SelfPostForm = () => {
   const [axiosSequre] = useAxioSequre();
   const [singleSelfPost, refetch] = useSelfPostfindEmail();
   const [singleUser] = useSingleUser();
-  console.log(singleUser);
+  // console.log(singleUser);
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
   const [isOpen, setIsOpen] = useState(false);
-
   //    modal open function
   const openModal = () => {
     setIsOpen(true);
@@ -61,21 +61,87 @@ const SelfPostForm = () => {
             if (data.data.insertedId) {
               reset();
               refetch();
-              Swal.fire({
-                icon: "success",
-                title: "User Post successfully.",
-                timer: 1500,
-              });
+           toast.success("Post Add Successfully!");
             }
           });
         }
       });
   };
 
+  // event funcation
+  const [events, setEvents] = useState(false);
+  const openModals = () => {
+    setEvents(true);
+  };
+  const closeModals = () => {
+    setEvents(false);
+  };
+
+  const handleEvent = (event) => {
+    event.preventDefault();
+
+    const imgdata = new FormData();
+    const imageData = event.target.image.files[0];
+    imgdata.append("image", imageData);
+
+    fetch(img_hosting_url, {
+      method: "POST",
+      body: imgdata,
+    })
+      .then((res) => res.json())
+      .then((uploadImage) => {
+        if (uploadImage.success) {
+          const imgUrl = uploadImage.data.display_url;
+
+          const form = event.target;
+          const name = form.name.value;
+          const image = imgUrl;
+          const startdate = form.startdate.value;
+          const starttime = form.starttime.value;
+          const externallink = form.externallink.value;
+          const description = form.description.value;
+          const speakers = form.speakers.value;
+
+          const addEvent = {
+            name,
+            email: user?.email,
+            userName: user?.displayName,
+            userPhoto: user?.photoURL,
+            image,
+            startdate,
+            starttime,
+            externallink,
+            description,
+            speakers,
+          };
+          event.target.reset();
+          fetch("https://jobstack-backend-teal.vercel.app/event", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(addEvent),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+               toast.success("Event Add Successfully!");
+              }
+            })
+            .catch((error) => {
+              console.error("Error posting data to second URL:", error);
+            });
+        }
+      })
+      .catch((error) => {
+        console.error("Error uploading image:", error);
+      });
+  };
+
   return (
     <div>
       {/* Create Post Modal */}
-      <div className="shadowdiv border rounded-lg p-5 md:w-8/12 mx-auto ">
+      <div className="shadowdiv border rounded-lg p-5 md:w-7/12 mx-auto ">
         <div className=" flex gap-3 items-center mb-4">
           <div className="">
             {user?.email ? (
@@ -114,7 +180,7 @@ const SelfPostForm = () => {
             </label>
             <input className="hidden" type="file" />
           </div>
-          <div className="">
+          <div className="" onClick={openModals}>
             <label
               className="flex items-center gap-3 px-6 py-1 hover:bg-slate-100 rounded-md"
               htmlFor="file-input"
@@ -126,6 +192,7 @@ const SelfPostForm = () => {
           </div>
         </div>
       </div>
+      {/* post input form */}
       {isOpen && (
         <dialog
           id="my_modal_5"
@@ -199,6 +266,105 @@ const SelfPostForm = () => {
               <button
                 className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-slate-300"
                 onClick={closeModal}
+              >
+                &#10005;
+              </button>
+            </div>
+          </form>
+        </dialog>
+      )}
+
+      {/* Event Form */}
+      {events && (
+        <dialog
+          id="my_modal_5"
+          className="modal modal-bottom sm:modal-middle"
+          open
+        >
+          <form onSubmit={handleEvent} method="dialog" className="modal-box">
+            <h1 className="text-center text-lg font-semibold -mt-3 mb-3">
+              Create an event
+            </h1>
+            <hr />
+            {/* event form */}
+            <div className="my-8">
+              <div className="">
+                <p className="text-xs mb-1">Event name*</p>
+                <input
+                  className="py-1 w-full outline outline-offset-2 outline-1 ps-2 rounded-lg text-sm"
+                  type="text"
+                  name="name"
+                  placeholder="Event name"
+                  required
+                />
+              </div>
+
+              <div className="my-5">
+                <input
+                  type="file"
+                  name="image"
+                  className="file-input file-input-bordered w-full rounded-lg"
+                />
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-3 my-5">
+                <div className="">
+                  <p className="text-xs mb-1">Start date *</p>
+                  <input
+                    className="py-1 w-full outline outline-offset-2 outline-1 ps-2 rounded-lg text-sm"
+                    type="date"
+                    name="startdate"
+                    required
+                  />
+                </div>
+                <div className="">
+                  <p className="text-xs mb-1">Start Time *</p>
+                  <input
+                    className="py-1 w-full outline outline-offset-2 outline-1 ps-2 rounded-lg text-sm"
+                    type="time"
+                    name="starttime"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="">
+                <p className="text-xs mb-1">External event link*</p>
+                <input
+                  className="py-1 w-full outline outline-offset-2 outline-1 ps-2 rounded-lg text-sm"
+                  type="text"
+                  name="externallink"
+                  placeholder="External event link"
+                  required
+                />
+              </div>
+              <div className="my-5">
+                <p className="text-xs mb-1">Description</p>
+                <textarea
+                  name="description"
+                  className=" w-full outline outline-offset-2 outline-1 p-2 rounded-lg text-sm"
+                  rows="3"
+                  placeholder="Ex. topics, schedule, etc."
+                ></textarea>
+              </div>
+              <div className="">
+                <p className="text-xs mb-1">Speakers</p>
+                <input
+                  className="py-1 w-full outline outline-offset-2 outline-1 ps-2 rounded-lg text-sm"
+                  type="text"
+                  name="speakers"
+                  placeholder="Speakers"
+                />
+              </div>
+            </div>
+
+            <button className="w-full py-2 mt-3 bg-green-500 rounded-md text-white cursor-pointer">
+              <input type="submit" value="Post" />
+            </button>
+            {/* modal clone button */}
+            <div className="modal-action">
+              <button
+                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-slate-300"
+                onClick={closeModals}
               >
                 &#10005;
               </button>
