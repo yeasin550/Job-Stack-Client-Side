@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Articles = ({ article }) => {
   const { _id, title, timeStamp, image } = article;
   return (
-    <div className=" w-full shadow-xl rounded-md bg-white  p-2 md:p-2">
+    <div className=" w-full shadow-xl  rounded-md bg-white dark:text-black p-2 md:p-2">
       <div className="rounded overflow-hidden flex flex-col">
         <img
           className="w-full h-64 transform transition-transform hover:scale-90 duration-700"

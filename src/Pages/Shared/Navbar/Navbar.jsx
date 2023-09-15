@@ -53,13 +53,12 @@ const Navbar = () => {
 
 
   return (
-    
-      <nav className="w-full banner text-white sticky lg:px-8 z-40 top-0 left-0">
-        <div className="justify-between px-5 mx-auto lg:max-w-screen-xl md:items-center md:flex sticky ">
-          <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <div className="navbar-start flex justify-center items-center  ml-0">
-              <img className="w-12 md:w-12" src={logo} alt="logo" />
-              <p className="text-[20px]  font-bold font-sans">JOBSTACK</p>
+    <nav className="w-full banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black duration- text-white sticky lg:px-8 z-40 top-0 left-0">
+      <div className="justify-between px-5 mx-auto lg:max-w-screen-xl md:items-center md:flex sticky ">
+        <div className="flex items-center justify-between py-3 md:py-5 md:block">
+          <div className="navbar-start flex justify-center items-center  ml-0">
+            <img className="w-12 md:w-12" src={logo} alt="logo" />
+            <p className="text-[20px]  font-bold font-sans">JOBSTACK</p>
             </div>
 
             <div className="md:hidden">

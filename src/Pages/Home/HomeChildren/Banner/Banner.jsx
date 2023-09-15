@@ -16,7 +16,7 @@ const Banner = () => {
    const { pathname } = useLocation();
    UseScrollTop(pathname);
   return (
-    <div className="banner  side-bar">
+    <div className="banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black side-bar">
       <div className="md:px-20 px-5">
         <div className="grid md:grid-cols-2 gap-4 items-center justify-center py-10 md:py-24">
           {/*text part */}
@@ -40,9 +40,9 @@ const Banner = () => {
             </h1>
 
             <h3 className="lg:text-xl text-[16px]  text-white mt-20">
-              Are you on the hunt for your dream job searching for the
-              perfect candidate to join your team? Look no further! JobStack is
-              your one-stop destination for all your career needs.
+              Are you on the hunt for your dream job searching for the perfect
+              candidate to join your team? Look no further! JobStack is your
+              one-stop destination for all your career needs.
             </h3>
 
             <div className="flex items-center gap-10 mt-4">
@@ -67,7 +67,7 @@ const Banner = () => {
                 <img src={banner3} alt="images" />
               </div>
               <div className="banner-4 shape-3">
-                <img  src={banner4} alt="images" />
+                <img src={banner4} alt="images" />
               </div>
               <div className="banner-5  shape-2">
                 <img src={banner5} alt="images" />
@@ -78,12 +78,14 @@ const Banner = () => {
             </div>
           </div>
           {/* rotate Background */}
-           <div className="md:hidden relative py-12 order-first px-2 w-full">
-           <img className="w-full z-10 relative"  src={banner} alt="" />
-           <img className="absolute top-16 w-full animate-spin-slow" src={bk} alt="" />
-
-         </div>
-
+          <div className="md:hidden relative py-12 order-first px-2 w-full">
+            <img className="w-full z-10 relative" src={banner} alt="" />
+            <img
+              className="absolute top-16 w-full animate-spin-slow"
+              src={bk}
+              alt=""
+            />
+          </div>
         </div>
       </div>
     </div>

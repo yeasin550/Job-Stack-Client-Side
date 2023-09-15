@@ -19,7 +19,10 @@ const Dashbord = () => {
  const [isAdmin] = useAdmin();
   return (
     <div>
-      <div className="drawer lg:drawer-open ">
+      <div
+        className="drawer lg:drawer-open dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black
+"
+      >
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content px-10 py-5">
           {/* Page content here */}

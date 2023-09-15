@@ -1,28 +1,66 @@
 import {
   FaCloudsmith,
   FaCommentAlt,
+  FaFacebook,
   FaHandPointDown,
+  FaLinkedin,
   FaRegBookmark,
   FaShare,
   FaShareAlt,
   FaSortNumericDownAlt,
+  FaTwitter,
 } from "react-icons/fa";
-import { FcLike } from "react-icons/fc";
+
 import { BiDollarCircle } from "react-icons/bi";
 import { MdDateRange } from "react-icons/md";
 import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 import useJobsBooksMarks from "../../../Hooks/useJobsBooksMarks";
+import usePostShare from "../../../Hooks/usePostShare";
 import Image from "../../../assets/images/images.jpg";
 const JobPostDesign = ({ posts }) => {
   const [handleBookMark] = useJobsBooksMarks();
   const navigate = useNavigate();
+    const [handleFacebookShare, handleLinkedinShare, handleTwitterShare] = usePostShare();
 
   return (
-    <div className="grid grid-cols-1 ">
+    <div className="grid grid-cols-1 dark:text-black">
       <div className=" bg-white shadow-lg rounded-md mt-5 p-6 border border-purple-500">
         <div className="flex justify-end gap-2 mb-3 text-xl">
-          <FaShareAlt className="cursor-pointer" />
+          <div className="dropdown dropdown-bottom flex items-center">
+            <label tabIndex={0}>
+              <div className="flex items-center gap-1 z-50">
+                <FaShareAlt size={20} className="cursor-pointer text" />
+              </div>
+            </label>
+
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box "
+            >
+              <button
+                onClick={() => handleFacebookShare()}
+                className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
+              >
+                <FaFacebook />
+                Facebook
+              </button>
+              <button
+                onClick={() => handleLinkedinShare()}
+                className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
+              >
+                <FaLinkedin />
+                LinkedinIn
+              </button>
+              <button
+                onClick={() => handleTwitterShare()}
+                className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
+              >
+                <FaTwitter />
+                Twitter
+              </button>
+            </ul>
+          </div>
           <FaRegBookmark
             onClick={() => handleBookMark(posts)}
             className="cursor-pointer"

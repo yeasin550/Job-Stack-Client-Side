@@ -11,7 +11,7 @@ const getBookMarkJobs = () => {
       return res.data;
     }
   );
-  // console.log(bookMarkJobs)
+  console.log(bookMarkJobs)
   return [bookMarkJobs];
 };
 export default getBookMarkJobs;

@@ -16,7 +16,7 @@ const BrowseJob = () => {
      },
    });
   return (
-    <div className="lg:px-14 banner">
+    <div className="lg:px-14 banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
       <div className="grid md:grid-cols-2 gap-5 justify-center ">
         {/* left site */}
         <div className="w-full px-3 lg:px-0">

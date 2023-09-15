@@ -12,20 +12,17 @@ import {
 
 const Footer = () => {
   return (
-    <div
-      className="text-white banner "
-    >
+    <div className="text-white banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
       <div className="pt-10">
         <div className="grid md:justify-items-center md:grid-cols-4 gap-6 md:px-16 px-3">
           <div className="">
-           
-              <div className="flex justify-start items-center ml-0">
-                <img className="w-12 md:w-16" src={logo} alt="logo" />
-                <p className="text-[24px]  font-bold font-sans">JOBSTACK</p>
-              </div>
+            <div className="flex justify-start items-center ml-0">
+              <img className="w-12 md:w-16" src={logo} alt="logo" />
+              <p className="text-[24px]  font-bold font-sans">JOBSTACK</p>
+            </div>
             <p className=" mt-4">
-              Sed ut perspiciatis unde omnis istee natus error sit voluptatem
-              or have accusantiu doloremque laudantium
+              Sed ut perspiciatis unde omnis istee natus error sit voluptatem or
+              have accusantiu doloremque laudantium
             </p>
           </div>
           <div className="mt-5 md:mt-0">

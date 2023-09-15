@@ -36,7 +36,7 @@ const ReviewFrom = () => {
       <h1 className="text-center font-bold text-3xl mb-5 pt-10">Review Form</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="card-body bg-slate-200  rounded-lg mb-20"
+        className="card-body bg-slate-200 dark:text-black rounded-lg mb-20"
       >
         <div className="form-control">
           <label className="label">

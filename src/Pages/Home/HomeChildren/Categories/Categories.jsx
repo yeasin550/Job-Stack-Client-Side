@@ -17,7 +17,7 @@ const Categories = () => {
     Aos.init();
   }, []);
   return (
-    <div className="md:py-28 py-14 banner lg:px-14 px-4">
+    <div className="md:py-28 py-14 banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black lg:px-14 px-4">
       <div className="text-center mb-9">
         <h1 className="md:text-4xl uppercase text-transparent bg-clip-text  bg-gradient-to-r from-white to-yellow-400 text-3xl font-bold">
           Top Categories
@@ -27,7 +27,7 @@ const Categories = () => {
         <div
           data-aos="fade-up"
           data-aos-duration="2000"
-          className="grid md:grid-cols-4 gap-10 mt-14"
+          className="grid md:grid-cols-4 gap-10 mt-14 dark:text-black"
         >
           <Card icon={<FaLaptop />} title={"Web & Software Dev"} num={12} />
           <Card

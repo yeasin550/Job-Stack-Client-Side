@@ -21,14 +21,6 @@ const JobTaskAlert = () => {
       );
   // console.log(jobTaskAlert);
   console.log(completeTask);
-    // const { data: completeTask = [], refetch } = useQuery(
-    //   ["completeTask", user?.email],
-    //   async () => {
-    //     const res = await axiosSequre.get(`assignment/${user?.email}`);
-    //     return res.data;
-    //   }
-    // );
-    // console.log(completeTask);
       const {
         register,
         handleSubmit,
@@ -73,7 +65,7 @@ const JobTaskAlert = () => {
      });
  };
     return (
-      <div className="my-5 mx-3">
+      <div className="my-5 mx-3 dark:text-black">
         {jobTaskAlert.map((jobTasks) => (
           <div
             className="border border-purple-700 mb-5 rounded-md"
@@ -113,7 +105,7 @@ const JobTaskAlert = () => {
                   href={complete?.docs}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex justify-end bg-gray-300  text-red-700 hover:bg-white hover:shadow-md px-3 py-1 lg:ml-0 ml-3 rounded-md font-bold hover:border-purple-700 border"
+                  className="flex justify-end bg-gray-300  text-red-600 hover:bg-white hover:shadow-md px-3 py-1 lg:ml-0 ml-3 rounded-md font-bold hover:border-purple-700 border"
                 >
                   {complete?.docs}
                 </a>

@@ -16,6 +16,8 @@ import { useLocation } from "react-router";
 import UseScrollTop from "../../../Hooks/UseScrollTop";
 import JobTaskAlert from "../JobTaskAlert/JobTaskAlert";
 import CompleteTask from "../JobApplyForm/CompleteTask";
+import { MdNotificationsPaused } from "react-icons/md";
+import { BiTask } from "react-icons/bi";
 const JobsRoute = () => {
   const { user } = useContext(AuthContext);
   const [active, setActive] = useState("All");
@@ -55,7 +57,7 @@ const { pathname } = useLocation();
 UseScrollTop(pathname);
 
   return (
-    <div className="lg:px-10 py-12 ">
+    <div className="lg:px-10 py-12 dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
       <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <div className="lg:flex gap-1">
           <div className="shadowdiv border rounded-md lg:w-80 h-100%">
@@ -82,7 +84,7 @@ UseScrollTop(pathname);
                   active == "jobTask" ? "activetab cursor-pointer" : ""
                 }`}
               >
-                <FaBell /> Job Task Alerts
+                <MdNotificationsPaused className="text-xl" /> Job Task Alerts
               </Tab>
               <Tab
                 onClick={() => clickactive("completeJobTask")}
@@ -90,7 +92,7 @@ UseScrollTop(pathname);
                   active == "completeJobTask" ? "activetab cursor-pointer" : ""
                 }`}
               >
-                <FaBell /> Complete Job Task 
+                <BiTask /> Complete Job Task
               </Tab>
               <Tab
                 onClick={() => clickactive("appliedJobs")}
@@ -156,7 +158,7 @@ UseScrollTop(pathname);
                       value={searchText}
                       type="text"
                       placeholder="Search your jobs title"
-                      className="w-full md:w-80 px-3 rounded-sm h-10 dark:text-black border-2 border-blue-500 focus:outline-none focus:blue-green-700"
+                      className="w-full md:w-80 px-3 h-10 dark:text-black border-2 dark:border-red-600 border-blue-500 focus:outline-none focus:blue-green-700 rounded-full"
                     />
                     <FaSearch className="absolute top-3 text-gray-400 right-2" />
                   </div>
@@ -165,7 +167,7 @@ UseScrollTop(pathname);
                     <select
                       id="jobCategory"
                       name="jobCategory"
-                      className="h-10 border-2 cursor-pointer border-blue-500 dark:text-black focus:outline-none focus:blue-green-500 rounded px-2 md:px-2 py-0 md:py-1 tracking-wider"
+                      className="h-10 border-2 cursor-pointer dark:border-red-600 border-blue-500 dark:text-black focus:outline-none focus:blue-green-500 rounded px-2 md:px-2 py-0 md:py-1 tracking-wider"
                       onChange={(e) => setActive(e.target.value)}
                       value={active}
                     >
@@ -202,12 +204,17 @@ UseScrollTop(pathname);
             <TabPanel>The Job Notification section</TabPanel>
             {/* Job Task tab */}
             <TabPanel>
-              <h1 className="text-center font-bold text-3xl text-blue-700 mt-3"> Job Task</h1>
-              <JobTaskAlert/>
+              <h1 className="text-center font-bold text-3xl text-blue-700 mt-3">
+                {" "}
+                Job Task
+              </h1>
+              <JobTaskAlert />
             </TabPanel>
             <TabPanel>
-              <h1 className="text-center font-bold text-3xl text-blue-700 mt-3">Employer Complete Job Task</h1>
-              <CompleteTask/>
+              <h1 className="text-center font-bold text-3xl text-blue-700 mt-3">
+                Employer Complete Job Task
+              </h1>
+              <CompleteTask />
             </TabPanel>
             {/* user appliedJobs */}
             <TabPanel>
