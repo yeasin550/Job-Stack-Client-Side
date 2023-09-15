@@ -32,7 +32,7 @@ const NewsInsights = () => {
         });
     }, []);
   return (
-    <div className="banner py-16 lg:px-14 px-3">
+    <div className="banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black py-16 lg:px-14 px-3">
       <div className="text-center mb-14">
         <h1 className="md:text-4xl text-2xl uppercase text-transparent bg-clip-text  bg-gradient-to-r from-white to-yellow-400 font-bold">
           Recent News Articles
@@ -48,7 +48,7 @@ const NewsInsights = () => {
           <Articles key={article._id} article={article}></Articles>
         ))}
       </div>
-      
+
       <div className={`flex justify-center mt-10`}>
         {articles.length === 3 ? (
           <button onClick={handleSeeAll} className="px-4 py-2 ">

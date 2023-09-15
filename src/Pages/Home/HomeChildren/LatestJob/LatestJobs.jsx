@@ -17,51 +17,50 @@ const LatestJobs = () => {
     setActiveTab(id);
   };
   return (
-    
-    <div className="banner lg:px-12">
-      <div className="banner ">
-      <div className="text-center banner  ">
-        <h1 className="text-4xl uppercase font-bold text-transparent bg-clip-text  bg-gradient-to-r from-white to-yellow-400 ">Latest Jobs</h1>
-        <p className="mt-2 mb-4 text-white lg:px-0 text-lg">
-          Discover a world of career possibilities with our latest job openings.
-        </p>
-      </div>
-      <div className="banner">
-        <ul
-          className="tabs text-xl banner font-semibold"
-          defaultIndex={tabIndex}
-          onSelect={(index) => setTabIndex(index)}
-        >
-          <li
-            className={activeTab === 1 ? "active " : "tabbuttonactive"}
-            onClick={() => handleTabClick(1)}
+    <div className="banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black lg:px-12 ">
+      <div className="banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black ">
+        <div className="text-center banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black  ">
+          <h1 className="text-4xl uppercase font-bold text-transparent bg-clip-text  bg-gradient-to-r from-white to-yellow-400 ">
+            Latest Jobs
+          </h1>
+          <p className="mt-2 mb-4 text-white lg:px-0 text-lg">
+            Discover a world of career possibilities with our latest job
+            openings.
+          </p>
+        </div>
+        <div className="banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
+          <ul
+            className="tabs text-xl banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black font-semibold"
+            defaultIndex={tabIndex}
+            onSelect={(index) => setTabIndex(index)}
           >
-            Remote
-          </li>
-          <li
-            className={activeTab === 2 ? "active " : "tabbuttonactive"}
-            onClick={() => handleTabClick(2)}>
-            Onsite
-          </li>
-        </ul>
-        <div className="tab-content banner py-8">
-          {activeTab === 1 && (
-
-            <div className="tab_panel banner">
-              <JobCard items={remote}></JobCard>
-            </div>
-
-          )} 
-         {activeTab === 2 && (
-           
-              <div className="tab_panel banner">
+            <li
+              className={activeTab === 1 ? "active " : "tabbuttonactive"}
+              onClick={() => handleTabClick(1)}
+            >
+              Remote
+            </li>
+            <li
+              className={activeTab === 2 ? "active " : "tabbuttonactive"}
+              onClick={() => handleTabClick(2)}
+            >
+              Onsite
+            </li>
+          </ul>
+          <div className="tab-content banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black py-8">
+            {activeTab === 1 && (
+              <div className="tab_panel banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
+                <JobCard items={remote}></JobCard>
+              </div>
+            )}
+            {activeTab === 2 && (
+              <div className="tab_panel banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
                 <JobCard items={onsite}></JobCard>
               </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
-      </div>
-     
     </div>
   );
 };

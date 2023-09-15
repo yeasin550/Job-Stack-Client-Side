@@ -5,16 +5,16 @@ import ScrollTrigger from "react-scroll-trigger";
 const BrowseJob = () => {
    const [countOn, setCountOn] = useState(false);
   return (
-    <div className="lg:px-14 banner">
+    <div className="lg:px-14 banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
       <div className="grid md:grid-cols-2 gap-5 justify-center ">
         {/* left site */}
         <div className="w-full px-3 lg:px-0">
-            <img
-              className="rounded-md  w-ful"
-              src="https://i.ibb.co/BqMBCGR/populer-job.jpg"
-              loading="lazy"
-              alt="img"
-            />
+          <img
+            className="rounded-md  w-ful"
+            src="https://i.ibb.co/BqMBCGR/populer-job.jpg"
+            loading="lazy"
+            alt="img"
+          />
         </div>
         {/* right site */}
         <div className="px-3 md:px-0 ">

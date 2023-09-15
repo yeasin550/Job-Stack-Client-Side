@@ -27,7 +27,7 @@ const Testimonial = () => {
     });
   
   return (
-    <div className="banner py-12">
+    <div className="banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black py-12">
       <div className="max-w-screen-xl px-5 mx-auto">
         <div className="text-center">
           <p className="text-4xl text-transparent bg-clip-text uppercase  bg-gradient-to-r from-white to-yellow-400 font-bold mb-2">
@@ -66,7 +66,7 @@ const Testimonial = () => {
           className="mySwiper"
         >
           {review.map((reviews) => (
-            <SwiperSlide className="my-10 text-center categorires-card ">
+            <SwiperSlide className="my-10 text-center categorires-card dark:text-black">
               <div className="bg-slate-100 h-60 py-5 px-10 rounded-md">
                 <div className="flex justify-center mb-3">
                   <img

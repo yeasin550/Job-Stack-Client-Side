@@ -147,7 +147,7 @@ const MessagingRoute = () => {
 
   return (
     <>
-      <div className="w-full h-screen shadowdiv rounded-lg md:flex">
+      <div className="w-full h-screen shadowdiv dark:text-black rounded-lg md:flex">
         <div className="md:w-[30%]  bg-gray-100 px-6 overflow-scroll">
           <div className="font-bold mt-6 pl-4 text-2xl">Chats</div>
           <div className="">

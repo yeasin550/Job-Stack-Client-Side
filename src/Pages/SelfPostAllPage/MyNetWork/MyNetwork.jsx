@@ -15,10 +15,10 @@ const MyNetwork = () => {
     setActive(active);
   };
   return (
-    <div className="lg:px-16 py-5 px-2 pb-10 ">
+    <div className="lg:px-16 py-5 px-2 pb-10 dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
       <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <div className="lg:flex gap-1">
-          <div className="shadowdiv border banner text-white rounded-md lg:w-80 w-full h-100%">
+          <div className="shadowdiv border banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black text-white rounded-md lg:w-80 w-full h-100%">
             <TabList className="flex  flex-col justify-center items-start px-5 py-10 gap-6">
               <Tab
                 onClick={() => clickactive("post")}

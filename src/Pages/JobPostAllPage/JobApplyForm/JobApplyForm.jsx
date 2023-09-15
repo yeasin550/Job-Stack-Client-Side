@@ -102,7 +102,9 @@ const onSubmit = (data) => {
         {/* name */}
         <div className="form-control w-full">
           <label className="label">
-            <span className="label-text font-bold">User Name</span>
+            <span className="label-text font-bold dark:text-white">
+              User Name
+            </span>
           </label>
           <input
             type="text"
@@ -111,12 +113,13 @@ const onSubmit = (data) => {
             placeholder="type here"
             className="input input-bordered"
           />
-       
         </div>
         {/* emails */}
         <div className="form-control w-full">
           <label className="label">
-            <span className="label-text font-bold">User Apply Email</span>
+            <span className="label-text font-bold dark:text-white">
+              User Apply Email
+            </span>
           </label>
           <input
             type="email"
@@ -127,11 +130,13 @@ const onSubmit = (data) => {
             className="appearance-none input input-bordered"
           />
         </div>
-       
+
         {/* number */}
         <div className="form-control w-full">
           <label className="label">
-            <span className="label-text font-bold">User Apply Phone</span>
+            <span className="label-text font-bold dark:text-white">
+              User Apply Phone
+            </span>
           </label>
           <input
             {...register("number", {
@@ -153,7 +158,9 @@ const onSubmit = (data) => {
 
         {/* why should you hire? */}
         <div className="relative w-full">
-          <h1 className="my-2 font-bold">Why should you hire?</h1>
+          <h1 className="my-2 font-bold dark:text-white">
+            Why should you hire?
+          </h1>
           <textarea
             {...register("questions", {
               required: "Job description is required",
@@ -172,7 +179,9 @@ const onSubmit = (data) => {
 
         <div className="form-control w-full">
           <label className="label">
-            <span className="label-text font-bold">Upload Resume Image</span>
+            <span className="label-text font-bold dark:text-white">
+              Upload Resume Image
+            </span>
           </label>
           <input
             type="file"
@@ -186,7 +195,7 @@ const onSubmit = (data) => {
           )}
         </div>
 
-        <button className="my-btn w-full mt-5 p-2 text-lg rounded-md text-white bg-green-600 hover:bg-green-700">
+        <button className="my-btn w-full mt-5 p-2 text-lg rounded-md text-white bg-green-600 text-center  px-6  hover:bg-blue-800  duration-300   bg-gradient-to-r from-green-500 to-blue-700  font-semibold   hover:from-blue-700 hover:to-purple-900 transition-all ">
           Apply Jobs
         </button>
       </form>

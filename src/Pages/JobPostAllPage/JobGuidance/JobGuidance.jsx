@@ -24,18 +24,26 @@ const JobGuidance = () => {
           provide them with career guidance and employment services.
         </p>
       </div>
-      <div className=" text-center text-white py-9 mt-5 px-6 rounded-md   duration-300 w-full   bg-gradient-to-r font-semibold   from-blue-700 to-purple-900 transition-all">
+      {/* <div className=" text-center text-white py-9 mt-5 px-6 rounded-md   duration-300 w-full   bg-gradient-to-r font-semibold   from-blue-700 to-purple-900 transition-all">
         <p className="text-lg">What you need to know?</p>
         <h1 className="text-2xl font-semibold">
           Careerer Guidance $ Job Guidance!
         </h1>
+      </div> */}
+      <div className="text-center text-white py-9 mt-5 px-6 rounded-md w-full relative overflow-hidden ">
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-700 to-purple-900 transform skew-x-12  animate-gradient"></div>
+        <p className="text-lg relative z-10">What you need to know?</p>
+        <h1 className="text-2xl font-semibold relative z-10">
+          Career Guidance & Job Guidance!
+        </h1>
       </div>
+      
       <div className="mt-10 text-lg space-y-5 divide-y divide-purple-500">
         <div className="lg:flex items-center gap-3">
           <div className="lg:w-[145px] lg:mb-0 mb-2 h-20 lg:rounded-full rounded-md border border-purple-500 bg-gray-200 flex items-center justify-center">
             <FcDocument className="text-gray-600 text-6xl" />
           </div>
-          <div>
+          <div className="border-l-2 pl-3 border-l-purple-600">
             <h1 className="font-bold text-lg">Create a Strong Profile</h1>
             <p>
               Your profile is your digital resume. Make it shine with a
@@ -49,7 +57,7 @@ const JobGuidance = () => {
             <LuFileSearch className="text-gray-600 text-6xl" />
           </div>
 
-          <div>
+          <div className="border-l-2 pl-3 border-l-purple-600">
             <h1 className="font-bold text-lg">Job Search Strategies</h1>
             <p>
               Explore job listings, connect with professionals, and follow
@@ -62,7 +70,7 @@ const JobGuidance = () => {
           <div className="lg:w-[140px] lg:mb-0 mb-2 h-20 lg:rounded-full rounded-md border border-purple-500 bg-gray-200 flex items-center justify-center">
             <GiSettingsKnobs className="text-gray-600 text-6xl" />
           </div>
-          <div>
+          <div className="border-l-2 pl-3 border-l-purple-600">
             <h1 className="font-bold text-lg">Effective Applications</h1>
             <p>
               Tailor your applications for each job. Showcase your
@@ -76,7 +84,7 @@ const JobGuidance = () => {
             <FcKey className="text-gray-600 text-6xl" />
           </div>
 
-          <div>
+          <div className="border-l-2 pl-3 border-l-purple-600">
             <h1 className="font-bold text-lg"> Interview Success</h1>
             <p>
               Prepare for interviews by researching the company, practicing
@@ -89,7 +97,7 @@ const JobGuidance = () => {
           <div className="lg:w-56 lg:mb-0 mb-2 h-20 border border-purple-800 rounded-md lg:rounded-full bg-gray-200 flex items-center justify-center">
             <GiSecretBook className="text-gray-600 text-6xl" />
           </div>
-          <div>
+          <div className="border-l-2 pl-3 border-l-purple-600">
             <h1 className="font-bold text-lg">Seek Feedback</h1>
             <p>
               Don't be afraid to seek feedback from mentors or peers.

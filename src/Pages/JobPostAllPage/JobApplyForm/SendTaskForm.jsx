@@ -61,7 +61,10 @@ const JobTaskForm = () => {
       >
         {/* why should you hire? */}
         <div className="relative w-full">
-          <h1 className="my-2 font-semibold">Job Task Description?</h1>
+          <h1 className="my-2 font-semibold dark:text-white">
+            Job Task Description?
+          </h1>
+
           <textarea
             {...register("jobTask", {
               required: "Job description is required",
@@ -79,7 +82,9 @@ const JobTaskForm = () => {
         </div>
         <div className="form-control w-full">
           <label className="label">
-            <span className="label-text font-semibold">Assignment Docs</span>
+            <span className="label-text font-semibold dark:text-white">
+              Assignment Docs
+            </span>
           </label>
           <input
             type="text"
@@ -93,7 +98,9 @@ const JobTaskForm = () => {
         </div>
         <div className="form-control w-full">
           <label className="label">
-            <span className="label-text font-semibold">Submit Last Date</span>
+            <span className="label-text font-semibold dark:text-white">
+              Submit Last Date
+            </span>
           </label>
           <input
             type="date"

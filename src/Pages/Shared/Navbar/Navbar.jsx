@@ -53,7 +53,7 @@ const Navbar = () => {
 
 
   return (
-    <nav className="w-full banner text-white sticky lg:px-8 z-40 top-0 left-0">
+    <nav className="w-full banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black duration- text-white sticky lg:px-8 z-40 top-0 left-0">
       <div className="justify-between px-5 mx-auto lg:max-w-screen-xl md:items-center md:flex sticky ">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
           <div className="navbar-start flex justify-center items-center  ml-0">
@@ -100,8 +100,9 @@ const Navbar = () => {
         </div>
 
         <div
-          className={` pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
-            }`}
+          className={` pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+            navbar ? "block" : "hidden"
+          }`}
         >
           <ul className="items-center justify-center text-center text-lg space-y-8 md:flex md:space-x-6 md:space-y-0">
             <li className="flex justify-center ">
@@ -181,8 +182,9 @@ const Navbar = () => {
         </div>
 
         <div
-          className={` pb-3 mt-8  md:block md:pb-0 md:mt-0  ${navbar ? "block" : "hidden"
-            }`}
+          className={` pb-3 mt-8  md:block md:pb-0 md:mt-0  ${
+            navbar ? "block" : "hidden"
+          }`}
         >
           <div className="dropdown dropdown-end flex justify-center items-center gap-3">
             {user ? (
@@ -210,8 +212,8 @@ const Navbar = () => {
                       Profile
                     </button>
                   </li>
-                  {
-                    isAdmin && <li>
+                  {isAdmin && (
+                    <li>
                       <button
                         onClick={() => navigate("/dashbord/adminhome")}
                         className="btn btn-sm w-full  mb-1"
@@ -219,7 +221,7 @@ const Navbar = () => {
                         DashBoard
                       </button>
                     </li>
-                  }
+                  )}
                   <li>
                     <button
                       onClick={() => navigate("/profile")}

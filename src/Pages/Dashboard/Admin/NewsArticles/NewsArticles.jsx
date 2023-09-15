@@ -86,7 +86,7 @@ const NewsArticles = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <h1 className="text-center font-bold text-3xl">News Articles Publish </h1>
 
       <form
