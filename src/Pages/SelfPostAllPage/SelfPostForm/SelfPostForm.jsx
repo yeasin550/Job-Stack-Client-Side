@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
-import Swal from "sweetalert2";
-import { AiFillYoutube } from "react-icons/ai";
+import { TfiWrite } from "react-icons/tfi";
 import { HiPhoto } from "react-icons/hi2";
 import { SlCalender } from "react-icons/sl";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
@@ -61,7 +60,7 @@ const SelfPostForm = () => {
             if (data.data.insertedId) {
               reset();
               refetch();
-           toast.success("Post Add Successfully!");
+              toast.success("Post Add Successfully!");
             }
           });
         }
@@ -125,7 +124,70 @@ const SelfPostForm = () => {
             .then((res) => res.json())
             .then((data) => {
               if (data.insertedId) {
-               toast.success("Event Add Successfully!");
+                toast.success("Event Add Successfully!");
+              }
+            })
+            .catch((error) => {
+              console.error("Error posting data to second URL:", error);
+            });
+        }
+      })
+      .catch((error) => {
+        console.error("Error uploading image:", error);
+      });
+  };
+
+  // Article funcation
+  const [article, setArticle] = useState(false);
+  const openArticleModals = () => {
+    setArticle(true);
+  };
+  const closeArticleModals = () => {
+    setArticle(false);
+  };
+
+  const handleArticle = (event) => {
+    event.preventDefault();
+
+    const imgdata = new FormData();
+    const imageData = event.target.image.files[0];
+    imgdata.append("image", imageData);
+
+    fetch(img_hosting_url, {
+      method: "POST",
+      body: imgdata,
+    })
+      .then((res) => res.json())
+      .then((uploadImage) => {
+        if (uploadImage.success) {
+          const imgUrl = uploadImage.data.display_url;
+
+          const form = event.target;
+          const articletitle = form.articletitle.value;
+          const image = imgUrl;
+          const artciledescription = form.artciledescription.value;
+
+          const addArticle = {
+            articletitle,
+            email: user?.email,
+            userName: user?.displayName,
+            userPhoto: user?.photoURL,
+            image,
+            artciledescription,
+            timeStamp: getCurrentTimeStamp("LLL"),
+          };
+          event.target.reset();
+          fetch("https://jobstack-backend-teal.vercel.app/user-article", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(addArticle),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                toast.success("Article Add Successfully!");
               }
             })
             .catch((error) => {
@@ -162,7 +224,7 @@ const SelfPostForm = () => {
         <div className="mt-3 flex justify-between items-center">
           <div className="">
             <label
-              className="flex items-center gap-3 px-6 py-1 hover:bg-slate-100 rounded-md"
+              className="flex items-center gap-1 px-6 py-1 hover:bg-slate-100 rounded-md"
               htmlFor="file-input"
             >
               <HiPhoto className="text-[#5f9b41] text-xl" />
@@ -170,23 +232,24 @@ const SelfPostForm = () => {
             </label>
             <input className="hidden" type="file" />
           </div>
-          <div className="">
-            <label
-              className="flex items-center gap-3 px-6 py-1 hover:bg-slate-100 rounded-md"
-              htmlFor="file-input"
-            >
-              <AiFillYoutube className="text-[#5f9b41] text-xl" />
-              <p>video</p>
-            </label>
-            <input className="hidden" type="file" />
-          </div>
+
           <div className="" onClick={openModals}>
             <label
-              className="flex items-center gap-3 px-6 py-1 hover:bg-slate-100 rounded-md"
+              className="flex items-center gap-1 px-6 py-1 hover:bg-slate-100 rounded-md"
               htmlFor="file-input"
             >
               <SlCalender className="text-[#5f9b41] text-xl" />
               <p>Event</p>
+            </label>
+            <input className="hidden" type="file" />
+          </div>
+          <div className="" onClick={openArticleModals}>
+            <label
+              className="flex items-center gap-1 px-6 py-1 hover:bg-slate-100 rounded-md"
+              htmlFor="file-input"
+            >
+              <TfiWrite className="text-[#5f9b41] text-xl" />
+              <p>Write article</p>
             </label>
             <input className="hidden" type="file" />
           </div>
@@ -300,6 +363,7 @@ const SelfPostForm = () => {
               </div>
 
               <div className="my-5">
+                <p className="text-xs mb-1">Event image</p>
                 <input
                   type="file"
                   name="image"
@@ -365,6 +429,66 @@ const SelfPostForm = () => {
               <button
                 className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-slate-300"
                 onClick={closeModals}
+              >
+                &#10005;
+              </button>
+            </div>
+          </form>
+        </dialog>
+      )}
+      {/* Event Form */}
+      {article && (
+        <dialog
+          id="my_modal_5"
+          className="modal modal-bottom sm:modal-middle"
+          open
+        >
+          <form onSubmit={handleArticle} method="dialog" className="modal-box">
+            <h1 className="text-center text-lg font-semibold -mt-3 mb-3">
+              Write article
+            </h1>
+            <hr />
+            {/* event form */}
+            <div className="my-8">
+              <div className="">
+                <p className="text-xs mb-1">Article Title*</p>
+                <input
+                  className="py-1 w-full outline outline-offset-2 outline-1 ps-2 rounded-lg text-sm"
+                  type="text"
+                  name="articletitle"
+                  placeholder="Article Title"
+                  required
+                />
+              </div>
+
+              <div className="my-5">
+                <p className="text-xs mb-1">Article image</p>
+                <input
+                  type="file"
+                  name="image"
+                  className="file-input file-input-bordered w-full rounded-lg"
+                />
+              </div>
+
+              <div className="my-5">
+                <p className="text-xs mb-1">Description</p>
+                <textarea
+                  name="artciledescription"
+                  className=" w-full outline outline-offset-2 outline-1 p-2 rounded-lg text-sm"
+                  rows="3"
+                  placeholder="Article Description"
+                ></textarea>
+              </div>
+            </div>
+
+            <button className="w-full py-2 mt-3 bg-green-500 rounded-md text-white cursor-pointer">
+              <input type="submit" value="Post" />
+            </button>
+            {/* modal clone button */}
+            <div className="modal-action">
+              <button
+                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-slate-300"
+                onClick={closeArticleModals}
               >
                 &#10005;
               </button>

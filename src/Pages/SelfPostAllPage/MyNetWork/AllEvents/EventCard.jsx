@@ -1,4 +1,5 @@
 import React from "react";
+import {SlCalender} from 'react-icons/sl'
 
 const EventCard = ({ event }) => {
   const {
@@ -14,18 +15,21 @@ const EventCard = ({ event }) => {
   } = event;
   return (
     <div>
-      <div className="shadow-xl h-80 p-7 rounded-lg">
+      <div className="shadow-xl h-96 p-3 rounded-lg">
         <img className="h-20 w-full" src={image} alt="" />
-        <h1 className="text-xl font-semibold">{name}</h1>
+        <h1 className="text-lg font-semibold mb-2">{name}</h1>
         <p>
           Event by <span className="font-bold">{userName}</span>
         </p>
-        <p>
-          {startdate} <span className="font-bold">{starttime}</span>
+        <p className="flex items-center gap-2 mt-2">
+          <SlCalender /> {startdate}{" "}
+          <span className="font-bold">{starttime}</span>
         </p>
-        <p>{externallink}</p>
-        <p>speakers {speakers}</p>
-        <p> {description}</p>
+        <p className="my-2">{externallink}</p>
+        <p className="text-base mb-2">
+          speakers <span className="font-semibold">{speakers}</span>
+        </p>
+        <p className="text-sm"> {description}</p>
       </div>
     </div>
   );
