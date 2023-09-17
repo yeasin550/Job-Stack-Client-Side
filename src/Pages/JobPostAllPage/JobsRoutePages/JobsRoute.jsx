@@ -66,21 +66,21 @@ const JobsRoute = () => {
 
               {
                 isCompany ? <>
-                  <Tab
+                   <Tab
                     onClick={() => clickactive("completeJobTask")}
                     className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "completeJobTask" ? "activetab cursor-pointer" : ""
                       }`}
                   >
                     <BiTask /> Complete Job Task
-                  </Tab>
-                  <Tab
+                   </Tab>
+                   <Tab
                     onClick={() => clickactive("appliedJobs")}
                     className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "appliedJobs" ? "activetab cursor-pointer" : ""
                       }`}
                   >
                     <FaShoppingBag />
                     Applied Member
-                  </Tab>
+                   </Tab>
 
                 </> : <>
                   <Tab
