@@ -25,7 +25,7 @@ const EventCard = ({ event }) => {
           <SlCalender /> {startdate}{" "}
           <span className="font-bold">{starttime}</span>
         </p>
-        <p className="my-2">{externallink}</p>
+        <a className="my-2" target="_blank" href={externallink}>join meet</a>
         <p className="text-base mb-2">
           speakers <span className="font-semibold">{speakers}</span>
         </p>
