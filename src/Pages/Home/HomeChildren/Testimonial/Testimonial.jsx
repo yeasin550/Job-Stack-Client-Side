@@ -65,8 +65,8 @@ const Testimonial = () => {
           modules={[Autoplay, FreeMode, Pagination]}
           className="mySwiper"
         >
-          {review.map((reviews) => (
-            <SwiperSlide className="my-10 text-center categorires-card dark:text-black">
+          {review?.map((reviews) => (
+            <SwiperSlide key={reviews?._id} className="my-10 text-center categorires-card dark:text-black">
               <div className="bg-slate-100 h-60 py-5 px-10 rounded-md">
                 <div className="flex justify-center mb-3">
                   <img
