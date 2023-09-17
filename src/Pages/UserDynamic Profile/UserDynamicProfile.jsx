@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BiMessage } from "react-icons/bi";
+import { BiCommentError, BiMessage } from "react-icons/bi";
 import { FaSlack, FaUserAlt } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
@@ -8,10 +8,15 @@ import useAxioSequre from "../../Hooks/useAxiosSequre";
 import { useQuery } from "@tanstack/react-query";
 import SelfPostDesign from "../Components/SelfPostDesign/SelfPostDesign";
 import UserAbout from "./UserAbout";
+import { BsThreeDots } from "react-icons/bs";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
+import toast from "react-hot-toast";
 const UserDynamicProfile = () => {
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   const [axiosSequre] = useAxioSequre();
+  const { user } = useContext(AuthContext);
   //  activie tabindex set this state
   const [tabIndex, setTabIndex] = useState(0);
   //set active tab design function
@@ -66,6 +71,46 @@ const UserDynamicProfile = () => {
   const schools = userEducations?.filter(
     (usereducation) => usereducation?.category === "school"
   );
+
+  // Post Report Modla funcation
+  const [reportModal, setreportModal] = useState(false);
+  const openModal = () => {
+    setreportModal(true);
+  };
+  const closeModal = () => {
+    setreportModal(false);
+  };
+
+    const [selectedReasons, setSelectedReasons] = useState([]);
+
+    const handleCheckboxChange = (reason) => {
+      if (selectedReasons.includes(reason)) {
+        // If the reason is already selected, remove it
+        setSelectedReasons(selectedReasons.filter((item) => item !== reason));
+      } else {
+        // If the reason is not selected, add it
+        setSelectedReasons([...selectedReasons, reason]);
+      }
+    };
+
+  const handleReport = () => {
+     const userreport = {
+       selectedReasons,
+       id,
+       userName: user?.displayName,
+       userPhoto: user?.photoURL,
+     };
+      axiosSequre.post("/user-report", userreport).then((data) => {
+        if (data?.data?.insertedId) {
+          toast.success("User Report Successfully");
+        }
+      });
+    };
+
+  const PostReport = (id) => {
+    openModal();
+  };
+
 
   return (
     //div main container
@@ -123,6 +168,9 @@ const UserDynamicProfile = () => {
                   <BiMessage /> Massage
                 </button>
               </Link>
+              <button onClick={() => PostReport()} className=" ">
+                <BsThreeDots />
+              </button>
             </div>
           </div>
         </div>
@@ -240,6 +288,67 @@ const UserDynamicProfile = () => {
           </Tabs>
         </div>
       </div>
+      {/* modal */}
+      {reportModal && (
+        <dialog
+          id="my_modal_5"
+          className="modal modal-bottom sm:modal-middle"
+          open
+        >
+          <div method="dialog" className="modal-box">
+            <h1 className="text-center text-2xl font-bold -mt-3 mb-3">
+              Report
+            </h1>
+            <p className="text-center">Please select a problem</p>
+            <hr />
+            <div className="">
+              <ul>
+                <li>
+                  <input
+                    type="checkbox"
+                    checked={selectedReasons.includes("Fakeaccount")}
+                    onChange={() => handleCheckboxChange("Fakeaccount")}
+                  />
+                  Fake account
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    checked={selectedReasons.includes("Fakename")}
+                    onChange={() => handleCheckboxChange("Fakename")}
+                  />
+                  Fake name
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    checked={selectedReasons.includes("Harassment")}
+                    onChange={() => handleCheckboxChange("Harassment")}
+                  />
+                  Harassment
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    checked={selectedReasons.includes("Somethingelse")}
+                    onChange={() => handleCheckboxChange("Somethingelse")}
+                  />
+                  Something else
+                </li>
+              </ul>
+              <button onClick={handleReport}>Report</button>
+            </div>
+            <div className="modal-action">
+              <button
+                onClick={closeModal}
+                className="text-white btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-green-500"
+              >
+                X
+              </button>
+            </div>
+          </div>
+        </dialog>
+      )}
     </div>
   );
 };
