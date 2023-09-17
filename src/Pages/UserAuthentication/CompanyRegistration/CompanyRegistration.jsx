@@ -3,7 +3,7 @@ import useAxioSequre from "../../../Hooks/useAxiosSequre";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Lottie from "lottie-react";
 import signupanimation from "../../../assets/animation/105639-signup.json";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
@@ -59,12 +59,12 @@ const CompanyRegistration = () => {
                 axiosSequre.post("/users", saveUser).then((data) => {
                   if (data?.data.insertedId) {
                     reset();
+                    navigate("/")
                     Swal.fire({
                       icon: "success",
                       title: "User created successfully.",
                       timer: 1500,
                     });
-                    navigate("/");
                   }
                 });
               })
@@ -84,12 +84,12 @@ const CompanyRegistration = () => {
                   console.log(data);
                   if (data.data.insertedId) {
                     reset();
+                    navigate("/")
                     Swal.fire({
                       icon: "success",
                       title: "User created successfully.",
                       timer: 1500,
                     });
-                    navigate("/");
                   }
                 });
               })

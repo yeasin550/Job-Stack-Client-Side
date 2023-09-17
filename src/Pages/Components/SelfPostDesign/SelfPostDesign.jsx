@@ -130,6 +130,25 @@ const SelfPostDesign = ({ selfpost }) => {
       openModal();
     };
 
+  
+  const [selectedReasons, setSelectedReasons] = useState([]);
+
+  const handleCheckboxChange = (reason) => {
+    if (selectedReasons.includes(reason)) {
+      // If the reason is already selected, remove it
+      setSelectedReasons(selectedReasons.filter((item) => item !== reason));
+    } else {
+      // If the reason is not selected, add it
+      setSelectedReasons([...selectedReasons, reason]);
+    }
+  };
+
+  const handleReport = () => {
+    // You can send the report using an API call or handle it as needed.
+    console.log("Selected reasons for reporting:", selectedReasons);
+    // Add your API call or reporting logic here
+  };
+  
 
   // like funcation
   const [like, setLike] = useState(false);
@@ -364,10 +383,41 @@ const SelfPostDesign = ({ selfpost }) => {
             </h1>
             <hr />
             <div className="">
-              <h1>Spam</h1>
-              <h1>Harassment</h1>
-              <h1>False information</h1>
-              <h1>Something Else</h1> 
+              <ul>
+                <li>
+                  <input
+                    type="checkbox"
+                    checked={selectedReasons.includes("Spam")}
+                    onChange={() => handleCheckboxChange("Spam")}
+                  />
+                  Spam
+                </li>
+                <li className="mt-3">
+                  <input
+                    type="checkbox"
+                    checked={selectedReasons.includes("Harassment")}
+                    onChange={() => handleCheckboxChange("Harassment")}
+                  />
+                  Harassment
+                </li>
+                <li className="mt-3">
+                  <input
+                    type="checkbox"
+                    checked={selectedReasons.includes("False information")}
+                    onChange={() => handleCheckboxChange("False information")}
+                  />
+                  False information
+                </li>
+                <li className="mt-3">
+                  <input
+                    type="checkbox"
+                    checked={selectedReasons.includes("Something Else")}
+                    onChange={() => handleCheckboxChange("Something Else")}
+                  />
+                  Something Else
+                </li>
+              </ul>
+              <button className="mt-3" onClick={handleReport}>Report</button>
             </div>
             <div className="modal-action">
               <button
