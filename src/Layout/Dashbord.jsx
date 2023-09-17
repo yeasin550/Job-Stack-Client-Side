@@ -5,14 +5,16 @@ import {
   FaUserFriends,
   FaUsers,
   FaUserAstronaut,
+  FaUsersSlash,
 } from "react-icons/fa";
-import { TbBrandGooglePhotos } from "react-icons/tb";
+import { TbBrandGooglePhotos, TbMessageReport } from "react-icons/tb";
 import { MdDashboard } from "react-icons/md";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import useAdmin from "../Hooks/useAdmin";
 import images from '../assets/logo/Blue_Black_Futuristic_And_Modern_Technology_Logo-removebg-preview.png'
 import ActiveLink from "../Hooks/ActiveLink";
+import { BiBookReader } from "react-icons/bi";
 
 const Dashbord = () => {
   const { user } = useContext(AuthContext);
@@ -75,8 +77,24 @@ const Dashbord = () => {
               <Link to="/dashbord/all-articles">
                 <li>
                   <a>
-                    <FaUserAstronaut />
+                    <BiBookReader />
                     All Articles
+                  </a>
+                </li>
+              </Link>
+              <Link to="/dashbord/post-report">
+                <li>
+                  <a>
+                    <TbMessageReport />
+                    Post Report
+                  </a>
+                </li>
+              </Link>
+              <Link to="/dashbord/user-report">
+                <li>
+                  <a>
+                    <FaUsersSlash />
+                    User Report
                   </a>
                 </li>
               </Link>

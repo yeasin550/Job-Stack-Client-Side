@@ -29,6 +29,8 @@ import JobTaskForm from "../Pages/JobPostAllPage/JobApplyForm/SendTaskForm";
 import Notification from "../Pages/Notification/Notification";
 import DynamicJobDetails from "../Pages/JobPostAllPage/DynamicJobDetails";
 import PraivateRoute from "./PraivateRoute/PraivateRoute";
+import PostReport from "../Pages/Dashboard/Admin/PostReport/PostReport";
+import UserReport from "../Pages/Dashboard/Admin/UserReport/UserReport";
 
 const router = createBrowserRouter([
   {
@@ -150,6 +152,14 @@ const router = createBrowserRouter([
       {
         path: "news-articles",
         element: <NewsArticles />,
+      },
+      {
+        path: "post-report",
+        element: <PostReport/>
+      },
+      {
+        path: "user-report",
+        element: <UserReport/>
       },
     ],
   },
