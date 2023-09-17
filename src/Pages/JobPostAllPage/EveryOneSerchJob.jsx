@@ -32,7 +32,7 @@ const EveryOneSerchJob = () => {
 
   return (
     <div className="banner px-5 py-24">
-      <h1 className="lg:text-6xl  text-3xl font-bold text-center text-white my-8">
+      <h1 className="lg:text-5xl text-transparent bg-clip-text  bg-gradient-to-r from-pink-100 via-yellow-400 to-white text-3xl text-center my-8">
         Find Your Career. You Deserve it.
       </h1>
       {/* job category ways filter */}
@@ -80,40 +80,39 @@ const EveryOneSerchJob = () => {
             .map((posts) => (
               <div
                 key={posts._id}
-                className="card w-full bg-base-100 shadow-xl"
+                className="w-full bg-base-100 search-card categorires-card rounded-md px-5  py-5"
               >
                 <div>
-                  <div className="flex justify-around items-center mt-6">
-                    <div className="w-16 h-16  border ">
+                  <div className="flex justify-start gap-5 items-center">
+                    <div className="boreder p-[2px] bg-cyan-400 rounded ">
                       <img
                         onClick={() => navigate(`/dynamicprofile/${id}`)}
-                        className="w-16 h-16  rounded-full"
+                        className="w-16  h-16"
                         src={posts?.image}
                         alt="companylogo"
                       />
                     </div>
                     <div>
-                      <p>{posts?.companyName}</p>
-                      <p>{posts?.location}</p>
+                      <p className="text-[20px] uppercase  font-bold font-sans">{posts?.companyName}</p>
+                      <p className="text-green-500 ">{posts?.location}</p>
                     </div>
                   </div>
-                  <div className="card-body ml-10">
-                    <h2 className="card-title ">{posts?.jobTitle}</h2>
+                  <div>
+                    <h2 className="text-[20px] text-gray-500 font-thin mt-2 mb-1">{posts?.jobTitle}</h2>
                     <h5 className=" text-blue-500">{posts?.workplace}</h5>
-                    <h6>HTML, CSS, JavaScript, React</h6>
-                    <div className="card-actions justify-center">
-                      <div className="flex gap-10 justify-between items-center">
+                    <h6 className="my-2 ">HTML, CSS, JavaScript, React</h6>
+                    <div>
+                      <div className="flex  justify-between items-center">
                         <div>
                           <h1>
                             ${posts?.salary}/
                             <span className="text-xs">monthly</span>
                           </h1>
                         </div>
-                        <div className="pr-3">
-                          {" "}
+                         <div>
                           <button
                             onClick={() => navigate(`/dynamic/${posts?._id}`)}
-                            className="btn text-white banner"
+                            className="btn btn-sm border hover:bg-blue-400 hover:text-white border-cyan-300 "
                           >
                             View Details
                           </button>
