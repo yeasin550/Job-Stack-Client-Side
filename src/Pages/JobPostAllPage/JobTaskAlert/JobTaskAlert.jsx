@@ -127,7 +127,7 @@ const JobTaskAlert = () => {
                     <span className="text-red-600">Docs is required</span>
                   )}
                 </div>
-                <button className="bg-green-600 mt-4 text-center text-white py-3 lg:py-0 px-3 rounded-md hover:bg-blue-800  duration-300 text-sm w-full lg:w-3/12 bg-gradient-to-r from-green-500 to-blue-700  font-semibold   hover:from-blue-700 hover:to-purple-900 transition-all">
+                <button className="bg-green-600 mt-4 h-12 text-center text-white py-3 lg:py-0 px-3 rounded-md hover:bg-blue-800  duration-300 text-sm w-full lg:w-3/12 bg-gradient-to-r from-green-500 to-blue-700  font-semibold   hover:from-blue-700 hover:to-purple-900 transition-all">
                   Submit Assignment
                 </button>
               </form>

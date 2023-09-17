@@ -46,7 +46,10 @@ const CompleteTask = () => {
               </thead>
               <tbody>
                 {completeTask?.map((task, index) => (
-                  <tr key={task._id}>
+                  <tr
+                    key={task._id}
+                    className="dark:bg-white dark:text-black dark:border-red-950"
+                  >
                     {/* <td>{index + 1}</td> */}
                     <td>
                       <img
@@ -65,21 +68,30 @@ const CompleteTask = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <h1 className="bg-gray-300 text-purple-700 hover:bg-white hover:shadow-md px-3 py-1 rounded-md font-bold hover:border-purple-700 border">
-                          {task?.docs}
+                        <h1
+                          className=" text-white hover:shadow-md px-3 py-1 rounded-md hover:border-purple-700 border 
+                        bg-green-600 text-center hover:bg-blue-800  duration-300   bg-gradient-to-r from-green-700 to-blue-700   hover:from-blue-900 hover:to-purple-900 transition-all"
+                        >
+                          Assignment
                         </h1>
                       </a>
                     </td>
                     <td>
                       <label htmlFor="my_modal_6">
-                        <h1 className="font-semibold text-white text-center cursor-pointer text-sm bg-green-500 px-2 py-1 rounded-md">
+                        <h1
+                          className=" text-white hover:shadow-md px-3 py-1 rounded-md hover:border-purple-700 border 
+                        bg-green-600 text-center hover:bg-blue-800  duration-300   bg-gradient-to-r from-green-700 to-blue-700   hover:from-blue-900 hover:to-purple-900 transition-all"
+                        >
                           Feedback
                         </h1>
                       </label>
                     </td>
                     <td>
                       {/* <Link to="/jobTaskForm"> */}
-                      <h1 className="font-semibold text-white text-center cursor-pointer text-sm bg-green-500 px-2 py-1 rounded-md">
+                      <h1
+                        className=" text-white hover:shadow-md px-3 py-1 rounded-md hover:border-purple-700 border 
+                        bg-green-600 text-center hover:bg-blue-800  duration-300   bg-gradient-to-r from-green-700 to-blue-700   hover:from-blue-900 hover:to-purple-900 transition-all"
+                      >
                         Accept
                       </h1>
                       {/* </Link> */}
@@ -102,7 +114,7 @@ const CompleteTask = () => {
                         <form className="w-full border-bg-white rounded-lg text-black">
                           <div className="relative w-full">
                             <h1 className="font-semibold text-purple-800 text-2xl text-center mb-2">
-                             Task Feedback
+                              Task Feedback
                             </h1>
 
                             <div className="relative w-full">
@@ -128,7 +140,7 @@ const CompleteTask = () => {
                                 </p>
                               )}
                               <button className="bg-blue-600 mt-4 text-center text-white py-2 px-6 rounded-md hover:bg-blue-800  duration-300 w-full  bg-gradient-to-r from-blue-500 to-blue-700  font-semibold   hover:from-blue-700 hover:to-purple-900 transition-all">
-                               Submit
+                                Submit
                               </button>
                             </div>
                           </div>

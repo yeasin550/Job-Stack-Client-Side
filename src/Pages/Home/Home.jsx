@@ -1,4 +1,3 @@
-import React from "react";
 import Categories from "./HomeChildren/Categories/Categories";
 import LatestJobs from "./HomeChildren/LatestJob/LatestJobs";
 import ChooseWork from "./ChooseWork/ChooseWork";
