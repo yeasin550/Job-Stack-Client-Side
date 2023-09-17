@@ -28,6 +28,7 @@ import AllArticles from "../Pages/Dashboard/AllArticles/AllArticles";
 import JobTaskForm from "../Pages/JobPostAllPage/JobApplyForm/SendTaskForm";
 import Notification from "../Pages/Notification/Notification";
 import DynamicJobDetails from "../Pages/JobPostAllPage/DynamicJobDetails";
+import PraivateRoute from "./PraivateRoute/PraivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -53,11 +54,11 @@ const router = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <UserProfile></UserProfile>,
+        element: <PraivateRoute><UserProfile></UserProfile></PraivateRoute>,
       },
       {
         path: "notification",
-        element: <Notification></Notification>,
+        element: <PraivateRoute><Notification></Notification></PraivateRoute>,
       },
       {
         path: "dynamicprofile/:id",
@@ -65,19 +66,19 @@ const router = createBrowserRouter([
       },
       {
         path: "mynetwork",
-        element: <MyNetwork></MyNetwork>,
+        element: <PraivateRoute><MyNetwork></MyNetwork></PraivateRoute>,
       },
       {
         path: "jobsroute",
-        element: <JobsRoute></JobsRoute>,
+        element: <PraivateRoute><JobsRoute></JobsRoute></PraivateRoute>,
       },
       {
         path: "massageroute",
-        element: <MessagingRoute></MessagingRoute>,
+        element: <PraivateRoute><MessagingRoute></MessagingRoute></PraivateRoute>,
       },
       {
         path: "projectupdate/:id",
-        element: <UserProjectUpdateForm></UserProjectUpdateForm>,
+        element: <PraivateRoute><UserProjectUpdateForm></UserProjectUpdateForm></PraivateRoute>,
       },
       {
         path: "termsandconditions",
@@ -85,11 +86,11 @@ const router = createBrowserRouter([
       },
       {
         path: "jobApplyForm/:id",
-        element: <JobApplyForm></JobApplyForm>,
+        element: <PraivateRoute><JobApplyForm></JobApplyForm></PraivateRoute>,
       },
       {
         path: "jobTaskForm",
-        element: <JobTaskForm />,
+        element: <PraivateRoute><JobTaskForm /></PraivateRoute>,
       },
       {
         path: "about",
@@ -132,7 +133,7 @@ const router = createBrowserRouter([
 
   {
     path: "dashbord",
-    element: <Dashbord />,
+    element: <PraivateRoute><Dashbord /></PraivateRoute>,
     children: [
       {
         path: "adminhome",

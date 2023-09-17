@@ -7,6 +7,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Lottie from "lottie-react";
 import signupanimation from "../../../assets/animation/105639-signup.json";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
+import { sendEmailVerification } from "firebase/auth";
 
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
@@ -54,8 +55,13 @@ const Register = () => {
             const imgURL = imageResponse.data.display_url;
             createUser(data.email, data.password)
               .then((result) => {
+                const user = result.user;
+                console.log(user);
+                if (user.emailVerified === false) {
+                  logOut();
+                  return setError("Email is not verified");
+                }
                 updateUserProfile(data.name, imgURL);
-                console.log(loggedUser);
                 const saveUser = {
                   name: data.name,
                   email: data.email,
@@ -113,6 +119,20 @@ const Register = () => {
     } else {
       setError("Wrong password. Please re-type your password.");
     }
+  };
+
+  const sendVerificationEmail = (user) => {
+    sendEmailVerification(user)
+      .then((result) => {
+        console.log(result);
+        Swal.fire({
+          position: 'center',
+          icon: 'warning',
+          title: 'Before login Your email Verify Please',
+          showConfirmButton: false,
+          timer: 1500
+        });
+      });
   };
 
   return (

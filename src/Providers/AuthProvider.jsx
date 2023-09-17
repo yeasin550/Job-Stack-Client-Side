@@ -76,7 +76,7 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
         axios
           .post("https://jobstack-backend-teal.vercel.app/jwt", {
-            email: currentUser.email,
+            email: currentUser?.email,
           })
           .then((data) => {
             console.log(data.data.token);
