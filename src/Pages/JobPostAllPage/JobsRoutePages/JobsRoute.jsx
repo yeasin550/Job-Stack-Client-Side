@@ -70,14 +70,7 @@ UseScrollTop(pathname);
               >
                 <FaHouseDamage /> All Jobs
               </Tab>
-              <Tab
-                onClick={() => clickactive("group")}
-                className={` flex items-center gap-3 cursor-pointer userinfotext ${
-                  active == "group" ? "activetab cursor-pointer" : ""
-                }`}
-              >
-                <FaBell /> Job Alerts
-              </Tab>
+             
               <Tab
                 onClick={() => clickactive("jobTask")}
                 className={` flex items-center gap-3 cursor-pointer userinfotext ${
@@ -199,9 +192,6 @@ UseScrollTop(pathname);
                 </div>
               </div>
             </TabPanel>
-
-            {/* user Job alert */}
-            <TabPanel>The Job Notification section</TabPanel>
             {/* Job Task tab */}
             <TabPanel>
               <h1 className="text-center font-bold text-3xl text-blue-700 mt-3">

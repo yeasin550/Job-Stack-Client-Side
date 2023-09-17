@@ -29,15 +29,18 @@ const AppliedJobs = () => {
                   <th>Sl</th>
                   <th>image</th>
                   <th>User Name</th>
-                  <th>User Email</th>
+                  <th className="text-center">User Email</th>
                   <th>User Number</th>
                   <th className="text-center">Resume</th>
-                  <th>Task</th>
+                  <th className="text-center">Task</th>
                 </tr>
               </thead>
               <tbody>
                 {appliedJobs?.map((appliedJob, index) => (
-                  <tr key={appliedJob._id}>
+                  <tr
+                    key={appliedJob._id}
+                    className="dark:bg-white dark:text-black dark:border-red-950"
+                  >
                     <td>{index + 1}</td>
                     <td>
                       <img
@@ -51,14 +54,20 @@ const AppliedJobs = () => {
                     <td>+{appliedJob?.number}</td>
                     <td>
                       <label htmlFor="my_modal_6">
-                        <h1 className="font-semibold text-white text-center cursor-pointer text-sm bg-green-500 px-2 py-1 rounded-md">
+                        <h1
+                          className=" text-white hover:shadow-md px-3 py-1 rounded-md hover:border-purple-700 border 
+                        bg-green-600 text-center hover:bg-blue-800  duration-300   bg-gradient-to-r from-green-700 to-blue-700   hover:from-blue-900 hover:to-purple-900 transition-all"
+                        >
                           View Resume
                         </h1>
                       </label>
                     </td>
                     <td>
                       <Link to="/jobTaskForm">
-                        <h1 className="font-semibold text-white text-center cursor-pointer text-sm bg-green-500 px-2 py-1 rounded-md">
+                        <h1
+                          className=" text-white hover:shadow-md px-3 py-1 rounded-md hover:border-purple-700 border 
+                        bg-green-600 text-center hover:bg-blue-800  duration-300   bg-gradient-to-r from-green-700 to-blue-700   hover:from-blue-900 hover:to-purple-900 transition-all"
+                        >
                           Send
                         </h1>
                       </Link>

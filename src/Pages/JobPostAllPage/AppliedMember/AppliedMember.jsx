@@ -39,7 +39,10 @@ const AppliedMember = () => {
               </thead>
               <tbody>
                 {appliedmember?.map((posts, index) => (
-                  <tr key={posts._id}>
+                  <tr
+                    key={posts._id}
+                    className="dark:bg-white dark:text-black dark:border-red-950"
+                  >
                     <td>{index + 1}</td>
                     <td>
                       <img
@@ -52,7 +55,9 @@ const AppliedMember = () => {
                       {posts?.jobTitle} <br />
                       {posts?.jobCategory}
                     </td>
-                    <td>Canada{posts?.location} & {posts?.workplace}</td>
+                    <td>
+                      Canada{posts?.location} & {posts?.workplace}
+                    </td>
                     <td>{posts?.postDate}</td>
                     <td>Front-End{posts?.position}</td>
                     <td>${posts?.salary}</td>
