@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { AiFillHome, AiFillMessage, AiFillShopping } from "react-icons/ai";
+import { AiFillHome, AiFillMessage, AiFillShopping, AiTwotoneStar } from "react-icons/ai";
 import {
   FaUserCircle,
   FaUserFriends,
@@ -95,6 +95,14 @@ const Dashbord = () => {
                   <a>
                     <FaUsersSlash />
                     User Report
+                  </a>
+                </li>
+              </Link>
+              <Link to="/dashbord/all-review">
+                <li>
+                  <a>
+                    <AiTwotoneStar />
+                    Review
                   </a>
                 </li>
               </Link>

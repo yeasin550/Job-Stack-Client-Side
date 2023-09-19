@@ -11,7 +11,7 @@ const UserArticle = () => {
   });
   return (
     <div>
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-2 gap-8">
         {articles.map((article) => (
           <ArticleCard key={article._id} article={article} />
         ))}

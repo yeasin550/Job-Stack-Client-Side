@@ -267,7 +267,7 @@ const SelfPostDesign = ({ selfpost }) => {
         {/* shear the post */}
         <div className="dropdown dropdown-bottom dark:text-black flex items-center">
           <label tabIndex={0}>
-            <div className="flex items-center text-white gap-1 z-50">
+            <div className="flex items-center gap-1 z-50">
               <FaShare size={20} className="cursor-pointer text" />
               <h4 className="text-lg">Share</h4>
             </div>
