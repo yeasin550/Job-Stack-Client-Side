@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import { useForm } from 'react-hook-form';
 import useAxioSequre from '../../../Hooks/useAxiosSequre';
 import toast from 'react-hot-toast';
+import ReactStars from "react-rating-stars-component";
 
 const ReviewFrom = () => {
   const {
@@ -13,7 +14,12 @@ const ReviewFrom = () => {
     formState: { errors },
   } = useForm();
     const { user } = useContext(AuthContext);
-    const [axiosSequre] = useAxioSequre();
+  const [axiosSequre] = useAxioSequre();
+  const [rating, setRating] = useState(0);
+  
+   const handleRatingChange = (newRating) => {
+     setRating(newRating);
+   };
 
  const onSubmit = (data) => {
    const review = {
@@ -21,6 +27,8 @@ const ReviewFrom = () => {
      userName: user?.displayName,
      userPhoto: user?.photoURL,
      userEamil: user?.email,
+     status: "pending",
+     rating,
    };
    console.log(review);
    axiosSequre.post("/review", review).then((data) => {
@@ -53,7 +61,13 @@ const ReviewFrom = () => {
             <span className="text-red-800">Name is required</span>
           )}
         </div>
-
+        <ReactStars
+          count={5}
+          onChange={handleRatingChange}
+          size={40}
+          activeColor="#ffd700"
+          value={rating}
+        />
         <div className="">
           <label className="label">
             <span className="label-text">Review</span>
@@ -69,11 +83,7 @@ const ReviewFrom = () => {
           )}
         </div>
         <div className="form-control mt-6">
-          <input
-            className="btn btn-primary"
-            type="submit"
-            value="Submit"
-          />
+          <input className="btn btn-primary" type="submit" value="Submit" />
         </div>
       </form>
     </div>
