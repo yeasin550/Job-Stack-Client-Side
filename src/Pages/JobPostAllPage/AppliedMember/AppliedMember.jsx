@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 
 const AppliedMember = () => {
-  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [axiosSequre] = useAxioSequre();
 
@@ -15,8 +14,7 @@ const AppliedMember = () => {
     async () => {
       const res = await axiosSequre.get(`appliedmember/${user?.email}`);
       return res.data;
-    }
-  );
+    });
   console.log(appliedmember);
   return (
     <div>
