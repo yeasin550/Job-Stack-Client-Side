@@ -7,13 +7,13 @@ import Subscribe from './Subscribe';
 
 const AboutPage = () => {
     return (
-        <div>
-            <AboutBanner />
-            <MostPopular />
-            <QuestionsAnswers />
-            <Subscribe/>
-            <GoToTop/>
-        </div>
+      <div className="dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black dark:text-white">
+        <AboutBanner />
+        <MostPopular />
+        <QuestionsAnswers />
+        <Subscribe />
+        <GoToTop />
+      </div>
     );
 };
 

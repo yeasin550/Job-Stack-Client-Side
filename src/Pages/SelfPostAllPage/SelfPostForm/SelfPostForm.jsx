@@ -91,7 +91,6 @@ const SelfPostForm = () => {
       .then((uploadImage) => {
         if (uploadImage.success) {
           const imgUrl = uploadImage.data.display_url;
-
           const form = event.target;
           const name = form.name.value;
           const image = imgUrl;
@@ -161,7 +160,6 @@ const SelfPostForm = () => {
       .then((uploadImage) => {
         if (uploadImage.success) {
           const imgUrl = uploadImage.data.display_url;
-
           const form = event.target;
           const articletitle = form.articletitle.value;
           const image = imgUrl;
@@ -227,7 +225,7 @@ const SelfPostForm = () => {
               className="flex items-center gap-1 px-6 py-1 hover:bg-slate-100 rounded-md"
               htmlFor="file-input"
             >
-              <HiPhoto className="text-[#5f9b41] text-xl" />
+              <HiPhoto className="text-[#09867E] text-xl" />
               <p>Photo</p>
             </label>
             <input className="hidden" type="file" />
@@ -238,7 +236,7 @@ const SelfPostForm = () => {
               className="flex items-center gap-1 px-6 py-1 hover:bg-slate-100 rounded-md"
               htmlFor="file-input"
             >
-              <SlCalender className="text-[#5f9b41] text-xl" />
+              <SlCalender className="text-[#09867E] text-xl" />
               <p>Event</p>
             </label>
             <input className="hidden" type="file" />
@@ -248,7 +246,7 @@ const SelfPostForm = () => {
               className="flex items-center gap-1 px-6 py-1 hover:bg-slate-100 rounded-md"
               htmlFor="file-input"
             >
-              <TfiWrite className="text-[#5f9b41] text-xl" />
+              <TfiWrite className="text-[#09867E] text-xl" />
               <p>Write article</p>
             </label>
             <input className="hidden" type="file" />
@@ -321,7 +319,7 @@ const SelfPostForm = () => {
                 />
               </div>
             </div>
-            <button className="w-full py-2 mt-3 bg-green-500 rounded-md text-white cursor-pointer">
+            <button className="w-full py-2 mt-3 bg-[#09867E] rounded-md text-white cursor-pointer">
               <input type="submit" value="Post" />
             </button>
             {/* modal clone button */}
@@ -421,7 +419,7 @@ const SelfPostForm = () => {
               </div>
             </div>
 
-            <button className="w-full py-2 mt-3 bg-green-500 rounded-md text-white cursor-pointer">
+            <button className="w-full py-2 mt-3 bg-[#09867E] rounded-md text-white cursor-pointer">
               <input type="submit" value="Post" />
             </button>
             {/* modal clone button */}
@@ -481,7 +479,7 @@ const SelfPostForm = () => {
               </div>
             </div>
 
-            <button className="w-full py-2 mt-3 bg-green-500 rounded-md text-white cursor-pointer">
+            <button className="w-full py-2 mt-3 bg-[#09867E] rounded-md text-white cursor-pointer">
               <input type="submit" value="Post" />
             </button>
             {/* modal clone button */}

@@ -107,8 +107,9 @@
 /* brows button */
 .banner-button {
   background: transparent;
-  color: #ffffff;
   font-size: 17px;
+  color: #fff;
+  background-color: #09867E;
   text-transform: uppercase;
   font-weight: 600;
   border: none;

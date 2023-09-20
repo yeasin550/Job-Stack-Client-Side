@@ -28,7 +28,7 @@ const ContactBasicInfo = () => {
       </div>
       {/* contact info  */}
       {/* Basic INfo  */}
-      <div className="flex flex-col shadowdiv border p-4 rounded-md mt-4">
+      <div className="flex flex-col shadowdiv border p-4 rounded-md mt-4 dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black dark:text-white">
         <h1 className="text-[20px] font-sans font-semibold">Basic Info</h1>
         <UserBasicinfoPostForm></UserBasicinfoPostForm>
         {singleUser?.map((basicinfo) => (

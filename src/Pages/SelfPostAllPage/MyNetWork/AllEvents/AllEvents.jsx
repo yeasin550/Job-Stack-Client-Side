@@ -11,7 +11,7 @@ const AllEvents = () => {
   });
   return (
     <div>
-      <div className="grid md:grid-cols-3 gap-10 ">
+      <div className=" ">
         {events.map((event) => (
           <EventCard key={event._id} event={event} />
         ))}

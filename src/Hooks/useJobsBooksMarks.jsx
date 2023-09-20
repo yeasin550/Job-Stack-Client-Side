@@ -1,21 +1,49 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import useAxioSequre from "./useAxiosSequre";
+import { AuthContext } from "../Providers/AuthProvider";
+// import { data } from "autoprefixer";
 
 const useJobsBooksMarks = () => {
+  const {user} = useContext(AuthContext)
   const [userEroor, setUserError] = useState("");
   const [axiosSequre] = useAxioSequre();
 
 
   const handleBookMark = (bookMarksData) => {
+    const {
+      companyName,
+      email,
+      image,
+      jobCategory,
+      jobDescription,
+      jobTitle,
+      location,
+      salary,
+      userPhoto,
+      workplace,
+    } = bookMarksData;
+    const postbookMark = {
+      companyName,
+      email,
+      image,
+      jobCategory,
+      jobDescription,
+      jobTitle,
+      location,
+      salary,
+      userPhoto,
+      workplace,
+      bookmarkEmail: user?.email,
+    };
     axiosSequre
-      .post("/bookMarkJobs", bookMarksData)
+      .post("/bookMarkJobs", postbookMark)
       .then((response) => {
         console.log(response);
         if (response.data.insertedId) {
           Swal.fire({
             icon: "success",
-            title: "Job post successfully",
+            title: "BookMarks Jobs successfully",
             showConfirmButton: false,
             timer: 3000,
           });

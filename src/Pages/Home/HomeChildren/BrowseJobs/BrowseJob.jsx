@@ -16,7 +16,7 @@ const BrowseJob = () => {
      },
    });
   return (
-    <div className="lg:px-14 banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
+    <div className="max-w-screen-xl mx-auto px-5 my-20 dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
       <div className="grid md:grid-cols-2 gap-5 justify-center ">
         {/* left site */}
         <div className="w-full px-3 lg:px-0">
@@ -29,10 +29,10 @@ const BrowseJob = () => {
         </div>
         {/* right site */}
         <div className="px-3 md:px-0 ">
-          <h1 className="lg:text-[32px] text-2xl   text-transparent bg-clip-text  bg-gradient-to-r from-white via-yellow-400 to-white font-bold  ">
+          <h1 className="lg:text-[32px] text-2xl font-bold  ">
             Trusted & Popular Job and Career Link up site
           </h1>
-          <p className="mt-7  text-[18px] text-white md:text-justify">
+          <p className="mt-7  text-[18px] md:text-justify">
             Welcome to Job-Stack, your trusted and popular destination for
             connecting with exciting job opportunities and advancing your
             career. Join our thriving community of professionals, where you can
@@ -40,9 +40,9 @@ const BrowseJob = () => {
             to your dream job today!
           </p>
           <div className="flex mt-10 flex-col md:flex-row justify-center items-center gap-4 md:justify-evenly md:mt-5">
-            <div className="text-center  shadowform rounded-lg p-1 w-44  text-white">
+            <div className="text-center bg-[#09867E] text-white rounded-lg p-1 w-44 ">
               <ScrollTrigger
-                className="text-3xl font-bold"
+                className="text-3xl font-bold "
                 onEnter={() => setCountOn(true)}
                 onExit={() => setCountOn(false)}
               >
@@ -54,7 +54,7 @@ const BrowseJob = () => {
               <h1 className="">Job Available</h1>
             </div>
 
-            <div className="text-center   shadowform rounded-lg p-1 w-44  text-white">
+            <div className="text-center bg-[#09867E] text-white rounded-lg p-1 w-44 ">
               <ScrollTrigger
                 className="text-3xl font-bold "
                 onEnter={() => setCountOn(true)}
@@ -68,7 +68,7 @@ const BrowseJob = () => {
               <h1 className="">Submitted CV</h1>
             </div>
 
-            <div className="text-center  shadowform rounded-lg p-1 w-44  text-white">
+            <div className="text-center bg-[#09867E] text-white rounded-lg p-1 w-44 ">
               <ScrollTrigger
                 className="text-3xl font-bold "
                 onEnter={() => setCountOn(true)}
@@ -83,7 +83,7 @@ const BrowseJob = () => {
             </div>
           </div>
           <div className="flex flex-col lg:flex-row justify-center items-center gap-4 md:gap-0 md:justify-evenly mt-5">
-            <div className="text-center   shadowform rounded-lg p-1 w-44  text-white">
+            <div className="text-center bg-[#09867E] text-white  rounded-lg p-1 w-44 ">
               <ScrollTrigger
                 className="text-3xl font-bold "
                 onEnter={() => setCountOn(true)}
@@ -97,7 +97,7 @@ const BrowseJob = () => {
               <h1 className="">Registered Member</h1>
             </div>
 
-            <div className="text-center  shadowform rounded-lg p-1 w-44  text-white">
+            <div className="text-center bg-[#09867E] text-white rounded-lg p-1 w-44 ">
               <ScrollTrigger
                 className="text-3xl font-bold "
                 onEnter={() => setCountOn(true)}

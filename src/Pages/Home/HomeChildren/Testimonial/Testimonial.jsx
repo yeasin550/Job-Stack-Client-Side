@@ -13,6 +13,8 @@ import "aos/dist/aos.css";
 import useAxioSequre from "../../../../Hooks/useAxiosSequre";
 import { useQuery } from "@tanstack/react-query"; 
 import images from "../../../../assets/images/images.jpg";
+import { Rating, StickerStar } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
 
 const Testimonial = () => {
   // aos annimation
@@ -20,20 +22,28 @@ const Testimonial = () => {
     Aos.init();
   }, []);
 
-    const [axiosSequre] = useAxioSequre();
-    const { data: review = [], refetch } = useQuery(["review"], async () => {
-      const res = await axiosSequre.get("/review");
-      return res.data;
-    });
-  
+  const [axiosSequre] = useAxioSequre();
+  const { data: review = [], refetch } = useQuery(["review"], async () => {
+    const res = await axiosSequre.get("/review");
+    return res.data;
+  });
+
+  const reviews = review.filter(sreview=> sreview.status === "aproved");
+
+   const myStyles = {
+     itemShapes: StickerStar,
+     activeFillColor: "#F5C60D",
+     inactiveFillColor: "#6C6962",
+   };
+
   return (
-    <div className="banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black py-12">
+    <div className=" dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black py-12">
       <div className="max-w-screen-xl px-5 mx-auto">
         <div className="text-center">
-          <p className="text-4xl text-transparent bg-clip-text uppercase  bg-gradient-to-r from-white to-yellow-400 font-bold mb-2">
+          <p className="text-4xl uppercase font-bold mb-2">
             Clents Testimonials
           </p>
-          <h1 className="md:text-lg text-[16px]  text-white  mb-8">
+          <h1 className="md:text-lg text-[16px] mb-8">
             What A Job Holder Says About Us
           </h1>
         </div>
@@ -65,9 +75,12 @@ const Testimonial = () => {
           modules={[Autoplay, FreeMode, Pagination]}
           className="mySwiper"
         >
-          {review?.map((reviews) => (
-            <SwiperSlide key={reviews?._id} className="my-10 text-center categorires-card dark:text-black">
-              <div className="bg-slate-100 h-60 py-5 px-10 rounded-md">
+          {reviews?.map((reviews) => (
+            <SwiperSlide
+              key={reviews?._id}
+              className="my-10 text-center  categorires-card dark:text-black"
+            >
+              <div className="bg-[#E0FEFC] h-60 py-5 px-10 rounded-md">
                 <div className="flex justify-center mb-3">
                   <img
                     className="h-20 w-20 rounded-full -mt-14"
@@ -77,12 +90,13 @@ const Testimonial = () => {
                 </div>
                 <div className="">
                   <h1 className="text-xl font-bold">{reviews.userName}</h1>
-                  <div className="flex justify-center text-yellow-400 mt-1">
-                    <AiTwotoneStar />
-                    <AiTwotoneStar />
-                    <AiTwotoneStar />
-                    <AiTwotoneStar />
-                    <AiTwotoneStar />
+                  <div className="mt-1 flex justify-center mb-2">
+                    <Rating
+                      style={{ width: "90px" }}
+                      value={Math.round(reviews.rating || 0)}
+                      readOnly
+                      itemStyles={myStyles}
+                    />
                   </div>
                   <p>{reviews.reviewtext}</p>
                 </div>

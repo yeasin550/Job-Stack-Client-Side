@@ -31,8 +31,8 @@ const EveryOneSerchJob = () => {
   };
 
   return (
-    <div className="banner px-5 py-24">
-      <h1 className="lg:text-5xl text-transparent bg-clip-text  bg-gradient-to-r from-pink-100 via-yellow-400 to-white text-3xl text-center my-8">
+    <div className="max-w-screen-xl mx-auto px-5 py-24">
+      <h1 className="lg:text-5xl text-3xl text-center my-8">
         Find Your Career. You Deserve it.
       </h1>
       {/* job category ways filter */}
@@ -68,7 +68,7 @@ const EveryOneSerchJob = () => {
 
       {/* job data display */}
       {jobposts ? (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center lg:px-10 px-3 py-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center  py-10">
           {jobposts
             .filter(handleFilter)
             .filter((post) => {
@@ -93,12 +93,16 @@ const EveryOneSerchJob = () => {
                       />
                     </div>
                     <div>
-                      <p className="text-[20px] uppercase  font-bold font-sans">{posts?.companyName}</p>
+                      <p className="text-[20px] uppercase  font-bold font-sans">
+                        {posts?.companyName}
+                      </p>
                       <p className="text-green-500 ">{posts?.location}</p>
                     </div>
                   </div>
                   <div>
-                    <h2 className="text-[20px] text-gray-500 font-thin mt-2 mb-1">{posts?.jobTitle}</h2>
+                    <h2 className="text-[20px] text-gray-500 font-thin mt-2 mb-1">
+                      {posts?.jobTitle}
+                    </h2>
                     <h5 className=" text-blue-500">{posts?.workplace}</h5>
                     <h6 className="my-2 ">HTML, CSS, JavaScript, React</h6>
                     <div>
@@ -109,10 +113,10 @@ const EveryOneSerchJob = () => {
                             <span className="text-xs">monthly</span>
                           </h1>
                         </div>
-                         <div>
+                        <div>
                           <button
                             onClick={() => navigate(`/dynamic/${posts?._id}`)}
-                            className="btn btn-sm border hover:bg-blue-400 hover:text-white border-cyan-300 "
+                            className="btn btn-sm border hover:bg-[#09867E] hover:text-white border-cyan-300 "
                           >
                             View Details
                           </button>

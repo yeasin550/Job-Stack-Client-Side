@@ -63,7 +63,7 @@ const UserProfile = () => {
             )}
             <label
               htmlFor="my_modal_13"
-              className="text-[20px] text-white btn-md absolute bottom-3 right-3 font-bold btn btn-circle border-none hover:bg-blue-600 bg-blue-500"
+              className="text-[20px] text-white btn-md absolute bottom-3 right-3 font-bold btn btn-circle border-none hover:bg-[#09867E] bg-[#09867E]"
             >
               <FaPen></FaPen>
             </label>
@@ -97,7 +97,7 @@ const UserProfile = () => {
           <div className="flex justify-end relative mr-4 -top-24">
             <label
               htmlFor="my_modal_19"
-              className="flex justify-center items-center gap-2 hover:bg-green-500 btn bg-green-500 text-white btn-sm"
+              className="flex justify-center items-center gap-2 hover:bg-[#09867E] btn bg-[#09867E] text-white btn-sm"
             >
               <FaPen></FaPen> Edit Profile
             </label>
@@ -109,52 +109,71 @@ const UserProfile = () => {
             onSelect={(index) => setTabIndex(index)}
           >
             <TabList className="flex justify-center items-center border py-2 profile-shadow  gap-6 mb-8">
-
-              {
-                isCompany ? <>
+              {isCompany ? (
+                <>
                   <Tab
                     onClick={() => clickactive("jobpost")}
-                    className={` cursor-pointer text ${active == "jobpost" ? "active cursor-pointer" : ""}`}>
+                    className={` cursor-pointer text ${
+                      active == "jobpost" ? "active cursor-pointer" : ""
+                    }`}
+                  >
                     Job Post
                   </Tab>
-                </> : <>
-
+                </>
+              ) : (
+                <>
                   <Tab
                     onClick={() => clickactive("post")}
-                    className={` cursor-pointer text ${active == "post" ? "active cursor-pointer" : ""}`}>
+                    className={` cursor-pointer text ${
+                      active == "post" ? "active cursor-pointer" : ""
+                    }`}
+                  >
                     Post
                   </Tab>
 
                   <Tab
                     onClick={() => clickactive("about")}
-                    className={` cursor-pointer text ${active == "about" ? "active cursor-pointer" : ""}`}>
+                    className={` cursor-pointer text ${
+                      active == "about" ? "active cursor-pointer" : ""
+                    }`}
+                  >
                     About
                   </Tab>
                   <Tab
                     onClick={() => clickactive("connect")}
-                    className={` cursor-pointer text ${active == "connect" ? "active cursor-pointer" : ""}`}>
+                    className={` cursor-pointer text ${
+                      active == "connect" ? "active cursor-pointer" : ""
+                    }`}
+                  >
                     Connect
                   </Tab>
                   <Tab
                     onClick={() => clickactive("more")}
-                    className={` cursor-pointer text ${active == "more" ? "active cursor-pointer" : ""}`}>
+                    className={` cursor-pointer text ${
+                      active == "more" ? "active cursor-pointer" : ""
+                    }`}
+                  >
                     More
                   </Tab>
                 </>
-              }
+              )}
             </TabList>
-            {
-              isCompany ? <>
+            {isCompany ? (
+              <>
                 <TabPanel>
                   <JobPostForm refetch={refetch}></JobPostForm>
-                   <div>
+                  <div>
                     {singlejobposts?.map((posts) => (
-                      <JobPostDesign key={posts?._id} posts={posts}></JobPostDesign>
+                      <JobPostDesign
+                        key={posts?._id}
+                        posts={posts}
+                      ></JobPostDesign>
                     ))}
                   </div>
                 </TabPanel>
-              </> : <>
-
+              </>
+            ) : (
+              <>
                 <TabPanel>
                   <SelfPostForm></SelfPostForm>
                   <div className="grid md:grid-cols-1 justify-items-center  gap-10 mt-10 ">
@@ -180,7 +199,7 @@ const UserProfile = () => {
                   <Temporary></Temporary>
                 </TabPanel>
               </>
-            }
+            )}
           </Tabs>
         </div>
       </div>
@@ -192,7 +211,7 @@ const UserProfile = () => {
             <div className="modal-action">
               <label
                 htmlFor="my_modal_13"
-                className="btn text-white btn-circle bg-green-600 border-none absolute top-3 right-3"
+                className="btn text-white btn-circle bg-[#09867E] border-none absolute top-3 right-3"
               >
                 X
               </label>
@@ -208,7 +227,7 @@ const UserProfile = () => {
               <input
                 type="submit"
                 value="Update"
-                className="w-full bg-green-600 mt-4 text-white h-10 rounded-lg"
+                className="w-full bg-[#09867E] mt-4 text-white h-10 rounded-lg"
               />
             </form>
           </div>
@@ -222,7 +241,7 @@ const UserProfile = () => {
             <div className="modal-action">
               <label
                 htmlFor="my_modal_19"
-                className="btn text-white btn-circle bg-green-600 border-none absolute top-3 right-3"
+                className="btn text-white btn-circle bg-[#09867E] border-none absolute top-3 right-3"
               >
                 X
               </label>
@@ -242,7 +261,7 @@ const UserProfile = () => {
                 <input
                   type="submit"
                   value="Save Changes"
-                  className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg"
+                  className="w-4/12 mx-auto bg-[#09867E] mt-4 text-white h-10 rounded-lg"
                 />
               </div>
             </form>
@@ -261,7 +280,7 @@ const UserProfile = () => {
                 <input
                   type="submit"
                   value="Save Changes"
-                  className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg"
+                  className="w-4/12 mx-auto bg-[#09867E] mt-4 text-white h-10 rounded-lg"
                 />
               </div>
             </form>
@@ -280,7 +299,7 @@ const UserProfile = () => {
                 <input
                   type="submit"
                   value="Save Changes"
-                  className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg"
+                  className="w-4/12 mx-auto bg-[#09867E] mt-4 text-white h-10 rounded-lg"
                 />
               </div>
             </form>
@@ -299,7 +318,7 @@ const UserProfile = () => {
                 <input
                   type="submit"
                   value="Save Changes"
-                  className="w-4/12 mx-auto bg-green-600 mt-4 text-white h-10 rounded-lg"
+                  className="w-4/12 mx-auto bg-[#09867E] mt-4 text-white h-10 rounded-lg"
                 />
               </div>
             </form>

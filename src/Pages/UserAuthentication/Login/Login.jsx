@@ -77,7 +77,7 @@ const Login = () => {
 
   return (
     <div className="banner">
-      <div className="flex flex-col lg:flex-row justify-center items-center py-:10 px-2 lg:gap-5 gap-5 lg:px-20">
+      <div className="flex flex-col lg:flex-row justify-center items-center dark:bg-gradient-to-r from-gray-700 via-gray-900 py-:10 px-2 lg:gap-5 gap-5 lg:px-20">
         {/* Login div start */}
         <div className="w-full lg:px-10">
           <form

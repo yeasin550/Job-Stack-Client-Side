@@ -11,11 +11,13 @@ const AllArticles = () => {
   });
 
   return (
-    <div className="my-20 mx-3">
-      <div className="grid md:grid-cols-3 gap-7">
-        {articles.map((article) => (
-          <Articles key={article._id} article={article}></Articles>
-        ))}
+    <div className="max-w-screen-xl mx-auto px-5">
+      <div className="my-20 mx-3">
+        <div className="grid md:grid-cols-3 gap-7">
+          {articles.map((article) => (
+            <Articles key={article._id} article={article}></Articles>
+          ))}
+        </div>
       </div>
     </div>
   );

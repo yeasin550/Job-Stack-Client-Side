@@ -11,7 +11,7 @@ const MostPopular = () => {
       <div className="max-w-screen-xl px-5 mx-auto my-20">
         <div className="grid md:grid-cols-2 gap-5">
           <div className="">
-            <img src={images} alt="banner images" draggable="false" />
+            <img src={images} alt="bg-[#09867E] images" draggable="false" />
           </div>
           <div className="">
             <h1 className="text-2xl font-bold"> Why We are Most Popular</h1>
@@ -27,37 +27,37 @@ const MostPopular = () => {
             </p>
             <div className="mt-5 grid grid-cols-2 gap-5">
               <div className="flex items-center gap-2 text-xl">
-                <button className="banner rounded-full p-2 text-white">
+                <button className="bg-[#09867E] rounded-full p-2 text-white">
                   <FaUsers />
                 </button>
                 <h1 className="font-semibold">Career Connect</h1>
               </div>
               <div className="flex items-center gap-2 text-xl">
-                <button className="banner rounded-full p-2 text-white">
+                <button className="bg-[#09867E] rounded-full p-2 text-white">
                   <FaSearch />
                 </button>
                 <h1 className="font-semibold">Job Search</h1>
               </div>
               <div className="flex items-center gap-2 text-xl">
-                <button className="banner rounded-full p-2 text-white">
+                <button className="bg-[#09867E] rounded-full p-2 text-white">
                   <HiPhoto />
                 </button>
                 <h1 className="font-semibold">User Post</h1>
               </div>
               <div className="flex items-center gap-2 text-xl">
-                <button className="banner rounded-full p-2 text-white">
+                <button className="bg-[#09867E] rounded-full p-2 text-white">
                   <GoDeviceDesktop />
                 </button>
                 <h1 className="font-semibold"> Top Companies</h1>
               </div>
               <div className="flex items-center gap-2 text-xl">
-                <button className="banner rounded-full p-2 text-white">
+                <button className="bg-[#09867E] rounded-full p-2 text-white">
                   <MdOutlineShoppingBag />
                 </button>
                 <h1 className="font-semibold">International Job</h1>
               </div>
               <div className="flex items-center gap-2 text-xl">
-                <button className="banner rounded-full p-2 text-white">
+                <button className="bg-[#09867E] rounded-full p-2 text-white">
                   <TfiWrite />
                 </button>
                 <h1 className="font-semibold"> Trusted & Quality Job</h1>

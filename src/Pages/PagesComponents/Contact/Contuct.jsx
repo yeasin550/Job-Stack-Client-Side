@@ -5,11 +5,11 @@ import GoToTop from '../../Shared/GoToTop/GoToTop';
 
 const Contuct = () => {
     return (
-        <div>
-            <ContuctBanner/>
-            <Contact />
-            <GoToTop/>
-        </div>
+      <div className="dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black dark:text-white">
+        <ContuctBanner />
+        <Contact />
+        <GoToTop />
+      </div>
     );
 };
 

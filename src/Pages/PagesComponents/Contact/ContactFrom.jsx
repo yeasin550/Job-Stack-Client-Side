@@ -35,12 +35,12 @@ const ContactFrom = () => {
   };
 
   return (
-    <div className="max-w-screen-xl px-5 mx-auto my-20">
+    <div className="max-w-screen-xl px-5 mx-auto my-20 ">
       <div className="">
         <div className="grid md:grid-cols-4 gap-10">
           <div className="text-center">
             <div className="">
-              <button className="banner rounded-full p-5 text-3xl text-white ">
+              <button className="bg-[#09867E] rounded-full p-5 text-3xl text-white ">
                 <MdHouse />
               </button>
               <div>
@@ -51,7 +51,7 @@ const ContactFrom = () => {
           </div>
           <div className="text-center">
             <div className="">
-              <button className="banner rounded-full p-5 text-3xl text-white ">
+              <button className="bg-[#09867E] rounded-full p-5 text-3xl text-white ">
                 <MdEmail />
               </button>
               <div>
@@ -62,7 +62,7 @@ const ContactFrom = () => {
           </div>
           <div className="text-center">
             <div className="">
-              <button className="banner rounded-full p-5 text-3xl text-white ">
+              <button className="bg-[#09867E] rounded-full p-5 text-3xl text-white ">
                 <MdCall />
               </button>
               <div>
@@ -74,7 +74,7 @@ const ContactFrom = () => {
 
           <div className="text-center">
             <div className="">
-              <button className="banner rounded-full p-5 text-3xl text-white ">
+              <button className="bg-[#09867E] rounded-full p-5 text-3xl text-white ">
                 <LuMapPin />
               </button>
               <div>
@@ -169,7 +169,7 @@ const ContactFrom = () => {
             </div>
             <div className="form-control mt-6">
               <input
-                className="btn banner text-white"
+                className="btn bg-[#09867E] text-white"
                 type="submit"
                 value="Send Message"
               />
