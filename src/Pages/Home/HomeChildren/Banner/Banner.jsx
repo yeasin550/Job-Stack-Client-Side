@@ -23,20 +23,6 @@ const Banner = () => {
           <div className="items-center justify-center space-y-6 ">
             <h1 className="md:text-5xl font-black text-2xl">
               Find your <span className="text-[#09867E]">new job</span>
-              {/* <span className="md:text-5xl text-2xl font-bold">
-                <Typewriter
-                  options={{
-                    strings: [
-                      "Top Category Jobs Available",
-                      "To Get Your Dream Jobs",
-                      "Your Ultimate Job Search Hub",
-                      "Your Path to Success",
-                    ],
-                    autoStart: true,
-                    loop: true,
-                  }}
-                />
-              </span> */}
             </h1>
             <h1 className="md:text-5xl font-black  text-2xl">
               and build career
