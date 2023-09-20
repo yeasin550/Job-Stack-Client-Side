@@ -136,7 +136,7 @@ const Register = () => {
   };
 
   return (
-    <div className="banner flex flex-col lg:flex-row justify-center  items-center lg:gap-10 lg:px-20 px-2 pb-14">
+    <div className="shadowform flex flex-col lg:flex-row justify-center  items-center lg:gap-10 lg:px-20 px-2 pb-14">
       <div className="w-full lg:w-3/4">
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -269,7 +269,7 @@ const Register = () => {
             <input
               type="submit"
               value="Sign Up"
-              className="btn banner text-[18px] border-0 text-white"
+              className="btn bg-[#09867E] hover:bg-[#09867E] text-[18px] border-0 text-white"
             />
           </div>
           {userEroor && (

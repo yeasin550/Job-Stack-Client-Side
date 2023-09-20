@@ -4,9 +4,12 @@ import { FaBell } from "react-icons/fa";
 const Subscribe = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    form.reset()
   }
   return (
-    <div className="p-12  bg-[#09867E] text-white dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black rounded-md mb-20">
+    <div className="p-12 max-w-screen-xl px-5 mx-auto bg-[#09867E] text-white dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black rounded-md mb-20">
       <div className="md:flex justify-evenly items-center">
         {/* Frist div */}
         <div className="flex items-center gap-4">

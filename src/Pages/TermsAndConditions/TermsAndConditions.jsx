@@ -1,8 +1,12 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
+import UseScrollTop from "../../Hooks/UseScrollTop";
 
 const TermsAndConditions = () => {
+  const { pathname } = useLocation();
+  UseScrollTop(pathname);
   return (
-    <div className="banner text-white lg:px-16 px-3 mx-auto text-justify py-10 pb-10">
+    <div className="max-w-screen-xl px-5 mx-auto text-justify py-10 pb-10">
       <div className="mt-6">
         <h1 className="font-semibold text-2xl">Terms and Conditions</h1>
         <p className="mt-5 text-xl">

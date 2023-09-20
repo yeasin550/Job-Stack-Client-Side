@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const JobBanner = () => {
     return (
-      <div className="banner p-5 md:h-52 h-full rounded-md">
+      <div className="banner max-w-screen-xl px-5 mx-auto p-5 md:h-52 h-full rounded-md">
         <div className="md:flex justify-evenly items-center">
           <div>
             <h1 className="text-3xl font-semibold md:-mt-7">
