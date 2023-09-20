@@ -58,8 +58,8 @@ const CompanyRegistration = () => {
                 };
                 axiosSequre.post("/users", saveUser).then((data) => {
                   if (data?.data.insertedId) {
-                    reset();
-                    navigate("/")
+                     reset();
+                     navigate("/")
                     Swal.fire({
                       icon: "success",
                       title: "User created successfully.",
