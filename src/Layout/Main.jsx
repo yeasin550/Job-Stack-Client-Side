@@ -6,7 +6,11 @@ import { useEffect } from "react";
 import { useState } from "react";
 const Main = () => {
   const location = useLocation();
-  const noHeaderfooter = location.pathname.includes('login') || location.pathname.includes('signup') || location.pathname.includes('massageroute') || location.pathname.includes('companyregister') || location.pathname.includes('termsandconditions');
+  const noHeaderfooter = location.pathname.includes('login') ||
+    location.pathname.includes('signup') ||
+    location.pathname.includes('massageroute') ||
+    location.pathname.includes('companyregister') ||
+    location.pathname.includes('termsandconditions') || location.pathname.includes('notification');
 
   const [loading, setLoading] = useState(true);
   useEffect(() => {

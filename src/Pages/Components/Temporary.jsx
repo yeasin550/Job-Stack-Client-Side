@@ -3,11 +3,9 @@ import React, { useState } from 'react';
 const Temporary = () => {
 
     const [isOpen, setIsOpen] = useState(false);
-
     const openDiv = () => {
       setIsOpen(true);
     };
-  
     const closeDiv = () => {
       setIsOpen(false);
     };
@@ -23,3 +21,5 @@ const Temporary = () => {
 };
 
 export default Temporary;
+
+

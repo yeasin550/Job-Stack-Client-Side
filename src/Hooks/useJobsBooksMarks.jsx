@@ -9,6 +9,7 @@ const useJobsBooksMarks = () => {
   const [userEroor, setUserError] = useState("");
   const [axiosSequre] = useAxioSequre();
 
+
   const handleBookMark = (bookMarksData) => {
     const {
       companyName,
@@ -51,8 +52,8 @@ const useJobsBooksMarks = () => {
       .catch((error) => {
         setUserError(error.message);
       });
-    console.log("bookMarksData:", bookMarksData);
   };
+  console.log(userEroor);
 
   return [handleBookMark];
 };
