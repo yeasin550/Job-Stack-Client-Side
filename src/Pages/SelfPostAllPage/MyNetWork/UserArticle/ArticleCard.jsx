@@ -30,7 +30,7 @@ const ArticleCard = ({ article }) => {
                 {articletitle}
               </h2>
               <p className="text-sm mt-1">
-                {artciledescription.length < 150 ? (
+                {artciledescription?.length < 150 ? (
                   <>{artciledescription}</>
                 ) : (
                   <>{artciledescription.slice(0, 150)}...</>
