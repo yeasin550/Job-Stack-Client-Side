@@ -12,7 +12,7 @@ const ArticleBanner = () => {
         backgroundImage: `url(https://goupte.com/wp-content/uploads/2016/02/contact-banner.png)`,
       }}
     >
-      <div className="absolute inset-0 banner opacity-60"></div>
+      <div className="absolute inset-0 bg-[#09867E] opacity-60"></div>
       {/* Content */}
       <div className="absolute inset-0 flex items-center justify-center">
         <h1 className="text-white text-4xl font-bold">Article And News</h1>

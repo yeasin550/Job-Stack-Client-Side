@@ -93,7 +93,7 @@ const Reviews = () => {
                   ) : (
                     <button
                       onClick={() => handleAproved(post?._id)}
-                      className="btn btn-ghost bg-blue-600  text-white"
+                      className="btn btn-ghost bg-[#09867E]  text-white"
                     >
                       Approve
                     </button>

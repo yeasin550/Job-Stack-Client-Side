@@ -98,7 +98,7 @@ const AllUser = () => {
                   ) : (
                     <button
                       onClick={() => handleMakeAdmin(user)}
-                      className="btn btn-ghost bg-blue-600  text-white"
+                      className="btn btn-ghost bg-[#09867E]  text-white"
                     >
                       <FaUserShield />
                     </button>

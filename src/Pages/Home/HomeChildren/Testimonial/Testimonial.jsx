@@ -37,13 +37,13 @@ const Testimonial = () => {
    };
 
   return (
-    <div className="banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black py-12">
+    <div className=" dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black py-12">
       <div className="max-w-screen-xl px-5 mx-auto">
         <div className="text-center">
-          <p className="text-4xl text-transparent bg-clip-text uppercase  bg-gradient-to-r from-white to-yellow-400 font-bold mb-2">
+          <p className="text-4xl uppercase font-bold mb-2">
             Clents Testimonials
           </p>
-          <h1 className="md:text-lg text-[16px]  text-white  mb-8">
+          <h1 className="md:text-lg text-[16px] mb-8">
             What A Job Holder Says About Us
           </h1>
         </div>
@@ -78,9 +78,9 @@ const Testimonial = () => {
           {reviews?.map((reviews) => (
             <SwiperSlide
               key={reviews?._id}
-              className="my-10 text-center categorires-card dark:text-black"
+              className="my-10 text-center  categorires-card dark:text-black"
             >
-              <div className="bg-slate-100 h-60 py-5 px-10 rounded-md">
+              <div className="bg-[#E0FEFC] h-60 py-5 px-10 rounded-md">
                 <div className="flex justify-center mb-3">
                   <img
                     className="h-20 w-20 rounded-full -mt-14"
