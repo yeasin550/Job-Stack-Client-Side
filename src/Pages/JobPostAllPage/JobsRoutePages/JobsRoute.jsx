@@ -61,78 +61,90 @@ const JobsRoute = () => {
     <div className="lg:px-10 py-12 dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
       <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <div className="lg:flex gap-1">
-          <div className="shadowdiv border rounded-md lg:w-80 h-100%">
+          <div className="shadowdiv border rounded-md dark:text-white lg:w-80 h-100%">
             <TabList className="flex sticky top-24 flex-col justify-center items-start px-5 py-10 gap-6">
-
-              {
-                isCompany ? <>
+              {isCompany ? (
+                <>
                   <Tab
                     onClick={() => clickactive("completeJobTask")}
-                    className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "completeJobTask" ? "activetab cursor-pointer" : ""
-                      }`}
+                    className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                      active == "completeJobTask"
+                        ? "activetab cursor-pointer"
+                        : ""
+                    }`}
                   >
-                    <BiTask /> Complete Job Task
+                    <BiTask /> Applied Member
                   </Tab>
                   <Tab
                     onClick={() => clickactive("appliedJobs")}
-                    className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "appliedJobs" ? "activetab cursor-pointer" : ""
-                      }`}
+                    className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                      active == "appliedJobs" ? "activetab cursor-pointer" : ""
+                    }`}
                   >
                     <FaShoppingBag />
-                    Applied Member
+                    Complete Job Task
                   </Tab>
-
-                </> : <>
+                </>
+              ) : (
+                <>
                   <Tab
                     onClick={() => clickactive("post")}
-                    className={` flex items-center gap-2 cursor-pointer userinfotext ${active == "post" ? "activetab cursor-pointer" : ""
-                      }`}
+                    className={` flex items-center gap-2 cursor-pointer userinfotext ${
+                      active == "post" ? "activetab cursor-pointer" : ""
+                    }`}
                   >
                     <FaHouseDamage /> All Jobs
                   </Tab>
                   <Tab
                     onClick={() => clickactive("jobTask")}
-                    className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "jobTask" ? "activetab cursor-pointer" : ""
-                      }`}
+                    className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                      active == "jobTask" ? "activetab cursor-pointer" : ""
+                    }`}
                   >
-                    <MdNotificationsPaused className="text-xl" /> Job Task Alerts
+                    <MdNotificationsPaused className="text-xl" /> Job Task
+                    Alerts
                   </Tab>
                   <Tab
                     onClick={() => clickactive("appliedMember")}
-                    className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "appliedMember" ? "activetab cursor-pointer" : ""
-                      }`}
+                    className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                      active == "appliedMember"
+                        ? "activetab cursor-pointer"
+                        : ""
+                    }`}
                   >
                     <BsPersonCheckFill /> Applied Jobs
                   </Tab>
                   <Tab
                     onClick={() => clickactive("bookmarkJobs")}
-                    className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "bookmarkJobs" ? "activetab cursor-pointer" : ""
-                      }`}
+                    className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                      active == "bookmarkJobs" ? "activetab cursor-pointer" : ""
+                    }`}
                   >
                     <FaRegBookmark /> Favorites Jobs
                   </Tab>
                   <Tab
                     onClick={() => clickactive("about")}
-                    className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "about" ? "activetab cursor-pointer" : ""
-                      }`}
+                    className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                      active == "about" ? "activetab cursor-pointer" : ""
+                    }`}
                   >
                     <FaFile /> Resume Builder
                   </Tab>
                   <Tab
                     onClick={() => clickactive("connect")}
-                    className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "connect" ? "activetab cursor-pointer" : ""
-                      }`}
+                    className={` flex items-center gap-3 cursor-pointer userinfotext ${
+                      active == "connect" ? "activetab cursor-pointer" : ""
+                    }`}
                   >
                     <FaYoutube /> Job Seeker Guidance
                   </Tab>
                 </>
-              }
+              )}
             </TabList>
           </div>
           <div className="w-full rounded-md shadowdiv border">
-
-            {
-              isCompany ? <>
+            {isCompany ? (
+              <>
                 {/* Company can view  appliedJobs member */}
                 <TabPanel>
                   <h1 className="text-center font-bold text-3xl my-5 text-green-600 dark:text-white">
@@ -147,7 +159,9 @@ const JobsRoute = () => {
                   </h1>
                   <CompleteTask />
                 </TabPanel>
-              </> : <>
+              </>
+            ) : (
+              <>
                 {/* all job data view and search this tabpanel  */}
                 <TabPanel>
                   <div>
@@ -237,7 +251,7 @@ const JobsRoute = () => {
                   <JobGuidance />
                 </TabPanel>
               </>
-            }
+            )}
           </div>
         </div>
       </Tabs>

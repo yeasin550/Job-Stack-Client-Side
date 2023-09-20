@@ -102,14 +102,14 @@ const Footer = () => {
             <div className="flex items-center gap-2 text-sm mt-6">
               <a
                 className="rounded-full p-2 bg-[#4267B2] text-white"
-                href=""
+                href="https://web.facebook.com/mdyeasinmia570/"
                 target="_blank"
               >
                 <FaFacebook />
               </a>
               <a
                 className="rounded-full p-2 bg-[#1DA1F2] text-white"
-                href=""
+                href="https://twitter.com/Md_Yeasin_Mia"
                 target="_blank"
               >
                 <FaTwitter />

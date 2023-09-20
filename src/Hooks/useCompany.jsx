@@ -10,7 +10,7 @@ const useCompany = () => {
     queryKey: ["isCompany", user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(`/company/${user?.email}`);
-      return res.data.admin;
+      return res.data.company;
     },
   });
   return [isCompany, isCompanyLoading];
