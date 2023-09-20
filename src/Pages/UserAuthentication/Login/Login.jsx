@@ -132,11 +132,11 @@ const Login = () => {
               </label>
             </div>
             {/* submit button */}
-            <div className="form-control  mb-4">
+            <div className="form-control mb-4">
               <input
                 type="submit"
                 value="Login"
-                className="btn banner text-[18px] border-0 text-white"
+                className="btn banner text-[18px]  border-0 text-white"
               />
             </div>
             {error && <p className="text-center text-error mb-2">{error}</p>}

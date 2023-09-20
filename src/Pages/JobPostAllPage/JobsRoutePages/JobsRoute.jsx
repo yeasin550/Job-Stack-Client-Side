@@ -63,10 +63,9 @@ const JobsRoute = () => {
         <div className="lg:flex gap-1">
           <div className="shadowdiv border rounded-md dark:text-white lg:w-80 h-100%">
             <TabList className="flex sticky top-24 flex-col justify-center items-start px-5 py-10 gap-6">
-
-              {
-                isCompany ? <>
-                   <Tab
+              {isCompany ? (
+                <>
+                  <Tab
                     onClick={() => clickactive("completeJobTask")}
                     className={` flex items-center gap-3 cursor-pointer userinfotext ${
                       active == "completeJobTask"
@@ -74,20 +73,20 @@ const JobsRoute = () => {
                         : ""
                     }`}
                   >
-                    <BiTask /> Complete Job Task
-                   </Tab>
-                   <Tab
+                    <BiTask /> Applied Member
+                  </Tab>
+                  <Tab
                     onClick={() => clickactive("appliedJobs")}
                     className={` flex items-center gap-3 cursor-pointer userinfotext ${
                       active == "appliedJobs" ? "activetab cursor-pointer" : ""
                     }`}
                   >
                     <FaShoppingBag />
-                    Applied Member
-                   </Tab>
-
-                </> :
-                  <>
+                    Complete Job Task
+                  </Tab>
+                </>
+              ) : (
+                <>
                   <Tab
                     onClick={() => clickactive("post")}
                     className={` flex items-center gap-2 cursor-pointer userinfotext ${
@@ -140,7 +139,7 @@ const JobsRoute = () => {
                     <FaYoutube /> Job Seeker Guidance
                   </Tab>
                 </>
-              }
+              )}
             </TabList>
           </div>
           <div className="w-full rounded-md shadowdiv border">
