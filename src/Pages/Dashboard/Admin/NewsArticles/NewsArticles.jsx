@@ -257,7 +257,11 @@ const NewsArticles = () => {
           ></textarea>
         </div>
         <div className="form-control mt-6">
-          <input className="btn btn-primary" type="submit" value="Submit" />
+          <input
+            className="btn bg-[#09867E] text-white hover:bg-[#09867E]"
+            type="submit"
+            value="Submit"
+          />
         </div>
       </form>
     </div>

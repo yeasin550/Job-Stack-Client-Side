@@ -17,7 +17,7 @@ const Articles = ({ article }) => {
 
           <h1 className="text-xl my-2 font-semibold">{title}</h1>
           <Link to={`/details/${_id}`}>
-            <p className="mt-3 font-semibold text-blue-600 cursor-pointer flex items-center gap-2">
+            <p className="mt-3 font-semibold text-[#09867E] cursor-pointer flex items-center gap-2">
               Read More
               <BiRightArrowAlt className="text-xl" />
             </p>

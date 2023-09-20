@@ -24,6 +24,7 @@ import Comment from "./Comment";
 import useSingleUser from "../../../Hooks/useSingleUser";
 import { useLocation } from "react-router-dom";
 import UseScrollTop from "../../../Hooks/UseScrollTop";
+import toast from "react-hot-toast";
 
 const SelfPostDesign = ({ selfpost }) => {
   const { pathname } = useLocation();
@@ -125,14 +126,12 @@ const SelfPostDesign = ({ selfpost }) => {
     setreportModal(false);
   };
 
-    const PostReport = (id) => {
-      setClickedid(id);
-      openModal();
-    };
+  const PostReport = (id) => {
+    setClickedid(id);
+    openModal();
+  };
 
-  
   const [selectedReasons, setSelectedReasons] = useState([]);
-
   const handleCheckboxChange = (reason) => {
     if (selectedReasons.includes(reason)) {
       // If the reason is already selected, remove it
@@ -144,11 +143,21 @@ const SelfPostDesign = ({ selfpost }) => {
   };
 
   const handleReport = () => {
-    // You can send the report using an API call or handle it as needed.
-    console.log("Selected reasons for reporting:", selectedReasons);
-    // Add your API call or reporting logic here
+    const addreport = {
+      selectedReasons,
+      postId: clickedid,
+      userName: user?.displayName,
+      userPhoto: user?.photoURL,
+    };
+
+    axiosSequre.post("/post-report", addreport).then((data) => {
+      if (data?.data?.insertedId) {
+        refetch();
+        reset();
+        toast.success("Post Report Successfully");
+      }
+    });
   };
-  
 
   // like funcation
   const [like, setLike] = useState(false);
@@ -258,7 +267,7 @@ const SelfPostDesign = ({ selfpost }) => {
         {/* shear the post */}
         <div className="dropdown dropdown-bottom dark:text-black flex items-center">
           <label tabIndex={0}>
-            <div className="flex items-center text-white gap-1 z-50">
+            <div className="flex items-center gap-1 z-50">
               <FaShare size={20} className="cursor-pointer text" />
               <h4 className="text-lg">Share</h4>
             </div>
@@ -417,7 +426,9 @@ const SelfPostDesign = ({ selfpost }) => {
                   Something Else
                 </li>
               </ul>
-              <button className="mt-3" onClick={handleReport}>Report</button>
+              <button className="mt-3" onClick={handleReport}>
+                Report
+              </button>
             </div>
             <div className="modal-action">
               <button
@@ -435,6 +446,3 @@ const SelfPostDesign = ({ selfpost }) => {
 };
 
 export default SelfPostDesign;
-
-
-

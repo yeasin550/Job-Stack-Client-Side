@@ -30,7 +30,7 @@ const GoToTop = () => {
     <button
       className={`${
         isVisible ? "block" : "hidden"
-      } fixed bottom-4 right-4 bg-blue-800 text-white p-3 rounded-full shadow-lg`}
+      } fixed bottom-4 right-4 bg-[#09867E] text-white p-3 rounded-full shadow-lg`}
       onClick={scrollToTop}
     >
       <FaArrowUp />

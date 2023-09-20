@@ -4,7 +4,7 @@ import FAQAllQuestion from "./FAQAllQuestion";
 const FaqQuestionAnswer = () => {
   return (
     <div>
-      <div className="px-40 my-20 dark:text-black ">
+      <div className="md:px-40 my-20 dark:text-black ">
         <FAQAllQuestion
           question={"1. What is Job-Stack?"}
           answer={

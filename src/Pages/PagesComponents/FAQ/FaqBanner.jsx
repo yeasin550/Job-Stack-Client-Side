@@ -12,7 +12,7 @@ const FaqBanner = () => {
         backgroundImage: `url(https://cdn.shopify.com/app-store/listing_images/be8e18fe7fd62b265563360c2986633d/promotional_image/CLHpktmI5_QCEAE=.jpeg?height=720&quality=90&width=1280)`,
       }}
     >
-      <div className="absolute inset-0 banner opacity-60"></div>
+      <div className="absolute inset-0 bg-[#09867E] opacity-60"></div>
       {/* Content */}
       <div className="absolute inset-0 flex items-center justify-center">
         <h1 className="text-white text-4xl font-bold">FAQ</h1> <br />

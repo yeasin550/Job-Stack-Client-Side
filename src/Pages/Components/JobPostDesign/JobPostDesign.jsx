@@ -19,18 +19,19 @@ import useJobsBooksMarks from "../../../Hooks/useJobsBooksMarks";
 import usePostShare from "../../../Hooks/usePostShare";
 import Image from "../../../assets/images/images.jpg";
 const JobPostDesign = ({ posts }) => {
-  const [handleBookMark] = useJobsBooksMarks();
-  const navigate = useNavigate();
+    
+    const [handleBookMark] = useJobsBooksMarks();
+    const navigate = useNavigate();
     const [handleFacebookShare, handleLinkedinShare, handleTwitterShare] = usePostShare();
 
   return (
-    <div className="grid grid-cols-1 dark:text-black">
-      <div className=" bg-white shadow-lg rounded-md mt-5 p-6 border border-purple-500">
+    <div className="grid grid-cols-1  dark:text-black">
+      <div className=" bg-white shadow-lg rounded-md mt-5 p-6 border border-cyan-500">
         <div className="flex justify-end gap-2 mb-3 text-xl">
-          <div className="dropdown dropdown-bottom flex items-center">
+          <div className="dropdown dropdown-left  flex items-center">
             <label tabIndex={0}>
               <div className="flex items-center gap-1 z-50">
-                <FaShareAlt size={20} className="cursor-pointer text" />
+                <FaShareAlt size={20} className="cursor-pointer  text" />
               </div>
             </label>
 
@@ -71,7 +72,7 @@ const JobPostDesign = ({ posts }) => {
             <div className="flex items-center gap-3">
               <img
                 className="h-16 w-16 border  border-blue-500 rounded-full"
-                src={posts && posts ? posts.userPhoto : Image}
+                src={posts && posts ? posts?.userPhoto : Image}
                 alt="img"
               />
               <div>
@@ -87,7 +88,7 @@ const JobPostDesign = ({ posts }) => {
 
             <div className="px-2 py-1 rounded-md">
               {/* <h1 className="font-semibold">Workplace</h1> */}
-              <h1 className="bg-gray-200 lg:w-[300px] mt-3 text-center font-bold px-3 py-1 hover:border-blue-500 border hover:shadow-lg hover:bg-white rounded-md text-purple-700">
+              <h1 className="bg-gray-200 lg:w-[300px] mt-3 text-center font-bold px-3 py-1 hover:border-blue-500 border hover:shadow-lg hover:bg-white rounded-md text-cyan-500">
                 {posts?.workplace}
               </h1>
             </div>
@@ -131,13 +132,13 @@ const JobPostDesign = ({ posts }) => {
             {/* <FaRegBookmark className="text-3xl cursor-pointer" /> */}
             <button
               onClick={() => navigate(`/jobApplyForm/${posts?._id}`)}
-              className="bg-green-600 text-center text-white py-2 px-6 rounded-md hover:bg-blue-800  duration-300 lg:w-1/2 w-full  bg-gradient-to-r from-green-500 to-blue-700  font-semibold   hover:from-blue-700 hover:to-purple-900 transition-all "
+              className="bg-green-600 text-center text-white py-2 px-6 rounded-md hover:bg-blue-800  duration-300 lg:w-1/2 w-full  bg-gradient-to-r from-green-500 to-blue-700  font-semibold   hover:from-blue-700 hover:to-cyan-500 transition-all "
             >
               Apply Now
             </button>
           </div>
         </div>
-        <hr className="my-5 border border-purple-500" />
+        <hr className="my-5 border border-cyan-500" />
         {/* description div */}
         <div>
           {/* div-1 */}
@@ -187,23 +188,23 @@ const JobPostDesign = ({ posts }) => {
               <li>Healthcare and retirement benefits.</li>
             </div>
           </div>
-          <hr className="my-5 border border-purple-500" />
+          <hr className="my-5 border border-cyan-500" />
           <div className="my-5">
             <h1 className="font-semibold text-2xl">Skills_____</h1>
             <div className="lg:flex gap-3 lg:ml-5 mt-3">
-              <h1 className="bg-gray-200 font-bold px-3 py-1 hover:border-blue-500 border hover:shadow-lg hover:bg-white rounded-md text-purple-700">
+              <h1 className="bg-gray-200 font-bold px-3 py-1 hover:border-blue-500 border hover:shadow-lg hover:bg-white rounded-md text-cyan-500">
                 Html
               </h1>
-              <h1 className="bg-gray-200 font-bold px-3 py-1 hover:border-blue-500 border hover:shadow-lg hover:bg-white rounded-md text-purple-700">
+              <h1 className="bg-gray-200 font-bold px-3 py-1 hover:border-blue-500 border hover:shadow-lg hover:bg-white rounded-md text-cyan-500">
                 Css
               </h1>
-              <h1 className="bg-gray-200 font-bold px-3 py-1 hover:border-blue-500 border hover:shadow-lg hover:bg-white rounded-md text-purple-700">
+              <h1 className="bg-gray-200 font-bold px-3 py-1 hover:border-blue-500 border hover:shadow-lg hover:bg-white rounded-md text-cyan-500">
                 JavaScript
               </h1>
-              <h1 className="bg-gray-200 font-bold px-3 py-1 hover:border-blue-500 border hover:shadow-lg hover:bg-white rounded-md text-purple-700">
+              <h1 className="bg-gray-200 font-bold px-3 py-1 hover:border-blue-500 border hover:shadow-lg hover:bg-white rounded-md text-cyan-500">
                 React
               </h1>
-              <h1 className="bg-gray-200 font-bold px-3 py-1 hover:border-blue-500 border hover:shadow-lg hover:bg-white rounded-md text-purple-700">
+              <h1 className="bg-gray-200 font-bold px-3 py-1 hover:border-blue-500 border hover:shadow-lg hover:bg-white rounded-md text-cyan-500">
                 MongoDB
               </h1>
             </div>

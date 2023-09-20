@@ -29,6 +29,10 @@ import JobTaskForm from "../Pages/JobPostAllPage/JobApplyForm/SendTaskForm";
 import Notification from "../Pages/Notification/Notification";
 import DynamicJobDetails from "../Pages/JobPostAllPage/DynamicJobDetails";
 import PraivateRoute from "./PraivateRoute/PraivateRoute";
+import PostReport from "../Pages/Dashboard/Admin/PostReport/PostReport";
+import UserReport from "../Pages/Dashboard/Admin/UserReport/UserReport";
+import UserArticleDetails from "../Pages/SelfPostAllPage/MyNetWork/UserArticle/UserArticleDetails";
+import Reviews from "../Pages/Dashboard/Admin/Reviews/Reviews";
 
 const router = createBrowserRouter([
   {
@@ -54,11 +58,19 @@ const router = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <PraivateRoute><UserProfile></UserProfile></PraivateRoute>,
+        element: (
+          <PraivateRoute>
+            <UserProfile></UserProfile>
+          </PraivateRoute>
+        ),
       },
       {
         path: "notification",
-        element: <PraivateRoute><Notification></Notification></PraivateRoute>,
+        element: (
+          <PraivateRoute>
+            <Notification></Notification>
+          </PraivateRoute>
+        ),
       },
       {
         path: "dynamicprofile/:id",
@@ -66,19 +78,35 @@ const router = createBrowserRouter([
       },
       {
         path: "mynetwork",
-        element: <PraivateRoute><MyNetwork></MyNetwork></PraivateRoute>,
+        element: (
+          <PraivateRoute>
+            <MyNetwork></MyNetwork>
+          </PraivateRoute>
+        ),
       },
       {
         path: "jobsroute",
-        element: <PraivateRoute><JobsRoute></JobsRoute></PraivateRoute>,
+        element: (
+          <PraivateRoute>
+            <JobsRoute></JobsRoute>
+          </PraivateRoute>
+        ),
       },
       {
         path: "massageroute",
-        element: <PraivateRoute><MessagingRoute></MessagingRoute></PraivateRoute>,
+        element: (
+          <PraivateRoute>
+            <MessagingRoute></MessagingRoute>
+          </PraivateRoute>
+        ),
       },
       {
         path: "projectupdate/:id",
-        element: <PraivateRoute><UserProjectUpdateForm></UserProjectUpdateForm></PraivateRoute>,
+        element: (
+          <PraivateRoute>
+            <UserProjectUpdateForm></UserProjectUpdateForm>
+          </PraivateRoute>
+        ),
       },
       {
         path: "termsandconditions",
@@ -86,11 +114,19 @@ const router = createBrowserRouter([
       },
       {
         path: "jobApplyForm/:id",
-        element: <PraivateRoute><JobApplyForm></JobApplyForm></PraivateRoute>,
+        element: (
+          <PraivateRoute>
+            <JobApplyForm></JobApplyForm>
+          </PraivateRoute>
+        ),
       },
       {
         path: "jobTaskForm",
-        element: <PraivateRoute><JobTaskForm /></PraivateRoute>,
+        element: (
+          <PraivateRoute>
+            <JobTaskForm />
+          </PraivateRoute>
+        ),
       },
       {
         path: "about",
@@ -128,12 +164,24 @@ const router = createBrowserRouter([
             `https://jobstack-backend-teal.vercel.app/news-article/${params.id}`
           ),
       },
+      {
+        path: "/users-article/:id",
+        element: <UserArticleDetails/>,
+        loader: ({ params }) =>
+          fetch(
+            `https://jobstack-backend-teal.vercel.app/users-article/${params.id}`
+          ),
+      },
     ],
   },
 
   {
     path: "dashbord",
-    element: <PraivateRoute><Dashbord /></PraivateRoute>,
+    element: (
+      <PraivateRoute>
+        <Dashbord />
+      </PraivateRoute>
+    ),
     children: [
       {
         path: "adminhome",
@@ -150,6 +198,18 @@ const router = createBrowserRouter([
       {
         path: "news-articles",
         element: <NewsArticles />,
+      },
+      {
+        path: "post-report",
+        element: <PostReport />,
+      },
+      {
+        path: "user-report",
+        element: <UserReport />,
+      },
+      {
+        path: "all-review",
+        element: <Reviews/>
       },
     ],
   },

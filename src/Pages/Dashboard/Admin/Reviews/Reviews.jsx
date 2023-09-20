@@ -1,25 +1,26 @@
 import React from "react";
-import { FaTrashAlt, FaUserShield } from "react-icons/fa";
-import Swal from "sweetalert2";
-import useAxioSequre from "../../../../Hooks/useAxiosSequre";
-import { useQuery } from "@tanstack/react-query";
-import images from "../../../../assets/images/images.jpg";
 import { useLocation } from "react-router-dom";
 import UseScrollTop from "../../../../Hooks/UseScrollTop";
+import useAxioSequre from "../../../../Hooks/useAxiosSequre";
+import { useQuery } from "@tanstack/react-query";
+import { FaTrashAlt } from "react-icons/fa";
+import images from "../../../../assets/images/images.jpg";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
 
-const AllUser = () => {
+const Reviews = () => {
   const { pathname } = useLocation();
   UseScrollTop(pathname);
 
   const [axiosSequre] = useAxioSequre();
-  const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await axiosSequre.get("/users");
+  const { data: review = [], refetch } = useQuery(["review"], async () => {
+    const res = await axiosSequre.get("/review");
     return res.data;
   });
 
-  // user to admin funcation
-  const handleMakeAdmin = (user) => {
-    fetch(`https://jobstack-backend-teal.vercel.app/users/admin/${user?._id}`, {
+  // review aprove funcation
+  const handleAproved = (post) => {
+    fetch(`https://jobstack-backend-teal.vercel.app/review/${post}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -27,19 +28,13 @@ const AllUser = () => {
         console.log(data);
         if (data.modifiedCount) {
           refetch();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: `${user.name} is an Admin Now!`,
-            showConfirmButton: false,
-            timer: 1500,
-          });
+          toast.success("Successfully toasted!");
         }
       });
   };
 
-  // user delete funcation
-  const handleDeleteUser = (_id) => {
+  // Review delete funcation
+  const handleDeleteReview = (_id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -50,7 +45,7 @@ const AllUser = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSequre.delete(`/deleteuser/${_id}`).then((data) => {
+        axiosSequre.delete(`/review/${_id}`).then((data) => {
           if (data?.data.deletedCount > 0) {
             Swal.fire("Deleted!", "User has been deleted.", "success");
             refetch();
@@ -61,53 +56,52 @@ const AllUser = () => {
   };
 
   return (
-    <div className="w-full">
-      <h3 className="text-3xl font-semibold my-4">
-        Total Users: {users.length}
-      </h3>
+    <div>
       <div className="overflow-auto">
         <table className="table table-zebra w-full">
-          {/* head */}
           <thead>
             <tr className="text-lg">
               <th>SL No</th>
               <th>Image</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
+              <th>User name</th>
+              <th>Review Text</th>
+              <th>Action</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => (
-              <tr key={user?._id}>
+            {review.map((post, index) => (
+              <tr key={post?._id}>
                 <th>{index + 1}</th>
                 <th>
                   <img
                     className="w-12 h-12 rounded-full"
-                    src={user && user.image ? user.image : images}
+                    src={post && post.userPhoto ? post.userPhoto : images}
                     alt="User Photo"
                     draggable="false"
                   />
                 </th>
-                <td>{user?.name}</td>
-                <td>{user?.email}</td>
+                <td>{post?.userName}</td>
                 <td>
-                  {user?.role === "admin" ? (
-                    "admin"
+                  <div className="">
+                    <p>{post?.reviewtext}</p>
+                  </div>
+                </td>
+                <td>
+                  {post?.status === "aproved" ? (
+                    "aproved"
                   ) : (
                     <button
-                      onClick={() => handleMakeAdmin(user)}
+                      onClick={() => handleAproved(post?._id)}
                       className="btn btn-ghost bg-[#09867E]  text-white"
                     >
-                      <FaUserShield />
+                      Approve
                     </button>
                   )}
                 </td>
-
                 <td>
                   <button
-                    onClick={() => handleDeleteUser(user?._id)}
+                    onClick={() => handleDeleteReview(post?._id)}
                     className="btn btn-ghost bg-red-600  text-white"
                   >
                     <FaTrashAlt />
@@ -122,4 +116,4 @@ const AllUser = () => {
   );
 };
 
-export default AllUser;
+export default Reviews;
