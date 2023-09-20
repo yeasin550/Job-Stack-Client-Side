@@ -33,7 +33,7 @@ const AdminHome = () => {
     <div className="mt-10">
       <div className="grid md:grid-cols-4 gap-10">
         {/* user */}
-        <div className="px-10 py-4 shadow banner text-white rounded-xl">
+        <div className="px-10 py-4 shadow bg-[#09867E] text-white rounded-xl">
           <ScrollTrigger
             className="text-3xl font-bold "
             onEnter={() => setCountOn(true)}
@@ -60,7 +60,7 @@ const AdminHome = () => {
           </ScrollTrigger>
         </div>
         {/* Job */}
-        <div className="px-10 py-4 shadow banner text-white rounded-xl">
+        <div className="px-10 py-4 shadow bg-[#09867E] text-white rounded-xl">
           <ScrollTrigger
             className="text-3xl font-bold "
             onEnter={() => setCountOn(true)}
@@ -83,7 +83,7 @@ const AdminHome = () => {
         </div>
 
         {/* selfpost */}
-        <div className="px-10 py-4 shadow banner text-white rounded-xl">
+        <div className="px-10 py-4 shadow bg-[#09867E] text-white rounded-xl">
           <ScrollTrigger
             className="text-3xl font-bold "
             onEnter={() => setCountOn(true)}
@@ -110,7 +110,7 @@ const AdminHome = () => {
           </ScrollTrigger>
         </div>
         {/* job apply */}
-        <div className="px-10 py-4 shadow banner text-white rounded-xl">
+        <div className="px-10 py-4 shadow bg-[#09867E] text-white rounded-xl">
           <ScrollTrigger
             className="text-3xl font-bold "
             onEnter={() => setCountOn(true)}

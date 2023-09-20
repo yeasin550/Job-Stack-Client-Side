@@ -12,7 +12,7 @@ const ClientBanner = () => {
         backgroundImage: `url(https://i.ibb.co/Sv6Ww7F/review.jpg)`,
       }}
     >
-      <div className="absolute inset-0 banner opacity-60"></div>
+      <div className="absolute inset-0 bg-[#09867E] opacity-60"></div>
       {/* Content */}
       <div className="absolute inset-0 flex items-center justify-center">
         <h1 className="text-white text-4xl font-bold">Review</h1> <br />

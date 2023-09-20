@@ -7,19 +7,21 @@ import PromotingCareer from "./HomeChildren/PromotingCareer/PromotingCareer";
 import NewsInsights from "./HomeChildren/NewsInsights/NewsInsights";
 import GoToTop from "../Shared/GoToTop/GoToTop";
 import Testimonial from "./HomeChildren/Testimonial/Testimonial";
+import JobBanner from "./HomeChildren/JobBanner/JobBanner";
 
 const Home = () => {
   return (
     <div>
-          <Banner></Banner>
-          <BrowseJob></BrowseJob>
-          <Categories />
-          <LatestJobs />
-          <ChooseWork></ChooseWork>
-          <PromotingCareer />
-          <NewsInsights />
-          <Testimonial />
-          <GoToTop />
+      <Banner></Banner>
+      <BrowseJob></BrowseJob>
+      <Categories />
+      <LatestJobs />
+      <ChooseWork></ChooseWork>
+      <PromotingCareer />
+      <NewsInsights />
+      <JobBanner />
+      <Testimonial />
+      <GoToTop />
     </div>
   );
 };

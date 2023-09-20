@@ -12,9 +12,9 @@ import {
 
 const Footer = () => {
   return (
-    <div className="text-white banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
-      <div className="pt-10">
-        <div className="grid md:justify-items-center md:grid-cols-4 gap-6 md:px-16 px-3">
+    <div className="max-w-screen-xl px-5 mx-auto dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
+      <div className="mt-10">
+        <div className="grid md:justify-items-center md:grid-cols-4 gap-6">
           <div className="">
             <div className="flex justify-start items-center ml-0">
               <img className="w-12 md:w-16" src={logo} alt="logo" />

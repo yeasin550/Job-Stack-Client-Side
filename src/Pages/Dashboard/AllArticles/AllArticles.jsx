@@ -72,7 +72,7 @@ const AllArticles = () => {
 
                 <td>
                   <Link to={`/details/${article._id}`}>
-                    <button className="btn btn-ghost bg-blue-600  text-white">
+                    <button className="btn btn-ghost bg-[#09867E]  text-white">
                       Details
                     </button>
                   </Link>

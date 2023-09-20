@@ -8,12 +8,12 @@ body {
 
 .borderl {
   border-width: 0 0 0 4px;
-  border-color: #00b04d;
+  border-color: #09867E;
 }
 
 .borderl {
   border-width: 0 0 0 4px;
-  border-color: #1b18a1;
+  border-color: #09867E;
 }
 
 .shadowdiv {
@@ -63,7 +63,7 @@ body {
 }
 
 .online-dot {
-  background-color: #1b18a1;
+  background-color: #09867E;
   border-radius: 60%;
   position: absolute;
   left: 6rem;
@@ -74,9 +74,9 @@ body {
 
 
 .banner {
-  background: #159957;
-  background: -webkit-linear-gradient(to right, #155799, #159957);
-  background: linear-gradient(to right, #155799, #159957);
+  background: #09867E;
+  /* background: -webkit-linear-gradient(to right, #155799, #159957); */
+  background: linear-gradient(to right, #C4F3EF, #DFFFFD);
 }
 
 
@@ -103,7 +103,7 @@ body {
 .categorires-card:hover {
   border-width: 1px;
   border-style: solid;
-  border-image: linear-gradient(to right, darkblue, #0090e4) 1;
+  border-image: linear-gradient(to right, #09867E, #0090e4) 1;
 }
 
 /* admin home page charts shadow */

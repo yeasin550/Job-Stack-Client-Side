@@ -83,7 +83,11 @@ const ReviewFrom = () => {
           )}
         </div>
         <div className="form-control mt-6">
-          <input className="btn btn-primary" type="submit" value="Submit" />
+          <input
+            className="btn bg-[#09867E] hover:bg-[#09867E] text-white"
+            type="submit"
+            value="Submit"
+          />
         </div>
       </form>
     </div>
