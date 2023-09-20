@@ -10,7 +10,7 @@ import useCompleteTask from '../../../Hooks/useCompleteTask';
 
 const JobTaskAlert = () => {
   const [userError, setUserError] = useState('');
-  const [completeTask] = useCompleteTask();
+  // const [completeTask] = useCompleteTask();
   const { user } = useContext(AuthContext)
   const [axiosSequre] = useAxioSequre();
       const { data: jobTaskAlert = [], refetch } = useQuery(["jobTaskAlert", user?.email],
@@ -20,7 +20,7 @@ const JobTaskAlert = () => {
         }
       );
   // console.log(jobTaskAlert);
-  console.log(completeTask);
+  // console.log(completeTask);
       const {
         register,
         handleSubmit,
@@ -99,7 +99,7 @@ const JobTaskAlert = () => {
                 {jobTasks?.postDate}
               </p>
             </div>
-            <div className="flex justify-end pr-5">
+            {/* <div className="flex justify-end pr-5">
               {completeTask.slice(0, 1).map((complete) => (
                 <a
                   href={complete?.docs}
@@ -110,7 +110,7 @@ const JobTaskAlert = () => {
                   {complete?.docs}
                 </a>
               ))}
-            </div>
+            </div> */}
             <div className="mx-5 mb-5">
               <form onSubmit={handleSubmit(onSubmit)} className="lg:flex gap-5">
                 <div className="form-control w-full">

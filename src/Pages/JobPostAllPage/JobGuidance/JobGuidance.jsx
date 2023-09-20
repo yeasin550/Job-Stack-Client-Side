@@ -5,7 +5,7 @@ import { GiSecretBook, GiSettingsKnobs } from "react-icons/gi";
 
 const JobGuidance = () => {
   return (
-    <div className="lg:mx-12 mx-4">
+    <div className="lg:mx-12 mx-4 dark:text-white">
       <h1 className="text-center font-bold text-4xl text-blue-800 dark:text-white my-5">
         Essential Job Search Tips
       </h1>
@@ -24,12 +24,7 @@ const JobGuidance = () => {
           provide them with career guidance and employment services.
         </p>
       </div>
-      {/* <div className=" text-center text-white py-9 mt-5 px-6 rounded-md   duration-300 w-full   bg-gradient-to-r font-semibold   from-blue-700 to-purple-900 transition-all">
-        <p className="text-lg">What you need to know?</p>
-        <h1 className="text-2xl font-semibold">
-          Careerer Guidance $ Job Guidance!
-        </h1>
-      </div> */}
+     
       <div className="text-center text-white py-9 mt-5 px-6 rounded-md w-full relative overflow-hidden ">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-700 to-purple-900 transform skew-x-12  animate-gradient"></div>
         <p className="text-lg relative z-10">What you need to know?</p>

@@ -151,7 +151,7 @@ const Navbar = () => {
               )}
               {/* pages  */}
               <li>
-                <div className="dropdown dropdown-hover">
+                <div className="dropdown dropdown-hover ">
                   <label tabIndex={0}>
                     <FaAngleDown className="mx-auto" />
                     Pages

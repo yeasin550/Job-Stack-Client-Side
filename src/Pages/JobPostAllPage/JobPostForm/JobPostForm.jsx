@@ -133,10 +133,11 @@ const JobPostForm = ({ refetch }) => {
                   {...register("jobDescription", {
                     required: "Job description is required",
                   })}
-                  className={`pl-3 pt-3 border ${errors.jobDescription
+                  className={`pl-3 pt-3 border ${
+                    errors.jobDescription
                       ? "border-red-500"
                       : "border-green-500"
-                    } resize-none w-full sm:w-1/2 md:w-2/3 lg:w-full`}
+                  } resize-none w-full sm:w-1/2 md:w-2/3 lg:w-full`}
                   cols="54"
                   rows="3"
                   placeholder="Type job description"
@@ -164,7 +165,6 @@ const JobPostForm = ({ refetch }) => {
                   </span>
                 )}
               </div>
-            
 
               {/* job Title */}
               <div className="form-control w-full">
@@ -292,6 +292,23 @@ const JobPostForm = ({ refetch }) => {
                   </span>
                 )}
               </div>
+              {/* <div>
+                <label>Languages:</label>
+                <input type="checkbox" {...register("Skills.Languages.Html")} />
+                <label htmlFor="Html">Html</label>
+                <input type="checkbox" {...register("Skills.Languages.Css")} />
+                <label htmlFor="Css">Css</label>
+                <input
+                  type="checkbox"
+                  {...register("Skills.Languages.JavaScript")}
+                />
+                <label htmlFor="JavaScript">JavaScript</label>
+                <input
+                  type="checkbox"
+                  {...register("Skills.Languages.React")}
+                />
+                <label htmlFor="React">React</label>
+              </div> */}
               <button className="my-btn w-full mt-5 p-2 text-lg rounded-md text-white bg-green-600 hover:bg-green-700">
                 POST
               </button>

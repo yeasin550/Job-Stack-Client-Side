@@ -10,7 +10,7 @@ const useCompleteTask = () => {
       const { data: completeTask = [], refetch } = useQuery(
         ["completeTask", user?.email],
         async () => {
-          const res = await axiosSequre.get(`assignment/${user?.email}`);
+          const res = await axiosSequre.get(`/assignment/${user?.email}`);
           return res.data;
         }
       );

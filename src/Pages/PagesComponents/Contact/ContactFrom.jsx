@@ -35,7 +35,7 @@ const ContactFrom = () => {
   };
 
   return (
-    <div className="max-w-screen-xl px-5 mx-auto my-20">
+    <div className="max-w-screen-xl px-5 mx-auto my-20 ">
       <div className="">
         <div className="grid md:grid-cols-4 gap-10">
           <div className="text-center">

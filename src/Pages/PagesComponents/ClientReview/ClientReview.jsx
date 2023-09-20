@@ -4,7 +4,7 @@ import ReviewFrom from './ReviewFrom';
 
 const ClientReview = () => {
     return (
-        <div>
+        <div className="dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black dark:text-white">
             <ClientBanner />
             <ReviewFrom/>
         </div>
