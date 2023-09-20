@@ -66,21 +66,21 @@ const JobsRoute = () => {
 
               {
                 isCompany ? <>
-                   <Tab
-                    onClick={() => clickactive("completeJobTask")}
-                    className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "completeJobTask" ? "activetab cursor-pointer" : ""
-                      }`}
-                  >
-                    <BiTask /> Complete Job Task
-                   </Tab>
-                   <Tab
+                  <Tab
                     onClick={() => clickactive("appliedJobs")}
                     className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "appliedJobs" ? "activetab cursor-pointer" : ""
                       }`}
                   >
                     <FaShoppingBag />
                     Applied Member
-                   </Tab>
+                  </Tab>
+                  <Tab
+                    onClick={() => clickactive("completeJobTask")}
+                    className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "completeJobTask" ? "activetab cursor-pointer" : ""
+                      }`}
+                  >
+                    <BiTask /> Complete Job Task
+                  </Tab>
 
                 </> : <>
                   <Tab
@@ -138,7 +138,9 @@ const JobsRoute = () => {
                   <h1 className="text-center font-bold text-3xl my-5 text-green-600 dark:text-white">
                     Applied Job
                   </h1>
-                  <AppliedMember />
+
+                  <AppliedJobs />
+
                 </TabPanel>
                 {/* Company view can user completed task */}
                 <TabPanel>
@@ -206,7 +208,7 @@ const JobsRoute = () => {
                   <h1 className="text-center font-bold text-3xl my-5 text-green-600 dark:text-white">
                     My Jobs
                   </h1>
-                  <AppliedJobs />
+                  <AppliedMember />
                 </TabPanel>
                 {/*user can view her  baokmark jobs */}
                 <TabPanel>

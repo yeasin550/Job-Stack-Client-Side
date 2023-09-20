@@ -68,7 +68,7 @@ const EveryOneSerchJob = () => {
 
       {/* job data display */}
       {jobposts ? (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center px-10 py-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center lg:px-10 px-3 py-10">
           {jobposts
             .filter(handleFilter)
             .filter((post) => {

@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
 import useAxioSequre from "./useAxiosSequre";
-// import { data } from "autoprefixer";
 
 const useJobsBooksMarks = () => {
   const [userEroor, setUserError] = useState("");
   const [axiosSequre] = useAxioSequre();
+
 
   const handleBookMark = (bookMarksData) => {
     axiosSequre
@@ -24,8 +24,8 @@ const useJobsBooksMarks = () => {
       .catch((error) => {
         setUserError(error.message);
       });
-    console.log("bookMarksData:", bookMarksData);
   };
+  console.log(userEroor);
 
   return [handleBookMark];
 };

@@ -17,11 +17,13 @@ import {
 import useSingleUser from "../../../Hooks/useSingleUser";
 import useAdmin from "../../../Hooks/useAdmin";
 import { useEffect } from "react";
+import useNotificationFindEmail from "../../../Hooks/useNotificationFindEmail";
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const { user, logOut } = useContext(AuthContext);
   const [singleUser, refetch] = useSingleUser();
+  const [singlenotify] = useNotificationFindEmail();
   const single = singleUser[0];
   const navigate = useNavigate();
   const [isAdmin] = useAdmin();
@@ -143,10 +145,13 @@ const Navbar = () => {
                 ""
               )}
               {user && (
-                <li className="flex justify-center">
+                <li className="flex relative justify-center">
                   <Link to="/notification">
                     <FaBell className="mx-auto" /> Notifications
                   </Link>
+                 {
+                  singlenotify &&  <div className="badge bg-green-800 text-white border-none absolute -top-2 left-16">{singlenotify?.length}</div>
+                 }
                 </li>
               )}
               {/* pages  */}
