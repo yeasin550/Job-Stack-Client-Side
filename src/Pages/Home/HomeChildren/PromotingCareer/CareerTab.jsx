@@ -68,18 +68,16 @@ export default function CareerTab() {
                 {posts.map((post) => (
                   <div
                     key={post.id}
-                    className="relative bg-[#09867E] flex flex-col justify-center items-center lg:px-10 py-12 px-3 mt-12 rounded-md  space-y-6 "
+                    className="relative banner text-black flex flex-col justify-center items-center lg:px-10 py-12 px-3 mt-12 rounded-md  space-y-6 "
                   >
                     <button className="border-2 border-gray-600 rounded-full absolute md:-top-8 -top-6  md:w-16 w-12 h-12 md:h-16 bg-white text-center text-xl font-bold">
                       {post.id}
                     </button>
                     <img src={post.image} alt="images" />
-                    <h3 className="md:text-2xl text-lg font-bold text-white">
+                    <h3 className="md:text-2xl text-lg font-bold">
                       {post.title}
                     </h3>
-                    <p className="md:text-lg text-center text-white">
-                      {post.details}
-                    </p>
+                    <p className="md:text-lg text-center">{post.details}</p>
                   </div>
                 ))}
               </ul>
