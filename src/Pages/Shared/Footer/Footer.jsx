@@ -12,7 +12,7 @@ import {
 
 const Footer = () => {
   return (
-    <div className="bg-[#09867E] text-white">
+    <div className="banner">
       <div className="max-w-screen-xl pt-10 px-5 mx-auto dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
         <div className="mt-10">
           <div className="grid md:justify-items-center md:grid-cols-4 gap-6">
@@ -134,7 +134,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-8 font-bold">
-          <hr />
+          <hr className="text-gray-500 "/>
         </div>
         <p className="text-center mt-7 text-sm pb-4">
           Copyright &copy; 2023 Job-Stack, All rights reserved By Hexa-Coders
