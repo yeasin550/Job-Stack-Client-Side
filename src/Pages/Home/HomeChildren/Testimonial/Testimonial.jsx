@@ -38,7 +38,7 @@ const Testimonial = () => {
 
   return (
     <div className=" dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black py-12">
-      <div className="max-w-screen-xl px-5 mx-auto">
+      <div className="max-w-screen-xl px-5 mx-auto mt-20">
         <div className="text-center">
           <p className="text-4xl uppercase font-bold mb-2">
             Clents Testimonials

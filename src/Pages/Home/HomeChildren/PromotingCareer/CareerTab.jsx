@@ -39,7 +39,7 @@ export default function CareerTab() {
   return (
     <div className="w-full my-8 ">
       <Tab.Group>
-        <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
+        <Tab.List className="flex space-x-1 rounded-xl banner p-1">
           {Object.keys(categories).map((category) => (
             <Tab
               key={category}
