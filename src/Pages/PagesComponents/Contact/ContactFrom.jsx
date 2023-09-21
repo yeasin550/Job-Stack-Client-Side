@@ -116,7 +116,7 @@ const ContactFrom = () => {
                   type="text"
                   {...register("name", { required: true })}
                   placeholder="Your Name"
-                  className="input input-bordered w-full bg-slate-200"
+                  className="input input-bordered dark:text-black w-full bg-slate-200"
                 />
                 {errors.name && (
                   <span className="text-red-800">Name is required</span>
@@ -131,7 +131,7 @@ const ContactFrom = () => {
                   type="number"
                   {...register("phone", { required: true })}
                   placeholder="Your Phone Number"
-                  className="input input-bordered w-full bg-slate-200"
+                  className="input input-bordered dark:text-black w-full bg-slate-200"
                 />
                 {errors.phone && (
                   <span className="text-red-800">phone is required</span>

@@ -68,9 +68,8 @@ const JobsRoute = () => {
                 isCompany ? <>
                   <Tab
                     onClick={() => clickactive("appliedJobs")}
-                    className={` flex items-center gap-3 cursor-pointer userinfotext ${
-                      active == "appliedJobs" ? "activetab cursor-pointer" : ""
-                    }`}
+                    className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "appliedJobs" ? "activetab cursor-pointer" : ""
+                      }`}
                   >
                     <FaShoppingBag />
                     Applied Member
@@ -85,58 +84,52 @@ const JobsRoute = () => {
 
                 </> :
                   <>
-                  <Tab
-                    onClick={() => clickactive("post")}
-                    className={` flex items-center gap-2 cursor-pointer userinfotext ${
-                      active == "post" ? "activetab cursor-pointer" : ""
-                    }`}
-                  >
-                    <FaHouseDamage /> All Jobs
-                  </Tab>
-                  <Tab
-                    onClick={() => clickactive("jobTask")}
-                    className={` flex items-center gap-3 cursor-pointer userinfotext ${
-                      active == "jobTask" ? "activetab cursor-pointer" : ""
-                    }`}
-                  >
-                    <MdNotificationsPaused className="text-xl" /> Job Task
-                    Alerts
-                  </Tab>
-                  <Tab
-                    onClick={() => clickactive("appliedMember")}
-                    className={` flex items-center gap-3 cursor-pointer userinfotext ${
-                      active == "appliedMember"
-                        ? "activetab cursor-pointer"
-                        : ""
-                    }`}
-                  >
-                    <BsPersonCheckFill /> Applied Jobs
-                  </Tab>
-                  <Tab
-                    onClick={() => clickactive("bookmarkJobs")}
-                    className={` flex items-center gap-3 cursor-pointer userinfotext ${
-                      active == "bookmarkJobs" ? "activetab cursor-pointer" : ""
-                    }`}
-                  >
-                    <FaRegBookmark /> Favorites Jobs
-                  </Tab>
-                  <Tab
-                    onClick={() => clickactive("about")}
-                    className={` flex items-center gap-3 cursor-pointer userinfotext ${
-                      active == "about" ? "activetab cursor-pointer" : ""
-                    }`}
-                  >
-                    <FaFile /> Resume Builder
-                  </Tab>
-                  <Tab
-                    onClick={() => clickactive("connect")}
-                    className={` flex items-center gap-3 cursor-pointer userinfotext ${
-                      active == "connect" ? "activetab cursor-pointer" : ""
-                    }`}
-                  >
-                    <FaYoutube /> Job Seeker Guidance
-                  </Tab>
-                </>
+                    <Tab
+                      onClick={() => clickactive("post")}
+                      className={` flex items-center gap-2 cursor-pointer userinfotext ${active == "post" ? "activetab cursor-pointer" : ""
+                        }`}
+                    >
+                      <FaHouseDamage /> All Jobs
+                    </Tab>
+                    <Tab
+                      onClick={() => clickactive("jobTask")}
+                      className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "jobTask" ? "activetab cursor-pointer" : ""
+                        }`}
+                    >
+                      <MdNotificationsPaused className="text-xl" /> Job Task
+                      Alerts
+                    </Tab>
+                    <Tab
+                      onClick={() => clickactive("appliedMember")}
+                      className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "appliedMember"
+                          ? "activetab cursor-pointer"
+                          : ""
+                        }`}
+                    >
+                      <BsPersonCheckFill /> Applied Jobs
+                    </Tab>
+                    <Tab
+                      onClick={() => clickactive("bookmarkJobs")}
+                      className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "bookmarkJobs" ? "activetab cursor-pointer" : ""
+                        }`}
+                    >
+                      <FaRegBookmark /> Favorites Jobs
+                    </Tab>
+                    <Tab
+                      onClick={() => clickactive("about")}
+                      className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "about" ? "activetab cursor-pointer" : ""
+                        }`}
+                    >
+                      <FaFile /> Resume Builder
+                    </Tab>
+                    <Tab
+                      onClick={() => clickactive("connect")}
+                      className={` flex items-center gap-3 cursor-pointer userinfotext ${active == "connect" ? "activetab cursor-pointer" : ""
+                        }`}
+                    >
+                      <FaYoutube /> Job Seeker Guidance
+                    </Tab>
+                  </>
               }
             </TabList>
           </div>

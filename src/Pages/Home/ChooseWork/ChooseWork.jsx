@@ -8,7 +8,7 @@ const ChooseWork = () => {
   return (
     <div className="banner mt-16">
       <div className="max-w-screen-xl mx-auto px-5">
-        <div className=" dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black py-14 md:py-20">
+        <div className="  py-14 md:py-20">
           <h1 className="md:text-4xl px-2 md:px-0 text-center text-2xl mb-3 uppercase mt-6 font-bold">
             JOBS Working Process
           </h1>

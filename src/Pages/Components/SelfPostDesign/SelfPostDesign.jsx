@@ -189,7 +189,7 @@ const SelfPostDesign = ({ selfpost }) => {
     }
   };
   return (
-    <div className="lg:w-[550px] w-full mt-5 p-4 shadow-xl rounded-lg">
+    <div className="lg:w-[550px] w-full mt-5 p-4 shadow-xl  rounded-lg">
       {/* user information */}
       <div className="mt-3 flex justify-between items-center">
         <div className="flex items-center gap-3">
@@ -212,7 +212,7 @@ const SelfPostDesign = ({ selfpost }) => {
             </label>
             <ul
               tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box "
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box text-black"
             >
               <button
                 onClick={() => makeEdit(_id)}
@@ -283,8 +283,8 @@ const SelfPostDesign = ({ selfpost }) => {
         {/* shear the post */}
         <div className="dropdown dropdown-bottom dark:text-black flex items-center">
           <label tabIndex={0}>
-            <div className="flex items-center gap-1 z-50">
-              <FaShare size={20} className="cursor-pointer text" />
+            <div className="flex items-center gap-1 z-50 dark:text-white">
+              <FaShare size={20} className="cursor-pointer" />
               <h4 className="text-lg">Share</h4>
             </div>
           </label>
@@ -334,7 +334,7 @@ const SelfPostDesign = ({ selfpost }) => {
                   <input
                     {...register("commenttext", { required: true })}
                     type="text"
-                    className="py-2 w-[400px] rounded-full ps-3 bg-slate-100"
+                    className="py-2 w-[400px] rounded-full ps-3 bg-slate-100 dark:text-black"
                     placeholder="Enter your comment"
                   />
                   <button className="absolute right-3 top-3 text-xl text-blue-700">

@@ -22,7 +22,7 @@ const NewsInsights = () => {
   }, []);
   return (
     <div className="max-w-screen-xl mx-auto px-5">
-      <div className=" dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black py-16">
+      <div className=" dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black py-16 duration-1000">
         <div className="text-center mb-14">
           <h1 className="md:text-4xl text-2xl uppercas font-bold">
             Recent News Articles

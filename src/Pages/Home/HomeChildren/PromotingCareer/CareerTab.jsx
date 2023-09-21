@@ -47,7 +47,9 @@ export default function CareerTab() {
                 classNames(
                   "w-full rounded-lg py-2.5 text-sm font-medium leading-5",
                   "ring-white ring-opacity-60 ring-offset-2 ring-offset-[#09867E] focus:outline-none focus:ring-2",
-                  selected ? "bg-[#09867E] text-white shadow" : "text-black"
+                  selected
+                    ? "bg-[#09867E] text-white shadow"
+                    : "text-black dark:text-white"
                 )
               }
             >
@@ -60,7 +62,7 @@ export default function CareerTab() {
             <Tab.Panel
               key={idx}
               className={classNames(
-                "rounded-xl bg-white p-3",
+                "rounded-xl bg-white dark:bg-[#121928] p-3",
                 "ring-white ring-opacity-60 ring-offset-2  focus:outline-none focus:ring-2"
               )}
             >
