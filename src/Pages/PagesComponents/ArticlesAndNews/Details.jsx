@@ -122,7 +122,7 @@ const Details = () => {
           </div>
           <div className=" mt-2 flex justify-end">
             <input
-              className=" btn banner text-white float-right"
+              className=" btn bg-[#09867E] hover:bg-[#09867E] text-white float-right"
               type="submit"
               value="Post Comment"
             />
