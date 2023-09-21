@@ -76,7 +76,7 @@ const Login = () => {
   };
 
   return (
-    <div className="banner">
+    <div className="">
       <div className="flex flex-col lg:flex-row justify-center items-center dark:bg-gradient-to-r from-gray-700 via-gray-900 py-:10 px-2 lg:gap-5 gap-5 lg:px-20">
         {/* Login div start */}
         <div className="w-full lg:px-10">
@@ -136,7 +136,7 @@ const Login = () => {
               <input
                 type="submit"
                 value="Login"
-                className="btn banner text-[18px]  border-0 text-white"
+                className="btn bg-[#09867E] hover:bg-[#09867E] text-[18px] border-0 text-white"
               />
             </div>
             {error && <p className="text-center text-error mb-2">{error}</p>}
@@ -199,7 +199,7 @@ const Login = () => {
                   />
                 </label>
               </div>
-              <button className="my-btn w-full mt-5 p-2 text-lg rounded-md text-white banner">
+              <button className="my-btn w-full mt-5 p-2 text-lg rounded-md text-white bg-[#09867E]">
                 Send Email
               </button>
               <p className="text-error text-center mt-2">{error}</p>
@@ -207,7 +207,7 @@ const Login = () => {
             <div className="modal-action">
               <label
                 htmlFor="my_modal_6"
-                className="btn btn-md btn-circle absolute top-2  text-white banner "
+                className="btn btn-md btn-circle absolute top-2  text-white bg-[#09867E] "
               >
                 X
               </label>

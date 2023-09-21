@@ -27,6 +27,7 @@ const Navbar = () => {
   const single = singleUser[0];
   const navigate = useNavigate();
   const [isAdmin] = useAdmin();
+  console.log(isAdmin);
   // user logout function
   const handleLogOut = () => {
     logOut()

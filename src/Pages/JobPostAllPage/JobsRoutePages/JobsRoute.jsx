@@ -58,7 +58,7 @@ const JobsRoute = () => {
   UseScrollTop(pathname);
 
   return (
-    <div className="lg:px-10 py-12 dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
+    <div className="max-w-screen-xl mx-auto py-12 dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
       <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <div className="lg:flex gap-1">
           <div className="shadowdiv border rounded-md dark:text-white lg:w-80 h-100%">
@@ -142,7 +142,7 @@ const JobsRoute = () => {
                     Applied Job
                   </h1>
 
-                  <AppliedJobs />
+                  <AppliedJobs/>
 
                 </TabPanel>
                 {/* Company view can user completed task */}
