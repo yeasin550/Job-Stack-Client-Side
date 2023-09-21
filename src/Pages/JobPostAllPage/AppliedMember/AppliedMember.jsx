@@ -38,7 +38,7 @@ const AppliedMember = () => {
                 </tr>
               </thead>
               <tbody>
-                {appliedmember?.map((posts, index) => (
+                {appliedmember?.map((posts) => (
                   <tr
                     key={posts._id}
                     className="dark:bg-white dark:text-black dark:border-red-950"

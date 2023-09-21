@@ -25,24 +25,27 @@ import useSingleUser from "../../../Hooks/useSingleUser";
 import { useLocation } from "react-router-dom";
 import UseScrollTop from "../../../Hooks/UseScrollTop";
 import toast from "react-hot-toast";
+import usePostNotification from "../../../Hooks/usePostNotification";
 
 const SelfPostDesign = ({ selfpost }) => {
   const { pathname } = useLocation();
   UseScrollTop(pathname);
-  const { _id, text, image, userPhoto, userName, timeStamp, userId } = selfpost;
+  const { _id, text, image, userPhoto, userName, timeStamp, userId, email } = selfpost;
 
   const [handleDelete] = useDeletSelfPost();
   const { user } = useContext(AuthContext);
   const [axiosSequre] = useAxioSequre();
   const [singleUser] = useSingleUser();
   const [clickedid, setClickedid] = useState(null);
-  const [handleFacebookShare, handleLinkedinShare, handleTwitterShare] =
-    usePostShare();
+  const [clickedemail, setClickedemail] = useState(null);
+  const [handleFacebookShare, handleLinkedinShare, handleTwitterShare] = usePostShare();
+  const [postNotification] = usePostNotification();
   const { register, handleSubmit, reset } = useForm();
 
   // comment data fucation
-  const makeComment = (id) => {
+  const makeComment = (id, email) => {
     setClickedid(id);
+    setClickedemail(email);
   };
   const { data: commenttext = [], refetch } = useQuery(
     ["commenttext", clickedid],
@@ -54,6 +57,8 @@ const SelfPostDesign = ({ selfpost }) => {
 
   // comment Post funcation
   const onSubmit = (data) => {
+
+    //comment object 
     const addcomment = {
       comment: data?.commenttext,
       userName: user?.displayName,
@@ -61,11 +66,22 @@ const SelfPostDesign = ({ selfpost }) => {
       postId: clickedid,
       time: timeStamp,
     };
-    console.log(addcomment);
+
+    //notification object
+    const notify = {
+      reciveEmail: clickedemail,
+      sendername: user?.displayName,
+      massage: data?.commenttext,
+      timeStamp: timeStamp,
+      senderimage: user?.photoURL,
+    }
+
+
     axiosSequre.post("/comments", addcomment).then((data) => {
       if (data?.data?.insertedId) {
         refetch();
         reset();
+        postNotification(notify);
       }
     });
   };
@@ -173,7 +189,7 @@ const SelfPostDesign = ({ selfpost }) => {
     }
   };
   return (
-    <div className="lg:w-[550px] w-full mt-5 p-4 shadow-xl rounded-lg">
+    <div className="lg:w-[550px] w-full mt-5 p-4 shadow-xl  rounded-lg">
       {/* user information */}
       <div className="mt-3 flex justify-between items-center">
         <div className="flex items-center gap-3">
@@ -196,7 +212,7 @@ const SelfPostDesign = ({ selfpost }) => {
             </label>
             <ul
               tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box "
+              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box text-black"
             >
               <button
                 onClick={() => makeEdit(_id)}
@@ -254,7 +270,7 @@ const SelfPostDesign = ({ selfpost }) => {
           <p> likes: {count}</p>
         </div>
         {/* comment button */}
-        <div onClick={() => makeComment(_id)} className="">
+        <div onClick={() => makeComment(_id, email)} className="">
           <button
             onClick={isOpens ? closeDiv : openDiv}
             className="flex items-center gap-1"
@@ -267,8 +283,8 @@ const SelfPostDesign = ({ selfpost }) => {
         {/* shear the post */}
         <div className="dropdown dropdown-bottom dark:text-black flex items-center">
           <label tabIndex={0}>
-            <div className="flex items-center gap-1 z-50">
-              <FaShare size={20} className="cursor-pointer text" />
+            <div className="flex items-center gap-1 z-50 dark:text-white">
+              <FaShare size={20} className="cursor-pointer" />
               <h4 className="text-lg">Share</h4>
             </div>
           </label>
@@ -313,12 +329,12 @@ const SelfPostDesign = ({ selfpost }) => {
               />
             </div>
             <div className="">
-              <form onSubmit={handleSubmit(onSubmit)}>
+              <form onSubmit={handleSubmit(onSubmit, email)}>
                 <div className="relative w-full">
                   <input
                     {...register("commenttext", { required: true })}
                     type="text"
-                    className="py-2 w-[400px] rounded-full ps-3 bg-slate-100"
+                    className="py-2 w-[400px] rounded-full ps-3 bg-slate-100 dark:text-black"
                     placeholder="Enter your comment"
                   />
                   <button className="absolute right-3 top-3 text-xl text-blue-700">

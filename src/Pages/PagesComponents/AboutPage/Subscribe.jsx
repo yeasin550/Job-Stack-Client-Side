@@ -6,8 +6,8 @@ const Subscribe = () => {
     event.preventDefault();
   }
   return (
-    <div className="p-12  bg-[#09867E] text-white dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black rounded-md mb-20">
-      <div className="md:flex justify-evenly items-center">
+    <div className="p-12  bg-[#09867E]  text-white dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black rounded-md mb-20">
+      <div className="md:flex justify-evenly items-center dark:shadow-sm dark:shadow-gray-400 py-6">
         {/* Frist div */}
         <div className="flex items-center gap-4">
           <FaBell className="text-6xl" />

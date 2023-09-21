@@ -32,7 +32,7 @@ const UserFollowing = () => {
     });
   };
   return (
-    <div className="py-10">
+    <div className="py-10 dark:text-black">
       {followings ? (
         <div className="grid md:grid-cols-3 gap-4 px-5 w-full h-[100vh] overflow-auto">
           {followings?.map((person) => (

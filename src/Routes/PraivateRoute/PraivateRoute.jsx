@@ -8,8 +8,7 @@ const PraivateRoute = ({ children }) => {
 
     if (loading){
         return <div className='flex w-56 mx-auto justify-center items-center flex-col mt-48 mb-48'>
-                <span className="loading loading-infinity  text-center text-blue-700 w-2/4"></span>
-                <p className='text-2xl uppercase '>Please LOgin First</p>
+                <span className="loading loading-infinity  text-center text-green-700 w-2/4"></span>
               </div>
     }
     if(user){

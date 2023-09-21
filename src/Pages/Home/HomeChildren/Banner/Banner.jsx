@@ -16,27 +16,13 @@ const Banner = () => {
    const { pathname } = useLocation();
    UseScrollTop(pathname);
   return (
-    <div className="banner text-black dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black side-bar">
+    <div className="banner text-black dark:text-white dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black duration-1000 side-bar">
       <div className="max-w-screen-xl mx-auto px-5">
         <div className="grid md:grid-cols-2 gap-5 items-center justify-center py-10 md:py-24">
           {/*text part */}
           <div className="items-center justify-center space-y-6 ">
             <h1 className="md:text-5xl font-black text-2xl">
               Find your <span className="text-[#09867E]">new job</span>
-              {/* <span className="md:text-5xl text-2xl font-bold">
-                <Typewriter
-                  options={{
-                    strings: [
-                      "Top Category Jobs Available",
-                      "To Get Your Dream Jobs",
-                      "Your Ultimate Job Search Hub",
-                      "Your Path to Success",
-                    ],
-                    autoStart: true,
-                    loop: true,
-                  }}
-                />
-              </span> */}
             </h1>
             <h1 className="md:text-5xl font-black  text-2xl">
               and build career
