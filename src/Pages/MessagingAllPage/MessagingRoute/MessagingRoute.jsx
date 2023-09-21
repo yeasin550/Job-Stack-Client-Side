@@ -113,7 +113,8 @@ const MessagingRoute = () => {
   // Connect to Socket.io
 
   useEffect(() => {
-    socket.current = io("https://socketserver-6x9r.onrender.com");
+    socket.current = io("ws://local-api-socket.onrender.com");
+    // socket.current = io("ws://localhost:8900");
     socket.current.emit("new-user-add", userI?._id);
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
@@ -129,6 +130,7 @@ const MessagingRoute = () => {
     });
   }, []);
 
+ 
   const handleSearch = () => {
     fetch(`https://jobstack-backend-teal.vercel.app/users-search/${search}`)
       .then((res) => res.json())

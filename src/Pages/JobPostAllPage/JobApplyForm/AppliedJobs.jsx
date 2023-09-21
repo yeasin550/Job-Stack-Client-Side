@@ -9,10 +9,10 @@ const AppliedJobs = () => {
   const { user } = useContext(AuthContext);
   const [axiosSequre] = useAxioSequre();
 
-  const { data: appliedJobs = [], refetch } = useQuery(
+  const { data: appliedJobs = []} = useQuery(
     ["appliedJobs", user?.email],
     async () => {
-      const res = await axiosSequre.get(`jobsapply/${user?.email}`);
+      const res = await axiosSequre.get(`/appliedmember/${user?.email}`);
       return res.data;
     }
   );
