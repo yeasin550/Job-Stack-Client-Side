@@ -30,7 +30,7 @@ const Dashbord = () => {
             htmlFor="my-drawer-2"
             className="btn btn-primary drawer-button lg:hidden"
           >
-            Open Dashbord
+            Open Dashbord nissan
           </label>
           <Outlet />
         </div>

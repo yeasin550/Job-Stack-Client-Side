@@ -2,22 +2,15 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
-import { useNavigate } from "react-router-dom";
-
-
 const AppliedMember = () => {
-  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [axiosSequre] = useAxioSequre();
 
-  const { data: appliedmember = [], refetch } = useQuery(
-    ["appliedmember", user?.email],
-    async () => {
-      const res = await axiosSequre.get(`appliedmember/${user?.email}`);
+  const { data: appliedmember = [] } = useQuery(
+    ["appliedmember", user?.email], async () => {
+      const res = await axiosSequre.get(`/jobsapply/${user?.email}`);
       return res.data;
-    }
-  );
-  console.log(appliedmember);
+    });
   return (
     <div>
       <div className="grid grid-cols-1">
@@ -38,17 +31,16 @@ const AppliedMember = () => {
                 </tr>
               </thead>
               <tbody>
-                {appliedmember?.map((posts, index) => (
+                {appliedmember?.map((posts) => (
                   <tr
                     key={posts._id}
                     className="dark:bg-white dark:text-black dark:border-red-950"
                   >
-                    {/* <td>{index + 1}</td> */}
                     <td>
-                      <img
+                       <img
                         className="w-12 h-12 rounded-md"
                         src="https://img.freepik.com/free-vector/heart-logo_126523-587.jpg?w=740&t=st=1694020952~exp=1694021552~hmac=f9010928b59d497b8d6dcf2dbc0d9ec113f8859775377d674cf8e6b9a66f29c5"
-                      />
+                       />
                     </td>
                     <td>{posts?.companyName}</td>
                     <td>
