@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const JobBanner = () => {
     return (
-      <div className="banner max-w-screen-xl px-5 mx-auto p-5 md:h-52 h-full rounded-md">
+      <div className="banner dark:text-black max-w-screen-xl px-5 mx-auto p-5 md:h-52 h-full rounded-md ">
         <div className="md:flex justify-evenly items-center">
           <div>
-            <h1 className="text-3xl font-semibold md:-mt-7">
+            <h1 className="text-3xl font-semibold md:-mt-7 ">
               Are You Looking For A
               <span className="text-[#09867E]"> Dream Job?</span>
             </h1>

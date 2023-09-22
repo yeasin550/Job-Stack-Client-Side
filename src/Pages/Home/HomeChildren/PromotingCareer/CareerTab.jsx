@@ -46,7 +46,7 @@ export default function CareerTab() {
               className={({ selected }) =>
                 classNames(
                   "w-full rounded-lg py-2.5 text-sm font-medium leading-5",
-                  "ring-white ring-opacity-60 ring-offset-2 ring-offset-[#09867E] focus:outline-none focus:ring-2",
+                  "ring-white text-black ring-opacity-60 ring-offset-2 ring-offset-[#09867E] focus:outline-none focus:ring-2",
                   selected
                     ? "bg-[#09867E] text-white shadow"
                     : "text-black dark:text-white"
