@@ -80,7 +80,7 @@ const EveryOneSerchJob = () => {
             .map((posts) => (
               <div
                 key={posts._id}
-                className="w-full bg-base-100 search-card categorires-card rounded-md px-5  py-5"
+                className="w-full bg-base-100 search-card dark:text-black categorires-card rounded-md px-5  py-5"
               >
                 <div>
                   <div className="flex justify-start gap-5 items-center">

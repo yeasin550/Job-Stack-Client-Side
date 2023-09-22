@@ -142,7 +142,7 @@ const MessageBox = ({
               >
                 <button
                   onClick={() => handleDeleteChat(chat?._id)}
-                  className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
+                  className="flex items-center gap-1 text-lg dark:text-black hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
                 >
                   <MdDelete />
                   Delete
@@ -209,7 +209,7 @@ const MessageBox = ({
         </div>
       </div>
       {
-        <div className="p-6 w-full flex items-center">
+        <div className="p-6 w-full flex items-center dark:text-white">
           <div className="w-full drop-shadow-xl p-4">
             <InputEmoji value={newMessage} onChange={handleChange} />
 
@@ -247,7 +247,7 @@ const MessageBox = ({
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="icon icon-tabler icon-tabler-circle-plus"
+              className="icon icon-tabler icon-tabler-circle-plus "
               width="30"
               height="30"
               viewBox="0 0 24 24"

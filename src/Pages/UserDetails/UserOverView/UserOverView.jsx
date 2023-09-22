@@ -50,7 +50,7 @@ const UserOverView = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-white-300 rounded-box w-52"
+                className="dropdown-content  z-[1] menu p-2 shadow bg-white dark:text-black rounded-box w-52"
               >
                 <li>
                   <a>Edit Workplace</a>
@@ -86,7 +86,7 @@ const UserOverView = () => {
             <div className="dropdown dropdown-top dropdown-end">
               <label
                 tabIndex={0}
-                className="btn btn-circle btn-sm text-[20px] font-sans font-bold bg-gray-200  pb-4 mt-2"
+                className="btn btn-circle btn-sm text-[20px] font-sans font-bold bg-white dark:text-black  pb-4 mt-2"
               >
                 ...
               </label>
@@ -120,7 +120,7 @@ const UserOverView = () => {
             <div className="dropdown dropdown-top dropdown-end">
               <label
                 tabIndex={0}
-                className="btn btn-circle btn-sm text-[20px] font-sans font-bold bg-gray-200  pb-4 mt-2"
+                className="btn btn-circle btn-sm text-[20px] font-sans font-bold bg-white dark:text-black  pb-4 mt-2"
               >
                 ...
               </label>

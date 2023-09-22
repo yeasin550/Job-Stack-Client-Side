@@ -222,7 +222,7 @@ const UserProfile = () => {
                 {...register("bgImage")}
                 required
                 type="file"
-                className="file-input file-input-bordered file-input-success w-full mt-10"
+                className="file-input file-input-bordered dark:text-black file-input-success w-full mt-10"
               />
               <input
                 type="submit"
@@ -236,7 +236,7 @@ const UserProfile = () => {
       {/* user profile image modal  */}
       <div>
         <input type="checkbox" id="my_modal_19" className="modal-toggle" />
-        <div className="modal">
+        <div className="modal dark:text-black">
           <div className="modal-box">
             <div className="modal-action">
               <label
