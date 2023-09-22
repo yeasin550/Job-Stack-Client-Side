@@ -32,7 +32,7 @@ const Notification = () => {
   return (
     <div className="max-w-screen-xl mx-auto px-20 grid grid-cols-2  justify-items-center gap-10">
       {
-        singlenotify.map(notify => <div key={notify?._id} className="flex flex-row px-4 py-2 justify-between items-center mt-20  border w-full border-gray-500">
+        singlenotify.map(notify => <div key={notify?._id} className="flex flex-row px-4 py-2 justify-between items-center     border w-full border-gray-500">
           <div className="flex justify-start gap-4 items-center">
             <div className="w-14 h-14">
               {

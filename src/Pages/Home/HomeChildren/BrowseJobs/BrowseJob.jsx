@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
 import useAxioSequre from '../../../../Hooks/useAxiosSequre';
+// import image from '../../../../assets/images/'
 
 const BrowseJob = () => {
   const [countOn, setCountOn] = useState(false);

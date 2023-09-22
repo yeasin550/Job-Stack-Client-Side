@@ -46,7 +46,7 @@ body {
   text-align: left !important;
   font-weight: 800px !important;
 }
-
+in
 .tabbuttonactive {
   color: black !important;
   background-color: aliceblue !important;
@@ -75,9 +75,9 @@ body {
 
 .banner {
   background: #09867E;
-  /* background: -webkit-linear-gradient(to right, #155799, #159957); */
   background: linear-gradient(to right, #C4F3EF, #DFFFFD);
 }
+
 
 
 .mid-banner {
