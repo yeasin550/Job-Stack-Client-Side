@@ -19,7 +19,7 @@ const JobBanner = () => {
             <img className="h-64 -mt-12 hidden md:block" src={images} alt="" />
           </div>
           <div className="">
-            <Link to="jobsroute">
+            <Link to="jobsearch">
               <button className="banner-button md:-mt-8 ">Browse Jobs</button>
             </Link>
           </div>
