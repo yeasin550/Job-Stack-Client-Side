@@ -1,76 +1,72 @@
-import React from "react";
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+import React, { PureComponent } from "react";
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
 
 const data = [
-  {
-    name: "Sat",
-    pv: 223,
-    uv: 400,
-  },
-  {
-    name: "Sun",
-    pv: 368,
-  },
-  {
-    name: "Mon",
-    pv: 296,
-  },
-  {
-    name: "Tues",
-    pv: 236,
-  },
-  {
-    name: "Wed",
-    pv: 289,
-  },
-  {
-    name: "	Thurs",
-    pv: 250,
-  },
-  {
-    name: "Fri",
-    pv: 368,
-  },
+  { name: "Group A", value: 400 },
+  { name: "Group B", value: 300 },
+  { name: "Group C", value: 340 },
+  { name: "Group D", value: 200 },
+  { name: "Group E", value: 300 },
+  { name: "Group F", value: 450 },
+  { name: "Group G", value: 180 },
 ];
 
-export default function JobChats() {
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+
+const RADIAN = Math.PI / 180;
+const renderCustomizedLabel = ({
+  cx,
+  cy,
+  midAngle,
+  innerRadius,
+  outerRadius,
+  percent,
+  index,
+}) => {
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
   return (
-    <div className="chat-shadow rounded-lg ">
-      <h1 className="text-2xl font-bold mb-4">Job Chart</h1>
-      <ResponsiveContainer width="100%" height={300}>
-        <BarChart
-          width={500}
-          height={300}
-          data={data}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-          barSize={20}
-        >
-          <XAxis
-            dataKey="name"
-            scale="point"
-            padding={{ left: 10, right: 10 }}
-          />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <CartesianGrid strokeDasharray="3 3" />
-          <Bar dataKey="pv" fill="#088F8F" background={{ fill: "#eee" }} />
-        </BarChart>
-      </ResponsiveContainer>
-    </div>
+    <text
+      x={x}
+      y={y}
+      fill="white"
+      textAnchor={x > cx ? "start" : "end"}
+      dominantBaseline="central"
+    >
+      {`${(percent * 100).toFixed(0)}%`}
+    </text>
   );
-}
+};
+
+export default function JobChats() {
+ 
+    return (
+    <div className="chat-shadow rounded-lg">
+      <h1 className="text-2xl font-bold m-4">Job Chart</h1>
+        <ResponsiveContainer width="100%" height={300}>
+          <PieChart width={400} height={400}>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            label={renderCustomizedLabel}
+            outerRadius={80}
+            fill="#8884d8"
+            dataKey="value"
+          >
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]}
+              />
+            ))}
+          </Pie>
+        </PieChart>
+        </ResponsiveContainer>
+        </div>
+    );
+  }
+

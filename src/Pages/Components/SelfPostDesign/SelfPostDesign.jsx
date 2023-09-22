@@ -189,14 +189,6 @@ const SelfPostDesign = ({ selfpost }) => {
     }
   };
 
-  // const handleLike = () => {
-  //    const addlike = {
-  //      postId: clickedid,
-  //      userName: user?.displayName,
-  //      userPhoto: user?.photoURL,
-  //   };
-  //   console.log(addlike);
-  // }
 
   return (
     <div className="lg:w-[550px] w-full mt-5 p-4 shadow-xl rounded-lg">
