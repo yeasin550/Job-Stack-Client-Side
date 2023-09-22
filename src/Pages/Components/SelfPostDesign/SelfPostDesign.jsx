@@ -444,7 +444,10 @@ const SelfPostDesign = ({ selfpost }) => {
                   Something Else
                 </li>
               </ul>
-              <button className="mt-3" onClick={handleReport}>
+              <button
+                className="mt-3 px-4 py-1 bg-[#09867E] text-white rounded-md"
+                onClick={handleReport}
+              >
                 Report
               </button>
             </div>
