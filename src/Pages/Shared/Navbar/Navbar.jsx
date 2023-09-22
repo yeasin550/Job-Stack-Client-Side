@@ -57,7 +57,7 @@ const Navbar = () => {
 
 
   return (
-    <nav className="w-full banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black duration- sticky lg:px-8 z-40 top-0 left-0">
+    <nav className="w-full banner dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black duration-500 sticky lg:px-8 z-40 top-0 left-0">
       <div className="justify-between px-5 mx-auto lg:max-w-screen-xl md:items-center md:flex sticky ">
         <div className="flex items-center justify-between py-3 md:py-5 md:block">
           <div className="navbar-start flex justify-center items-center  ml-0">
@@ -165,7 +165,7 @@ const Navbar = () => {
                   </label>
                   <ul
                     tabIndex={0}
-                    className="dropdown-content z-[1] menu p-2 bg-white rounded-box w-52"
+                    className="dropdown-content z-[1] menu p-2 bg-white dark:text-black rounded-box w-52"
                   >
                     <li>
                       <ActiveLink to="about">About Us</ActiveLink>

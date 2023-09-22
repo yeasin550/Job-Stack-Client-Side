@@ -16,7 +16,7 @@ const QuestionsAnswers = () => {
         <div className="grid md:grid-cols-2 gap-12 mt-16">
           <div className="flex gap-3 shadow hover:shadow-2xl card p-2">
             <h1 className="text-2xl mt-1 text-blue-800">
-              <BsQuestionCircle />
+              <BsQuestionCircle className="dark:text-white" />
             </h1>
             <div className="">
               <h1 className="text-xl font-semibold">How our Jobstack work ?</h1>
@@ -27,9 +27,9 @@ const QuestionsAnswers = () => {
               </p>
             </div>
           </div>
-          <div className="flex gap-3 shadow hover:shadow-2xl card p-2">
+          <div className="flex gap-3 shadow hover:shadow-2xl card p-2 dark:bg-[#09867E]">
             <h1 className="text-2xl mt-1 text-blue-800">
-              <BsQuestionCircle />
+              <BsQuestionCircle className="dark:text-white" />
             </h1>
             <div className="">
               <h1 className="text-xl font-semibold">
@@ -41,9 +41,9 @@ const QuestionsAnswers = () => {
               </p>
             </div>
           </div>
-          <div className="flex gap-3 shadow hover:shadow-2xl card p-2">
+          <div className="flex gap-3 shadow hover:shadow-2xl card p-2 dark:bg-[#09867E]">
             <h1 className="text-2xl mt-1 text-blue-800">
-              <BsQuestionCircle />
+              <BsQuestionCircle className="dark:text-white" />
             </h1>
             <div className="">
               <h1 className="text-xl font-semibold">
@@ -56,9 +56,9 @@ const QuestionsAnswers = () => {
               </p>
             </div>
           </div>
-          <div className="flex gap-3 shadow hover:shadow-2xl card p-2">
+          <div className="flex gap-3 shadow hover:shadow-2xl card p-2 dark:bg-[#09867E]">
             <h1 className="text-2xl mt-1 text-blue-800">
-              <BsQuestionCircle />
+              <BsQuestionCircle className="dark:text-white" />
             </h1>
             <div className="">
               <h1 className="text-xl font-semibold">

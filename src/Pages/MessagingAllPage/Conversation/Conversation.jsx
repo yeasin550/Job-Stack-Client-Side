@@ -50,7 +50,7 @@ const Conversation = ({ data, currentUserId, handleDeleteChat, online }) => {
         >
           <button
             onClick={() => handleDeleteChat(data?._id)}
-            className="flex items-center gap-1 text-lg hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
+            className="flex items-center gap-1 text-lg dark:text-black hover:bg-slate-200 w-full py-1 rounded-lg ps-2 font-semibold"
           >
             <MdDelete />
             Delete

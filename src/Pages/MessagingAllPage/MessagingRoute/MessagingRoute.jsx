@@ -149,7 +149,7 @@ const MessagingRoute = () => {
   return (
     <>
       <div className="w-full h-screen shadowdiv dark:text-black rounded-lg md:flex">
-        <div className="md:w-[30%]  bg-gray-100 px-6 overflow-scroll">
+        <div className="md:w-[30%]  bg-gray-100 px-6 overflow-scroll dark:bg-gray-600  duration-500 dark:text-white">
           <div className="font-bold mt-6 pl-4 text-2xl">Chats</div>
           <div className="">
             <div className="py-6 flex items-center">
@@ -157,11 +157,11 @@ const MessagingRoute = () => {
                 type="text"
                 placeholder="Search Messages or Users"
                 onChange={(e) => setSearch(e.target.value)}
-                className="bg-gray-300 px-6 py-3 w-full outline-none rounded"
+                className="bg-gray-300 px-6 py-3 dark:text-black w-full outline-none rounded"
               />
               <BiSearch
                 onClick={handleSearch}
-                className="h-[30px] w-[30px] items-end cursor-pointer -ml-12"
+                className="h-[30px] w-[30px] dark:text-white items-end cursor-pointer -ml-12"
               />
             </div>
           </div>
@@ -223,7 +223,7 @@ const MessagingRoute = () => {
 
         {/* MESSAGE BOX================================ End */}
 
-        <div className="md:w-[69%] mt-8 md:mt-0 bg-white flex flex-col ">
+        <div className="md:w-[69%] mt-8 md:mt-0 bg-white dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black duration-500 dark:text-white flex flex-col ">
           <MessageBox
             chat={currentChat}
             currentUserId={userI?._id}

@@ -19,6 +19,21 @@
     border-radius: 20px !important;
 } 
 
+.falseactive {
+    color: black !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    background-color: white !important;
+    /* width: 100px !important; */
+    height: 40px !important;
+    text-align: center !important;
+    padding-top: 8px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    cursor: pointer !important;
+    border-radius: 20px !important;
+}
+
 .text {
     /* text-transform: uppercase !important; */
     text-transform: none !important;
