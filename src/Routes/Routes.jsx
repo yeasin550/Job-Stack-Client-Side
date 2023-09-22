@@ -121,7 +121,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "jobTaskForm",
+        path: "jobTaskForm/:email",
         element: (
           <PraivateRoute>
             <JobTaskForm />
@@ -138,7 +138,7 @@ const router = createBrowserRouter([
       },
       {
         path: "review",
-        element: <ClientReview />,
+        element: <ClientReview/>,
       },
       {
         path: "jobsearch",

@@ -46,7 +46,7 @@ body {
   text-align: left !important;
   font-weight: 800px !important;
 }
-
+in
 .tabbuttonactive {
   color: black !important;
   background-color: aliceblue !important;
@@ -74,14 +74,10 @@ body {
 
 
 .banner {
-  /* background: #09867E; */
-  /* background: -webkit-linear-gradient(to right, #155799, #159957); */
   background: linear-gradient(to right, #C4F3EF, #DFFFFD);
-  /* background: linear-gradient(to right, #549d10, #DFFFFD); */
 }
-/* .banner{
-  background: conic-gradient(at center top, rgb(17, 24, 39), rgb(243, 244, 246), rgb(17, 24, 39));
-} */
+
+
 
 .mid-banner {
   background: #f7ff00;

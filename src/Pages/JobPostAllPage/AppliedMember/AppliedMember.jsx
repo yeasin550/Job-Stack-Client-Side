@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
+import { FaUserAlt } from "react-icons/fa";
 const AppliedMember = () => {
   const { user } = useContext(AuthContext);
   const [axiosSequre] = useAxioSequre();
@@ -11,6 +12,7 @@ const AppliedMember = () => {
       const res = await axiosSequre.get(`/jobsapply/${user?.email}`);
       return res.data;
     });
+  console.log(appliedmember);
   return (
     <div>
       <div className="grid grid-cols-1">
@@ -19,7 +21,6 @@ const AppliedMember = () => {
             <table className="table table-zebra w-full">
               <thead>
                 <tr className="uppercase  lg:text-transparent bg-clip-text  bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
-                  {/* <th>Sl</th> */}
                   <th>Company Logo</th>
                   <th>Company Name</th>
                   <th>Job Title & Category</th>
@@ -37,10 +38,13 @@ const AppliedMember = () => {
                     className="dark:bg-white dark:text-black dark:border-red-950"
                   >
                     <td>
-                       <img
-                        className="w-12 h-12 rounded-md"
-                        src="https://img.freepik.com/free-vector/heart-logo_126523-587.jpg?w=740&t=st=1694020952~exp=1694021552~hmac=f9010928b59d497b8d6dcf2dbc0d9ec113f8859775377d674cf8e6b9a66f29c5"
-                       />
+                      {
+                        posts?.companyphoto ? <img
+                          className="w-12 h-12 rounded-md"
+                          src={posts?.companyphoto}
+                          alt="img"
+                        /> : <FaUserAlt className="w-12 h-12 bg-gray-400 p-1 rounded-full"></FaUserAlt>
+                      }
                     </td>
                     <td>{posts?.companyName}</td>
                     <td>

@@ -70,7 +70,7 @@ const Reviews = () => {
             </tr>
           </thead>
           <tbody>
-            {review.map((post, index) => (
+            {review?.map((post, index) => (
               <tr key={post?._id}>
                 <th>{index + 1}</th>
                 <th>
