@@ -13,38 +13,37 @@ import {
 const data = [
   {
     name: "Sat",
-    pv: 223,
-    uv: 400,
+    pv: 2,
   },
   {
     name: "Sun",
-    pv: 368,
+    pv: 6,
   },
   {
     name: "Mon",
-    pv: 296,
+    pv: 9,
   },
   {
     name: "Tues",
-    pv: 236,
+    pv: 3,
   },
   {
     name: "Wed",
-    pv: 289,
+    pv: 9,
   },
   {
     name: "	Thurs",
-    pv: 250,
+    pv: 5,
   },
   {
     name: "Fri",
-    pv: 368,
+    pv: 8,
   },
 ];
 export default function JobapplyChats() {
   return (
     <div className="chat-shadow rounded-lg ">
-      <h1 className="text-2xl font-bold mb-4">JobApply Chart</h1>
+      <h1 className="text-2xl font-bold m-4">JobApply Chart</h1>
       <ResponsiveContainer width="100%" height={300}>
         <LineChart
           width={500}

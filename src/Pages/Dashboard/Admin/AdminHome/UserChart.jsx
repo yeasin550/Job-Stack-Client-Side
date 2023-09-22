@@ -13,39 +13,38 @@ import {
 const data = [
   {
     name: "Sat",
-    pv: 223,
-    uv: 400,
+    pv: 12,
   },
   {
     name: "Sun",
-    pv: 368,
+    pv: 8,
   },
   {
     name: "Mon",
-    pv: 296,
+    pv: 9,
   },
   {
     name: "Tues",
-    pv: 236,
+    pv: 6,
   },
   {
     name: "Wed",
-    pv: 289,
+    pv: 9,
   },
   {
     name: "	Thurs",
-    pv: 250,
+    pv: 5,
   },
   {
     name: "Fri",
-    pv: 368,
+    pv: 8,
   }
 ];
 
 export default function UserChart() {
   return (
     <div className="chat-shadow rounded-lg ">
-      <h1 className="text-2xl font-bold mb-4">User Chart</h1>
+      <h1 className="text-2xl font-bold m-4">User Chart</h1>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart
           width={500}
@@ -68,7 +67,7 @@ export default function UserChart() {
           <Tooltip />
           <Legend />
           <CartesianGrid strokeDasharray="3 3" />
-          <Bar dataKey="pv" fill="#413ea0" background={{ fill: "#eee" }} />
+          <Bar dataKey="pv" fill="#09867E" background={{ fill: "#eee" }} />
         </BarChart>
       </ResponsiveContainer>
     </div>
