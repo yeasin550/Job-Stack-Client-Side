@@ -4,7 +4,7 @@ import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
 import useAxioSequre from '../../../../Hooks/useAxiosSequre';
 import Lottie from "lottie-react";
-import image from '../../../../assets/images/zdlHZdquQN.json'
+import image from '../../../../assets/animate/zdlHZdquQN.json';
 
 const BrowseJob = () => {
   const [countOn, setCountOn] = useState(false);

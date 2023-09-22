@@ -9,7 +9,7 @@ import banner6 from "../../../../assets/images/banner6.png";
 import { Link, useLocation } from "react-router-dom";
 import UseScrollTop from "../../../../Hooks/UseScrollTop";
 import banner from "../../../../assets/images/banner.png";
-import bk from "../../../../assets/images/Blue_Black_Futuristic_And_Modern_Technology_Logo__5_-removebg-preview.png";
+import bk from "../../../../assets/images/animationbk.png";
 
 const Banner = () => {
    const { pathname } = useLocation();
