@@ -67,9 +67,9 @@ const Navbar = () => {
 
             <div className="md:hidden">
               <button
-                className="p-2 text-white rounded-md outline-none focus:border-gray-400 focus:border"
+                className="p-2 rounded-md outline-none focus:border-gray-400 focus:border"
                 onClick={() => setNavbar(!navbar)}
-              >
+              >j
                 {navbar ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -252,7 +252,7 @@ const Navbar = () => {
                 </div>
               ) : (
                 <button
-                  className="btn btn-sm hover:bg-gray-400 hover:text-white  border-none"
+                  className="btn bg-[#09867E] btn-sm hover:bg-[#09867E] text-white  border-none"
                   onClick={() => navigate("/login")}
                 >
                   Login

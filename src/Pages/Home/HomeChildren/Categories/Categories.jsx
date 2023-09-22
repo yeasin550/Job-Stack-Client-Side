@@ -17,8 +17,8 @@ const Categories = () => {
     Aos.init();
   }, []);
   return (
-    <div className="max-w-screen-xl mx-auto px-5 my-20 dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black lg:px-14 ">
-      <div className="text-center mb-9">
+    <div className="max-w-screen-xl mx-auto px-5 my-16 dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black lg:px-14 ">
+      <div className="text-center mb-12">
         <h1 className="md:text-4xl uppercase  text-3xl font-bold">
           Top Categories
         </h1>

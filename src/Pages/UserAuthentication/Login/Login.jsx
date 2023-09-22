@@ -82,7 +82,7 @@ const Login = () => {
         <div className="w-full lg:px-10">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="w-full lg:p-10 p-3 border bg-white rounded-lg text-black"
+            className="w-full lg:p-10 p-3 border border-[#09867E] bg-white  text-black"
           >
             <h3 className="text-2xl text-center font-bold mb-5">Login Here</h3>
             {/* Email Inpurt Field */}
@@ -126,7 +126,7 @@ const Login = () => {
 
               <label
                 htmlFor="my_modal_6"
-                className="text-left mt-3 mb-4 cursor-pointer text-transparent bg-clip-text  bg-gradient-to-r from-pink-400 via-yellow-400 to-blue-400 font-semibold"
+                className="text-left mt-3 mb-4 cursor-pointer font-sans text-red-600 font-semibold"
               >
                 Forgot Password?
               </label>
@@ -145,7 +145,7 @@ const Login = () => {
               <button>
                 <Link
                   to="/signup"
-                  className=" btn btn-xs mx-1 bg-gradient-to-r from-pink-400  to-cyan-400"
+                  className="btn  bg-[#09867E] mr-1 text-white  btn-xs"
                 >
                   user
                 </Link>
@@ -153,7 +153,7 @@ const Login = () => {
               <button>
                 <Link
                   to="/companyregister"
-                  className=" btn bg-gradient-to-r from-pink-400  to-cyan-400  btn-xs"
+                  className=" btn  bg-[#09867E] text-white  btn-xs"
                 >
                   company
                 </Link>

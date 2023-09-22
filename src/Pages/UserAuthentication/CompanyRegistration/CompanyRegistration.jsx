@@ -6,6 +6,7 @@ import signupanimation from "../../../assets/animation/105639-signup.json";
 import { Link, useNavigate} from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
 const CompanyRegistration = () => {
@@ -49,7 +50,6 @@ const CompanyRegistration = () => {
             createUser(data?.email, data?.password)
               .then((result) => {
                 updateUserProfile(data.name, imgURL);
-                // console.log(loggedUser);
                 const saveUser = {
                   name: data.name,
                   email: data.email,

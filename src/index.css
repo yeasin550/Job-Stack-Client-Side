@@ -46,16 +46,21 @@ body {
   text-align: left !important;
   font-weight: 800px !important;
 }
-
+in
 .tabbuttonactive {
-  color: black !important;
-  background-color: aliceblue !important;
-  border-radius: 18px !important;
-  padding-left: 12px !important;
-  padding-right: 12px !important;
-  padding-top: 5px !important;
-  padding-bottom: 6px !important;
-
+  font-size: 18px !important;
+  cursor: pointer !important;
+  text-align: center !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+  border-radius: 8px !important;
+  width: 100%;
+  background-color: #f7fafa !important;
+  color: #000000 !important;
+  text-align: left !important;
+  font-weight: 800px !important;
 }
 
 ::-webkit-scrollbar {
@@ -74,14 +79,10 @@ body {
 
 
 .banner {
-  /* background: #09867E; */
-  /* background: -webkit-linear-gradient(to right, #155799, #159957); */
   background: linear-gradient(to right, #C4F3EF, #DFFFFD);
-  /* background: linear-gradient(to right, #549d10, #DFFFFD); */
 }
-/* .banner{
-  background: conic-gradient(at center top, rgb(17, 24, 39), rgb(243, 244, 246), rgb(17, 24, 39));
-} */
+
+
 
 .mid-banner {
   background: #f7ff00;

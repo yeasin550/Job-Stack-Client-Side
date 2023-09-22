@@ -5,8 +5,6 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { Autoplay, FreeMode, Pagination } from "swiper/modules";
-import image1 from "../../../../assets/images/banner1.png";
-import {AiTwotoneStar} from 'react-icons/ai'
 // aso animation
 import Aos from "aos";
 import "aos/dist/aos.css";

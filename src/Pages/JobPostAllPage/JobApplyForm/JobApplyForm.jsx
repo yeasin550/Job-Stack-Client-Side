@@ -20,6 +20,7 @@ const JobApplyForm = () => {
       return res.data;
     }
   );
+  console.log(userApply);
   const {
     register,
     handleSubmit,
@@ -66,6 +67,7 @@ const onSubmit = (data) => {
           userPhoto: userApply[0]?.userPhoto,
           workplace: userApply[0]?.workplace,
           postDate: formattedDate,
+          companyphoto: userApply[0]?.image,
         };
         console.log(saveUser);
         axiosSequre

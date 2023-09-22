@@ -1,12 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../../../Providers/AuthProvider";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
 import Swal from "sweetalert2";
+import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const JobTaskForm = () => {
-  const { user } = useContext(AuthContext)
-  const [userEroor, setUserError] = useState("");
+  const {email} = useParams();
+  const {user} = useContext(AuthContext);
   const [axiosSequre] = useAxioSequre()
   const {
     register,
@@ -26,15 +28,14 @@ const JobTaskForm = () => {
     const formattedMonth = month < 10 ? `0${month}` : month.toString();
     const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
     const sendJobTask = {
-      name: user.displayName,
-      applyEmail: user.email,
-      // postId: id,
+      companyName: user?.displayName,
+      companyPhoto: user?.photoURL,
+      applyEmail: email,
       postDate: formattedDate,
       jobTask,
       date,
       docs,
     };
-    console.log(sendJobTask);
     axiosSequre
       .post("/jobtask", sendJobTask)
       .then((response) => {
@@ -49,9 +50,7 @@ const JobTaskForm = () => {
           });
         }
       })
-      .catch((error) => {
-        setUserError(error.message);
-      });
+      
   };
   return (
     <div className="w-2/3 mx-auto my-12 border border-green-300 shadow-lg shadow-green-50 px-5 py-5 rounded-md">

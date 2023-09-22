@@ -30,7 +30,7 @@ const CompleteTask = () => {
       jobDescription,
       approved,
     };
-    console.log(sendJobTask);
+   
     axiosSequre
       .post("/decision", sendJobTask)
       .then((response) => {

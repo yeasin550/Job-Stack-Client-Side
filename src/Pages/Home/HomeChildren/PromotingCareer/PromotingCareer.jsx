@@ -13,7 +13,7 @@ const PromotingCareer = () => {
             your aspirations into achievements.
           </p>
 
-          <Link to="jobsroute">
+          <Link to="jobsearch">
             <button className="banner-button mt-6">Browse Job</button>
           </Link>
         </div>

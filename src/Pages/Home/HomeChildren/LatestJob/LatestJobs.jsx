@@ -29,24 +29,24 @@ const LatestJobs = () => {
         </div>
         <div className=" dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
           <ul
-            className="tabs text-xl  dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black font-semibold"
+            className="tabs text-xl  dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black font-semibold dark:text-black"
             defaultIndex={tabIndex}
             onSelect={(index) => setTabIndex(index)}
           >
             <li
-              className={activeTab === 1 ? "active " : "tabbuttonactive"}
+              className={activeTab === 1 ? "active " : "falseactive"}
               onClick={() => handleTabClick(1)}
             >
               Remote
             </li>
             <li
-              className={activeTab === 2 ? "active " : "tabbuttonactive"}
+              className={activeTab === 2 ? "active " : "falseactive"}
               onClick={() => handleTabClick(2)}
             >
               Onsite
             </li>
             <li
-              className={activeTab === 3 ? "active " : "tabbuttonactive"}
+              className={activeTab === 3 ? "active " : "falseactive"}
               onClick={() => handleTabClick(3)}
             >
               Internship

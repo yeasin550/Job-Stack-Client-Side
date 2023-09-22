@@ -3,28 +3,27 @@ import React, { useState } from 'react';
 import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
 import useAxioSequre from '../../../../Hooks/useAxiosSequre';
+import Lottie from "lottie-react";
+import image from '../../../../assets/animate/zdlHZdquQN.json';
 
 const BrowseJob = () => {
   const [countOn, setCountOn] = useState(false);
-
-   const [axiosSecure] = useAxioSequre();
-   const { data: stats = {} } = useQuery({
-     queryKey: ["admin-stats"],
-     queryFn: async () => {
-       const res = await axiosSecure("/admin-stats");
-       return res.data;
-     },
-   });
+  const [axiosSecure] = useAxioSequre();
+  const { data: stats = {} } = useQuery({
+    queryKey: ["admin-stats"],
+    queryFn: async () => {
+      const res = await axiosSecure("/admin-stats");
+      return res.data;
+    },
+  });
   return (
-    <div className="max-w-screen-xl mx-auto px-5 my-20 dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
-      <div className="grid md:grid-cols-2 gap-5 justify-center ">
+    <div className="max-w-screen-xl mx-auto px-5  dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
+      <div className="grid md:grid-cols-2 gap-5 justify-start items-center ">
         {/* left site */}
-        <div className="w-full px-3 lg:px-0">
-          <img
-            className="rounded-md  w-ful"
-            src="https://i.ibb.co/BqMBCGR/populer-job.jpg"
-            loading="lazy"
-            alt="img"
+        <div className="w-full h-full  px-3 lg:px-0">
+          <Lottie
+            animationData={image}
+            loop={true}
           />
         </div>
         {/* right site */}

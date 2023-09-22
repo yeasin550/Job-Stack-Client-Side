@@ -16,7 +16,7 @@ const ArticleCard = ({ article }) => {
     <div>
       <>
         {/* component */}
-        <div className="mx-auto px-4 py-8 max-w-xl">
+        <div className="mx-auto px-4  max-w-xl">
           <div className="bg-white shadow-2xl rounded-lg mb-6 tracking-wide">
             <div className="md:flex-shrink-0">
               <img
