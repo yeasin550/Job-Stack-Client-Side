@@ -74,13 +74,13 @@ const Details = () => {
 
   return (
     <div>
-      <div className="">
+      <div className="dark:text-black">
         <img
           src="https://jobbox-nextjs-v3.vercel.app/assets/imgs/page/blog/img-single.png"
           alt="detais images"
         />
         <div className=" md:-mt-60 z-50">
-          <div className="md:w-9/12 mx-auto mt-20 bg-white text-justify">
+          <div className="md:w-9/12 mx-auto mt-20 bg-white lg:px-5 lg:pb-2 text-justify">
             <div className="grid place-items-center">
               <img className="h-80 w-auto  rounded-lg" src={image} alt="" />
             </div>
@@ -96,7 +96,7 @@ const Details = () => {
             <p className="text-lg mt-7">{articles?.pointnine}</p>
             <p className="text-lg mt-7">{articles?.pointten}</p>
             <p className="text-lg mt-7">{articles?.details}</p>
-            <p className="my-5"> Post Time {timeStamp}</p>
+            <p className="my-5 font-semibold "> Post Time {timeStamp}</p>
           </div>
         </div>
       </div>
@@ -122,7 +122,7 @@ const Details = () => {
           </div>
           <div className=" mt-2 flex justify-end">
             <input
-              className=" btn banner text-white float-right"
+              className=" btn bg-[#09867E] hover:bg-[#09867E] text-white float-right"
               type="submit"
               value="Post Comment"
             />

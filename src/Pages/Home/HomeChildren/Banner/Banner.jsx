@@ -6,7 +6,6 @@ import banner3 from "../../../../assets/images/banner3.png";
 import banner4 from "../../../../assets/images/banner4.png";
 import banner5 from "../../../../assets/images/banner5.png";
 import banner6 from "../../../../assets/images/banner6.png";
-import Typewriter from "typewriter-effect";
 import { Link, useLocation } from "react-router-dom";
 import UseScrollTop from "../../../../Hooks/UseScrollTop";
 import banner from "../../../../assets/images/banner.png";
@@ -16,18 +15,18 @@ const Banner = () => {
    const { pathname } = useLocation();
    UseScrollTop(pathname);
   return (
-    <div className="banner text-black dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black side-bar">
+    <div className="banner text-black dark:text-white dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black duration-1000 side-bar">
       <div className="max-w-screen-xl mx-auto px-5">
-        <div className="grid md:grid-cols-2 gap-5 items-center justify-center py-10 md:py-24">
+        <div className="grid md:grid-cols-2 gap-5 items-center justify-center py-10 md:py-20">
           {/*text part */}
           <div className="items-center justify-center space-y-6 ">
-            <h1 className="md:text-5xl font-black text-2xl">
-              Find your <span className="text-[#09867E]">new job</span>
+            <h1 className="md:text-5xl uppercase font-black text-2xl">
+              Find your <span className="text-[#09867E]">Dream job</span>
             </h1>
-            <h1 className="md:text-5xl font-black  text-2xl">
+            <h1 className="md:text-5xl uppercase font-black text-2xl">
               and build career
             </h1>
-            <h3 className="lg:text-xl text-[16px] w-11/12 mt-20">
+            <h3 className="lg:text-lg text-[16px] w-11/12 ">
               Are you on the hunt for your dream job searching for the perfect
               candidate to join your team? Look no further! JobStack is your
               one-stop destination for all your career needs.

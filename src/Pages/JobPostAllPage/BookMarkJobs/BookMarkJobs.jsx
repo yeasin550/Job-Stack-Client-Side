@@ -20,7 +20,7 @@ import { useNavigate } from "react-router-dom";
 import useJobsBooksMarks from "../../../Hooks/useJobsBooksMarks";
 import getBookMarkJobs from "../../../Hooks/getBookMarkJobs";
 import usePostShare from "../../../Hooks/usePostShare";
-// const BookMarkJobs = ({ bookJobs }) => {
+import Swal from "sweetalert2";
 const BookMarkJobs = () => {
   // const [handleBookMark] = useJobsBooksMarks();
   const [bookMarkJobs] = getBookMarkJobs();
@@ -30,6 +30,24 @@ const BookMarkJobs = () => {
   const { user } = useContext(AuthContext);
   // console.log(bookMarkJobs);
 
+  const handleDeleteBookMark = () => {
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+
+    Toast.fire({
+      icon: "success",
+      title: "Un BookMark Job successfully",
+    });
+  }
   return (
     <div className="grid grid-cols-1 dark:text-black">
       {bookMarkJobs.map((bookJobs) => (
@@ -48,7 +66,7 @@ const BookMarkJobs = () => {
 
               <ul
                 tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box "
+                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box mr-12"
               >
                 <button
                   onClick={() => handleFacebookShare()}
@@ -74,9 +92,9 @@ const BookMarkJobs = () => {
               </ul>
             </div>
             <FaRegBookmark
-              // onClick={() => handleBookMark(bookMarkJobs)}
-              className="cursor-pointer disabled text-gray-400"
-              title="This job is already bookmarked"
+              onClick={handleDeleteBookMark}
+              className="cursor-pointer disabled"
+              title="Un bookmarked"
             />
           </div>
           <div className="lg:flex justify-between items-center mb-5">

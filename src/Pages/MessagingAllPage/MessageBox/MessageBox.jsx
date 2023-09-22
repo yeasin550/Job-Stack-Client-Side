@@ -162,10 +162,10 @@ const MessageBox = ({
                 <>
                   <div
                     ref={scroll}
-                    onMouseEnter={handleMouseEnter}
+                    onMouseEnter={() => handleMouseEnter(message?._id)}
                     className={`max-w-[45%] relative rounded-b-xl p-4 mb-6 ${
                       message.senderId === currentUserId
-                        ? " text-white banner rounded-tl-xl ml-auto"
+                        ? " text-white bg-[#09867E] rounded-tl-xl ml-auto"
                         : "bg-chat rounded-tr-xl"
                     } `}
                   >
@@ -179,10 +179,10 @@ const MessageBox = ({
                       >
                         <button
                           className={`btn ${
-                            isDivVisible && message?._id ? "block" : "hidden"
+                            isDivVisible === message?._id ? "block" : "hidden"
                           } `}
                           onClick={() => handleDeleteMessage(message?._id)}
-                          onMouseLeave={handleMouseLeave}
+                          onMouseLeave={()=>handleMouseLeave(2)}
                         >
                           <MdDelete className="w-5 h-5" />
                         </button>

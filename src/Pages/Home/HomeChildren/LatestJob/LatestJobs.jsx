@@ -19,7 +19,7 @@ const LatestJobs = () => {
   };
   return (
     <div className=" max-w-screen-xl px-5 mx-auto ">
-      <div className=" dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black ">
+      <div className=" dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black duration-1000">
         <div className="text-center dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black  ">
           <h1 className="text-4xl uppercase font-bold ">Latest Jobs</h1>
           <p className="mt-2 mb-4 text-white lg:px-0 text-lg">

@@ -40,7 +40,7 @@ const ContactFrom = () => {
         <div className="grid md:grid-cols-4 gap-10">
           <div className="text-center">
             <div className="">
-              <button className="bg-[#09867E] rounded-full p-5 text-3xl text-white ">
+              <button className="bg-[#09867E]  rounded-full p-5 text-3xl text-white ">
                 <MdHouse />
               </button>
               <div>
@@ -51,7 +51,7 @@ const ContactFrom = () => {
           </div>
           <div className="text-center">
             <div className="">
-              <button className="bg-[#09867E] rounded-full p-5 text-3xl text-white ">
+              <button className="bg-[#09867E]  rounded-full p-5 text-3xl text-white ">
                 <MdEmail />
               </button>
               <div>
@@ -62,7 +62,7 @@ const ContactFrom = () => {
           </div>
           <div className="text-center">
             <div className="">
-              <button className="bg-[#09867E] rounded-full p-5 text-3xl text-white ">
+              <button className="bg-[#09867E]  rounded-full p-5 text-3xl text-white ">
                 <MdCall />
               </button>
               <div>
@@ -74,7 +74,7 @@ const ContactFrom = () => {
 
           <div className="text-center">
             <div className="">
-              <button className="bg-[#09867E] rounded-full p-5 text-3xl text-white ">
+              <button className="bg-[#09867E]  rounded-full p-5 text-3xl text-white ">
                 <LuMapPin />
               </button>
               <div>
@@ -116,7 +116,7 @@ const ContactFrom = () => {
                   type="text"
                   {...register("name", { required: true })}
                   placeholder="Your Name"
-                  className="input input-bordered w-full bg-slate-200"
+                  className="input input-bordered dark:text-black w-full bg-slate-200"
                 />
                 {errors.name && (
                   <span className="text-red-800">Name is required</span>
@@ -131,7 +131,7 @@ const ContactFrom = () => {
                   type="number"
                   {...register("phone", { required: true })}
                   placeholder="Your Phone Number"
-                  className="input input-bordered w-full bg-slate-200"
+                  className="input input-bordered dark:text-black w-full bg-slate-200"
                 />
                 {errors.phone && (
                   <span className="text-red-800">phone is required</span>
@@ -169,7 +169,7 @@ const ContactFrom = () => {
             </div>
             <div className="form-control mt-6">
               <input
-                className="btn bg-[#09867E] text-white"
+                className="btn bg-[#09867E] hover:bg-[#09867E] text-white"
                 type="submit"
                 value="Send Message"
               />

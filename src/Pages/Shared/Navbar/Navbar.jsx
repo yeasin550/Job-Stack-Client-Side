@@ -18,6 +18,7 @@ import useSingleUser from "../../../Hooks/useSingleUser";
 import useAdmin from "../../../Hooks/useAdmin";
 import { useEffect } from "react";
 import useNotificationFindEmail from "../../../Hooks/useNotificationFindEmail";
+import ActiveLink from "../../../Hooks/ActiveLink";
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
@@ -109,18 +110,18 @@ const Navbar = () => {
           >
             <ul className="items-center justify-center text-center text-lg space-y-8 md:flex md:space-x-6 md:space-y-0">
               <li className="flex justify-center ">
-                <Link to="/">
+                <ActiveLink to="/">
                   <FaHome className="mx-auto" />
                   Home
-                </Link>
+                </ActiveLink>
               </li>
 
               {user ? (
                 <li className="">
-                  <Link to="/myNetwork">
+                  <ActiveLink to="/myNetwork">
                     <FaUserFriends className="mx-auto" />
                     My Networks
-                  </Link>
+                  </ActiveLink>
                 </li>
               ) : (
                 ""
@@ -128,28 +129,28 @@ const Navbar = () => {
 
               {user ? (
                 <li className="flex justify-center">
-                  <Link to="/jobsroute">
+                  <ActiveLink to="/jobsroute">
                     <FaShoppingBag className="mx-auto" />
                     Jobs
-                  </Link>
+                  </ActiveLink>
                 </li>
               ) : (
                 ""
               )}
               {user ? (
                 <li className="flex justify-center">
-                  <Link to="/massageroute">
+                  <ActiveLink to="/massageroute">
                     <FaRegCommentDots className="mx-auto" /> Messaging
-                  </Link>
+                  </ActiveLink>
                 </li>
               ) : (
                 ""
               )}
               {user && (
                 <li className="flex relative justify-center">
-                  <Link to="/notification">
+                  <ActiveLink to="/notification">
                     <FaBell className="mx-auto" /> Notifications
-                  </Link>
+                  </ActiveLink>
                  {
                   singlenotify &&  <div className="badge bg-green-800 text-white border-none absolute -top-2 left-16">{singlenotify?.length}</div>
                  }
@@ -167,19 +168,19 @@ const Navbar = () => {
                     className="dropdown-content z-[1] menu p-2 bg-white rounded-box w-52"
                   >
                     <li>
-                      <Link to="about">About Us</Link>
+                      <ActiveLink to="about">About Us</ActiveLink>
                     </li>
                     <li>
-                      <Link to="contact">Contact</Link>
+                      <ActiveLink to="contact">Contact</ActiveLink>
                     </li>
                     <li>
-                      <Link to="review">Review</Link>
+                      <ActiveLink to="review">Review</ActiveLink>
                     </li>
                     <li>
-                      <Link to="faq">FAQ</Link>
+                      <ActiveLink to="faq">FAQ</ActiveLink>
                     </li>
                     <li>
-                      <Link to="articles-news">Articles</Link>
+                      <ActiveLink to="articles-news">Articles</ActiveLink>
                     </li>
                   </ul>
                 </div>

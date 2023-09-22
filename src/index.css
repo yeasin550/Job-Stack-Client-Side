@@ -41,8 +41,8 @@ body {
   padding-right: 8px !important;
   border-radius: 8px !important;
   width: 100%;
-  background-color: rgb(205, 205, 24) !important;
-  color: white !important;
+  background-color: #09867E !important;
+  color: #EFA303 !important;
   text-align: left !important;
   font-weight: 800px !important;
 }
@@ -74,7 +74,6 @@ in
 
 
 .banner {
-  background: #09867E;
   background: linear-gradient(to right, #C4F3EF, #DFFFFD);
 }
 
@@ -128,4 +127,8 @@ in
   box-shadow: 2px 1px rgb(12, 82, 26)
 }
 
+.tab-color{
+  color: white !important;
+  background-color: #09867E !important;
+}
 

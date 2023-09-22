@@ -3,12 +3,14 @@ import React from "react";
 import useAxioSequre from "../../../Hooks/useAxiosSequre";
 import Articles from "./Articles";
 
+
 const AllArticles = () => {
   const [axiosSequre] = useAxioSequre();
   const { data: articles = [] } = useQuery(["articles"], async () => {
-    const res = await axiosSequre.get(`/news-article`);
+    const res = await axiosSequre.get("/news-article");
     return res.data;
   });
+  console.log(articles);
 
   return (
     <div className="max-w-screen-xl mx-auto px-5">

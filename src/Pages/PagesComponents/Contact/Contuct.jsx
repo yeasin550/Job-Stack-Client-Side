@@ -5,7 +5,7 @@ import GoToTop from '../../Shared/GoToTop/GoToTop';
 
 const Contuct = () => {
     return (
-      <div className="dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black dark:text-white">
+      <div className="dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black duration-1000 dark:text-white">
         <ContuctBanner />
         <Contact />
         <GoToTop />
