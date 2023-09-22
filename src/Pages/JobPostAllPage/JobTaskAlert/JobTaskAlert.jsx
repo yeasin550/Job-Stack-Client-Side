@@ -34,7 +34,7 @@ console.log(jobTaskAlert);
     const formattedDate = `${year}-${formattedMonth}-${formattedDay}`;
     const sendJobTask = {
       name: user?.displayName,
-      name: user?.photoURL,
+      photo: user?.photoURL,
       submited: user?.email,
       postDate: formattedDate,
       docs,
