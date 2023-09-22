@@ -165,7 +165,7 @@ const MessageBox = ({
                     onMouseEnter={handleMouseEnter}
                     className={`max-w-[45%] relative rounded-b-xl p-4 mb-6 ${
                       message.senderId === currentUserId
-                        ? " text-white banner rounded-tl-xl ml-auto"
+                        ? " text-white bg-[#09867E] rounded-tl-xl ml-auto"
                         : "bg-chat rounded-tr-xl"
                     } `}
                   >

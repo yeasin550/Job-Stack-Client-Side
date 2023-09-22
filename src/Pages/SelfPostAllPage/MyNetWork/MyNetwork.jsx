@@ -17,15 +17,15 @@ const MyNetwork = () => {
     setActive(active);
   };
   return (
-    <div className="max-w-screen-xl px-5 mx-auto pb-10 dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
+    <div className="max-w-screen-xl  mx-auto pb-10 dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black">
       <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
         <div className="lg:flex gap-1">
           <div className="shadowdiv border bg-[#09867E] dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black text-white rounded-md lg:w-80 w-full h-100%">
-            <TabList className="flex  flex-col justify-center items-start px-5 py-10 gap-6">
+            <TabList className="flex flex-col justify-center items-start px-5 py-10 gap-6">
               <Tab
                 onClick={() => clickactive("post")}
-                className={` cursor-pointer userinfotext ${
-                  active == "post" ? "activetab  cursor-pointer" : ""
+                className={` cursor-pointer  userinfotext ${
+                  active == "post" ? "activetab  cursor-pointer" : "tab-color"
                 }`}
               >
                 Activities
