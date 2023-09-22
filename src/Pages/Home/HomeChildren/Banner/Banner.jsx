@@ -24,7 +24,7 @@ const Banner = () => {
             <h1 className="md:text-5xl font-black text-2xl">
               Find your <span className="text-[#09867E]">new job</span>
             </h1>
-            <h1 className="md:text-5xl font-black  text-2xl">
+            <h1 className="md:text-5xl font-black text-2xl">
               and build career
             </h1>
             <h3 className="lg:text-xl text-[16px] w-11/12 mt-20">
