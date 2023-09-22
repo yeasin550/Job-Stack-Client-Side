@@ -16,7 +16,7 @@ const Banner = () => {
    const { pathname } = useLocation();
    UseScrollTop(pathname);
   return (
-    <div className="banner text-black dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black side-bar">
+    <div className="banner text-black dark:text-white dark:bg-gradient-to-r from-gray-700 via-gray-900 to-black duration-1000 side-bar">
       <div className="max-w-screen-xl mx-auto px-5">
         <div className="grid md:grid-cols-2 gap-5 items-center justify-center py-10 md:py-24">
           {/*text part */}

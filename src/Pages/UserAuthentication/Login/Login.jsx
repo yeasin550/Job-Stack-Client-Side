@@ -132,7 +132,7 @@ const Login = () => {
               </label>
             </div>
             {/* submit button */}
-            <div className="form-control  mb-4">
+            <div className="form-control mb-4">
               <input
                 type="submit"
                 value="Login"

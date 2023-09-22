@@ -15,7 +15,7 @@ const UserArticleDetails = () => {
     timeStamp,
   } = articles;
   return (
-    <div>
+    <div className="dark:text-black">
       <img
         src="https://jobbox-nextjs-v3.vercel.app/assets/imgs/page/blog/img-single.png"
         alt="detais images"
@@ -25,7 +25,7 @@ const UserArticleDetails = () => {
           <div className="grid place-items-center">
             <img className="h-80 w-auto  rounded-lg" src={image} alt="" />
           </div>
-          <div className="">
+          <div className="pl-3">
             <h1 className="text-2xl mt-8"> {articletitle}</h1>
             <p className="mt-5">{artciledescription}</p>
           </div>
