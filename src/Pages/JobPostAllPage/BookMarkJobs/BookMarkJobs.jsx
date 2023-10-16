@@ -118,7 +118,7 @@ const BookMarkJobs = () => {
               </div>
 
               <div className="px-2 py-1 rounded-md">
-                {/* <h1 className="font-semibold">Workplace</h1> */}
+                
                 <h1 className="bg-gray-200 lg:w-[300px] mt-3 text-center font-bold px-3 py-1 hover:border-blue-500 border hover:shadow-lg hover:bg-white rounded-md text-purple-700">
                   {bookJobs?.workplace}
                 </h1>
@@ -139,7 +139,7 @@ const BookMarkJobs = () => {
               </div>
             </div>
           </div>
-          {/* quatitiy div */}
+          {/* quantity div */}
           <div className="lg:flex justify-between items-center">
             <div className="lg:w-1/2 lg:mb-0 mb-3 lg:flex gap-9">
               <div className="space-y-1">
@@ -170,7 +170,7 @@ const BookMarkJobs = () => {
             </div>
           </div>
           <hr className="my-5 border border-purple-500" />
-          {/* description div */}
+          {/* descriptions div */}
           <div>
             {/* div-1 */}
             <div>
