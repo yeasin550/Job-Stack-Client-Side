@@ -1,8 +1,6 @@
-# React + Vite
+# JobStack (Team Project)
+# JobStack Live Site => https://jobstack-2f0c7.web.app/
+Jobstack is a job portal and network-building website. Whether it's full-time, part-time, 
+remote, or internship, you've got it all here.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
